@@ -1,0 +1,120 @@
+---
+title: "Schedule"
+---
+
+| Week | Date                 | Topic                      |
+| ---: | -------------------- | -------------------------- |
+|    1 | Tue Aug 27           | Introduction               |
+|      | Thu Aug 29           | Safety and Design          |
+|    2 | Tue Sep 3            | Embedded Systems           |
+|      | Thu Sep 5            |                            |
+|    3 | Tue Sep 10           | Cultural Considerations    |
+|      | Thu Sep 12           | Kinematics Modeling        |
+|    4 | Tue Sep 17           | Dynamics Modeling          |
+|      | Thu Sep 19           | Feedback Control           |
+|    5 | Tue Sep 24           |                            |
+|      | Thu Sep 26           | Probability and Estimation |
+|    6 | Tue Oct 1            |                            |
+|      | Thu Oct 3            | Map Representation         |
+|    7 | Tue Oct 8            |                            |
+|      | Thu Oct 10           |                            |
+|    8 | [Tue Oct 15]{.faded} | [Fall break]{.faded}       |
+|      | Thu Oct 17           |                            |
+|    9 | Tue Oct 22           |                            |
+|      | Thu Oct 24           |                            |
+|   10 | Tue Oct 29           |                            |
+|      | Thu Oct 31           |                            |
+|   11 | Tue Nov 5            |                            |
+|      | Thu Nov 7            |                            |
+|   12 | Tue Nov 12           |                            |
+|      | Thu Nov 14           |                            |
+|   13 | Tue Nov 19           |                            |
+|      | Thu Nov 21           |                            |
+|   14 | Tue Nov 26           |                            |
+|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}     |
+|   15 | Tue Dec 3            | Project day                |
+|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}      |
+|      | TBD                  | Final exam                 |
+
+: {.striped}
+
+
+Grid table? Add additional links in topics column?
+
+- advanced control (MPC)
+- Planning
+- Vision
+- Learning
+
+
+
+## Detailed Topics List
+
+1. Introduction and problem setup (flatland racer/explorer)
+2. Safety and Design (batteries, deadman switch, CAD, fabrication, electronics)
+3. Embedded systems (Arduino, communication, debugging, wasm?)
+4. Culture (history, ethics, jobs, laws, moral decision making, pop-culture)
+5. Motion modeling (forward differential kinematics, dynamics, state-space)
+6. Control (open-loop, feedback, PID, tracking)
+7. Nondeterminism (probability, state estimation, Bayes, Kalman)
+8. Mapping (localization, SLAM)
+9. Planning (paths, motion, trajectory)
+10. Vision (optical flow, DL, RL)
+11. Learning
+
+
+design include drive systems?
+control include sensors like encoders?
+motion planning include bfs/dfs, A*, RRTs, constraints
+policy search
+robustness
+mpc?
+optimization
+control architectures
+systems and linearization
+digital/discrete control
+maps and representations
+motion capture
+filtering
+
+
+1. cirlces and lines path planning (modern robotics)
+2. Klančar examples (e.g., Kalman)
+
+
+Other thoughts
+
+- gaussian equation widget (adjust values and show the graph)
+
+1. Electronics
+2. Culture (ethics, jobs, laws, moral decision making, pop-culture, etc.)
+3. History
+    - Klančar chapter 1
+4. Motion modeling
+    - Kinematics (direct and inverse)
+    - Differential drive
+    - Ackerman steering
+    - Bicycle model
+    - Rear-wheel bicycle drive
+    - Unicycle model
+    - Tricycle drive
+    - Tricycle with a trailer
+    - Synchronous drive
+    - Omnidirectional drive
+    - Track drive
+    - Motion constraints
+    - Holonomic and non-holonomic constraints
+
+Klančar examples
+- 2.2 Illustration of parallel parking maneuver of differential drive vehicle
+
+## Exercise Due Dates
+
+|     | Topic | Started In Class | Due Date |
+| --- | ----- | ---------------- | -------- |
+| 1   |       |                  |          |
+| 2   |       |                  |          |
+
+final project is self-directed?
+
+Changes to exercises

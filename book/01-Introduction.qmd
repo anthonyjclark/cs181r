@@ -1,0 +1,19 @@
+---
+title: "Introduction"
+---
+
+I chose the robot.
+
+Focus on wmr
+
+Robotics is large field
+- electrical engineering
+- mechanical engineering
+- computer engineering
+- computer science
+- sociology
+- ethics
+- medicine
+- ...
+
+We can only cover a fraction.

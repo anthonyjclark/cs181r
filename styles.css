@@ -1,0 +1,10 @@
+/* css styles */
+
+thead {
+  position: sticky;
+  top: 0;
+}
+
+.faded {
+  color: #ccc;
+}

@@ -1,0 +1,83 @@
+---
+title: "Robotics"
+---
+
+TR 9:35-10:50am
+
+- authoring
+  - references
+  - lists (figures, tables, listings)
+  - callouts
+  - theorems and proofs
+  - equations
+  - sections
+- layout
+  - https://quarto.org/docs/authoring/article-layout.html
+- themes
+  - change theme
+  - fontsize, linestretch
+  - fontcolor, linkcolor
+  - light and dark modes
+
+
+Date/term...
+
+CS 181R
+
+i want you to feel like you are the inventor originator
+
+What I cannot create, I do not understand
+
+I will have mistakes in my first time teaching this
+Let me know if something feels off
+
+Using hypothesis
+
+## Description
+
+We will cover the fundamentals of mobile robotics including, cultural considerations, electronics, fabrication, kinematics, dynamics, control theory, motion planning, estimation, localization, and vision. Students will build and program a mobile robot to complete a series of tasks. Many of these subjects have broad applications in areas well beyond robotics (e.g., control theory is used in robotics, video games, economics, genomics, medicine, chemistry, etc.).
+
+## Delivery Methods
+
+I am going to deliver the course in a flipped-style. I am working on a course website that will act as an interactive textbook. It will include videos, interactive figures and equations, and check-your-understanding style pop-up questions. Here is a quick demo of a kinematics widget I recently created:
+
+![Kinematics Demo](demo.gif)
+
+The general flow of the class will include follow the following routine:
+
+1. Students will watch embedded lecture videos and read related material before class. I am going to use Hypothesis so that students can annotate the material with questions and comments.
+2. Classes will start with a short quiz to remind students they must complete the pre-class work.
+3. We will then have a brief discussion of the material.
+4. Students will then work on a hands-on activity related to the material.
+
+## Prerequisites
+
+The following courses are required as prerequisites:
+
+- Data structures (CS 62)
+- Calculus II (MATH 31)
+
+Exposure to the following subjects would be great, but is not required or expected:
+
+- Linear algebra (MATH 60)
+- Statistics (MATH 58)
+- Vector calculus (MATH 67)
+- Computer systems (CS 105)
+- Algorithms (CS 140)
+- General physics (PHYS 41)
+- Mechanics (PHYS 125)
+
+### Resources
+
+Here are some optional background materials if you want to brushup on concepts or prepare yourself for a better appreciation of the topics in this course:
+
+- [Stanford ENGR108: Introduction to Applied Linear Algebra —Vectors, Matrices, and Least Squares - YouTube](https://www.youtube.com/playlist?list=PLoROMvodv4rMz-WbFQtNUsUElIh2cPmN9)
+
+TODO: find for the following
+
+- Statistics (MATH 58)
+- Vector calculus (MATH 67)
+- Computer systems (CS 105)
+- Algorithms (CS 140)
+- General physics (PHYS 41)
+- Mechanics (PHYS 125)

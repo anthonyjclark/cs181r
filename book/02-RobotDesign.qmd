@@ -1,0 +1,267 @@
+---
+title: "Robot Design"
+---
+
+Consider the following scenario:
+
+> You must design a robot to race on a track with direction signs.
+
+TODO: add image here?
+
+What additional information would you need?
+
+- functional requirements
+  - speed
+  - how rugged
+  - terrain (type of movement)
+- design constraints
+  - size
+  - safety
+
+- robot characteristics
+  - mechanisms
+  - electronics
+  - programming
+  - fabrication
+- design considerations
+  - environment
+  - power
+  - materials
+  - senses
+  - style
+
+strength
+agility
+stability
+
+Keep a log on the condition of parts
+
+
+oled
+- battery info
+- wifi info
+- general status
+
+deadman's switch
+
+battery
+- capacity (how much energy it holds)
+- c-rating (how fast can it discharge---supply power---or charge)
+- cell count
+
+transmission
+- belt, chain, direct
+
+[Part Design Basics - YouTube](https://www.youtube.com/playlist?list=PL4FdDkwWXT9q0bWfy7sxuKQeughT9Fg_Q)
+
+
+1. Define goals
+2. Brainstorm designs
+3. Sketch your layout
+4. Prototype with simple materials
+5. Model with CAD and fabricate
+6. Refine
+
+tools
+- soldering iron
+- helping hands
+- wire cutters
+- wire strippers
+- flush cutters
+- power supply
+- driver and bits
+- hot glue
+- cardboard
+
+PCB design
+
+How to prioritize the requirements?
+
+What components do you need?
+
+
+- general concerns
+  - cost
+  - size
+- motors (DC)
+  - power
+  - voltage
+  - current
+- wheel encoders sensors
+  - logic level
+  - communication
+- motor control
+  - peak and steady current
+  - voltage input
+  - voltage output
+  - logic level
+- power management
+  - power levels
+  - charging
+- microcontroller
+  - processor speed
+  - processor word size
+  - voltage
+  - memory
+  - power consumption
+  - communication with peripherals (I2C, DIO, A2D etc.)
+  - communication with host (USB, WiFi, etc.)
+- battery
+  - capacity
+  - voltage
+  - current
+- sensors
+  - communication
+  - logic level
+  - power level
+  - current
+  - accuracy
+  - speed
+  - resolution
+- miscellaneous
+  - switch
+  - fuse
+  - LEDs
+  - buttons
+  - screen
+  - breadboard/protoboard
+
+more general introduction
+https://builtin.com/robotics
+
+[How to check the battery voltage](https://wiki.seeedstudio.com/check_battery_voltage/)
+
+breakout boards
+arduino
+
+## Parts List
+
+|Part            |Cost     |Note                  |
+|----------------|--------:|----------------------|
+|Chassis         |$   0    |Fabricated            |
+|Wheels          |$   0    |Fabricated            |
+|Motor Mounts    |$   0    |Fabricated            |
+|Caster Wheel    |$   3    |Pololu?               |
+|Motors          |$  15    |w/ encoders           |
+|Motor controller|$  15    |L298N or dfbot?       |
+|Microcontroller |$  30    |w/ mic & SD           |
+|Camera          |$  10    |                      |
+|Inertial sensor |$  10    |9-axis                |
+|Distance sensor |$  10    |ST VL53L5CX           |
+|Microphone      |$  10    |                      |
+|Battery         |$  10    |18650 or 21700        |
+|Display         |$   7    |OLED                  |
+|Wiring          |$  10    |connectors, wire, etc.|
+|Hardware        |$  10    |screws, nuts, etc.    |
+|**Total**       |**$ 127**|                      |
+
+- USB cable
+- switch
+- SD Card
+- charger
+- fuse
+- batery monitor
+- LEDs
+- resistors
+- wire ties
+- stand offs
+- storage
+
+https://www.amazon.com/dp/B085XSLKFQ?th=1
+
+Sources
+- sparkfun
+- pololu
+- adafruit
+- https://www.18650batterystore.com/collections/21700-batteries
+
+- [Qwiic ToF Imager - VL53L5CX Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-tof-imager---vl53l5cx-hookup-guide)
+- [sparkfun/SparkFun_VL53L5CX_Arduino_Library](https://github.com/sparkfun/SparkFun_VL53L5CX_Arduino_Library)
+- [Pololu - VL53L5CX Time-of-Flight 8×8-Zone Distance Sensor Carrier with Voltage Regulator, 400cm Max](https://www.pololu.com/product/3417)
+
+https://www.lilygo.cc/products/t-display-s3
+
+https://howtomechatronics.com/tutorials/arduino/arduino-dc-motor-control-tutorial-l298n-pwm-h-bridge/
+
+## Example
+
+[Thursday Day 4 - Mars Helicopter Presentation - YouTube](https://www.youtube.com/watch?app=desktop&v=mQu9m4MG5Gc)
+- 500Hz guidance
+- 30Hz vision-based navigation
+- cell-phone grade ARM processor
+- Cell-phone grade cameras
+- Linux OS
+- solar-powered battery charging
+- 1-2 minute flights
+- https://github.com/nasa/fprime
+
+
+
+
+---
+title: Electronics
+---
+[Home - Physical Computing](https://makeabilitylab.github.io/physcomp/)
+## Arduino
+- simple examples (tutorial style)
+## Non-Arduino
+- hardware debugging
+- external programmer
+- manual library management
+- manual board management
+## Both require
+- drivers
+
+[Wokwi - Online ESP32, STM32, Arduino Simulator](https://wokwi.com/)
+
+WARDuino
+- cs majors
+- over the air updates (on save as option, maybe)
+- protect from mistakes
+- distribute solutions as binary blobs
+- add some basic functionality to runtime
+- fast enough?
+- https://www.sciencedirect.com/science/article/abs/pii/S259011842400011X
+
+interesting embedded idea:
+- run wasm runtime
+- the runtime accepts new code OTA
+- live reload "sketches"
+- compile to wasm
+	+ camera library
+	+ tensorflow lite micro
+	+ what else?
+- similar to toit system
+- [espressif/esp-wdf: Espressif WASM Development Framework.](https://github.com/espressif/esp-wdf)
+- [wasm3/wasm3: 🚀 A fast WebAssembly interpreter and the most universal WASM runtime](https://github.com/wasm3/wasm3)
+- [TOPLLab/WARDuino: A dynamic WebAssembly VM for embedded systems](https://github.com/TOPLLab/WARDuino)
+- [bytecodealliance/wasm-micro-runtime: WebAssembly Micro Runtime (WAMR)](https://github.com/bytecodealliance/wasm-micro-runtime)
+- parties
+	+ Espressif (has wasm git repos)
+	+ Seeed Studio (XIAO Esp32S3 Sense)
+	+ Edge Impulse
+- runtimes
+	+ microvium
+	+ jerryscript
+	+ devicescript (microsoft)
+	+ micropython and circuitpython
+	+ tinygo
+	+ Uj (java)
+	+ ulisp
+	+ espruino
+	+ quickjs
+	+ Tasmota/Berry
+	+ AtomVM
+- alternatives
+	+ nim
+	+ rust-embedded
+	+ C
+	+ compile-to-c languages (nothing with full support)
+
+
+
+[ESP Tool](https://espressif.github.io/esptool-js/)
+
+[Circuit Simulator Applet](https://www.falstad.com/circuit/index.html)
+
+show compiling/loading with and without vscode/platformio/arduinostudio

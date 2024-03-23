@@ -1,0 +1,48 @@
+project:
+  type: website
+
+website:
+  title: "Mobile Robotics"
+  page-footer: "Copyright 2024, Anthony J. Clark"
+  # TODO: change to "MR" of "CS181R"
+  favicon: images/logo.png
+  # logo-alt:
+  search: true
+  page-navigation: true
+  # repo-url: https://github.com/quarto-dev/quarto-demo
+  # repo-actions: [edit, issue]
+  site-url: "https://cs.pomona.edu/classes/cs181r"
+  navbar:
+    # background: primary
+    left:
+      - pages/syllabus.qmd
+      - pages/schedule.qmd
+      - text: Book
+        file: book/book.qmd
+      - exercises/exercises.qmd
+
+  sidebar:
+    - title: "Book"
+      style: "docked"
+      logo: images/logo.png
+      contents:
+        - book/book.qmd
+        - section: "Unit 1: Building"
+          contents:
+            - book/01-Introduction.qmd
+            - book/02-RobotDesign.qmd
+            - book/03-EmbeddedSystems.qmd
+        - text: "---"
+        - section: "Unit 2: Modeling"
+          contents:
+        - text: "---"
+        - section: "Unit 3: Planning"
+          contents:
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true

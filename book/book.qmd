@@ -1,0 +1,30 @@
+---
+title: "Table Of Contents"
+---
+
+## Table of Contents
+
+python script to scrape pages
+
+Unit 1: Introduction
+1. design/choosing things and fabrication
+2. electronics and arduino
+- culture
+- open-loop
+
+Unit 2: Modeling
+- kinematics
+- dynamics
+- close-loop
+
+Unit 3: Planning
+- path planning
+- sensing
+- estimation
+- localization
+
+Unit 4: Learning
+- mocap
+- filtering
+- vision
+- learning
