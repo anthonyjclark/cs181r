@@ -2,18 +2,64 @@
 title: "Introduction"
 ---
 
-I chose the robot.
+```{=html}
+<button style="margin-bottom: 1rem;" type="button" class="btn btn-info" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
+```
 
-Focus on wmr
+![CAD model for my simple prototype.](/images/CADPrototype.png){width=80% #fig-CADPrototype}
 
-Robotics is large field
-- electrical engineering
-- mechanical engineering
-- computer engineering
-- computer science
-- sociology
-- ethics
-- medicine
-- ...
+This course is a bit of an experiment. We have a lot of ground I would like to cover, but I also want to give you all the opportunity to "discover" solutions to the problems we face (instead of me lecturing "at" you).
 
-We can only cover a fraction.
+One shortcut I've taken is to choose our task and platform (see @fig-CADPrototype). Specifically, we will focus on wheeled mobile robots (WMRs) and the topics most relevant to computer science students. Even still, we will only cover a small fraction of the material available. My hope is that you will learn concepts that you can apply outside of robotics. For example, control theory and linear systems are used in many fields, including chemistry, economics, and biology.
+
+Robotics is a large field comprising material from electrical, mechanical, and computer engineering, as well as computer science, sociology, ethics, biology, law, and more.
+
+Each chapter in this book will roughly follow the outline below (learning goals, terminology, lecture, interactive, exercise, and a list of resources). The exercises will be completed in class, but you are can continue working on them outside of class when needed.
+
+flatland racer/explorer
+
+## What you will learn
+
+- A list of 2 to 5 learning goals
+
+## Terminology
+
+robot
+: TBD!
+
+## Lecture
+
+A video of slides, coding, hands-on electronics, etc.
+
+What is a robot?
+
+What role do you think AI plays in this course?
+
+Levels (AJC: we'll do it all; maybe bad idea)
+- Low level: motor control, sensor interfacing
+- Mid level: motion profile, coordination
+- High level: AI, navigation, mapping
+
+
+## Interactive
+
+An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.qmd) for a work-in-progress examples).
+
+## Exercise
+
+We have two exercises for this class period:
+
+1. An introduction to robotics via a quiz on gradescope.
+2. Building our simple robot.
+
+### Parts List
+
+TODO: table
+
+Alternative parts:
+
+- [T-Display-S3](https://www.lilygo.cc/products/t-display-s3)
+
+### Assembly Instructions
+
+## Resources

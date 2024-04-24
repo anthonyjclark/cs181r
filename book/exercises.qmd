@@ -21,6 +21,11 @@ Assignments
 3. automatic emergency breaking
 4. pid wall following
 
+- bug or wall-following or artificial potential fields
+  - https://www.cs.cmu.edu/~motionplanning/
+  - https://www.cs.cmu.edu/~motionplanning/lecture/lecture.html
+
+
 ## List of exercises
 
 python script to scrape assignment pages

@@ -1,3 +1,67 @@
 ---
 title: "Embedded Systems"
 ---
+
+## Arduino
+- simple examples (tutorial style)
+## Non-Arduino
+- hardware debugging
+- external programmer
+- manual library management
+- manual board management
+## Both require
+- drivers
+
+[Wokwi - Online ESP32, STM32, Arduino Simulator](https://wokwi.com/)
+
+WARDuino
+- cs majors
+- over the air updates (on save as option, maybe)
+- protect from mistakes
+- distribute solutions as binary blobs
+- add some basic functionality to runtime
+- fast enough?
+- https://www.sciencedirect.com/science/article/abs/pii/S259011842400011X
+
+interesting embedded idea:
+- run wasm runtime
+- the runtime accepts new code OTA
+- live reload "sketches"
+- compile to wasm
+	+ camera library
+	+ tensorflow lite micro
+	+ what else?
+- similar to toit system
+- [espressif/esp-wdf: Espressif WASM Development Framework.](https://github.com/espressif/esp-wdf)
+- [wasm3/wasm3: 🚀 A fast WebAssembly interpreter and the most universal WASM runtime](https://github.com/wasm3/wasm3)
+- [TOPLLab/WARDuino: A dynamic WebAssembly VM for embedded systems](https://github.com/TOPLLab/WARDuino)
+- [bytecodealliance/wasm-micro-runtime: WebAssembly Micro Runtime (WAMR)](https://github.com/bytecodealliance/wasm-micro-runtime)
+- parties
+	+ Espressif (has wasm git repos)
+	+ Seeed Studio (XIAO Esp32S3 Sense)
+	+ Edge Impulse
+- runtimes
+	+ microvium
+	+ jerryscript
+	+ devicescript (microsoft)
+	+ micropython and circuitpython
+	+ tinygo
+	+ Uj (java)
+	+ ulisp
+	+ espruino
+	+ quickjs
+	+ Tasmota/Berry
+	+ AtomVM
+- alternatives
+	+ nim
+	+ rust-embedded
+	+ C
+	+ compile-to-c languages (nothing with full support)
+
+
+
+[ESP Tool](https://espressif.github.io/esptool-js/)
+
+[Circuit Simulator Applet](https://www.falstad.com/circuit/index.html)
+
+show compiling/loading with and without vscode/platformio/arduinostudio

@@ -1,43 +1,62 @@
 project:
   type: website
+  resources:
+    - "_static/"
 
 website:
   title: "Mobile Robotics"
   page-footer: "Copyright 2024, Anthony J. Clark"
   # TODO: change to "MR" of "CS181R"
-  favicon: images/logo.png
+  favicon: images/logo-favicon.png
   # logo-alt:
   search: true
   page-navigation: true
   # repo-url: https://github.com/quarto-dev/quarto-demo
   # repo-actions: [edit, issue]
   site-url: "https://cs.pomona.edu/classes/cs181r"
+
   navbar:
     # background: primary
     left:
-      - pages/syllabus.qmd
       - pages/schedule.qmd
       - text: Book
         file: book/book.qmd
-      - exercises/exercises.qmd
 
   sidebar:
     - title: "Book"
       style: "docked"
-      logo: images/logo.png
+      logo: images/logo-small.png
       contents:
         - book/book.qmd
-        - section: "Unit 1: Building"
+        - section: "Unit 1: Design and Electronics"
           contents:
             - book/01-Introduction.qmd
-            - book/02-RobotDesign.qmd
+            - book/02-SafetyAndDesign.qmd
             - book/03-EmbeddedSystems.qmd
         - text: "---"
-        - section: "Unit 2: Modeling"
+        - section: "Unit 2: Modeling and Feedback Control"
           contents:
         - text: "---"
-        - section: "Unit 3: Planning"
+        - section: "Unit 3: Maps and Motion Planning"
           contents:
+        - text: "---"
+        - section: "Unit 4: Uncertainty and State Estimation"
+          contents:
+        - text: "---"
+        - section: "Unit 5: Localization and Mapping"
+          contents:
+        - text: "---"
+        - section: "Unit 6: Vision and Learning"
+          contents:
+        - text: "---"
+        - section: "Unit 7: Societal Impacts"
+          contents:
+        - text: "---"
+        - section: "Back Matter"
+          contents:
+            - book/Glossary.qmd
+            - book/Projects.qmd
+            - book/A1-Notation.qmd
 
 format:
   html:

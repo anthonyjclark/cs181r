@@ -2,119 +2,258 @@
 title: "Schedule"
 ---
 
-| Week | Date                 | Topic                      |
-| ---: | -------------------- | -------------------------- |
-|    1 | Tue Aug 27           | Introduction               |
-|      | Thu Aug 29           | Safety and Design          |
-|    2 | Tue Sep 3            | Embedded Systems           |
-|      | Thu Sep 5            |                            |
-|    3 | Tue Sep 10           | Cultural Considerations    |
-|      | Thu Sep 12           | Kinematics Modeling        |
-|    4 | Tue Sep 17           | Dynamics Modeling          |
-|      | Thu Sep 19           | Feedback Control           |
-|    5 | Tue Sep 24           |                            |
-|      | Thu Sep 26           | Probability and Estimation |
-|    6 | Tue Oct 1            |                            |
-|      | Thu Oct 3            | Map Representation         |
-|    7 | Tue Oct 8            |                            |
-|      | Thu Oct 10           |                            |
-|    8 | [Tue Oct 15]{.faded} | [Fall break]{.faded}       |
-|      | Thu Oct 17           |                            |
-|    9 | Tue Oct 22           |                            |
-|      | Thu Oct 24           |                            |
-|   10 | Tue Oct 29           |                            |
-|      | Thu Oct 31           |                            |
-|   11 | Tue Nov 5            |                            |
-|      | Thu Nov 7            |                            |
-|   12 | Tue Nov 12           |                            |
-|      | Thu Nov 14           |                            |
-|   13 | Tue Nov 19           |                            |
-|      | Thu Nov 21           |                            |
-|   14 | Tue Nov 26           |                            |
-|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}     |
-|   15 | Tue Dec 3            | Project day                |
-|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}      |
-|      | TBD                  | Final exam                 |
+https://arxiv.org/abs/1808.10703
+
+TODO: repetition in topics (eg, control -> planning -> control)
+
+1. [x] (introduction) Requirements Engineering
+2. [x] (design) OnShape, 3D Printing, Laser Cutting, Soldering, Circuits
+3. [x] (embedded systems) Programming, Emergency Braking, Active Enable, Arduino, I2C, WiFi, Debugging
+4. [ ] Discretization
+5. [ ] Bayes Theorem
+6. [ ] Least Squares
+7. [ ] Linearization
+8. [ ] Optimization
+9.  [x] (kinematics) Differential Kinematics (Vectors, Rotation Matrices)
+10. [x] (dynamics) Dynamics
+11. [x] State-Space, Simulation
+12. [x] Open-Loop
+13. [x] (feedback) Sense-Plan-Act, Tracking, PID
+14. [x] iLQR
+15. [ ] MPC
+16. [x] State Machines, Bug Algorithm
+17. [ ] Pure Pursuit, Architectures
+18. [ ] BFS, DFS, A*
+19. [ ] RRT
+21. [ ] D*, D* Lite
+22. [ ] PRM, Occupancy Grid, Constrains
+23. [x] Optical Flow
+24. [x] Object Detection
+25. [x] Learning (ML and RL), Policy Search
+26. [x] Kalman Filters (KF, EKF, UKF)
+27. [x] Particle Filters
+28. [x] Estimation
+29. [x] Localization
+30. [x] Mapping
+31. [x] SLAM
+32. [x] History and Pop-Culture
+33. [x] Automation and Job Loss
+34. [x] Moral Decision Making
+35. [x] Autonomous Vehicle Ethics
+
+Literature / Pop-Culture
+
+## Modules
+
+1. Design and Electronics
+  1. [Introduction](/book/01-Introduction.qmd)
+  2. [Safety and Design](/book/02-SafetyAndDesign.qmd)
+  3. [Embedded Systems](/book/03-EmbeddedSystems.qmd)
+  4. Open-Loop Go to Goal
+2. Modeling and Feedback Control
+  5. Feedback Control with PID and Wheel Encoders
+  6. Kinematic Modeling
+  7. LQR and iLQR for Circular Paths (feed-forward?)
+3. Maps and Motion Planning
+  8. No map? State Machines and Bug Algorithm
+  9. ICP mapping? occupancy grid? Correll 12.3
+  10. Graph Search and A* (D* Lite?) or sampling-based planning (RRT? PRM?)
+  11. Control Architecture Scales (Correll 13.4)
+4. Uncertainty (State Estimation?)
+  12. Error Propagation
+  13. Sensor Fusion with Kalman Filters
+5. Localization and Mapping
+  14. Localization with Particle Filters
+  15. ...
+  16. Graph-based SLAM
+6. Vision and Learning
+  17. Conventional (Features, Optical Flow)
+  18. Object Detection
+  19. Segmentation
+  20. Imitation Learning (RL?)
+7. Societal Impacts
+  21. History and Pop-Culture
+  22. Automation and Jobs
+  23. Moral Decision Making and Liability
+  24. Autonomous Vehicle Ethics
+8. Open-Ended Project
+  25. Project Workday
+  26. Project Workday
+
+MPC
+Reinforcement Learning
+Control Architecture
+Visual SLAM? Google Cartographer?
+Dynamics Modeling
+State-Space Modeling and Simulation
+
+planning
+1. perception
+2. path planning
+   1. global path planning (eg, Dijkstra, A*, RRT, PRM, D*, D* Lite)
+   2. local path planning (eg, dynamic window, and some of the global planners)
+3. motion control
+
+
+New Schedule
+1. Introduction and Safety
+2. Design and Assembly
+3. Arduino and Embedded Systems
+4. Open-Loop Go to Goal
+5. History, Pop-Culture, Automation, and Job Loss
+6. Kinematic Modeling
+7. Wheel Encoders, IMU, and LIDAR
+8. Sense-Plan-Act Go to Goal (Klancar: reference pose)
+9. Bug Algorithms and State Machines
+10. Kinematic Trajectory Tracking
+11. Map/Environment Representation (and Configuration Space)
+12. Sampling and Graph Search
+13. Global and Local Path Planning
+14. Uncertainty and Error Propagation
+15. State Estimation and Filters
+16. ?ICP? "Lines? ?Lidar?
+17. Localization
+18. ?Simple SLAM?
+19. Feature Extraction and Optical Flow
+20. Object Detection and Segmentation
+21. ?Visual SLAM?
+22. Imitation Learning and Reinforcement Learning
+23. Moral Decision Making, Liability, and Ethics
+24. Project Workday
+25. Project Workday
+
+- then kinematic trajectory tracking?
+- planning sequence
+  - map/environment representation (https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
+  - configuration space
+  - sampling methods like RRT, RRT*, ?PRM?
+  - graph search like A* or D* Lite (https://www.cs.cmu.edu/~motionplanning/lecture/AppH-astar-dstar_howie.pdf)
+- uncertainty
+  - propagation of error
+  - state estimation, filters
+  - something with lines and lidar?
+  - localization
+  - simplest SLAM
+- vision and learning
+  - conventional vision (features, optical flow)
+  - object detection
+  - segmentation
+  - imitation learning, reinforcement learning
+  - visual SLAM?
+- Moral Decision Making, Liability, and Ethics
+- Project Workday
+- Project Workday
+
+<!-- 15 * 2 - 3 = 27 -->
+
+| Week | Date                 | Chapter                                           |
+| ---: | ----                 | -------                                           |
+| 1    | Tue Aug 27           | [Introduction](/book/01-Introduction.qmd)         |
+|      | Thu Aug 29           | [Safety and Design](/book/02-SafetyAndDesign.qmd) |
+| 2    | Tue Sep 3            | [Embedded Systems](/book/03-EmbeddedSystems.qmd)  |
+|      | Thu Sep 5            | Open-Loop Go to Goal                              |
+| 3    | Tue Sep 10           |                                                   |
+|      | Thu Sep 12           |                                                   |
+| 4    | Tue Sep 17           |                                                   |
+|      | Thu Sep 19           |                                                   |
+| 5    | Tue Sep 24           |                                                   |
+|      | Thu Sep 26           |                                                   |
+| 6    | Tue Oct 1            |                                                   |
+|      | Thu Oct 3            |                                                   |
+| 7    | Tue Oct 8            |                                                   |
+|      | Thu Oct 10           |                                                   |
+| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                              |
+|      | Thu Oct 17           |                                                   |
+| 9    | Tue Oct 22           |                                                   |
+|      | Thu Oct 24           |                                                   |
+| 10   | Tue Oct 29           |                                                   |
+|      | Thu Oct 31           |                                                   |
+| 11   | Tue Nov 5            |                                                   |
+|      | Thu Nov 7            |                                                   |
+| 12   | Tue Nov 12           |                                                   |
+|      | Thu Nov 14           |                                                   |
+| 13   | Tue Nov 19           |                                                   |
+|      | Thu Nov 21           |                                                   |
+| 14   | Tue Nov 26           | Project Workday                                   |
+|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                            |
+| 15   | Tue Dec 3            | Project Workday                                   |
+|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                             |
+| 16   | TBD                  | Final exam                                        |
 
 : {.striped}
 
+<!--
+#| label: tbl-semester-schedule
+#| tbl-cap: Semester Schedule
 
-Grid table? Add additional links in topics column?
+from IPython.display import Markdown
+from tabulate import tabulate
 
-- advanced control (MPC)
-- Planning
-- Vision
-- Learning
+table = [["Sun","696,000",1.989e30],
+         ["Earth","6,371",5.972e24],
+         ["Moon","1,737",7.34e22],
+         ["Mars","3,390",6.39e23]]
 
-
-
-## Detailed Topics List
-
-1. Introduction and problem setup (flatland racer/explorer)
-2. Safety and Design (batteries, deadman switch, CAD, fabrication, electronics)
-3. Embedded systems (Arduino, communication, debugging, wasm?)
-4. Culture (history, ethics, jobs, laws, moral decision making, pop-culture)
-5. Motion modeling (forward differential kinematics, dynamics, state-space)
-6. Control (open-loop, feedback, PID, tracking)
-7. Nondeterminism (probability, state estimation, Bayes, Kalman)
-8. Mapping (localization, SLAM)
-9. Planning (paths, motion, trajectory)
-10. Vision (optical flow, DL, RL)
-11. Learning
+Markdown(tabulate(
+  table,
+  headers=["Astronomical object","R (km)", "mass (kg)"]
+))
+ -->
 
 
-design include drive systems?
-control include sensors like encoders?
-motion planning include bfs/dfs, A*, RRTs, constraints
-policy search
-robustness
-mpc?
-optimization
-control architectures
-systems and linearization
-digital/discrete control
-maps and representations
-motion capture
-filtering
+Exercises (probably want 14?):
 
-
-1. cirlces and lines path planning (modern robotics)
-2. Klančar examples (e.g., Kalman)
-
+1. Open-loop go to goal
+2. Remote control
+3. Closed-loop go to goal with wheel encoders (Klancar Example 3.1)
+   1. reference position through intermediate points
+4. Go to goal and avoid obstacles
+5. Autonomously explore a space with static obstacles
+6. Autonomously navigate a course with dynamic obstacles
+7. Chosen Project
+8. Society discussion
 
 Other thoughts
 
 - gaussian equation widget (adjust values and show the graph)
+- Maximum Likelihood, Least Squares Estimation, Maximum A Posteriori Estimation
+- Least Squares and KKT conditions
+- Dual problems: control and estimation
+- Least squares as a special case of maximum likelihood estimation on Gaussian models.
+- estimation before localization
+- if covering linearization, then look at boyds lecture on nonlinear least squares
+- boyd lectures have good info on nonlinear control (e.g., directing a nonholonomic robot)
+- cirlces and lines path planning (modern robotics)
+- Klančar examples (e.g., Kalman)
+- Boyd LQR notes
+- only teach dynamics when needed; kinematics probably good enough
+- reactive, FSMs, hierarchical FSMs, behavior trees, mission planning
 
-1. Electronics
-2. Culture (ethics, jobs, laws, moral decision making, pop-culture, etc.)
-3. History
-    - Klančar chapter 1
-4. Motion modeling
-    - Kinematics (direct and inverse)
-    - Differential drive
-    - Ackerman steering
-    - Bicycle model
-    - Rear-wheel bicycle drive
-    - Unicycle model
-    - Tricycle drive
-    - Tricycle with a trailer
-    - Synchronous drive
-    - Omnidirectional drive
-    - Track drive
-    - Motion constraints
-    - Holonomic and non-holonomic constraints
 
-Klančar examples
-- 2.2 Illustration of parallel parking maneuver of differential drive vehicle
+## Concept Inventory
 
-## Exercise Due Dates
+Here is the inventory of topics I considered when developing this course.
 
-|     | Topic | Started In Class | Due Date |
-| --- | ----- | ---------------- | -------- |
-| 1   |       |                  |          |
-| 2   |       |                  |          |
+|     | Category    | Concepts                                                                             |
+| --: | ----------- | ------------------------------------------------------------------------------------ |
+| 1.  | Design      | Requirements, CAD, Fabrication, Mechatronics, Electronics, Safety                    |
+| 2.  | Programming | Embedded Systems, Communication, Real-Time, Debugging                                |
+| 3.  | Math        | Linear Algebra, Probability, Statistics, Discretization, Optimization, Linearization |
+| 4.  | Modeling    | Diagramming, Mechanics, Kinematics, Dynamics, Simulation, Motion Capture             |
+| 5.  | Control     | Feedback, Motion, Robustness, Adaptivity, Reactive, Behavioral                       |
+| 6.  | Planning    | Search, Mapping, Motion, Trajectory                                                  |
+| 7.  | Vision      | Conventional, Learning, Optical Flow                                                 |
+| 8.  | Uncertainty | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM               |
+| 9.  | Society     | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
 
-final project is self-directed?
+Specific techniques:
 
-Changes to exercises
+1. Design: Requirements, OnShape, 3D Printing, Laser Cutting, Soldering, Circuits
+2. Programming: Emergency Braking, Active Enable, Arduino, I2C, WiFi, Debugging, Discretization
+3. Math: Vectors, Rotation Matrices, Bayes Theorem, Least Squares, Linearization, Optimization
+4. Modeling: Differential Kinematics, Dynamics, State-Space, Simulation
+5. Control: Open-Loop, Tracking, PID, (i)LQR, MPC, State Machines, Bug Algorithm, Pure Pursuit, Architectures
+6. Planning: BFS, DFS, A*, RRT, D*, D* Lite, PRM, Occupancy Grid, Constrains
+7. Vision: Optical Flow, Object Detection, Learning (ML and RL), Policy Search
+8. Uncertainty: Kalman Filters (KF, EKF, UKF), Particle Filters, Estimation, Localization, Mapping, SLAM
+9. Society: Moral Decision Making, Job Loss, Literature

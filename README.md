@@ -1,5 +1,21 @@
 
+use canvas?
+maybe just gradescope
 
+add goat counter?
+
+resources
+- astrom and murray feedback systems (state space notation)
+- messner and tilbury control tutorials for matlab and simulink
+- eth zurich modeling and controll of a ballbot
+
+
+
+Static assets
+- images/ 	Image files (e.g. PNG, JPEG, etc.)
+- css/ 	CSS stylesheets
+- js/ 	JavaScript scripts
+- www/ 	Any other files (e.g. downloadable datasets)
 
 
 - Automatically link/hover/tooltip definitions
@@ -68,6 +84,12 @@ https://markcannon.github.io/teaching/
 
 [Meeting Minutes](https://www.cs.cmu.edu/~rapidproto/handouts/meetingnotes.html)
 
+- lectures cover mecanum wheels (or ackermann) and quadrotors, assignments cover diff drive?
+
+- use jupyter.pomona.edu with julia?
+
+- constrained least squares for smooth paths?
+
 ## Resources
 [MTH 141 Linear Algebra: Peter Danziger's Sections Handouts](https://math.ryerson.ca/~danziger/professor/MTH141/Handouts/index.html)
 - [Embedded: News & Resources For The Electronics Community](https://www.embedded.com/)
@@ -100,11 +122,41 @@ vscode setup
 
 
 
+- authoring
+  - references
+  - lists (figures, tables, listings)
+  - callouts
+  - theorems and proofs
+  - equations
+  - sections
+- layout
+  - https://quarto.org/docs/authoring/article-layout.html
+- themes
+  - change theme
+  - fontsize, linestretch
+  - fontcolor, linkcolor
+  - light and dark modes
 
-Lecture QMD format:
-- hypothesis link
-- goals
-- terminology
-- video
-- interactive
-- wrap-up
+
+## Learning Objectives
+
+from ROB 311
+• how to determine the proper design for an application, including proper motor, transmission, and mechanics
+• how to design something and machine it
+• how to predict its performance and the characteristics of a system
+• how sensors and microcomputers work to control a robot
+• how to write control strategies for a microcomputer
+• how to control multiple axes with multiple tasks
+
+Date/term...
+
+CS 181R
+
+i want you to feel like you are the inventor originator
+
+What I cannot create, I do not understand
+
+I will have mistakes in my first time teaching this
+Let me know if something feels off
+
+Using hypothesis
