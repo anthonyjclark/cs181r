@@ -1,0 +1,9 @@
+---
+title: "Notation"
+format: html
+---
+
+Mathematical notation
+- linear algebra
+- calculus
+- probability
