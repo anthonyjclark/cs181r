@@ -54,11 +54,11 @@ See my [advising page](https://anthonyjclark.github.io/advising/) for additional
 
 ## Course Description
 
-We will cover the fundamentals of mobile robotics including, cultural considerations, electronics, fabrication, kinematics, dynamics, control theory, motion planning, estimation, localization, and vision. Students will build and program a mobile robot to complete a series of tasks. Many of these subjects have broad applications in areas well beyond robotics (e.g., control theory is used in robotics, video games, economics, genomics, medicine, chemistry, etc.).
+We will cover the fundamentals of mobile robotics including, societal considerations, electronics, fabrication, kinematics, dynamics, control theory, motion planning, estimation, localization, and vision. Students will build and program a mobile robot to complete a series of tasks. Many of these subjects have broad applications in areas well beyond robotics (e.g., control theory is used in robotics, video games, economics, genomics, medicine, chemistry, etc.).
 
 What you will learn:
 
-- The cultural impacts of autonomous systems.
+- The societal impacts of autonomous systems.
 - How to build and program a mobile robot.
 - How to model physical systems.
 - Basic control theory.
