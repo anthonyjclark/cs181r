@@ -1,13 +1,28 @@
 {
   "cSpell.words": [
+    "Ackermann",
+    "Astrom",
     "boundingbox",
+    "Datasheets",
+    "espressif",
+    "glossar",
+    "iframes",
     "Interactives",
     "Kalman",
     "keepaspectratio",
     "Linearization",
+    "mecanum",
     "Mechatronics",
+    "Messner",
     "Microcontroller",
-    "onclick"
+    "Multibody",
+    "onclick",
+    "Pandoc",
+    "Pinouts",
+    "pydy",
+    "quadrotors",
+    "revealjs",
+    "Simulink"
   ],
   "liveServer.settings.port": 5501
 }
