@@ -122,6 +122,8 @@ New Schedule
 24. Project Workday
 25. Project Workday
 
+- mocap?
+
 - then kinematic trajectory tracking?
 - planning sequence
   - map/environment representation (https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
