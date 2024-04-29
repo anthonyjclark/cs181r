@@ -42,6 +42,8 @@ An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.
 
 assignment: pick a new sensor and design system around it
 
+add something to robot -> what changes need be made? (power, comm., etc.)
+
 - pololu, digikey, adafruit, dfrobot, robotshop, sparkfun
   unmanned vs uninhabited
 

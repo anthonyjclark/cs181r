@@ -1,7 +1,0 @@
----
-title: "Robot Prototype"
----
-
-give task /environment and ask them to design on first day
-diagnose others teams' issues
-peer-review before batteries connected
