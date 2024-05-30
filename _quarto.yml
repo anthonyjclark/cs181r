@@ -7,7 +7,7 @@ website:
   title: "Mobile Robotics"
   page-footer: "Copyright 2024, Anthony J. Clark"
   # TODO: change to "MR" of "CS181R"
-  favicon: images/logo-favicon.png
+  favicon: images/Icon-favicon.png
   # logo-alt:
   search: true
   page-navigation: true
@@ -18,14 +18,15 @@ website:
   navbar:
     # background: primary
     left:
-      - pages/schedule.qmd
+      - text: Schedule
+        file: pages/schedule.qmd
       - text: Book
         file: book/book.qmd
 
   sidebar:
     - title: "Book"
       style: "docked"
-      logo: images/logo-small.png
+      logo: images/Logo.png
       contents:
         - book/book.qmd
         - section: "Unit 1: Design and Electronics"
