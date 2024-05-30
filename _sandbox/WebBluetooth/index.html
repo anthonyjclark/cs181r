@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Bluetooth Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
+  </head>
+
+  <body>
+    <main>
+      <h1>ESP32 Web BLE Application</h1>
+
+      <button id="connectionButton">Connect to BLE Device</button>
+      <p id="statusContainer">Disconnected</p>
+      <p>Fetched Value: <span id="valueContainer">Disconnected</span></p>
+      <p>Last reading: <span id="timestampContainer">Disconnected</span></p>
+    </main>
+
+    <script>
+      // Buttons
+      const connectionButton = document.getElementById("connectionButton");
+
+      // Output containers
+      const statusContainer = document.getElementById("statusContainer");
+      const valueContainer = document.getElementById("valueContainer");
+      const timestampContainer = document.getElementById("timestampContainer");
+
+      // BLE device specs
+      const bleDeviceName = "ESP32";
+      const bleGattService = "19b10000-e8f2-537e-4f6c-d104768a1214";
+      const ledCharacteristic = "19b10002-e8f2-537e-4f6c-d104768a1214";
+      const sensorCharacteristic = "19b10001-e8f2-537e-4f6c-d104768a1214";
+
+      const disabledColor = "rgb(206, 126, 123)";
+      const disconnectedColor = "rgb(187, 151, 44)";
+      const connectedColor = "rgb(98, 175, 154)";
+
+      let bleIsConnected;
+      let bleGattServer;
+      let bleService;
+      let bleGattCharacteristic;
+
+      main();
+
+      function main() {
+        if (!navigator.bluetooth) {
+          showAsDisabled();
+          return;
+        }
+
+        showAsDisconnected();
+
+        setupEventListeners();
+      }
+
+      function showAsDisabled() {
+        bleIsConnected = false;
+
+        connectionButton.disabled = true;
+        connectionButton.innerHTML = "Cannot Connect to BLE Device";
+
+        statusContainer.innerHTML = "Web Bluetooth API is not available!";
+        statusContainer.style.color = disabledColor;
+
+        valueContainer.innerHTML = "Disabled";
+        valueContainer.style.color = disabledColor;
+
+        timestampContainer.innerHTML = "Disabled";
+        timestampContainer.style.color = disabledColor;
+      }
+
+      function showAsDisconnected() {
+        bleIsConnected = false;
+
+        connectionButton.disabled = false;
+        connectionButton.innerHTML = "Connect to BLE Device";
+
+        statusContainer.innerHTML = "Disconnected";
+        statusContainer.style.color = disconnectedColor;
+
+        valueContainer.innerHTML = "Disconnected";
+        valueContainer.style.color = disconnectedColor;
+
+        timestampContainer.innerHTML = "Disconnected";
+        timestampContainer.style.color = disconnectedColor;
+      }
+
+      function showAsConnected() {
+        bleIsConnected = true;
+
+        connectionButton.disabled = false;
+        connectionButton.innerHTML = "Disconnect from BLE Device";
+
+        statusContainer.innerHTML = "Connected";
+        statusContainer.style.color = connectedColor;
+
+        valueContainer.innerHTML = "Waiting for value...";
+        valueContainer.style.color = connectedColor;
+
+        timestampContainer.innerHTML = "Connected";
+        timestampContainer.style.color = connectedColor;
+      }
+
+      function setupEventListeners() {
+        connectionButton.addEventListener("click", (event) => {
+          if (!bleIsConnected) {
+            showAsConnected();
+            connectToDevice();
+          } else {
+            showAsDisconnected();
+            disconnectFromDevice();
+          }
+        });
+      }
+
+      function connectToDevice() {
+        // Consider using namePrefix?
+        navigator.bluetooth
+          .requestDevice({
+            filters: [{ name: bleDeviceName }],
+            optionalServices: [bleGattService],
+          })
+          .then((device) => {
+            console.log("Selected device:", device.name);
+            statusContainer.innerHTML = `Connected to device ${device.name}`;
+            device.addEventListener("gattservicedisconnected", onDisconnected);
+            return device.gatt.connect();
+          })
+          .then((server) => {
+            bleGattServer = server;
+            console.log("Connected to BLE GATT server:", server);
+            return server.getPrimaryService(bleGattService);
+          })
+          .then((service) => {
+            bleGattService = service;
+            console.log("Discovered BLE GATT service:", service);
+            return service.getCharacteristic(sensorCharacteristic);
+          })
+          .then((characteristic) => {
+            bleGattCharacteristic = characteristic;
+            console.log("Characteristic discovered:", characteristic);
+            characteristic.addEventListener(
+              "characteristicvaluechanged",
+              onCharacteristicChange
+            );
+            characteristic.startNotifications();
+            console.log("Notifications Started.");
+            return characteristic.readValue();
+          })
+          // .then((value) => {
+          //   const decodedValue = new TextDecoder().decode(value);
+          //   valueContainer.innerHTML = decodedValue;
+          // })
+          .catch((error) => {
+            console.log("Error: ", error);
+          });
+      }
+
+      function onDisconnected(event) {
+        const message = `Disconnected from ${event.target.device.name}`;
+        console.log(message);
+        showAsDisconnected();
+        bleStateContainer.innerHTML = message;
+      }
+
+      function onCharacteristicChange(event) {
+        const decodedValue = new TextDecoder().decode(event.target.value);
+        valueContainer.innerHTML = decodedValue;
+        timestampContainer.innerHTML = new Date().toLocaleString();
+      }
+
+      // function writeOnCharacteristic( value )
+      // {
+      //     if ( bleGattServer && bleGattServer.connected ) {
+      //         bleServiceFound.getCharacteristic( ledCharacteristic )
+      //             .then( characteristic =>
+      //             {
+      //                 console.log( "Found the LED characteristic: ", characteristic.uuid );
+      //                 const data = new Uint8Array( [ value ] );
+      //                 return characteristic.writeValue( data );
+      //             } )
+      //             .then( () =>
+      //             {
+      //                 latestValueSent.innerHTML = value;
+      //                 console.log( "Value written to LEDcharacteristic:", value );
+      //             } )
+      //             .catch( error =>
+      //             {
+      //                 console.error( "Error writing to the LED characteristic: ", error );
+      //             } );
+      //     } else {
+      //         console.error( "Bluetooth is not connected. Cannot write to characteristic." )
+      //         window.alert( "Bluetooth is not connected. Cannot write to characteristic. \n Connect to BLE first!" )
+      //     }
+      // }
+
+      function disconnectFromDevice() {
+        if (bleGattServer && bleGattServer.connected) {
+          if (bleGattCharacteristic) {
+            bleGattCharacteristic
+              .stopNotifications()
+              .then(() => {
+                console.log("Notifications Stopped");
+                return bleGattServer.disconnect();
+              })
+              .then(() => {
+                statusContainer.innerHTML = "Disconnected";
+              })
+              .catch((error) => {
+                console.log("An error occurred:", error);
+              });
+          } else {
+            console.log("No characteristic found to disconnect.");
+          }
+        } else {
+          console.error("Bluetooth is not connected.");
+        }
+      }
+    </script>
+  </body>
+</html>
