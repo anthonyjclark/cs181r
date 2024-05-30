@@ -80,22 +80,25 @@ Literature / Pop-Culture
   25. Project Workday
   26. Project Workday
 
-MPC
-Reinforcement Learning
-Control Architecture
-Visual SLAM? Google Cartographer?
-Dynamics Modeling
-State-Space Modeling and Simulation
+Missing topics?
 
-planning
+- MPC
+- Reinforcement Learning
+- Control Architecture
+- Visual SLAM? Google Cartographer?
+- Dynamics Modeling
+- State-Space Modeling and Simulation
+
+Planning Topics
+
 1. perception
 2. path planning
    1. global path planning (eg, Dijkstra, A*, RRT, PRM, D*, D* Lite)
    2. local path planning (eg, dynamic window, and some of the global planners)
 3. motion control
 
+Potential New Schedule
 
-New Schedule
 1. Introduction and Safety
 2. Design and Assembly
 3. Arduino and Embedded Systems
@@ -259,3 +262,57 @@ Specific techniques:
 7. Vision: Optical Flow, Object Detection, Learning (ML and RL), Policy Search
 8. Uncertainty: Kalman Filters (KF, EKF, UKF), Particle Filters, Estimation, Localization, Mapping, SLAM
 9. Society: Moral Decision Making, Job Loss, Literature
+
+
+[Try markmap](https://markmap.js.org/repl)
+---
+title: Mobile Robotics
+markmap:
+  colorFreezeLevel: 2
+---
+
+- Society
+  - Hisotry
+  - Pop-culture
+  - Automation and Jobs
+  - Ethics
+  - Moral Decision Making
+  - Liability
+- Design
+  - Computer Aided Design
+  - Fabrication
+  - Electronics
+  - Safety
+  - Embedded Systems
+- Modeling
+  - Kinematics
+  - Dynamics
+  - Simulation
+- Control
+  - Open-loop Control
+  - Feedback Control
+  - Sense-Plan-Act
+  - Hierarchical Control
+  - State Machines
+  - Bug Algorithms
+- Uncertainty
+  - Error Propagation
+  - State Estimation
+  - Sensor Fusion
+  - Kalman Filters
+  - Particle Filters
+- Mapping
+  - Representation
+  - Localization
+  - SLAM
+- Planning
+  - Global and Local
+  - Motion Planning
+  - Trajectory Planning
+  - Path Planning
+- Vision
+  - Feature Extraction
+  - Optical Flow
+  - Object Detection
+  - Segmentation
+  - Learning
