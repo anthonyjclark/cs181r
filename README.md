@@ -4,6 +4,8 @@
 
 - add goat counter to base template
 - add hover/link for definitions and acronyms (glossary: see below)
+- acknowledgements (library authors etc.)
+  - [ESP32Encoder](https://github.com/madhephaestus/ESP32Encoder/)
 
 
 ### File
@@ -153,6 +155,21 @@ https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
 - [color mode for plots](https://observablehq.com/framework/themes#auto-mode)
 - prescript: `$\newcommand{\Map}[2]{{\vphantom{{#2}}}^{#1}{#2}}$speed`
 - visualize least squares (two objectives (lecture 8 lds, boyd, 14m) adjust mu)
+- get board name `❯ cat packages/esp32/hardware/esp32/2.0.16/boards.txt | rg -i xiao` (XIAO_ESP32S3.name=XIAO_ESP32S3)
+- [Rotary Encoder: Immediately Tame your Noisy Encoder!](https://www.best-microcontroller-projects.com/rotary-encoder.html)
+
+Bluetooth
+- [Status](https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md)
+- [Guide](https://randomnerdtutorials.com/esp32-bluetooth-low-energy-ble-arduino-ide/)
+- [OTA](https://learn.sparkfun.com/tutorials/esp32-ota-updates-over-ble-from-a-react-web-application/all)
+- [NimBLE](https://github.com/h2zero/NimBLE-Arduino)
+- [Types](https://www.npmjs.com/package/@types/web-bluetooth)
+- [WebBluetooth](https://googlechrome.github.io/samples/web-bluetooth/)
+- [Mobile App](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile)
+- [Spec](https://www.bluetooth.com/specifications/specs/)
+- [Webble for iOS](https://www.greenparksoftware.co.uk/projects/webble/1.2.3)
+- [Bluefy for iOS](https://apps.apple.com/us/app/bluefy-web-ble-browser/id1492822055)
+
 
 
 ## Resources
