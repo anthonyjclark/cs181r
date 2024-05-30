@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+    TODO:
+    - syntax highlighting
+    - code formatting
+    - use vite to bundle
+    - code completion (dropdown with some documentation?)
+        - https://phuoc.ng/collection/mirror-a-text-area/add-autocomplete-to-your-text-area/
+    - draw UI
+    - add "I" for identity matrix shortcut
+    - add "D" for derivative shortcut
+    - add randn
+    - add plot (https://mathjs.org/docs/expressions/customization.html)
+
+    TODO:
+    - keyboard interface
+        - up and down arrows to navigate cells
+        - type "e" to edit cell
+        - type "enter" to rerun cell
+        - type "shift-enter" to go to new line
+        - type "cmd-#" to jump to cell
+-->
+
+<head>
+    <meta charset="utf-8">
+    <title>Testing mathjs/mathjax repl</title>
+
+    <script src="https://unpkg.com/mathjs@12.3.1/lib/browser/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+        .cell {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        .cell-label {
+            font-family: monospace;
+            display: inline-block;
+            width: 2em;
+            text-align: right;
+            margin-right: 0.5em;
+        }
+
+        .cell-input {
+            font-family: monospace;
+            font-size: 1.2em;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 0.2em;
+        }
+
+        .cell-output {
+            display: inline-block;
+            margin: 0.5em 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>mathjs REPL</h1>
+    <div>
+        <p>A <a href="https://mathjs.org/docs/expressions/syntax.html">reference for mathjs syntax</a></p>
+    </div>
+
+    <div class="repl" id="repl1">
+    </div>
+
+    <script>
+
+        function createCell( initialValue )
+        {
+            // <div class="cell">
+            //   <label class="cell-label">[1]</label>
+            //   <input class="cell-input" type=" text" />
+            //   <span class="cell-output"></span>
+            // </div>
+
+            const div = document.createElement( 'div' )
+            div.className = 'cell'
+            repl.prepend( div )
+
+            const label = document.createElement( 'label' )
+            label.className = 'cell-label'
+            label.innerHTML = '[' + repl.children.length + ']'
+            div.appendChild( label )
+
+            const input = document.createElement( 'input' )
+            input.className = 'cell-input'
+            input.type = 'text'
+            input.value = initialValue ? initialValue : ''
+            div.appendChild( input )
+
+            const result = document.createElement( 'span' )
+            result.className = 'cell-output'
+            div.appendChild( result )
+
+            // TODO: debounce
+            input.oninput = function ()
+            {
+                let parseResult = null
+
+                try {
+                    // Parse, compile, and evaluate the expression separately for output handling
+                    parseResult = parser.evaluate( input.value )
+                }
+                catch ( err ) {
+                    result.innerHTML = '<span style="color: red;">' + err.toString() + '</span>'
+                    return
+                }
+
+                try {
+                    // Export and then display the expression as LaTeX
+                    // const latex = node ? node.toTex( { parenthesis: 'auto', implicit: 'hide' } ) : ''
+                    // console.log( value )
+                    const latex = math.parse( parseResult.toString() ).toTex()
+                    MathJax.typesetClear()
+                    result.innerHTML = ''
+                    result.appendChild( MathJax.tex2svg( latex, { em: 16, ex: 6, display: false } ) )
+                }
+                catch ( err ) {
+                    result.innerHTML = '<span style="color: red;">' + err.toString() + '</span>'
+                }
+            }
+
+            return input
+        }
+
+        // Create a mathjs scope
+        // const mathScope = {}
+        const parser = math.parser()
+
+        // Create repl and set focus on the first cell
+        const repl = document.getElementById( 'repl1' )
+        createCell( 'x = 2+[1,2,3]' ).oninput()
+        repl.firstChild.children[ 1 ].focus()
+
+        repl.onkeyup = function ( e )
+        {
+            if ( e.key === 'Enter' ) {
+                createCell()
+                // document.activeElement.disabled = true
+                // document.activeElement.readOnly = true
+                repl.firstChild.children[ 1 ].focus()
+            }
+            else if ( e.key === 'ArrowUp' ) {
+                const prev = document.activeElement.parentElement.previousElementSibling
+                if ( prev ) {
+                    prev.children[ 1 ].focus()
+                }
+            }
+            else if ( e.key === 'ArrowDown' ) {
+                console.log( next )
+                if ( next ) {
+                    next.children[ 1 ].focus()
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
