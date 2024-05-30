@@ -1,0 +1,39 @@
+---
+title: "Typical Chapter Layout"
+---
+
+TODO: [Hypothesis Client](https://h.readthedocs.io/projects/client/en/latest/index.html)
+
+> NOTE: This is a template for a typical chapter layout. Each chapter will have a similar structure. Students will read the chapter before class, and then we will work through the exercises in class (in a flipped-classroom style).
+
+Remember, we are using [hypothesis](https://hypothes.is) for this book. So feel free to add questions and comments. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
+
+```{=html}
+<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
+```
+
+Some introductory text.
+
+“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+
+## What you will learn
+
+- A list of 2 to 5 learning goals
+
+## Terminology
+
+- A list of new terms
+
+## Lecture
+
+A video of slides, coding, hands-on electronics, etc.
+
+## Interactive
+
+An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.qmd) for a work-in-progress examples).
+
+## Exercise
+
+Each "chapter" will include the assignment/exercise. These will be completed in class.
+
+## Resources

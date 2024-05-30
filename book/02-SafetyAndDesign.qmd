@@ -85,6 +85,10 @@ What additional information would you need?
   - senses
   - style
 
+SBC vs microcontroller
+
+[Systems Engineering Your Robotics Project | PickNik](https://picknik.ai/robotics/systems%20engineering/software%20system/moveit/trigger%20objective/network%20messages/json/rosbridge/roswebtools/python/rust/java/ports/factory%20controller/custom%20ui/ros/multi-robot/interoperability/fleet%20management/end-user/ui/python%20hardware/microserves/dds/tcpros/webapp/docker/ros2/2024/01/30/Systems-Engineering-Your-Robotics-Project.html)
+
 strength
 agility
 stability

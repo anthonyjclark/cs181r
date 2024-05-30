@@ -7,14 +7,22 @@ Assignments
 - assignment to go to home base from set starting location
 - assignment to navigate map from unknown starting location
 - use google sheet to aggregate data collection
+- gradescope: ask for advice on making the assignment better
 
 1. deadman's switch (stop when no signal; otherwise autonomous)
-   1. Should start with simple blink using chrono (no delay)
+   1. Should start with simple blink using chrono (no delay) (or [AntiDelay](https://github.com/martinvichnal/AntiDelay/tree/main))
    2. http://sofapirate.github.io/Chrono/
-   3. https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp
-   4. Does not work with delays
-   5. [How to Avoid Using the Delay() Function in Arduino Sketches](https://www.digikey.com/en/maker/tutorials/2022/how-to-avoid-using-the-delay-function-in-arduino-sketches)
-   6. robot might run away
+   3. profile with perfetto and simple C++ class
+     - [Perfetto UI](https://ui.perfetto.dev/)
+     - [TimeProfiler](https://github.com/hideakitai/TimeProfiler)
+     - [Profiler](https://github.com/ripred/Profiler)
+     - [Profiling Arduino Code](https://www.dudley.nu/arduino_profiling/)
+     - Sampling [Profiling Arduino Code](https://www.dudley.nu/arduino_profiling/)
+     - [Profiling Arduino Code](https://forum.arduino.cc/t/profiling-arduino-code/977090/27)
+   4. https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp
+   5. Does not work with delays
+   6. [How to Avoid Using the Delay() Function in Arduino Sketches](https://www.digikey.com/en/maker/tutorials/2022/how-to-avoid-using-the-delay-function-in-arduino-sketches)
+   7. robot might run away
 2. dead-reckoning
     1. Land robot in target zone
     2. motor performance changes as battery drains (feedback control will help)
@@ -25,7 +33,13 @@ Assignments
   - https://www.cs.cmu.edu/~motionplanning/
   - https://www.cs.cmu.edu/~motionplanning/lecture/lecture.html
 
+Assignment: include bug in Arduino code and have them fix it.
 
-## List of exercises
+- [Class Responsibility Collaborator (CRC) Cards](http://agilemodeling.com/artifacts/crcModel.htm)
 
-python script to scrape assignment pages
+[Peer Evaluation - CATME](https://info.catme.org/features/peer-evaluation/)
+
+loop (repetition)
+1. encoders distance
+2. add vision
+3. implement lqr/mpc (https://github.com/f1tenth/f1tenth_lab9_template)

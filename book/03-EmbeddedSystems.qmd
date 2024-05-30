@@ -3,14 +3,22 @@ title: "Embedded Systems"
 ---
 
 ## Arduino
+
 - simple examples (tutorial style)
+- use OTA?
+
 ## Non-Arduino
+
 - hardware debugging
 - external programmer
 - manual library management
 - manual board management
+
 ## Both require
+
 - drivers
+
+show imwrite in raw C?
 
 [Wokwi - Online ESP32, STM32, Arduino Simulator](https://wokwi.com/)
 

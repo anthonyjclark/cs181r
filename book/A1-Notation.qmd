@@ -7,3 +7,55 @@ Mathematical notation
 - linear algebra
 - calculus
 - probability
+
+dimensional analysis
+syntax checking (possible to multiple?)
+semantic checking (make sense to perform inverse?)
+
+
+- WMR (wheeled mobile robot)
+- AMR (autonomous mobile robot)
+- AGV (autonomous ground vehicle)
+- UGV (unmanned ground vehicle)
+- SLAM (simultaneous localization and mapping)
+- ROS (robot operating system)
+- LIDAR (light detection and ranging)
+- IMU (inertial measurement unit)
+- EKF (extended Kalman filter)
+- MPC (model predictive control)
+- LQR (linear quadratic regulator)
+- PID (proportional integral derivative)
+- ODE (ordinary differential equation)
+- FBD (free body diagram)
+- DOF (degrees of freedom)
+- path, route (sequence of points)
+- trajectory (path parameterized by time)
+- path planning (finding a path)
+- motion planning (specifying the motion needed to follow a path)
+
+[Notation](https://dynref.engr.illinois.edu/rvn.html)
+[Tips for mathematical handwriting](https://johnkerl.org/doc/ortho/ortho.html)
+
+- values
+	+ scalar
+	+ vector
+	+ matrix
+	+ components
+- unit vectors
+- estimates
+- frames
+- basis
+- transformations
+- time derivative, other derivatives
+
+options
+- dot
+- bar
+- hat
+- bold
+- italics
+- arrow
+- upper/lower case
+- underline
+- script/mathcal/blackboard
+- Greek

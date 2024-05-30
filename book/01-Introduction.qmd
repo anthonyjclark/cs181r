@@ -43,7 +43,7 @@ Levels (AJC: we'll do it all; maybe bad idea)
 
 ## Interactive
 
-An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.qmd) for a work-in-progress examples).
+
 
 ## Exercise
 
@@ -72,3 +72,4 @@ Alternative parts:
 
 
 build-up concept map over semester
+print parts daily checklists
