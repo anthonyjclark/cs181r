@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Web Serial</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css" />
+    <style>
+        .output-log {
+            min-height: 100px;
+            max-height: 300px;
+            ;
+            border: 1px solid #CCC;
+        }
+
+        .flex-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        #baud-rate,
+        #connect,
+        #clear {
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Test Web Serial</h1>
+    </header>
+
+    <main class="container">
+
+
+        <div id="web-serial-status"></div>
+
+        <div class="flex-row">
+            <select name="baud-rate" id="baud-rate" aria-label="Select the baud rate...">
+                <option value="9600">9600</option>
+                <option value="19200">19200</option>
+                <option value="38400">38400</option>
+                <option value="57600" selected>57600</option>
+                <option value="115200">115200</option>
+            </select>
+            <button id="connect">Connect</button>
+            <button id="clear">Clear</button>
+        </div>
+
+        <pre class="output-log" id="log"></pre>
+
+        <h3>Resources</h3>
+        <ol>
+            <li>is this needed when I can use esp32 as a host?</li>
+            <li><a href="https://developer.chrome.com/docs/capabilities/serial">google docs</a></li>
+            <li><a href="https://espressif.github.io/esptool-js/docs/index.html">esptool-js</a></li>
+            <li><a href="https://github.com/GoogleChromeLabs/serial-terminal">Serial Terminal</a></li>
+            <li>about://device-log</li>
+        </ol>
+
+        <footer>Anthony J. Clark</footer>
+    </main>
+
+    <script>
+
+
+        function WebSerialIsSupported()
+        {
+            const isSupported = "serial" in navigator;
+            const statusDiv = document.getElementById( "web-serial-status" );
+
+            if ( !isSupported ) {
+                statusDiv.innerHTML = `
+                    <p>
+                        The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API">Web Serial API</a>
+                        is not supported in this browser.
+                    </p>`;
+            }
+
+            return isSupported
+        }
+
+        function setup()
+        {
+            const baudRateSelect = document.getElementById( "baud-rate" );
+            let baudRate = parseInt( baudRateSelect.value, 10 );
+
+            baudRateSelect.addEventListener( "change", () =>
+            {
+                baudRate = parseInt( baudRateSelect.value, 10 );
+            } );
+
+            const connect = document.getElementById( "connect" );
+            const disconnect = document.getElementById( "disconnect" );
+            const clear = document.getElementById( "clear" );
+            const logContainer = document.getElementById( "log" );
+
+            const portFilters = [];
+
+            let port = null;
+
+            function portReady()
+            {
+                return port && port.readable && port.writable;
+            }
+
+            async function readForever( reader, logContainer )
+            {
+                try {
+
+                    while ( true ) {
+
+                        const { value, done } = await reader.read()
+
+                        if ( done ) {
+                            logContainer.textContent += "Done reading!";
+                            reader.releaseLock();
+                            break;
+                        }
+
+                        if ( value ) {
+                            logContainer.textContent += value + "\n";
+                            // TODO: unless user scrolls away
+                            logContainer.scrollTop = logContainer.scrollHeight;
+                        }
+
+                    }
+
+                } catch ( e ) {
+
+                    logContainer.textContent = `ERROR: ${ e }\n`;
+                    console.error( e )
+
+                }
+            }
+
+            connect.addEventListener( "click", async () =>
+            {
+                // Connect to already available ports
+
+                if ( portReady() ) {
+
+                    logContainer.textContent += "Port already connected!\n";
+
+                }
+
+                try {
+
+                    port = await navigator.serial.requestPort( { filters: portFilters } )
+                    await port.open( { baudRate: baudRate } )
+                    logContainer.textContent = "Port opened!\n";
+
+                } catch ( e ) {
+
+                    logContainer.textContent = `ERROR: ${ e }\n`;
+                    logContainer.textContent += "The port might already be in use in another tab or program.\n";
+                    throw new Error( e )
+
+                }
+
+                const textDecoder = new TextDecoderStream()
+                const readableStreamClosed = port.readable.pipeTo( textDecoder.writable )
+                const reader = textDecoder.readable.getReader()
+
+                readForever( reader, logContainer )
+                    .then( response =>
+                    {
+                        console.log( response, 'readLoop done' )
+                    } )
+                    .catch( e =>
+                    {
+                        logContainer.textContent = `ERROR: ${ e }\n`;
+                        logContainer.textContent += "Check the baud rate and ensure that you are not transmitting too much data.\n";
+                        console.error( e )
+                    } )
+            } );
+
+            clear.addEventListener( "click", () =>
+            {
+                logContainer.textContent = "";
+            } );
+
+
+            navigator.serial.addEventListener( "connect", ( event ) =>
+            {
+                // TODO: Automatically open event.target or warn user a port is available.
+            } );
+
+            navigator.serial.addEventListener( "disconnect", ( event ) =>
+            {
+                // TODO: Remove |event.target| from the UI.
+                // If the serial port was opened, a stream error would be observed as well.
+            } );
+
+        }
+
+        if ( WebSerialIsSupported() ) {
+            setup();
+        }
+    </script>
+
+</body>
+
+</html>
