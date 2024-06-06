@@ -1,78 +1,17 @@
 #include <NimBLEDevice.h>
-#include <Chrono.h>        // http://github.com/SofaPirate/Chrono
-#include <ESP32Encoder.h>  // https://github.com/madhephaestus/ESP32Encoder.git
-
-//  for OLED and chirps 
+#include <Chrono.h>
+#include <ESP32Encoder.h>
 #include <Arduino.h>
-#include <U8x8lib.h> // need to install u8g2 by oliver to access this library 
+#include <U8x8lib.h>
 #include <Wire.h>
 
-#define MOTOR_RIGHT_PWM D8  // yellow
-#define MOTOR_RIGHT_DIR D7  // white
+#define CONTROL_UPDATE_PERIOD_MS 50 // miliseconds 
+#define OLED_UPDATE_PERIOD_MS 500 // miliseconds
+#define CONTROL_UPDATE_PERIOD_S (float(CONTROL_UPDATE_PERIOD_MS) / 1000.0) // seconds 
 
-#define MOTOR_LEFT_PWM D10  // yellow
-#define MOTOR_LEFT_DIR D9   // white
-
-#define WHEEL_CIRCUMFERENCE_MM 251.32
-#define PULSES_PER_ROTATION 360 // TODO: 7*2*50?
-#define MAX_SPEED_MM_PER_S 800
-
-#define K_P .05
-#define PWM_MAX_DELTA_PER_UPDATE 20
-#define CONTROL_UPDATE_PERIOD_MS 50
-#define CONTROL_UPDATE_PERIOD_S (float(CONTROL_UPDATE_PERIOD_MS) / 1000.0)
-#define SPEED_THRESH 5
-
-U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(SCL, SDA, U8X8_PIN_NONE);   // OLEDs without Reset of the Display
-int speakerPin = D6; 
-
-enum Direction {
-  FORWARD,
-  REVERSE
-};
-
-class MotorController {
-public:
-  int forwardLevel_;  // set this to either LOW or HIGH
-  int directionPin_;
-  int pwmPin_;
-
-  MotorController(int forwardLevel, int directionPin, int pwmPin) {
-    forwardLevel_ = forwardLevel;
-    directionPin_ = directionPin;
-    pwmPin_ = pwmPin;
-
-    pinMode(pwmPin, OUTPUT);
-    analogWrite(pwmPin, 0);
-    pinMode(directionPin, OUTPUT);
-    digitalWrite(directionPin, LOW);
-  }
-
-  void set(Direction direction, int pwm) {
-    int directionValue = direction == FORWARD ? forwardLevel_ : !forwardLevel_;
-    if (pwm < 0) {
-      digitalWrite(directionPin_, !directionValue);
-      analogWrite(pwmPin_, abs(pwm));
-    }
-    else {
-      digitalWrite(directionPin_, directionValue);
-      analogWrite(pwmPin_, pwm);
-    }
-  }
-
-  
-// takes in desired speed from 0 to 100 and actual speed in mm/s
-  float proportionalControl(int motorSpeedPercent, float measuredSpeed){
-      
-    int userSetSpeed = map(motorSpeedPercent, -100, 100, -MAX_SPEED_MM_PER_S, MAX_SPEED_MM_PER_S);
-    //   compute e = userSetSpeed - measureSpeed
-    float error = userSetSpeed - measuredSpeed;
-    //   compute uDelta = constrain(kp*e, -PWM_MAX_DELTA_PER_UPDATE, PWM_MAX_DELTA_PER_UPDATE) 
-    return constrain(K_P * error, -PWM_MAX_DELTA_PER_UPDATE, PWM_MAX_DELTA_PER_UPDATE);
-
-  }
-
-};
+// OLEDs without Reset of the Display
+U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(SCL, SDA, U8X8_PIN_NONE);  
+#define speakerPin D6
 
 // ----------------------------------------------------------------
 // ▗▄▄▄▖                  ▗▖               
@@ -104,21 +43,32 @@ ESP32Encoder encoderLeft;
 // ----------------------------------------------------------------
 
 // Motor globals
+#define WHEEL_CIRCUMFERENCE_MM 251.32
+#define PULSES_PER_ROTATION 360
+#define SPEED_THRESH_PERCENT 5  // in terms of absolute value of u, which goes from 0 to 100
+
+#define MOTOR_RIGHT_PWM D8  // yellow
+#define MOTOR_RIGHT_DIR D7  // white
+
+#define MOTOR_LEFT_PWM D10  // yellow
+#define MOTOR_LEFT_DIR D9   // white
+
 int MIN_PWM_VALUE = 0; 
 
 int motorRightPWMValue = 0; 
 int motorLeftPWMValue = 0;
 
-int motorRightSpeedPercent;
-int motorLeftSpeedPercent;
+int motorWebSpeedPercentRight;
+int motorWebSpeedPercentLeft;
 
-int uLeft;
-int uRight;
+int controlSignalLeft;
+int controlSignalRight;
 
 MotorController motorRightController(HIGH, MOTOR_RIGHT_DIR, MOTOR_RIGHT_PWM);
 MotorController motorLeftController(LOW, MOTOR_LEFT_DIR, MOTOR_LEFT_PWM);
 
 Chrono motorControlChrono;
+Chrono OLEDChrono;
 
 // ----------------------------------------------------------------
 // ▗▄▄▖ ▗▄▖                                ▗▖   
@@ -140,7 +90,7 @@ Chrono motorControlChrono;
 
 static NimBLEServer* pServer;
 
-NimBLECharacteristic* pMeasuredSpeCharacteristicRight = NULL;
+NimBLECharacteristic* pMeasuredSpeedCharacteristicRight = NULL;
 NimBLECharacteristic* pMeasuredSpeedCharacteristicLeft = NULL;
 
 NimBLECharacteristic* pWebSpeedCharacteristicRight = NULL;
@@ -149,17 +99,16 @@ NimBLECharacteristic* pWebSpeedCharacteristicLeft = NULL;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
-// TODO: take a look at this conversion and data type
 class SpeedCharacteristicCallbacks : public NimBLECharacteristicCallbacks {
   void onWrite(NimBLECharacteristic* pSpeedCharacteristic) {
-    float speed = (pSpeedCharacteristic->getValue())[0];  // Get the value of the speed characteristic as a flloat
-     if (speed > 155) {
+    float speed = (pSpeedCharacteristic->getValue())[0];  // Get the value of the speed characteristic as a float
+      if (speed > 155) {
         speed = speed - 256;
       }
       if (isRightMotorCallback_) {
-        motorRightSpeedPercent = speed;
+        motorWebSpeedPercentRight = speed;
       } else {
-        motorLeftSpeedPercent = speed;
+        motorWebSpeedPercentLeft = speed;
       }  
   }
 public:
@@ -230,7 +179,7 @@ void setup() {
     encoderLeft.setCount(0);
 
     motorControlChrono.add(CONTROL_UPDATE_PERIOD_MS);
-
+    OLEDChrono.add(OLED_UPDATE_PERIOD_MS);
     pServer = NimBLEDevice::createServer();
     pServer->setCallbacks(new ServerCallbacks());
 
@@ -239,7 +188,6 @@ void setup() {
     pMeasuredSpeedCharacteristicRight = pService->createCharacteristic(MEASURED_SPEED_CHARACTERISTIC_RIGHT_UUID, NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::NOTIFY);
     pMeasuredSpeedCharacteristicLeft = pService->createCharacteristic(MEASURED_SPEED_CHARACTERISTIC_LEFT_UUID, NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::NOTIFY);
 
-    // TODO: do we need notify on this side of the connection?
     pWebSpeedCharacteristicRight = pService->createCharacteristic(SPEED_CHARACTERISTIC_RIGHT_UUID, NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::NOTIFY);
     pWebSpeedCharacteristicLeft = pService->createCharacteristic(SPEED_CHARACTERISTIC_LEFT_UUID, NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::NOTIFY);
 
@@ -301,7 +249,7 @@ void loop() {
     float leftDistance = leftRotations * WHEEL_CIRCUMFERENCE_MM;
 
     // TODO: shouldn't need to multiply by -1 here
-    float measuredSpeedRight = (rightDistance / CONTROL_UPDATE_PERIOD_S) * -1;  
+    float measuredSpeedRight = rightDistance / CONTROL_UPDATE_PERIOD_S;  
     float measuredSpeedLeft = leftDistance / CONTROL_UPDATE_PERIOD_S;
 
     // Set and notify the characteristic with the byte buffer
@@ -312,6 +260,8 @@ void loop() {
     pMeasuredSpeedCharacteristicLeft->setValue<float>(measuredSpeedLeft);
     pMeasuredSpeedCharacteristicLeft->notify();
 
+    if(OLEDChrono.hasPassed(OLED_UPDATE_PERIOD_MS)) {
+    OLEDChrono.restart();
     u8x8.clear();
     u8x8.print("left encoder speed: ");
     u8x8.print(measuredSpeedLeft);
@@ -319,21 +269,22 @@ void loop() {
     u8x8.print("right encoder speed: ");
     u8x8.print(measuredSpeedRight);
     u8x8.print("\n");
+    }
 
     //   compute uDelta = constrain(kp*e, -PWM_MAX_DELTA_PER_UPDATE, PWM_MAX_DELTA_PER_UPDATE) 
-    float uDeltaLeft = motorLeftController.proportionalControl(motorLeftSpeedPercent, measuredSpeedLeft);
+    float uDeltaLeft = motorLeftController.proportionalControl(motorWebSpeedPercentLeft, measuredSpeedLeft);
     //   compute u = constrain(u + uDelta, -100, 100)
-    uLeft = constrain(uLeft + uDeltaLeft, -100, 100);
+    controlSignalLeft = constrain(controlSignalLeft + uDeltaLeft, -100, 100);
     //   set dir = u > 0 ? FORWARD : REVERSE
-    Direction directionValueLeft = uLeft > 0 ? FORWARD : REVERSE;
-    //   if (abs(u) < SPEED_THRESH) then pwm = 0
-    if(abs(uLeft) < SPEED_THRESH){
+    Direction directionValueLeft = controlSignalLeft > 0 ? FORWARD : REVERSE;
+    //   if (abs(u) < SPEED_THRESH_PERCENT) then pwm = 0
+    if(abs(controlSignalLeft) < SPEED_THRESH_PERCENT){
       motorLeftPWMValue = 0;
     }
     //   else
     //       set pwm = map(abs(u), 0, 100, MIN_VALUE, 255)
       else{
-      motorLeftPWMValue = map(abs(uLeft), 0, 100, MIN_PWM_VALUE, 255);
+      motorLeftPWMValue = map(abs(controlSignalLeft), 0, 100, MIN_PWM_VALUE, 255);
     }
 
     //   set pwm = constrain(pwm, 0, 255)
@@ -341,19 +292,19 @@ void loop() {
     // send the values to the motor
     motorLeftController.set(directionValueLeft, motorLeftPWMValue);
 
-    float uDeltaRight = motorRightController.proportionalControl(motorRightSpeedPercent, measuredSpeedRight);
+    float uDeltaRight = motorRightController.proportionalControl(motorWebSpeedPercentRight, measuredSpeedRight);
     //   compute u = constrain(u + uDelta, -100, 100)
-    uRight = constrain(uRight + uDeltaRight, -100, 100);
+    controlSignalRight = constrain(controlSignalRight + uDeltaRight, -100, 100);
     //   set dir = u > 0 ? FORWARD : REVERSE
-    Direction directionValueRight = uRight > 0 ? FORWARD : REVERSE;
-    //   if (abs(u) < SPEED_THRESH) then pwm = 0
-    if(abs(uRight) < SPEED_THRESH){
+    Direction directionValueRight = controlSignalRight > 0 ? FORWARD : REVERSE;
+    //   if (abs(u) < SPEED_THRESH_PERCENT) then pwm = 0
+    if(abs(controlSignalRight) < SPEED_THRESH_PERCENT){
       motorRightPWMValue = 0;
     }
     //   else
     //       set pwm = map(abs(u), 0, 100, MIN_VALUE, 255)
       else{
-      motorRightPWMValue = map(abs(uRight), 0, 100, MIN_PWM_VALUE, 255);
+      motorRightPWMValue = map(abs(controlSignalRight), 0, 100, MIN_PWM_VALUE, 255);
     }
     //   set pwm = constrain(pwm, 0, 255)
     motorRightPWMValue = constrain(motorRightPWMValue, 0, 255);
@@ -365,7 +316,7 @@ void loop() {
   
   if (!deviceConnected && oldDeviceConnected) {  // device was connected but no longer true
     Serial.println("Device disconnected.");
-    // turns both motors off immediately if it is disconnected
+    // turns both motors off immediately if it is disconnected (REVERSE is a placeholder, as the motor is set to 0 anyway)
     motorRightController.set(REVERSE, 0);
     motorLeftController.set(REVERSE, 0);
     Serial.println("Both motors turned off.");
