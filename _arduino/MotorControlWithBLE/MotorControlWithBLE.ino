@@ -1,17 +1,30 @@
-#include <Chrono.h>
 #include <Arduino.h>
-#include <U8x8lib.h>
 #include <Wire.h>
-#include "proportionalControl.h"
-#include "nimbleBluetooth.h"
 
-#define CONTROL_UPDATE_PERIOD_MS 50                                        // miliseconds
-#define CONTROL_UPDATE_PERIOD_S (float(CONTROL_UPDATE_PERIOD_MS) / 1000.0) // seconds
-#define OLED_UPDATE_PERIOD_MS 500                                          // miliseconds
+#include <Chrono.h>
+#include <ESP32Encoder.h>
+#include <U8x8lib.h>
 
-// OLEDs without Reset of the Display
-U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(SCL, SDA, U8X8_PIN_NONE);
-#define speakerPin D6
+#include "MotorController.h"
+#include "BluetoothManager.h"
+
+// ----------------------------------------------------------------
+// ▗▄▄    █                       ▗▄▖       ▗▄▖      ▗▖
+// ▐▛▀█   ▀                       █▀▜      ▗▛▀▜      ▐▌
+// ▐▌ ▐▌ ██  ▗▟██▖▐▙█▙            ▜▖       ▐▙   ▐▙█▙ ▐▌▟▛  █▟█▌
+// ▐▌ ▐▌  █  ▐▙▄▖▘▐▛ ▜▌           ██▖▄      ▜█▙ ▐▛ ▜▌▐▙█   █▘
+// ▐▌ ▐▌  █   ▀▀█▖▐▌ ▐▌          ▐▌▝▙█        ▜▌▐▌ ▐▌▐▛█▖  █
+// ▐▙▄█ ▗▄█▄▖▐▄▄▟▌▐█▄█▘  █       ▝█▄█▌     ▐▄▄▟▘▐█▄█▘▐▌▝▙  █     █
+// ▝▀▀  ▝▀▀▀▘ ▀▀▀ ▐▌▀▘   ▀        ▝▀▀▀      ▀▀▘ ▐▌▀▘ ▝▘ ▀▘ ▀     ▀
+//                ▐▌                            ▐▌
+// ----------------------------------------------------------------
+
+#define SPEAKER_PIN D6
+#define DISPLAY_UPDATE_PERIOD_MS 500
+
+U8X8_SSD1306_128X64_NONAME_HW_I2C display(SCL, SDA, U8X8_PIN_NONE);
+
+Chrono displayChrono;
 
 // ----------------------------------------------------------------
 // ▗▄▄▄▖                  ▗▖
@@ -32,6 +45,9 @@ U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(SCL, SDA, U8X8_PIN_NONE);
 ESP32Encoder encoderRight;
 ESP32Encoder encoderLeft;
 
+// float measuredSpeedRight = 0;
+// float measuredSpeedLeft = 0;
+
 // ----------------------------------------------------------------
 // ▗▄ ▄▖
 // ▐█ █▌      ▐▌
@@ -42,31 +58,27 @@ ESP32Encoder encoderLeft;
 // ▝▘ ▝▘ ▝▀▘   ▀▀  ▝▀▘  ▀    ▀▀▀
 // ----------------------------------------------------------------
 
+#define CONTROL_UPDATE_PERIOD_MS 50
+#define CONTROL_UPDATE_PERIOD_S (float(CONTROL_UPDATE_PERIOD_MS) / 1000.0)
+
 #define WHEEL_CIRCUMFERENCE_MM 251.32
 #define PULSES_PER_ROTATION 360
-#define SPEED_THRESH_PERCENT 5      // in terms of absolute value of u, which goes from 0 to 100
-#define PWM_MAX_DELTA_PER_UPDATE 20 // pwm
+#define SPEED_THRESH_PERCENT 5
 #define MAX_SPEED_MM_PER_S 800
-#define K_P .05
+#define CONTROL_GAIN .05
+
+#define PWM_MAX_DELTA_PER_UPDATE 20
+#define PWM_CUTOFF_LOW = 50;
 
 #define MOTOR_RIGHT_PWM D8 // yellow
 #define MOTOR_RIGHT_DIR D7 // white
 #define MOTOR_LEFT_PWM D10 // yellow
 #define MOTOR_LEFT_DIR D9  // white
 
-int MIN_PWM_VALUE = 50;
+MotorController motorRightController(HIGH, MOTOR_RIGHT_DIR, MOTOR_RIGHT_PWM, MAX_SPEED_MM_PER_S, PWM_MAX_DELTA_PER_UPDATE, CONTROL_GAIN);
+MotorController motorLeftController(HIGH, MOTOR_LEFT_DIR, MOTOR_LEFT_PWM, MAX_SPEED_MM_PER_S, PWM_MAX_DELTA_PER_UPDATE, CONTROL_GAIN);
 
-int motorRightPWMValue = 0;
-int motorLeftPWMValue = 0;
-
-int controlSignalRight;
-int controlSignalLeft;
-
-float measuredSpeedRight = 0;
-float measuredSpeedLeft = 0;
-
-MotorController motorRightController(HIGH, MOTOR_RIGHT_DIR, MOTOR_RIGHT_PWM, MAX_SPEED_MM_PER_S, PWM_MAX_DELTA_PER_UPDATE, K_P);
-MotorController motorLeftController(LOW, MOTOR_LEFT_DIR, MOTOR_LEFT_PWM, MAX_SPEED_MM_PER_S, PWM_MAX_DELTA_PER_UPDATE, K_P);
+Chrono motorControlChrono;
 
 // ----------------------------------------------------------------
 // ▗▄▄▖ ▗▄▖                                ▗▖
@@ -89,6 +101,7 @@ static NimBLEServer *pServer;
 NimBLECharacteristic *pMeasuredSpeedCharacteristicRight = NULL;
 NimBLECharacteristic *pMeasuredSpeedCharacteristicLeft = NULL;
 
+// TODO: move to setup?
 NimBLECharacteristic *pWebSpeedCharacteristicRight = NULL;
 NimBLECharacteristic *pWebSpeedCharacteristicLeft = NULL;
 
@@ -103,8 +116,6 @@ NimBLECharacteristic *pWebSpeedCharacteristicLeft = NULL;
 //                     ▐▌
 // ----------------------------------------------------------------
 
-Chrono motorControlChrono;
-Chrono OLEDChrono;
 
 void setup()
 {
@@ -120,7 +131,7 @@ void setup()
   encoderLeft.setCount(0);
 
   motorControlChrono.add(CONTROL_UPDATE_PERIOD_MS);
-  OLEDChrono.add(OLED_UPDATE_PERIOD_MS);
+  displayChrono.add(DISPLAY_UPDATE_PERIOD_MS);
   pServer = NimBLEDevice::createServer();
   pServer->setCallbacks(new ServerCallbacks());
 
@@ -159,16 +170,35 @@ void setup()
 
   Serial.println("Advertising Started");
 
-  u8x8.begin();
-  u8x8.setFlipMode(1); // set number from 1 to 3, the screen word will rotary 180
-  pinMode(speakerPin, OUTPUT);
+  display.begin();
+  display.setFlipMode(1); // set number from 1 to 3, the screen word will rotary 180
+  pinMode(SPEAKER_PIN, OUTPUT);
 
-  u8x8.setFont(u8x8_font_chroma48medium8_r);
-  u8x8.setCursor(0, 0);
-  u8x8.print("Advertising\n");
-  u8x8.print("started.");
+  display.setFont(u8x8_font_chroma48medium8_r);
+  display.setCursor(0, 0);
+  display.print("Advertising\n");
+  display.print("started.");
 
-  playNote('C', 2000, speakerPin);
+  playNote('C', 2000, SPEAKER_PIN);
+}
+
+void shutdownAndAdvertise()
+{
+      // Halt motors
+    motorRightController.stop();
+    motorLeftController.stop();
+
+    // Play a note and reset the display
+    playNote('B', 1000, SPEAKER_PIN);
+    display.clear();
+    display.print("Device\n");
+    display.print("disconnected.");
+
+    // Restart advertising after a brief delay
+    delay(500);
+    pServer->startAdvertising();
+    Serial.println("Start advertising");
+    oldDeviceConnected = deviceConnected;
 }
 
 void loop()
@@ -177,6 +207,8 @@ void loop()
   if (deviceConnected && motorControlChrono.hasPassed(CONTROL_UPDATE_PERIOD_MS))
   {
     motorControlChrono.restart();
+
+    // TODO: create function to convert encoder counts to speed
 
     long newRightPosition = encoderRight.getCount() / 2;
     long newLeftPosition = encoderLeft.getCount() / 2;
@@ -190,8 +222,8 @@ void loop()
     float rightDistance = rightRotations * WHEEL_CIRCUMFERENCE_MM;
     float leftDistance = leftRotations * WHEEL_CIRCUMFERENCE_MM;
 
-    measuredSpeedRight = rightDistance / CONTROL_UPDATE_PERIOD_S;
-    measuredSpeedLeft = leftDistance / CONTROL_UPDATE_PERIOD_S;
+    float measuredSpeedRight = rightDistance / CONTROL_UPDATE_PERIOD_S;
+    float measuredSpeedLeft = leftDistance / CONTROL_UPDATE_PERIOD_S;
 
     // Set and notify the characteristic with the byte buffer
     pMeasuredSpeedCharacteristicRight->setValue<float>(measuredSpeedRight);
@@ -203,11 +235,6 @@ void loop()
     //   compute uDelta = constrain(kp*e, -PWM_MAX_DELTA_PER_UPDATE, PWM_MAX_DELTA_PER_UPDATE)
     float uDeltaLeft = motorLeftController.proportionalControl(motorWebSpeedPercentLeft, measuredSpeedLeft);
 
-    Serial.print("left delta: ");
-    Serial.println(uDeltaLeft);
-
-    Serial.print("left delta: ");
-    Serial.println(measuredSpeedLeft);
 
     //   compute u = constrain(u + uDelta, -100, 100)
     controlSignalLeft = constrain(controlSignalLeft + uDeltaLeft, -100, 100);
@@ -228,10 +255,6 @@ void loop()
     //   set pwm = constrain(pwm, 0, 255)
     motorLeftPWMValue = constrain(motorLeftPWMValue, 0, 255);
     // send the values to the motor
-    Serial.print("left pwm: ");
-    Serial.println(motorLeftPWMValue);
-    Serial.print("left web: ");
-    Serial.println(motorWebSpeedPercentLeft);
 
     motorLeftController.set(directionValueLeft, motorLeftPWMValue);
 
@@ -254,52 +277,34 @@ void loop()
     //   set pwm = constrain(pwm, 0, 255)
     motorRightPWMValue = constrain(motorRightPWMValue, 0, 255);
     // send the values to the motor
-    Serial.print("right pwm: ");
-    Serial.println(motorRightPWMValue);
 
-    Serial.print("right web: ");
-    Serial.println(motorWebSpeedPercentRight);
 
     motorRightController.set(directionValueRight, motorRightPWMValue);
   }
 
-  if (OLEDChrono.hasPassed(OLED_UPDATE_PERIOD_MS))
+  if (displayChrono.hasPassed(DISPLAY_UPDATE_PERIOD_MS))
   {
-    OLEDChrono.restart();
-    u8x8.clear();
-    u8x8.print("left encoder speed: ");
-    u8x8.print(measuredSpeedLeft);
-    u8x8.print("\n");
-    u8x8.print("right encoder speed: ");
-    u8x8.print(measuredSpeedRight);
-    u8x8.print("\n");
+    displayChrono.restart();
+
+    // display.clear();
+    // display.print("left encoder speed: ");
+    // display.println(measuredSpeedLeft);
+    // display.print("right encoder speed: ");
+    // display.println(measuredSpeedRight);
   }
 
   if (!deviceConnected && oldDeviceConnected)
-  { // device was connected but no longer true
-    Serial.println("Device disconnected.");
-    // turns both motors off immediately if it is disconnected (REVERSE is a placeholder, as the motor is set to 0 anyway)
-    motorRightController.stop();
-    motorLeftController.stop();
-    Serial.println("Both motors turned off.");
-    delay(500);                  // give the bluetooth stack the chance to get things ready
-    pServer->startAdvertising(); // restart advertising
-    Serial.println("Start advertising");
-    oldDeviceConnected = deviceConnected; // updates oldDeviceConnected
-    playNote('B', 1000, speakerPin);
-    u8x8.clear();
-    u8x8.print("Device\n");
-    u8x8.print("disconnected.");
+  {
+    shutdownAndAdvertise();
   }
-  // connecting
+
   if (deviceConnected && !oldDeviceConnected)
-  { // connecting the device
+  {
     oldDeviceConnected = deviceConnected;
     Serial.println("Device Connected");
-    u8x8.setCursor(0, 0);
-    u8x8.clear();
-    u8x8.print("Device\n");
-    u8x8.print("connected.");
-    playNote('A', 1000, speakerPin);
+    display.setCursor(0, 0);
+    display.clear();
+    display.println("Device connected");
+    playNote('A', 1000, SPEAKER_PIN);
   }
 }
