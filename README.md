@@ -169,6 +169,7 @@ Bluetooth
 - [Spec](https://www.bluetooth.com/specifications/specs/)
 - [Webble for iOS](https://www.greenparksoftware.co.uk/projects/webble/1.2.3)
 - [Bluefy for iOS](https://apps.apple.com/us/app/bluefy-web-ble-browser/id1492822055)
+- [Speed](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy#Technical_details)
 
 
 
