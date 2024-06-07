@@ -25,7 +25,8 @@
     "pydy",
     "quadrotors",
     "revealjs",
-    "Simulink"
+    "Simulink",
+    "Xiao"
   ],
   "liveServer.settings.port": 5501
 }
