@@ -1,80 +1,74 @@
-// motor A = left one 
-// motor B = right one 
+// Using the DRV8835 motor driver from Pololu.
+// - The PWM, analog output pin of each motor sets the speed (0 is stopped, 255 is full speed)
+// - The DIR, digital output pin of each motor sets the direction (wire with HIGH as forward)
 
-// motor A pins
-#define MOTORA_ENABLE_PWM = D10
-#define MOTORA_PHASE_DIR = D9 
+#define MOTOR_LEFT_ENABLE_PWM = D10
+#define MOTOR_LEFT_PHASE_DIR = D9
 
-// motor B pins
-#define MOTORB_ENABLE_PWM = D8   
-#define MOTORB_PHASE_DIR = D7
+#define MOTOR_RIGHT_ENABLE_PWM = D8
+#define MOTOR_RIGHT_PHASE_DIR = D7
 
-void setup() {
+void setup()
+{
+  // Configure (set as output) and initialize (set as stopped) motor pins
 
-  // motor A enable pin set up 
-  pinMode(MOTORA_ENABLE_PWM, OUTPUT);
-  analogWrite(MOTORA_ENABLE_PWM, 0);
+  pinMode(MOTOR_LEFT_ENABLE_PWM, OUTPUT);
+  analogWrite(MOTOR_LEFT_ENABLE_PWM, 0);
 
-  // motor A phase pin set up 
-  pinMode(MOTORA_PHASE_DIR, OUTPUT);
-  digitalWrite(MOTORA_PHASE_DIR, LOW);
+  pinMode(MOTOR_LEFT_PHASE_DIR, OUTPUT);
+  digitalWrite(MOTOR_LEFT_PHASE_DIR, LOW);
 
+  pinMode(MOTOR_RIGHT_ENABLE_PWM, OUTPUT);
+  analogWrite(MOTOR_RIGHT_ENABLE_PWM, 0);
 
-  // motor b enable pins set up 
-  pinMode(MOTORB_ENABLE_PWM, OUTPUT);
-  analogWrite(MOTORB_ENABLE_PWM, 0);
-  
-  // motor b phase pins set up 
-  pinMode(MOTORB_PHASE_DIR, OUTPUT);
-  digitalWrite(MOTORB_PHASE_DIR, LOW);
-
+  pinMode(MOTOR_RIGHT_PHASE_DIR, OUTPUT);
+  digitalWrite(MOTOR_RIGHT_PHASE_DIR, LOW);
 }
 
-void loop() {
-  int abs_speed = 50;  // set to half speed 
+void loop()
+{
+  // Repeated behavior:
+  // - forward at half speed for 2 seconds
+  // - stop for half a second
+  // - reverse at half speed for 2 seconds
+  // - stop for half a second
 
-  // drive forward
-  setMotor(abs_speed);
-  delay(2000); // for two seconds 
+  int abs_speed_percent = 50;
 
-  // full brake
-  setMotor(0);
-  delay(500); // wait for half a second 
+  // Forward
+  setMotorSpeed(abs_speed_percent);
+  delay(2000);
 
-  // drive backwards, setting motors to -50
-  setMotor(-abs_speed);
-  delay(2000); // for two seconds  
+  // Brake
+  setMotorSpeed(0);
+  delay(500);
 
-  // full brake 
-  setMotor(0);
+  // Reverse
+  setMotorSpeed(-abs_speed_percent);
+  delay(2000);
+
+  // Brake
+  setMotorSpeed(0);
   delay(500);
 }
 
-// the setMotor speed takes in speed from -100 to 100 and sets direction accordingly
-void setMotor(int raw_speed) {
-  
-  // if speed is positive, then direction of the wheels is forward
-  if (raw_speed >= 0) {
-    digitalWrite(MOTORA_PHASE_DIR, HIGH);
-    digitalWrite(MOTORB_PHASE_DIR, LOW); // they are opposites due to the mirroring of the motors 
-  }
-  // if speed is negative, then direction of wheels are flipped 
-  else {
-    digitalWrite(MOTORA_PHASE_DIR, LOW);
-    digitalWrite(MOTORB_PHASE_DIR, HIGH);
-  }
+void setMotorSpeed(int raw_speed)
+{
 
-  int speed = abs(raw_speed);  
-
-  // caps the max speed at 100 
-  if (speed > 100) {
-    speed = 100;
+  if (raw_speed >= 0)
+  {
+    digitalWrite(MOTOR_LEFT_PHASE_DIR, HIGH);
+    digitalWrite(MOTOR_RIGHT_PHASE_DIR, HIGH);
+  }
+  else
+  {
+    digitalWrite(MOTOR_LEFT_PHASE_DIR, LOW);
+    digitalWrite(MOTOR_RIGHT_PHASE_DIR, LOW);
   }
 
-  int PWM = map(speed, 0, 100, 0, 255);  // maps speed (0 to 100) values to PWM (0 to 255) values 
+  int speed = constrain(abs(raw_speed), 0, 100);
+  int PWM = map(speed, 0, 100, 0, 255);
 
-  // set PWM value to motor controller
-  analogWrite(MOTORA_ENABLE_PWM, PWM);
-  analogWrite(MOTORB_ENABLE_PWM, PWM);
-
+  analogWrite(MOTOR_LEFT_ENABLE_PWM, PWM);
+  analogWrite(MOTOR_RIGHT_ENABLE_PWM, PWM);
 }
