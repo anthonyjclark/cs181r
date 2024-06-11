@@ -168,7 +168,7 @@ void setup()
   u8x8.print("Advertising\n");
   u8x8.print("started.");
 
-  playNote('C', 2000, speakerPin);
+  // playNote('C', 2000);
 }
 
 void loop()
@@ -286,7 +286,7 @@ void loop()
     pServer->startAdvertising(); // restart advertising
     Serial.println("Start advertising");
     oldDeviceConnected = deviceConnected; // updates oldDeviceConnected
-    playNote('B', 1000, speakerPin);
+    // playNote('B', 1000);
     u8x8.clear();
     u8x8.print("Device\n");
     u8x8.print("disconnected.");
@@ -300,6 +300,6 @@ void loop()
     u8x8.clear();
     u8x8.print("Device\n");
     u8x8.print("connected.");
-    playNote('A', 1000, speakerPin);
+    // playNote('A', 1000);
   }
 }
