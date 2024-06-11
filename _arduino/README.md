@@ -1,8 +1,8 @@
 # Arduino Scripts for CS 181R Robot
 
-This arduino script sets up a BLE server and allows users to connect to the robot and controll the motors through a website.
+This arduino script sets up a BLE server and allows users to connect to the robot and control the motors through a website.
 
-# Dependencies:
+## Dependencies
 
 - [Chrono](http://github.com/SofaPirate/Chrono)
 - [ESP32Encoder](https://github.com/madhephaestus/ESP32Encoder.git)

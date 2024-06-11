@@ -66,9 +66,25 @@ Alternative parts:
 
 
 
+- Getting Started in Electronics
+  - [Getting started in electronics, Mims]
+  - [Ultimate Electronics Book](https://ultimateelectronicsbook.com/)
+  - [Home | Physical Computing](https://makeabilitylab.github.io/physcomp/)
+  - [ITP Physical Computing](https://itp.nyu.edu/physcomp/)
+
+- Lab Safety
+  - [The Importance of Electrical Safety](https://www.allaboutcircuits.com/textbook/direct-current/chpt-3/importance-electrical-safety/)
+  - [Hands-on Electronics 7.1 Safety](https://www.oreilly.com/library/view/practical-electronics-for/9781259587559/xhtml/18_Chapter_07.xhtml)
 
 
 
+
+	title = {Getting started in electronics},
+	author = {Mims, Forrest M.},
+	title = {Practical electronics for inventors},
+	author = {Scherz, Paul and Monk, Simon},
+	title = {The art of electronics},
+	author = {Horowitz, Paul},
 
 
 build-up concept map over semester

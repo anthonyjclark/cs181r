@@ -3,6 +3,7 @@
     "Ackermann",
     "Astrom",
     "boundingbox",
+    "Chrono",
     "Datasheets",
     "espressif",
     "glossar",
@@ -17,13 +18,16 @@
     "Microcontroller",
     "Multibody",
     "newcommand",
+    "OLED",
     "onclick",
     "Pandoc",
     "Pinouts",
+    "Pololu",
     "pydy",
     "quadrotors",
     "revealjs",
-    "Simulink"
+    "Simulink",
+    "Xiao"
   ],
   "liveServer.settings.port": 5501
 }
