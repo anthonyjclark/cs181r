@@ -9,7 +9,7 @@ void setup()
 {
 	Serial.begin(115200);
 	compass.init();
-	compass.setCalibrationOffsets(-618.00, -41.00, -513.00);
+	compass.setCalibrationOffsets(-618.00, -41.00, -513.00); // Use the QMC5883LCompass "examples" calibration sketch to find correct values
 	compass.setCalibrationScales(1.05, 0.76, 1.38);
 }
 
