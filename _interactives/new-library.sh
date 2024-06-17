@@ -35,4 +35,9 @@ sed -i.bak "s/PLACEHOLDER_AUTHOR_NAME/$AUTHOR_NAME/g" package.json && rm package
 sed -i.bak "s/PLACEHOLDER_DESCRIPTION/$DESCRIPTION/g" package.json && rm package.json.bak
 sed -i.bak "s/PLACEHOLDER_DESCRIPTION/$DESCRIPTION/g" README.md && rm README.md.bak
 
+# vite.config.js
+# entry: resolve(__dirname, 'lib/main.js'),
+# name: 'MyLib',
+# fileName: 'my-lib',
+
 npm install
