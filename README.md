@@ -4,8 +4,7 @@
 
 - add goat counter to base template
 - add hover/link for definitions and acronyms (glossary: see below)
-- acknowledgements (library authors etc.)
-  - [ESP32Encoder](https://github.com/madhephaestus/ESP32Encoder/)
+- [Add PDF Icon to PDF Links with CSS](https://wpshout.com/snippets/add-pdf-icon-to-pdf-links-with-css/)
 
 
 ### File
