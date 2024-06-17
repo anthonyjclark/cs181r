@@ -1,3 +1,3 @@
-export class PACKAGE_NAME {
+export class PLACEHOLDER_PACKAGE_NAME {
 
 }

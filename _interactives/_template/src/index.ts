@@ -1,6 +1,6 @@
 import '../css/main.css';
 
-import { PACKAGE_NAME } from '../lib/main';
+import { PLACEHOLDER_PACKAGE_NAME } from '../lib/main';
 
 document.querySelector<HTMLDivElement>( '#app' )!.innerHTML = `
   <div>
