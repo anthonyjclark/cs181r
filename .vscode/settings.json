@@ -5,13 +5,16 @@
     "boundingbox",
     "Chrono",
     "Datasheets",
+    "distrib",
     "espressif",
     "glossar",
     "iframes",
     "Interactives",
+    "jsxgraph",
     "Kalman",
     "keepaspectratio",
     "Linearization",
+    "linewidth",
     "mecanum",
     "Mechatronics",
     "Messner",
@@ -29,5 +32,6 @@
     "Simulink",
     "Xiao"
   ],
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "eslint.workingDirectories": [ {"pattern": "./_interactives/*/"} ]
 }
