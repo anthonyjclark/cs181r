@@ -12,8 +12,9 @@ then
     exit
 fi
 
-if [ "$#" -ne 3 ]; then
-    echo "Usage: new-interactive.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION"
+# If not 3 or 4 arguments
+if [ "$#" -ne 3 ] && [ "$#" -ne 4 ]; then
+    echo "Usage: new-interactive.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION [--with-quokka]"
     exit 1
 fi
 
@@ -77,7 +78,8 @@ sed -i.bak "s/PLACEHOLDER_PACKAGE_NAME/$PACKAGE_NAME/g" lib/main.ts && rm lib/ma
 
 npm install
 
-# touch "$PACKAGE_NAME"/.quokka
-# npm install canvas
-# npm install jsdom
-# npm install vite-node
+if [[ $* == *--with-quokka* ]]; then
+  npm install canvas
+  npm install jsdom
+  npm install vite-node
+fi
