@@ -1,4 +1,6 @@
-import '../css/style.css';
+import '../css/main.css';
+
+import { PACKAGE_NAME } from '../lib/main';
 
 document.querySelector<HTMLDivElement>( '#app' )!.innerHTML = `
   <div>

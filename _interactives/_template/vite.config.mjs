@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "lib/main.ts"),
-      name: "WMRGraph",
+      name: "PLACEHOLDER_PACKAGE_NAME",
     },
     rollupOptions: {
       external: [],

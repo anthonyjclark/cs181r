@@ -4,6 +4,10 @@
     // "types": ["@types"],
     // "typeRoots": ["node_modules/"],
 
+    "types": ["vite/client"],
+
+    "outDir": "./dist",
+
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -23,6 +27,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["eslint.config.mjs"],
+  "exclude": ["eslint.config.mjs", "vite.config.mjs"],
   "include": ["**/*.ts"],
 }
