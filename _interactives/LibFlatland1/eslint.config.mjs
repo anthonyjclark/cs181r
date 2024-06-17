@@ -11,7 +11,7 @@ export default [
       parserOptions: { project: true },
       globals: globals.browser
     },
-    files: [ '**/*.js', '**/*.ts', '**/*.mjs' ],
+    files: [ '**/*.js', '**/*.ts' ],
     plugins: { '@stylistic': stylistic },
     rules: {
       '@stylistic/array-bracket-spacing': [ 'error', 'always', { 'singleValue': true, 'arraysInArrays': false } ],
