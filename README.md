@@ -1,8 +1,41 @@
 # CS 181R: Mobile Robotics
 
+TODO:
+- send link to Jack and Ella
+
+## Development
+
+The course website is built using [Quarto](https://quarto.org/).
+
+### Dependencies
+
+- [Quarto](https://quarto.org/)
+- [quarto-vscode](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+
+### Book Chapters
+
+- Creating and editing files in the `book` directory (specifically the "interactives")
+
+### Interactives
+
+From inside the `_interactives` directory:
+
+1. Create a new package with `bash new-library.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION`
+2. Add all library/reusable code to `lib/main.ts`
+3. Create a demo using `index.html` and `src/index.ts`
+4. Develop the demo using `npm run dev`
+5. Build the library using `npm run build`
+6. Use the library in a Quarto file (eg, `book/0-NewChapter.qmd`)
+
+
+
+
+
+
+
 ## TODO
 
-- add goat counter to base template
+- add goat counter to base template (probably no)
 - add hover/link for definitions and acronyms (glossary: see below)
 - [Add PDF Icon to PDF Links with CSS](https://wpshout.com/snippets/add-pdf-icon-to-pdf-links-with-css/)
 
@@ -132,6 +165,7 @@ https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
 
 ## Ideas
 
+- No copying-pasting code from website (provide code as... file? repo?)
 - Observable examples: [Player / oscar6echo](https://observablehq.com/@oscar6echo/player)
 - Interactives ideas: [Interactive Visualizations](https://dash.plotly.com/julia/interactive-graphing)
 - Go into motor dynamics: [Build a Simple Electric Motor](https://www.youtube.com/watch?v=WI0pGk0MMhg)

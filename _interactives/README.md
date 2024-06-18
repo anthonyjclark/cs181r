@@ -56,15 +56,6 @@ Stick to these packages when creating new interactives:
 
 Let me know if you want to add additional dependencies.
 
-### Development Workflow
-
-1. Create a new package with `bash new-library.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION`
-2. Add all library/reusable code to `lib/main.ts`
-3. Create a demo using `index.html` and `src/index.ts`
-4. Develop the demo using `npm run dev`
-5. Build the interactive using `npm run build`
-6. Use the interactive library in a Quarto file (eg, `book/00-NewChapter.qmd`)
-
 ## Note About ESLint
 
 ESLint version 9 is the latest version (as of this writing). However, eslint@^8 is the latest version compatible with @stylistic/eslint. We will move to eslint@latest later (using `npm init @eslint/config@latest`).

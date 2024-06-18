@@ -52,6 +52,12 @@ echo "AUTHOR_NAME        : $AUTHOR_NAME"
 echo "DESCRIPTION        : $DESCRIPTION"
 echo "PACKAGE_NAME_KEBAB : $PACKAGE_NAME_KEBAB"
 
+
+if [[ ! -f "$PACKAGE_NAME" ]]; then
+  echo "Directory $PACKAGE_NAME already exists. Exiting."
+  exit 1
+fi
+
 echo -n "Do you want to continue? (y/n) "
 read -r response
 
@@ -59,6 +65,7 @@ if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
   echo "OK. Exiting without creating the new package."
   exit 1
 fi
+
 
 cp -r _template "$PACKAGE_NAME"
 cd "$PACKAGE_NAME" || exit

@@ -26,7 +26,7 @@ export class WMRGraph {
 		const half_size = size / 2;
 
 		// Center at origin facing right
-		this.center = this.board.create( 'point', [ 0, 0 ], { name: 'C' } );
+		this.center = this.board.create( 'point', [ 0, 0 ], { name: 'COM' } );
 		this.forward = this.board.create( 'point', [ half_size, 0 ], { name: 'R' } );
 
 		// The image should be square
@@ -58,6 +58,12 @@ export class WMRGraph {
 
 		this.center.on( 'drag', () => translationCB( this.center.X(), this.center.Y() ) );
 		this.forward.on( 'drag', () => rotationCB( wmrForwardAngle() ) );
+
+	}
+
+	addObstacle( obstaclePoints: number[][] ) {
+
+		this.board.create( 'polygon', obstaclePoints );
 
 	}
 
