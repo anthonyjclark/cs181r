@@ -35,6 +35,7 @@ semantic checking (make sense to perform inverse?)
 
 [Notation](https://dynref.engr.illinois.edu/rvn.html)
 [Tips for mathematical handwriting](https://johnkerl.org/doc/ortho/ortho.html)
+[Householder notation](https://www.cs.utexas.edu/users/flame/laff/alaff/a1appendix-householder-notation.html)
 
 - values
 	+ scalar
