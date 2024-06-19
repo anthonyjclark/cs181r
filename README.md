@@ -1,12 +1,41 @@
 # CS 181R: Mobile Robotics
 
+The goal is to create a course that is interactive and engaging.
+
+## Development
+
+The course book (this website) is built using [Quarto](https://quarto.org/). Here are the important bits:
+
+- Non-Quarto files
+  - `_arduino/`: code for the course robot
+  - `_interactives/`: libraries for "interactives"
+  - `_static/`: static web pages not process by Quarto
+- Quarto files
+  - `_quarto.yml`: Quarto configuration file
+  - `index.qmd`: course home page
+  - `book/`: book chapters written in Quarto's qmd format
+  - `pages/`: website pages written in Quarto's qmd format (schedule)
+
+### Dependencies
+
+- [Quarto](https://quarto.org/)
+- [quarto-vscode](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+- Additional dependencies listed in `_interactives/README.md`
+
+### Book Chapters
+
+Create and edit files in the `book` directory. Take a look at the `book/_template.qmd` file to see how to structure a chapter.
+
+### Interactives
+
+I like Bret Victor's take on interactive diagrams. Read is article [Up and Down the Ladder of Abstraction](https://worrydream.com/LadderOfAbstraction/) for more information.
+
+Read the `_interactives/README.md` file for more information on creating interactives.
+
 ## TODO
 
-- add goat counter to base template
+- add goat counter to base template (probably no)
 - add hover/link for definitions and acronyms (glossary: see below)
-- acknowledgements (library authors etc.)
-  - [ESP32Encoder](https://github.com/madhephaestus/ESP32Encoder/)
-
 
 ### File
 
@@ -72,12 +101,6 @@ https://spectrum.ieee.org/special-reports/chip-hall-of-fame/
 https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
 
 
-## Course Format
-
-1. "Read" chapter before class (watch videos, read material, annotate with questions)
-2. Complete quiz at beginning of class (can use "drawing log")
-3. Open discussion of material
-4. Hands-on exercise (use Sheet for help)
 
 ## Automatic Glossary
 
@@ -133,6 +156,7 @@ https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
 
 ## Ideas
 
+- No copying-pasting code from website (provide code as... file? repo?)
 - Observable examples: [Player / oscar6echo](https://observablehq.com/@oscar6echo/player)
 - Interactives ideas: [Interactive Visualizations](https://dash.plotly.com/julia/interactive-graphing)
 - Go into motor dynamics: [Build a Simple Electric Motor](https://www.youtube.com/watch?v=WI0pGk0MMhg)

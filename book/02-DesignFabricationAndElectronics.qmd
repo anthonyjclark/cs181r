@@ -33,10 +33,13 @@ peer-review before batteries connected
 
 Side request: new non-AI generated logo for the course
 
+TODO: CAD design of wheel in Onshape (for 3d printing and laser cutting)
+[Education Plan | Onshape Product Development Platform](https://www.onshape.com/en/education/)
+
 
 ## Interactive
 
-An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.qmd) for a work-in-progress examples).
+An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
 
 ## Exercise
 

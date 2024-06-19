@@ -30,7 +30,7 @@ A video of slides, coding, hands-on electronics, etc.
 
 ## Interactive
 
-An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.qmd) for a work-in-progress examples).
+An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
 
 ## Exercise
 

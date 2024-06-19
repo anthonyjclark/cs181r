@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="187 123 502 502" width="502" height="502">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -2 5 4" markerWidth="5" markerHeight="4" color="#7f8080">
+      <g>
+        <path d="M 2.0266667 0 L 0 -.76 L 0 .76 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" stroke-opacity="1" fill-opacity="1" fill="none" stroke="none" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Group_9">
+        <g id="Graphic_2">
+          <rect x="188" y="183.1603" width="272" height="381.6794" fill="#ccc"/>
+          <rect x="188" y="183.1603" width="272" height="381.6794" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_3">
+          <rect x="361.16" y="124" width="153.68" height="32.44275" fill="#333"/>
+          <rect x="361.16" y="124" width="153.68" height="32.44275" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_4">
+          <rect x="361.16" y="591.55725" width="153.68" height="32.44275" fill="#333"/>
+          <rect x="361.16" y="591.55725" width="153.68" height="32.44275" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_5">
+          <ellipse cx="219.28" cy="374" rx="17.6800282509056" ry="16.2213999659659" fill="#333"/>
+          <ellipse cx="219.28" cy="374" rx="17.6800282509056" ry="16.2213999659659" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Line_8">
+          <line x1="460" y1="374" x2="567.6" y2="374" marker-end="url(#FilledArrow_Marker)" stroke="#7f8080" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

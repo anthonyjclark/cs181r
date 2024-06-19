@@ -1,0 +1,148 @@
+---
+title: "Typical Chapter Layout"
+execute:
+  echo: false
+---
+
+TODO: [Hypothesis Client](https://h.readthedocs.io/projects/client/en/latest/index.html)
+
+> NOTE: This is a template for a typical chapter layout. Each chapter will have a similar structure. Students will read the chapter before class, and then we will work through the exercises in class (in a flipped-classroom style).
+
+Remember, we are using [hypothesis](https://hypothes.is) for this book. So feel free to add questions and comments. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
+
+```{=html}
+<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
+```
+
+Some introductory text.
+
+“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+
+## What you will learn
+
+- A list of 2 to 5 learning goals
+
+## Terminology
+
+- A list of new terms
+
+## Lecture
+
+A video of slides, coding, hands-on electronics, etc.
+
+## Interactive
+
+
+TODO:
+- add frames (wmr and global)
+- allow global frame to move?
+- add angle?
+- cursor style of grab and grabbing
+- animation?
+  - https://ipesek.github.io/jsxgraphbook/4_3_animation_sliders.html
+  - https://jsxgraph.org/wiki/index.php/Animations
+
+
+Try dragging the robot around. You can also rotate the robot by dragging from the tip of the forward arrow.
+
+
+```{ojs}
+mutable x = 0
+mutable y = 0
+mutable phi = 0
+```
+
+```{ojs}
+//| panel: fill
+html`
+${tex.block`
+\vec{q}(t) = \begin{bmatrix}
+    x(t) \\
+    y(t) \\
+    \phi(t)
+\end{bmatrix}
+= \begin{bmatrix}
+    ${x} \; \text{m} \\
+    ${y} \; \text{m} \\
+    ${(phi * 180 / Math.PI).toFixed(2)} \degree
+\end{bmatrix}
+\\[10pt]
+R = \begin{bmatrix}
+    \cos(\phi) & -\sin(\phi) \\
+    \sin(\phi) & \cos(\phi)
+\end{bmatrix}
+= \begin{bmatrix}
+    ${Math.cos(phi).toFixed(2)} & ${-Math.sin(phi).toFixed(2)} \\
+    ${Math.sin(phi).toFixed(2)} & ${Math.cos(phi).toFixed(2)}
+\end{bmatrix}
+`}
+`
+```
+
+```{ojs}
+div_id = "jsxdiv"
+
+graph_style = `
+    width: ${width}px;
+    height: ${width}px;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+    background-color: #f5f5f5;
+    border: solid #DDD 1px;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 0;
+`
+viewof graph = html`<div id="${div_id}" style="${graph_style}"></div>`
+```
+
+```{ojs}
+import { WMRGraph } from '../_interactives/WMRGraph/dist/wmr-graph.js';
+
+function updateRotation(newPhi) {
+    mutable phi = newPhi.toFixed(2);
+}
+
+function updateTranslation(newX, newY) {
+    mutable x = newX.toFixed(2);
+    mutable y = newY.toFixed(2);
+}
+
+new WMRGraph(div_id, updateRotation, updateTranslation);
+```
+
+## Exercise
+
+Each "chapter" will include the assignment/exercise. These will be completed in class.
+
+## Resources
+
+- [Matrix Simulation](https://www.falstad.com/matrix/)
+
+
+
+
+[Coordinate Transformations - How robots move through space - YouTube](https://www.youtube.com/watch?app=desktop&v=NGPn9nvLPmg)
+
+3. Motion modeling
+    - Kinematics (direct and inverse)
+    - Differential drive
+    - Ackerman steering
+    - Bicycle model
+    - Rear-wheel bicycle drive
+    - Unicycle model
+    - Tricycle drive
+    - Tricycle with a trailer
+    - Synchronous drive
+    - Omnidirectional drive
+    - Track drive
+    - Motion constraints
+    - Holonomic and non-holonomic constraints
+
+http://msl.cs.uiuc.edu/planning/node657.html
+
+differential kinematics from Correll 3.3
+
+- [Mobile Robot Kinematics Equations - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/mobile-robot-kinematics-equations.html)

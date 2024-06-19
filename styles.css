@@ -5,6 +5,10 @@ thead {
   top: 0;
 }
 
+a[href$=".pdf"]:after {
+  content: " (PDF)";
+}
+
 .faded {
   color: #ccc;
 }

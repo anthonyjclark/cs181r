@@ -1,0 +1,8 @@
+#app,
+#obstacles {
+  margin: 1em auto;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  width: 500px;
+  height: 500px;
+}
