@@ -2,6 +2,26 @@
 title: "Schedule"
 ---
 
+<!-- 27 total in-class days -->
+
+<!--
+#| label: tbl-semester-schedule
+#| tbl-cap: Semester Schedule
+
+from IPython.display import Markdown
+from tabulate import tabulate
+
+table = [["Sun","696,000",1.989e30],
+         ["Earth","6,371",5.972e24],
+         ["Moon","1,737",7.34e22],
+         ["Mars","3,390",6.39e23]]
+
+Markdown(tabulate(
+  table,
+  headers=["Astronomical object","R (km)", "mass (kg)"]
+))
+ -->
+
 | Week | Date                 | Chapter (Before Class)                       |
 | ---: | -------------------- | -------------------------------------------- |
 |    1 | Tue Aug 27           | Introduction and Safety                      |
@@ -47,8 +67,8 @@ Modules
 3. Maps and Motion Planning (12,13,14)
 4. Uncertainty (15,16)
 5. Localization and Mapping (17,18,19)
-6. Vision and Learning (20,21,22,23)
-7. Society (5,24)
+6. Vision and Learning (20,21,22,23,24)
+7. Societal Impacts (5,25)
 
 |      | Chapter Topic                                | Interactive          | Exercise            |
 | ---: | -------------------------------------------- | -------------------- | ------------------- |
@@ -82,187 +102,7 @@ Modules
 
 : {.striped}
 
-
-
-
-
-
-
-
-
-
-
-
-https://arxiv.org/abs/1808.10703
-
-TODO: repetition in topics (eg, control -> planning -> control)
-
-
-
-Literature / Pop-Culture
-
-## Modules
-
-1. Design and Electronics
-  1. [Introduction](/book/01-IntroductionAndSafety.qmd)
-  2. [Safety and Design](/book/02-DesignFabricationAndElectronics.qmd)
-  3. [Embedded Systems](/book/03-ArduinoAndEmbeddedSystems.qmd)
-  4. Open-Loop Go to Goal
-2. Modeling and Feedback Control
-  5. Feedback Control with PID and Wheel Encoders
-  6. Kinematic Modeling
-  7. LQR and iLQR for Circular Paths (feed-forward?)
-3. Maps and Motion Planning
-  8. No map? State Machines and Bug Algorithm
-  9. ICP mapping? occupancy grid? Correll 12.3
-  10. Graph Search and A* (D* Lite?) or sampling-based planning (RRT? PRM?)
-  11. Control Architecture Scales (Correll 13.4)
-4. Uncertainty (State Estimation?)
-  12. Error Propagation
-  13. Sensor Fusion with Kalman Filters
-5. Localization and Mapping
-  14. Localization with Particle Filters
-  15. ...
-  16. Graph-based SLAM
-6. Vision and Learning
-  17. Conventional (Features, Optical Flow)
-  18. Object Detection
-  19. Segmentation
-  20. Imitation Learning (RL?)
-7. Societal Impacts
-  21. History and Pop-Culture
-  22. Automation and Jobs
-  23. Moral Decision Making and Liability
-  24. Autonomous Vehicle Ethics
-8. Open-Ended Project
-  25. Project Workday
-  26. Project Workday
-
-Missing topics?
-
-- MPC
-- Reinforcement Learning
-- Control Architecture
-- Visual SLAM? Google Cartographer?
-- Dynamics Modeling
-- State-Space Modeling and Simulation
-
-Planning Topics
-
-1. perception
-2. path planning
-   1. global path planning (eg, Dijkstra, A*, RRT, PRM, D*, D* Lite)
-   2. local path planning (eg, dynamic window, and some of the global planners)
-3. motion control
-
-Potential New Schedule
-
-1. Introduction and Safety
-2. Design and Assembly
-3. Arduino and Embedded Systems
-4. Open-Loop Go to Goal
-5. History, Pop-Culture, Automation, and Job Loss
-6. Kinematic Modeling
-7. Wheel Encoders, IMU, and LIDAR
-8. Sense-Plan-Act Go to Goal (Klancar: reference pose)
-9. Bug Algorithms and State Machines
-10. Kinematic Trajectory Tracking
-11. Map/Environment Representation (and Configuration Space)
-12. Sampling and Graph Search
-13. Global and Local Path Planning
-14. Uncertainty and Error Propagation
-15. State Estimation and Filters
-16. ?ICP? "Lines? ?Lidar?
-17. Localization
-18. ?Simple SLAM?
-19. Feature Extraction and Optical Flow
-20. Object Detection and Segmentation
-21. ?Visual SLAM?
-22. Imitation Learning and Reinforcement Learning
-23. Moral Decision Making, Liability, and Ethics
-24. Project Workday
-25. Project Workday
-
-- mocap?
-
-- then kinematic trajectory tracking?
-- planning sequence
-  - map/environment representation (https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
-  - configuration space
-  - sampling methods like RRT, RRT*, ?PRM?
-  - graph search like A* or D* Lite (https://www.cs.cmu.edu/~motionplanning/lecture/AppH-astar-dstar_howie.pdf)
-- uncertainty
-  - propagation of error
-  - state estimation, filters
-  - something with lines and lidar?
-  - localization
-  - simplest SLAM
-- vision and learning
-  - conventional vision (features, optical flow)
-  - object detection
-  - segmentation
-  - imitation learning, reinforcement learning
-  - visual SLAM?
-- Moral Decision Making, Liability, and Ethics
-- Project Workday
-- Project Workday
-
-<!-- 15 * 2 - 3 = 27 -->
-
-| Week | Date                 | Chapter                                           |
-| ---: | ----                 | -------                                           |
-| 1    | Tue Aug 27           | [Introduction](/book/01-IntroductionAndSafety.qmd)         |
-|      | Thu Aug 29           | [Safety and Design](/book/02-DesignFabricationAndElectronics.qmd) |
-| 2    | Tue Sep 3            | [Embedded Systems](/book/03-ArduinoAndEmbeddedSystems.qmd)  |
-|      | Thu Sep 5            | Open-Loop Go to Goal                              |
-| 3    | Tue Sep 10           |                                                   |
-|      | Thu Sep 12           |                                                   |
-| 4    | Tue Sep 17           |                                                   |
-|      | Thu Sep 19           |                                                   |
-| 5    | Tue Sep 24           |                                                   |
-|      | Thu Sep 26           |                                                   |
-| 6    | Tue Oct 1            |                                                   |
-|      | Thu Oct 3            |                                                   |
-| 7    | Tue Oct 8            |                                                   |
-|      | Thu Oct 10           |                                                   |
-| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                              |
-|      | Thu Oct 17           |                                                   |
-| 9    | Tue Oct 22           |                                                   |
-|      | Thu Oct 24           |                                                   |
-| 10   | Tue Oct 29           |                                                   |
-|      | Thu Oct 31           |                                                   |
-| 11   | Tue Nov 5            |                                                   |
-|      | Thu Nov 7            |                                                   |
-| 12   | Tue Nov 12           |                                                   |
-|      | Thu Nov 14           |                                                   |
-| 13   | Tue Nov 19           |                                                   |
-|      | Thu Nov 21           |                                                   |
-| 14   | Tue Nov 26           | Project Workday                                   |
-|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                            |
-| 15   | Tue Dec 3            | Project Workday                                   |
-|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                             |
-| 16   | TBD                  | Final exam                                        |
-
-: {.striped}
-
-<!--
-#| label: tbl-semester-schedule
-#| tbl-cap: Semester Schedule
-
-from IPython.display import Markdown
-from tabulate import tabulate
-
-table = [["Sun","696,000",1.989e30],
-         ["Earth","6,371",5.972e24],
-         ["Moon","1,737",7.34e22],
-         ["Mars","3,390",6.39e23]]
-
-Markdown(tabulate(
-  table,
-  headers=["Astronomical object","R (km)", "mass (kg)"]
-))
- -->
-
+## Exercise Notes
 
 Exercises (probably want 14?):
 
@@ -278,19 +118,6 @@ Exercises (probably want 14?):
 compute kalman matrix values from sensor data least squares
 derive equations (eg, Kalman filter, equations of motion)
 
-
-
-[Robotics and Autonomous Systems - MATLAB & Simulink](https://www.mathworks.com/help/overview/robotics-and-autonomous-systems.html?s_tid=hc_product_group_bc)
-[Mobile Robot Kinematics Equations - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/mobile-robot-kinematics-equations.html)
-[Perform Path Planning Simulation with Mobile Robot - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
-[Mapping - MATLAB & Simulink](https://www.mathworks.com/help/nav/mapping.html)
-[Motion Planning with MATLAB - MATLAB & Simulink](https://www.mathworks.com/campaigns/offers/next/getting-started-with-motion-planning-in-matlab-ebook.html)
-[Examples](https://www.mathworks.com/help/examples.html)
-[Robotics and Autonomous Systems — Examples](https://www.mathworks.com/help/overview/examples.html?category=robotics-and-autonomous-systems&s_tid=hc_panel)
-
-[Grid based search](https://atsushisakai.github.io/PythonRobotics/modules/path_planning/grid_base_search/grid_base_search.html)
-
-[Lidar to grid map](https://atsushisakai.github.io/PythonRobotics/modules/mapping/lidar_to_grid_map_tutorial/lidar_to_grid_map_tutorial.html)
 
 Assignments
 - tell a complete story
@@ -335,7 +162,26 @@ loop (repetition)
 3. implement lqr/mpc (https://github.com/f1tenth/f1tenth_lab9_template)
 
 
+## Interactive Notes
 
+TODO: repetition in topics (eg, control -> planning -> control)
+
+
+Some inspirations:
+
+- [Robotics and Autonomous Systems - MATLAB & Simulink](https://www.mathworks.com/help/overview/robotics-and-autonomous-systems.html?s_tid=hc_product_group_bc)
+- [Mobile Robot Kinematics Equations - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/mobile-robot-kinematics-equations.html)
+- [Perform Path Planning Simulation with Mobile Robot - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
+- [Mapping - MATLAB & Simulink](https://www.mathworks.com/help/nav/mapping.html)
+- [Motion Planning with MATLAB - MATLAB & Simulink](https://www.mathworks.com/campaigns/offers/next/getting-started-with-motion-planning-in-matlab-ebook.html)
+- [Examples](https://www.mathworks.com/help/examples.html)
+- [Robotics and Autonomous Systems — Examples](https://www.mathworks.com/help/overview/examples.html?category=robotics-and-autonomous-systems&s_tid=hc_panel)
+- [Grid based search](https://atsushisakai.github.io/PythonRobotics/modules/path_planning/grid_base_search/grid_base_search.html)
+- [Lidar to grid map](https://atsushisakai.github.io/PythonRobotics/modules/mapping/lidar_to_grid_map_tutorial/lidar_to_grid_map_tutorial.html)
+- [terrybrash/dragon-space: Spatial partitioning concepts and implementions.](https://github.com/terrybrash/dragon-space)
+- Control Architecture Scales (Correll 13.4)
+- graph search like A* or D* Lite (https://www.cs.cmu.edu/~motionplanning/lecture/AppH-astar-dstar_howie.pdf)
+- map/environment representation (https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
 
 Other thoughts
 
@@ -358,33 +204,21 @@ Other thoughts
 
 Here is the inventory of topics I considered when developing this course.
 
-|     | Category    | Concepts                                                                             |
-| --: | ----------- | ------------------------------------------------------------------------------------ |
-| 1.  | Design      | Requirements, CAD, Fabrication, Mechatronics, Electronics, Safety                    |
-| 2.  | Programming | Embedded Systems, Communication, Real-Time, Debugging                                |
-| 3.  | Math        | Linear Algebra, Probability, Statistics, Discretization, Optimization, Linearization |
-| 4.  | Modeling    | Diagramming, Mechanics, Kinematics, Dynamics, Simulation, Motion Capture             |
-| 5.  | Control     | Feedback, Motion, Robustness, Adaptivity, Reactive, Behavioral                       |
-| 6.  | Planning    | Search, Mapping, Motion, Trajectory                                                  |
-| 7.  | Vision      | Conventional, Learning, Optical Flow                                                 |
-| 8.  | Uncertainty | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM               |
-| 9.  | Society     | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
+|   | Category      | Concepts                                                                             |
+| - | -----------   | ------------------------------------------------------------------------------------ |
+| 1 | Design        | Requirements, CAD, Fabrication, Mechatronics, Electronics, Safety                    |
+| 2 | Programming   | Embedded Systems, Communication, Real-Time, Debugging                                |
+| 3 | Math/Numerics | Linear Algebra, Probability, Statistics, Discretization, Optimization, Linearization |
+| 4 | Modeling      | Diagramming, Mechanics, Kinematics, Dynamics, Simulation, Motion Capture             |
+| 5 | Control       | Feedback, Motion, Robustness, Adaptivity, Reactive, Behavioral                       |
+| 6 | Planning      | Search, Mapping, Motion, Trajectory                                                  |
+| 7 | Vision        | Conventional, Learning, Optical Flow                                                 |
+| 8 | Uncertainty   | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM               |
+| 9 | Society       | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
 
-Specific techniques:
+<iframe src="_static/markmap.html" frameborder="0"></iframe>
 
-1. Design: Requirements, OnShape, 3D Printing, Laser Cutting, Soldering, Circuits
-2. Programming: Emergency Braking, Active Enable, Arduino, I2C, WiFi, Debugging, Discretization
-3. Math: Vectors, Rotation Matrices, Bayes Theorem, Least Squares, Linearization, Optimization
-4. Modeling: Differential Kinematics, Dynamics, State-Space, Simulation
-5. Control: Open-Loop, Tracking, PID, (i)LQR, MPC, State Machines, Bug Algorithm, Pure Pursuit, Architectures
-6. Planning: BFS, DFS, A*, RRT, D*, D* Lite, PRM, Occupancy Grid, Constrains
-7. Vision: Optical Flow, Object Detection, Learning (ML and RL), Policy Search
-8. Uncertainty: Kalman Filters (KF, EKF, UKF), Particle Filters, Estimation, Localization, Mapping, SLAM
-9. Society: Moral Decision Making, Job Loss, Literature
-
-
-
-
+<!--
 [Try markmap](https://markmap.js.org/repl)
 > Download as interactive HTML
 
@@ -396,17 +230,16 @@ markmap:
 
 - Society
   - History
-  - Pop-culture
+  - Pop-culture (eg, movies, books, games)
   - Automation and Jobs
-  - Ethics
-  - Moral Decision Making
-  - Liability
+  - Ethics and Moral Decision Making
+  - Law and Liability
 - Design
   - Requirements Engineering
-  - Computer Aided Design (CAD) (eg, OnShape)
-  - Fabrication (eg, 3D Printing, Laser Cutting)
+  - Computer Aided Design (CAD) (eg, Onshape)
+  - Fabrication (eg, 3D Printing, Laser Cutting, Casting)
   - Electronics (eg, Soldering, Circuits)
-  - Safety (eg, Emergency Braking, Active Enable)
+  - Safety (eg, Design, Emergency Braking, Active Enable)
   - Embedded Systems (eg, Arduino, I2C, BLE, Debugging)
 - Mathematics and Numerics
   - Vectors, Spaces, and Linear Algebra
@@ -414,13 +247,14 @@ markmap:
   - Probability
   - Statistics
   - Optimization
+  - Discretization
+  - Linearization
 - Modeling
   - Kinematics
   - Dynamics
-  - Simulation
   - State-Space
-  - Discretization
-  - Linearization
+  - Simulation
+  - Motion Capture
 - Control
   - Open-loop Control
   - Feedback Control (eg, PID)
@@ -430,7 +264,9 @@ markmap:
   - Bug Algorithms
   - State Machines
   - Sense-Plan-Act
-  - Hierarchical Control
+  - Pure Pursuit
+  - Hybrid and Hierarchical Control
+  - Behavior Trees
 - Localization
   - Uncertainty
   - Error Propagation
@@ -451,14 +287,15 @@ markmap:
   - SLAM (eg, Graph-based, EKF, FastSLAM)
 - Planning
   - Global and Local
+  - Configuration Space
   - Constraints
   - Dynamic Window Approach
   - Trajectory Tracking (eg, Pure Pursuit, MPC, iLQR)
   - Probabilistic Roadmaps (PRM)
   - Graph Search (eg, BFS, DFS, A*, D* Lite)
-  - Sampling (eg, RRT)
+  - Sampling-Based (eg, RRT)
   - Motion Planning
-  - Trajectory Planning
+  - Trajectory Planning/Tracking
   - Path Planning
 - Vision
   - Feature Extraction
@@ -467,4 +304,4 @@ markmap:
   - Segmentation
   - Learning (eg, ML, RL, Policy Search)
 
-[terrybrash/dragon-space: Spatial partitioning concepts and implementions.](https://github.com/terrybrash/dragon-space)
+-->
