@@ -21,13 +21,17 @@ Add the following to your VSCode settings:
 
 ## Creating Interactives
 
-~~~bash
-bash new-library.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION
-cd PACKAGE_NAME
-npm install OTHER_PACKAGES
-~~~
+We'll only need a **new** library for some interactives. For other interactives, we can just add functionality to an existing library.
 
-NOTE: `PACKAGE_NAME` should be a single word (no spaces) using PascalCase.
+If you need to create a new library, then from inside the `_interactives` directory:
+
+1. Create a new package/library with `bash new-library.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION`
+2. Add all library/reusable code to `lib/main.ts`
+3. Install additional packages using `npm install OTHER_PACKAGES`
+4. Create a demo using `index.html` and `src/index.ts`
+5. Develop the demo using `npm run dev`
+6. Build the library using `npm run build`
+7. Use the library in a Quarto file (eg, `book/0-NewChapter.qmd`)
 
 For example:
 
@@ -38,16 +42,16 @@ bash new-library.sh WMRGraph "Anthony J. Clark" "A WMR kinematics graph library 
 Each interactive will have its own
 
 - configuration files
-  - `package.json`
-  - `eslint.config.mjs`
-  - `tsconfig.json`
-  - `vite.config.mjs`
-  - `.quokka`
+  - `package.json`: additional dependencies will be added here by `npm install`
+  - `eslint.config.mjs`: formatting and linting rules
+  - `tsconfig.json`: TypeScript configuration
+  - `vite.config.mjs`: Vite configuration
+  - `.quokka`: Quokka configuration
 - sources files
-  - `index.html`
-  - `src/index.ts`
-  - `css/main.css`
-  - `lib/main.ts`
+  - `index.html`: demo web page
+  - `src/index.ts`: demo source code
+  - `css/main.css`: library styles
+  - `lib/main.ts`: library source code
 
 Stick to these packages when creating new interactives:
 

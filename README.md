@@ -1,44 +1,41 @@
 # CS 181R: Mobile Robotics
 
-TODO:
-- send link to Jack and Ella
+The goal is to create a course that is interactive and engaging.
 
 ## Development
 
-The course website is built using [Quarto](https://quarto.org/).
+The course book (this website) is built using [Quarto](https://quarto.org/). Here are the important bits:
+
+- Non-Quarto files
+  - `_arduino/`: code for the course robot
+  - `_interactives/`: libraries for "interactives"
+  - `_static/`: static web pages not process by Quarto
+- Quarto files
+  - `_quarto.yml`: Quarto configuration file
+  - `index.qmd`: course home page
+  - `book/`: book chapters written in Quarto's qmd format
+  - `pages/`: website pages written in Quarto's qmd format (schedule)
 
 ### Dependencies
 
 - [Quarto](https://quarto.org/)
 - [quarto-vscode](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+- Additional dependencies listed in `_interactives/README.md`
 
 ### Book Chapters
 
-- Creating and editing files in the `book` directory (specifically the "interactives")
+Create and edit files in the `book` directory. Take a look at the `book/_template.qmd` file to see how to structure a chapter.
 
 ### Interactives
 
-From inside the `_interactives` directory:
+I like Bret Victor's take on interactive diagrams. Read is article [Up and Down the Ladder of Abstraction](https://worrydream.com/LadderOfAbstraction/) for more information.
 
-1. Create a new package with `bash new-library.sh PACKAGE_NAME AUTHOR_NAME DESCRIPTION`
-2. Add all library/reusable code to `lib/main.ts`
-3. Create a demo using `index.html` and `src/index.ts`
-4. Develop the demo using `npm run dev`
-5. Build the library using `npm run build`
-6. Use the library in a Quarto file (eg, `book/0-NewChapter.qmd`)
-
-
-
-
-
-
+Read the `_interactives/README.md` file for more information on creating interactives.
 
 ## TODO
 
 - add goat counter to base template (probably no)
 - add hover/link for definitions and acronyms (glossary: see below)
-- [Add PDF Icon to PDF Links with CSS](https://wpshout.com/snippets/add-pdf-icon-to-pdf-links-with-css/)
-
 
 ### File
 
@@ -104,12 +101,6 @@ https://spectrum.ieee.org/special-reports/chip-hall-of-fame/
 https://github.com/ros-planning/navigation2/tree/main/nav2_mppi_controller
 
 
-## Course Format
-
-1. "Read" chapter before class (watch videos, read material, annotate with questions)
-2. Complete quiz at beginning of class (can use "drawing log")
-3. Open discussion of material
-4. Hands-on exercise (use Sheet for help)
 
 ## Automatic Glossary
 
