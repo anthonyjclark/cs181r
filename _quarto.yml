@@ -31,9 +31,9 @@ website:
         - book/book.qmd
         - section: "Unit 1: Design and Electronics"
           contents:
-            - book/01-Introduction.qmd
-            - book/02-SafetyAndDesign.qmd
-            - book/03-EmbeddedSystems.qmd
+            - book/01-IntroductionAndSafety.qmd
+            - book/02-DesignFabricationAndElectronics.qmd
+            - book/03-ArduinoAndEmbeddedSystems.qmd
         - text: "---"
         - section: "Unit 2: Modeling and Feedback Control"
           contents:
