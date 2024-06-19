@@ -39,7 +39,7 @@ TODO: CAD design of wheel in Onshape (for 3d printing and laser cutting)
 
 ## Interactive
 
-An interactive widget (see [Kinematics](kinematics.qmd) and [3D Demo](threedemo.qmd) for a work-in-progress examples).
+An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
 
 ## Exercise
 

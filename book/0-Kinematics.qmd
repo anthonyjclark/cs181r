@@ -36,6 +36,7 @@ A video of slides, coding, hands-on electronics, etc.
 TODO:
 - add frames (wmr and global)
 - allow global frame to move?
+- add angle?
 - cursor style of grab and grabbing
 - animation?
   - https://ipesek.github.io/jsxgraphbook/4_3_animation_sliders.html
