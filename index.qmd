@@ -104,10 +104,10 @@ TODO: find good resources for the following
 
 The general flow of the class will include follow the following routine:
 
-1. Students will watch embedded lecture videos and read related material before class. I am going to use Hypothesis so that students can annotate the material with questions and comments.
-2. Classes will start with a short quiz to remind students they must complete the pre-class work.
+1. Students will "read" (watch embedded lecture videos and read related material) a book chapter before each class period. We will use [Hypothesis](https://web.hypothes.is/) to annotate material with questions and comments.
+2. Classes will start with a short quiz to remind students they must complete the pre-class work. Students are allowed to use their "drawing log" on the quiz.
 3. We will then have a brief discussion of the material.
-4. Students will then work on a hands-on exercise related to the material.
+4. Students will then work on a hands-on exercise related to the material. We will use a Google Sheet to facilitate questions and help, and the exercise will be due on gradescope by the start of the next class period.
 
 ## Grading
 
