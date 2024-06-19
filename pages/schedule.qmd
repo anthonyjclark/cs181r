@@ -2,53 +2,111 @@
 title: "Schedule"
 ---
 
+| Week | Date                 | Chapter (Before Class)                       |
+| ---: | -------------------- | -------------------------------------------- |
+|    1 | Tue Aug 27           | Introduction and Safety                      |
+|      | Thu Aug 29           | Design, Assembly, and Electronics            |
+|    2 | Tue Sep 3            | Arduino and Embedded Systems                 |
+|      | Thu Sep 5            | Open-Loop Go to Goal                         |
+|    3 | Tue Sep 10           | Culture, Automation, and Jobs                |
+|      | Thu Sep 12           | Kinematic Modeling                           |
+|    4 | Tue Sep 17           | Sensors: Wheel Encoders, IMU, and LIDAR      |
+|      | Thu Sep 19           | Feedback Control                             |
+|    5 | Tue Sep 24           | Sense-Plan-Act                               |
+|      | Thu Sep 26           | Kinematic Trajectory Tracking                |
+|    6 | Tue Oct 1            | Bug Algorithms and State Machines            |
+|      | Thu Oct 3            | Maps and Representations                     |
+|    7 | Tue Oct 8            | Sampling and Graph Search                    |
+|      | Thu Oct 10           | Global and Local Path Planning               |
+|    8 | [Tue Oct 15]{.faded} | [Fall break]{.faded}                         |
+|      | Thu Oct 17           | Uncertainty and Error Propagation            |
+|    9 | Tue Oct 22           | State Estimation and Filters                 |
+|      | Thu Oct 24           | Localization                                 |
+|   10 | Tue Oct 29           | Iterative Closest Point (ICP)                |
+|      | Thu Oct 31           | Simultaneous Localization and Mapping (SLAM) |
+|   11 | Tue Nov 5            | Embedded Vision                              |
+|      | Thu Nov 7            | Feature Extraction and Optical Flow          |
+|   12 | Tue Nov 12           | Object Detection and Segmentation            |
+|      | Thu Nov 14           | ?Visual SLAM?                                |
+|   13 | Tue Nov 19           | Imitation and Reinforcement Learning         |
+|      | Thu Nov 21           | Moral Decision Making                        |
+|   14 | Tue Nov 26           | Project Workday                              |
+|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                       |
+|   15 | Tue Dec 3            | Project Workday                              |
+|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                        |
+|   16 | TBD                  | Final exam                                   |
+
+: {.striped}
+
+## Course Topics and Modules
+
+Modules
+
+1. Design and Electronics (1,2,3,4)
+2. Modeling and Feedback Control (6,7,8,9,10,11)
+3. Maps and Motion Planning (12,13,14)
+4. Uncertainty (15,16)
+5. Localization and Mapping (17,18,19)
+6. Vision and Learning (20,21,22,23)
+7. Society (5,24)
+
+|      | Chapter Topic                                | Interactive          | Exercise            |
+| ---: | -------------------------------------------- | -------------------- | ------------------- |
+|    1 | Introduction and Safety                      |                      | Prototyping         |
+|    2 | Design, Assembly, and Electronics            | CAD with Onshape     | Circuits and Wiring |
+|    3 | Arduino and Embedded Systems                 | Bluetooth LE         | Remote Control      |
+|    4 | Open-Loop Go to Goal                         | Go to Goal           | Motor Control 1     |
+|    5 | Culture, Automation, and Jobs                |                      | Discussions         |
+|    6 | Kinematic Modeling                           | Kinematics           | Motor Control 2     |
+|    7 | Sensors: Wheel Encoders, IMU, and LIDAR      | IMU Plotting         | Sensor Plotting     |
+|    8 | Feedback Control                             | Proportional Control | Motor Control 3     |
+|    9 | Sense-Plan-Act                               | Go to Goal           | Go to Goal          |
+|   10 | Kinematic Trajectory Tracking                | Tracking             | Tracking            |
+|   11 | Bug Algorithms and State Machines            | Bug0                 | Bug0/1/2            |
+|   12 | Maps and Representations                     | Occupancy Grid       | Occupancy Grid      |
+|   13 | Sampling and Graph Search                    | Graph Search         | D* Lite             |
+|   14 | Global and Local Path Planning               | Dynamic              | Reactive Control    |
+|   15 | Uncertainty and Error Propagation            | Uncertainty          | Senor Modeling      |
+|   16 | State Estimation and Filters                 | Circle Drive         | Pose Estimation     |
+|   17 | Localization                                 | Sensor Fusion        | Sensor Fusion       |
+|   18 | Iterative Closest Point (ICP)                | ICP                  | ICP                 |
+|   19 | Simultaneous Localization and Mapping (SLAM) | SLAM                 | SLAM                |
+|   20 | Embedded Vision                              |                      | SenseCraft          |
+|   21 | Feature Extraction and Optical Flow          | Optical Flow         | Optical Flow        |
+|   22 | Object Detection and Segmentation            | Segmentation         | Segmentation        |
+|   23 | ?Visual SLAM?                                |                      |                     |
+|   24 | Imitation and Reinforcement Learning         |                      |                     |
+|   25 | Moral Decision Making                        |                      |                     |
+|   26 | Project Workday                              |                      |                     |
+|   27 | Project Workday                              |                      |                     |
+
+: {.striped}
+
+
+
+
+
+
+
+
+
+
+
+
 https://arxiv.org/abs/1808.10703
 
 TODO: repetition in topics (eg, control -> planning -> control)
 
-1. [x] (introduction) Requirements Engineering
-2. [x] (design) OnShape, 3D Printing, Laser Cutting, Soldering, Circuits
-3. [x] (embedded systems) Programming, Emergency Braking, Active Enable, Arduino, I2C, WiFi, Debugging
-4. [ ] Discretization
-5. [ ] Bayes Theorem
-6. [ ] Least Squares
-7. [ ] Linearization
-8. [ ] Optimization
-9.  [x] (kinematics) Differential Kinematics (Vectors, Rotation Matrices)
-10. [x] (dynamics) Dynamics
-11. [x] State-Space, Simulation
-12. [x] Open-Loop
-13. [x] (feedback) Sense-Plan-Act, Tracking, PID
-14. [x] iLQR
-15. [ ] MPC
-16. [x] State Machines, Bug Algorithm
-17. [ ] Pure Pursuit, Architectures
-18. [ ] BFS, DFS, A*
-19. [ ] RRT
-21. [ ] D*, D* Lite
-22. [ ] PRM, Occupancy Grid, Constrains
-23. [x] Optical Flow
-24. [x] Object Detection
-25. [x] Learning (ML and RL), Policy Search
-26. [x] Kalman Filters (KF, EKF, UKF)
-27. [x] Particle Filters
-28. [x] Estimation
-29. [x] Localization
-30. [x] Mapping
-31. [x] SLAM
-32. [x] History and Pop-Culture
-33. [x] Automation and Job Loss
-34. [x] Moral Decision Making
-35. [x] Autonomous Vehicle Ethics
+
 
 Literature / Pop-Culture
 
 ## Modules
 
 1. Design and Electronics
-  1. [Introduction](/book/01-Introduction.qmd)
-  2. [Safety and Design](/book/02-SafetyAndDesign.qmd)
-  3. [Embedded Systems](/book/03-EmbeddedSystems.qmd)
+  1. [Introduction](/book/01-IntroductionAndSafety.qmd)
+  2. [Safety and Design](/book/02-DesignFabricationAndElectronics.qmd)
+  3. [Embedded Systems](/book/03-ArduinoAndEmbeddedSystems.qmd)
   4. Open-Loop Go to Goal
 2. Modeling and Feedback Control
   5. Feedback Control with PID and Wheel Encoders
@@ -153,9 +211,9 @@ Potential New Schedule
 
 | Week | Date                 | Chapter                                           |
 | ---: | ----                 | -------                                           |
-| 1    | Tue Aug 27           | [Introduction](/book/01-Introduction.qmd)         |
-|      | Thu Aug 29           | [Safety and Design](/book/02-SafetyAndDesign.qmd) |
-| 2    | Tue Sep 3            | [Embedded Systems](/book/03-EmbeddedSystems.qmd)  |
+| 1    | Tue Aug 27           | [Introduction](/book/01-IntroductionAndSafety.qmd)         |
+|      | Thu Aug 29           | [Safety and Design](/book/02-DesignFabricationAndElectronics.qmd) |
+| 2    | Tue Sep 3            | [Embedded Systems](/book/03-ArduinoAndEmbeddedSystems.qmd)  |
 |      | Thu Sep 5            | Open-Loop Go to Goal                              |
 | 3    | Tue Sep 10           |                                                   |
 |      | Thu Sep 12           |                                                   |
@@ -217,10 +275,22 @@ Exercises (probably want 14?):
 6. Autonomously navigate a course with dynamic obstacles
 7. Chosen Project
 8. Society discussion
+compute kalman matrix values from sensor data least squares
+derive equations (eg, Kalman filter, equations of motion)
 
 
 
+[Robotics and Autonomous Systems - MATLAB & Simulink](https://www.mathworks.com/help/overview/robotics-and-autonomous-systems.html?s_tid=hc_product_group_bc)
+[Mobile Robot Kinematics Equations - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/mobile-robot-kinematics-equations.html)
+[Perform Path Planning Simulation with Mobile Robot - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
+[Mapping - MATLAB & Simulink](https://www.mathworks.com/help/nav/mapping.html)
+[Motion Planning with MATLAB - MATLAB & Simulink](https://www.mathworks.com/campaigns/offers/next/getting-started-with-motion-planning-in-matlab-ebook.html)
+[Examples](https://www.mathworks.com/help/examples.html)
+[Robotics and Autonomous Systems — Examples](https://www.mathworks.com/help/overview/examples.html?category=robotics-and-autonomous-systems&s_tid=hc_panel)
 
+[Grid based search](https://atsushisakai.github.io/PythonRobotics/modules/path_planning/grid_base_search/grid_base_search.html)
+
+[Lidar to grid map](https://atsushisakai.github.io/PythonRobotics/modules/mapping/lidar_to_grid_map_tutorial/lidar_to_grid_map_tutorial.html)
 
 Assignments
 - tell a complete story
@@ -313,7 +383,11 @@ Specific techniques:
 9. Society: Moral Decision Making, Job Loss, Literature
 
 
+
+
 [Try markmap](https://markmap.js.org/repl)
+> Download as interactive HTML
+
 ---
 title: Mobile Robotics
 markmap:
@@ -321,41 +395,68 @@ markmap:
 ---
 
 - Society
-  - Hisotry
+  - History
   - Pop-culture
   - Automation and Jobs
   - Ethics
   - Moral Decision Making
   - Liability
 - Design
-  - Computer Aided Design
-  - Fabrication
-  - Electronics
-  - Safety
-  - Embedded Systems
+  - Requirements Engineering
+  - Computer Aided Design (CAD) (eg, OnShape)
+  - Fabrication (eg, 3D Printing, Laser Cutting)
+  - Electronics (eg, Soldering, Circuits)
+  - Safety (eg, Emergency Braking, Active Enable)
+  - Embedded Systems (eg, Arduino, I2C, BLE, Debugging)
+- Mathematics and Numerics
+  - Vectors, Spaces, and Linear Algebra
+  - Least Squares
+  - Probability
+  - Statistics
+  - Optimization
 - Modeling
   - Kinematics
   - Dynamics
   - Simulation
+  - State-Space
+  - Discretization
+  - Linearization
 - Control
   - Open-loop Control
-  - Feedback Control
+  - Feedback Control (eg, PID)
+  - LQR and iLQR
+  - MPC and MPPI
+  - Control Theory
+  - Bug Algorithms
+  - State Machines
   - Sense-Plan-Act
   - Hierarchical Control
-  - State Machines
-  - Bug Algorithms
-- Uncertainty
+- Localization
+  - Uncertainty
   - Error Propagation
+  - Bayes Theorem
   - State Estimation
   - Sensor Fusion
-  - Kalman Filters
+  - Histogram Filters
+  - Kalman Filters (eg, KF, EKF, UKF)
   - Particle Filters
 - Mapping
-  - Representation
-  - Localization
-  - SLAM
+  - Representation (eg, Occupancy Grid)
+  - Cell Decomposition (eg, quadtree)
+  - Roadmaps (eg, Voronoi)
+  - Potential Fields
+  - Point Clouds
+  - Clustering
+  - Iterative Closest Point (ICP)
+  - SLAM (eg, Graph-based, EKF, FastSLAM)
 - Planning
   - Global and Local
+  - Constraints
+  - Dynamic Window Approach
+  - Trajectory Tracking (eg, Pure Pursuit, MPC, iLQR)
+  - Probabilistic Roadmaps (PRM)
+  - Graph Search (eg, BFS, DFS, A*, D* Lite)
+  - Sampling (eg, RRT)
   - Motion Planning
   - Trajectory Planning
   - Path Planning
@@ -364,4 +465,6 @@ markmap:
   - Optical Flow
   - Object Detection
   - Segmentation
-  - Learning
+  - Learning (eg, ML, RL, Policy Search)
+
+[terrybrash/dragon-space: Spatial partitioning concepts and implementions.](https://github.com/terrybrash/dragon-space)

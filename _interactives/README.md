@@ -60,6 +60,16 @@ Stick to these packages when creating new interactives:
 
 Let me know if you want to add additional dependencies.
 
+## Interactive Platforms
+
+Let's try to stick to the following example for interactives:
+
+- Holonomic Robot
+- Quadrotor (2d and/or 3d)
+- Differential Drive Robot
+- Tricycle Robot
+- Inverted Pendulum
+
 ## Note About ESLint
 
 ESLint version 9 is the latest version (as of this writing). However, eslint@^8 is the latest version compatible with @stylistic/eslint. We will move to eslint@latest later (using `npm init @eslint/config@latest`).
