@@ -29,10 +29,10 @@ public:
   }
 
   void initialize() {
-    pinMode(pwmPin, OUTPUT);
-    analogWrite(pwmPin, 0);
-    pinMode(directionPin, OUTPUT);
-    digitalWrite(directionPin, LOW);
+    pinMode(pwmPin_, OUTPUT);
+    analogWrite(pwmPin_, 0);
+    pinMode(directionPin_, OUTPUT);
+    digitalWrite(directionPin_, LOW);
   }
 
   void set(Direction direction, int pwm)
@@ -47,7 +47,7 @@ public:
 
   void stop()
   {
-    this.set(0, 0);
+    set(FORWARD, 0);
   }
 
   void setProportional(int motorSpeedPercent, float measuredSpeed)
@@ -59,9 +59,9 @@ public:
 
     float pwm = constrain(controlGain_ * error, -maxPWMDelta_, maxPWMDelta_);
 
-    int direction = motorSpeed > 0 ? FORWARD : REVERSE;
+    Direction direction = motorSpeed > 0 ? FORWARD : REVERSE;
 
-    this.set(direction, pwm);
+    set(direction, pwm);
   }
 };
 
