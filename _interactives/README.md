@@ -6,8 +6,7 @@ Install dependencies:
 
 - Install [Node.js](https://nodejs.org/) on your system
 - Install [VSCode](https://code.visualstudio.com/)
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- (Optional) [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
+- Install the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension
 
 Add the following to your VSCode settings:
 
@@ -18,6 +17,19 @@ Add the following to your VSCode settings:
     "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" }
   },
 ~~~
+
+### (Optional) Quokka.js
+
+Here are some highly optional instructions for using [Quokka](https://quokkajs.com/).
+
+- Install the [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) extension
+- Install the following packages for use by Quokka:
+
+  ~~~bash
+  mkdir -p ~/.quokka
+  cd ~/.quokka
+  npm install jsdom canvas vite-node
+  ~~~
 
 ## Creating Interactives
 
