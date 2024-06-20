@@ -4,41 +4,41 @@ title: "Schedule"
 
 <!-- 27 total in-class days -->
 
-| Week | Date                 | Chapter (Before Class)                       |
+| Week | Date                 | Chapter                                      |
 | ---: | -------------------- | -------------------------------------------- |
-|    1 | Tue Aug 27           | Introduction and Safety                      |
+| 1    | Tue Aug 27           | Introduction and Safety                      |
 |      | Thu Aug 29           | Design, Assembly, and Electronics            |
-|    2 | Tue Sep 3            | Arduino and Embedded Systems                 |
+| 2    | Tue Sep 3            | Arduino and Embedded Systems                 |
 |      | Thu Sep 5            | Open-Loop Go to Goal                         |
-|    3 | Tue Sep 10           | Culture, Automation, and Jobs                |
+| 3    | Tue Sep 10           | Culture, Automation, and Jobs                |
 |      | Thu Sep 12           | Kinematic Modeling                           |
-|    4 | Tue Sep 17           | Sensors: Wheel Encoders, IMU, and LIDAR      |
+| 4    | Tue Sep 17           | Sensors: Wheel Encoders, IMU, and LIDAR      |
 |      | Thu Sep 19           | Feedback Control                             |
-|    5 | Tue Sep 24           | Sense-Plan-Act                               |
+| 5    | Tue Sep 24           | Sense-Plan-Act                               |
 |      | Thu Sep 26           | Kinematic Trajectory Tracking                |
-|    6 | Tue Oct 1            | Bug Algorithms and State Machines            |
+| 6    | Tue Oct 1            | Bug Algorithms and State Machines            |
 |      | Thu Oct 3            | Maps and Representations                     |
-|    7 | Tue Oct 8            | Sampling and Graph Search                    |
+| 7    | Tue Oct 8            | Sampling and Graph Search                    |
 |      | Thu Oct 10           | Global and Local Path Planning               |
-|    8 | [Tue Oct 15]{.faded} | [Fall break]{.faded}                         |
+| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                         |
 |      | Thu Oct 17           | Uncertainty and Error Propagation            |
-|    9 | Tue Oct 22           | State Estimation and Filters                 |
+| 9    | Tue Oct 22           | State Estimation and Filters                 |
 |      | Thu Oct 24           | Localization                                 |
-|   10 | Tue Oct 29           | Iterative Closest Point (ICP)                |
+| 10   | Tue Oct 29           | Iterative Closest Point (ICP)                |
 |      | Thu Oct 31           | Simultaneous Localization and Mapping (SLAM) |
-|   11 | Tue Nov 5            | Embedded Vision                              |
+| 11   | Tue Nov 5            | Embedded Vision                              |
 |      | Thu Nov 7            | Feature Extraction and Optical Flow          |
-|   12 | Tue Nov 12           | Object Detection and Segmentation            |
+| 12   | Tue Nov 12           | Object Detection and Segmentation            |
 |      | Thu Nov 14           | ?Visual SLAM?                                |
-|   13 | Tue Nov 19           | Imitation and Reinforcement Learning         |
+| 13   | Tue Nov 19           | Imitation and Reinforcement Learning         |
 |      | Thu Nov 21           | Moral Decision Making                        |
-|   14 | Tue Nov 26           | Project Workday                              |
+| 14   | Tue Nov 26           | Project Workday                              |
 |      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                       |
-|   15 | Tue Dec 3            | Project Workday                              |
+| 15   | Tue Dec 3            | Project Workday                              |
 |      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                        |
-|   16 | TBD                  | Final exam                                   |
+| 16   | TBD                  | Final exam                                   |
 
-: {.striped}
+: {.striped .sm}
 
 ## Course Topics and Modules
 
@@ -82,7 +82,7 @@ Modules
 |   26 | Project Workday                              |                      |                     |
 |   27 | Project Workday                              |                      |                     |
 
-: {.striped}
+: {.striped .sm}
 
 ## Exercise Notes
 
@@ -199,7 +199,10 @@ Here is the inventory of topics I considered when developing this course.
 | 8 | Uncertainty   | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM               |
 | 9 | Society       | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
 
-<iframe src="_static/markmap.html" frameborder="0"></iframe>
+## Mind Map of Mobile Robotics
+
+<iframe width="100%" height="400px" style="border: 1px solid black;" src="../_static/markmap.html" frameborder="0"></iframe>
+
 
 <!--
 [Try markmap](https://markmap.js.org/repl)
