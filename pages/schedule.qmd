@@ -4,24 +4,6 @@ title: "Schedule"
 
 <!-- 27 total in-class days -->
 
-<!--
-#| label: tbl-semester-schedule
-#| tbl-cap: Semester Schedule
-
-from IPython.display import Markdown
-from tabulate import tabulate
-
-table = [["Sun","696,000",1.989e30],
-         ["Earth","6,371",5.972e24],
-         ["Moon","1,737",7.34e22],
-         ["Mars","3,390",6.39e23]]
-
-Markdown(tabulate(
-  table,
-  headers=["Astronomical object","R (km)", "mass (kg)"]
-))
- -->
-
 | Week | Date                 | Chapter (Before Class)                       |
 | ---: | -------------------- | -------------------------------------------- |
 |    1 | Tue Aug 27           | Introduction and Safety                      |
@@ -198,6 +180,7 @@ Other thoughts
 - Boyd LQR notes
 - only teach dynamics when needed; kinematics probably good enough
 - reactive, FSMs, hierarchical FSMs, behavior trees, mission planning
+- qaudrature encoders
 
 
 ## Concept Inventory

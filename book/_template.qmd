@@ -1,6 +1,8 @@
 ---
-title: "Typical Chapter Layout"
+title: "Chapter Layout Template"
 ---
+
+TODO: start with an image?
 
 TODO: [Hypothesis Client](https://h.readthedocs.io/projects/client/en/latest/index.html)
 

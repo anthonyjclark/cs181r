@@ -20,11 +20,14 @@ The course book (this website) is built using [Quarto](https://quarto.org/). Her
 
 - [Quarto](https://quarto.org/)
 - [quarto-vscode](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+- [Python and Jupyter](https://quarto.org/docs/computations/python.html#installation)
 - Additional dependencies listed in `_interactives/README.md`
 
 ### Book Chapters
 
 Create and edit files in the `book` directory. Take a look at the `book/_template.qmd` file to see how to structure a chapter.
+
+Use `quarto preview CHAPTER` to preview a chapter. For examples, `quarto preview book/01-IntroductionAndSafety.qmd`.
 
 ### Interactives
 
@@ -214,3 +217,9 @@ Bluetooth
 - [DiffBot Differential Drive Mobile Robot](https://ros-mobile-robots.com/)
 - [SymForce](https://symforce.org/) code generation
 - [pydy/pydy: Multibody dynamics tool kit.](https://github.com/pydy/pydy)
+
+## Authors
+
+- Ella Zhu
+- Jack Chin
+- Anthony J. Clark

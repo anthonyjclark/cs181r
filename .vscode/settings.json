@@ -27,6 +27,7 @@
     "onclick",
     "Onshape",
     "Pandoc",
+    "pathlib",
     "Pinouts",
     "Pololu",
     "pydy",
@@ -37,6 +38,7 @@
     "revealjs",
     "Roadmaps",
     "Simulink",
+    "startswith",
     "Voronoi",
     "Xiao"
   ],
