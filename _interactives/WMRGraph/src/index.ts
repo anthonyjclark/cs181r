@@ -1,6 +1,6 @@
 import '../css/main.css';
 
-import { WMRGraph } from '../lib/main';
+import { WMRGraph, WMRGraphObstacle } from '../lib/main';
 
 function updateRotation( phi: number ) {
 
@@ -14,11 +14,11 @@ function updateTranslation( x: number, y: number ) {
 
 }
 
-const appElement = document.getElementById( 'baseline' );
+const appElement = document.getElementById( 'app' );
 
 if ( appElement ) {
 
-	new WMRGraph( 'baseline', updateRotation, updateTranslation );
+	new WMRGraph( 'app', updateRotation, updateTranslation );
 
 }
 
@@ -26,18 +26,6 @@ const obstaclesElement = document.getElementById( 'obstacles' );
 
 if ( obstaclesElement ) {
 
-	const graphWithObstacles = new WMRGraph( 'obstacles', updateRotation, updateTranslation );
-
-	// TODO: don't divide by 4
-	const obstaclePoints = [
-		[ 15 / 4, 5 / 4 ],
-		[ 30 / 4, 5 / 4 ],
-		[ 30 / 4, 35 / 4 ],
-		[ 25 / 4, 35 / 4 ],
-		[ 25 / 4, 10 / 4 ],
-		[ 15 / 4, 10 / 4 ],
-	];
-
-	graphWithObstacles.addObstacle( obstaclePoints );
+	const graphWithObstacles = new WMRGraphObstacle( 'obstacles', updateRotation, updateTranslation );
 
 }
