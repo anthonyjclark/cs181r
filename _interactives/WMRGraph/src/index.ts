@@ -26,6 +26,6 @@ const obstaclesElement = document.getElementById( 'obstacles' );
 
 if ( obstaclesElement ) {
 
-	const graphWithObstacles = new WMRGraphObstacle( 'obstacles', updateRotation, updateTranslation );
+	new WMRGraphObstacle( 'obstacles', updateRotation, updateTranslation );
 
 }
