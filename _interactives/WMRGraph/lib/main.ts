@@ -76,6 +76,8 @@ export class WMRGraphObstacle {
 	private inflatedRegions: Polygon[] = []; // Array to store inflated regions
 	private offsetEdges: Polygon | null = null; // Store offset edges
 
+	private cornerPoints: Point[] = []; // Array to store corner points
+
 	constructor( elementID: string, rotationCB: RotationCB, translationCB: TranslationCB ) {
 
 		this.board = JSXGraph.initBoard( elementID, {
@@ -86,7 +88,7 @@ export class WMRGraphObstacle {
 			showNavigation: false,
 		} );
 
-		const size = 3;
+		const size = 2;
 		const half_size = size / 2;
 
 		// Center at origin facing right
@@ -96,6 +98,9 @@ export class WMRGraphObstacle {
 		// The image should be square
 		// Attach image to the center point
 		const image = this.board.create( 'image', [ imageURL, [ () => this.center.X() - size / 2, () => this.center.Y() - size / 2 ], [ size, size ]] );
+
+		// Create four corner points
+		this.createCornerPoints( size );
 
 		// Move forward point with center point
 		const wmrTranslator = this.board.create( 'transform', [ () => this.center.X(), () => this.center.Y() ], { type: 'translate' } );
@@ -115,6 +120,8 @@ export class WMRGraphObstacle {
 			const x = half_size * Math.cos( angle ) + this.center.X();
 			const y = half_size * Math.sin( angle ) + this.center.Y();
 			this.forward.moveTo( [ x, y ] );
+
+			this.updateCornerPoints( size, angle ); // Update corner points positions
 
 			this.board.unsuspendUpdate();
 			this.drawInflation( wmrForwardAngle() );
@@ -155,6 +162,41 @@ export class WMRGraphObstacle {
 
 	}
 
+	createCornerPoints( size: number ) {
+
+		const half_size = size / 2;
+		this.cornerPoints = [
+			this.board.create( 'point', [ this.center.X() - half_size, this.center.Y() - half_size ], { name: 'P1', visible: true } ),
+			this.board.create( 'point', [ this.center.X() + half_size, this.center.Y() - half_size ], { name: 'P2', visible: true } ),
+			this.board.create( 'point', [ this.center.X() + half_size, this.center.Y() + half_size ], { name: 'P3', visible: true } ),
+			this.board.create( 'point', [ this.center.X() - half_size, this.center.Y() + half_size ], { name: 'P4', visible: true } ),
+		];
+
+	}
+
+	updateCornerPoints( size: number, angle: number ) {
+
+		const half_size = size / 2;
+		const cosA = Math.cos( angle );
+		const sinA = Math.sin( angle );
+
+		const points = [
+			{ x: - half_size, y: - half_size },
+			{ x: half_size, y: - half_size },
+			{ x: half_size, y: half_size },
+			{ x: - half_size, y: half_size },
+		];
+
+		this.cornerPoints.forEach( ( point, i ) => {
+
+			const rotatedX = points[i].x * cosA - points[i].y * sinA;
+			const rotatedY = points[i].x * sinA + points[i].y * cosA;
+			point.moveTo( [ this.center.X() + rotatedX, this.center.Y() + rotatedY ] );
+
+		} );
+
+	}
+
 	addObstacle( obstaclePoints: number[][] ) {
 
 		this.board.create( 'polygon', obstaclePoints );
@@ -187,11 +229,8 @@ export class WMRGraphObstacle {
 		if ( inflate ) {
 
 			console.log( 'inflate draw' );
-
 			const n = points.length;
-
 			const inflateArr = Array( n ).fill( sliderValue );
-
 			this.drawInflatedRegion( this.board, points, inflateArr );
 
 		}
@@ -213,7 +252,6 @@ export class WMRGraphObstacle {
 	drawAgentRegion( board: Board, points: { x: number, y: number }[], angle: number ) {
 
 		const segmentDiffs = [];
-
 		const n = points.length;
 		const agentPoints = [ { x: this.center.X(), y: this.center.Y() }, { x: this.forward.X(), y: this.forward.Y() } ];
 
@@ -221,7 +259,6 @@ export class WMRGraphObstacle {
 
 			const curr = points[idx];
 			const next = points[( idx + 1 ) % n];
-
 			const segmentAngle = Math.atan2( next.y - curr.y, next.x - curr.x );
 
 			const newPoints: { x: number, y: number }[] = agentPoints.map( ( p: { x: number, y: number } ) => {
@@ -264,7 +301,6 @@ export class WMRGraphObstacle {
 		const length = Math.sqrt( segNorm.x * segNorm.x + segNorm.y * segNorm.y );
 		segNorm.x = ( segNorm.x / length ) * magnitude;
 		segNorm.y = ( segNorm.y / length ) * magnitude;
-
 		return segNorm;
 
 	}
@@ -272,7 +308,6 @@ export class WMRGraphObstacle {
 	drawPolygon( board: Board, points: { x: number, y: number }[] ) {
 
 		console.log( points );
-
 		const poly = board.create( 'polygon', points.map( p => [ p.x, p.y ] ), {
 			fillColor: 'none',
 			borders: { strokeWidth: 2 },
@@ -286,7 +321,6 @@ export class WMRGraphObstacle {
 	drawInflatedRegion( board: Board, points: { x: number, y: number }[], inflate: number[] ) {
 
 		const n = points.length;
-
 		const rectangles = [];
 
 		for ( let idx = 0; idx < n; idx ++ ) {
