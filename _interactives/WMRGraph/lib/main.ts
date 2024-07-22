@@ -139,9 +139,9 @@ export class WMRGraphObstacle {
 			withLabel: false,
 		} );
 
-		this.inflatedRegionCheck = this.board.create( 'checkbox', [ - 8.25, 7, '' ], {} );
-		this.offsetEdgesCheck = this.board.create( 'checkbox', [ - 6.4, 7, '' ], {} );
-		this.agentOffsetEdgeCheck = this.board.create( 'checkbox', [ - 4.65, 7, '' ], {} );
+		this.inflatedRegionCheck = this.board.create( 'checkbox', [ - 8, 7, '' ], {} );
+		this.offsetEdgesCheck = this.board.create( 'checkbox', [ - 6.2, 7, '' ], {} );
+		this.agentOffsetEdgeCheck = this.board.create( 'checkbox', [ - 4.4, 7, '' ], {} );
 
 		this.inflateSlider.on( 'up', () => this.drawInflation( wmrForwardAngle() ) );
 		this.inflatedRegionCheck.on( 'down', () => this.drawInflation( wmrForwardAngle() ) );
@@ -166,10 +166,10 @@ export class WMRGraphObstacle {
 
 		const half_size = size / 2;
 		this.cornerPoints = [
-			this.board.create( 'point', [ this.center.X() - half_size, this.center.Y() - half_size ], { name: 'P1', visible: true } ),
-			this.board.create( 'point', [ this.center.X() + half_size, this.center.Y() - half_size ], { name: 'P2', visible: true } ),
-			this.board.create( 'point', [ this.center.X() + half_size, this.center.Y() + half_size ], { name: 'P3', visible: true } ),
-			this.board.create( 'point', [ this.center.X() - half_size, this.center.Y() + half_size ], { name: 'P4', visible: true } ),
+			this.board.create( 'point', [ this.center.X() - half_size, this.center.Y() - half_size ], { name: 'P1', visible: false } ),
+			this.board.create( 'point', [ this.center.X() + half_size, this.center.Y() - half_size ], { name: 'P2', visible: false } ),
+			this.board.create( 'point', [ this.center.X() + half_size, this.center.Y() + half_size ], { name: 'P3', visible: false } ),
+			this.board.create( 'point', [ this.center.X() - half_size, this.center.Y() + half_size ], { name: 'P4', visible: false } ),
 		];
 
 	}
@@ -348,6 +348,7 @@ export class WMRGraphObstacle {
 				strokeWidth: 0,
 				fixed: true,
 				vertices: { visible: false },
+				fillOpacity: 0.75,
 			} );
 			this.inflatedRegions.push( polygon ); // Store the inflated region for future removal
 
