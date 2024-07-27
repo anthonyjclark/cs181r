@@ -1,6 +1,6 @@
 import '../css/main.css';
 
-import { WMRGraph, WMRGraphObstacle } from '../lib/main';
+import { WMRGraph, WMRGraphObstacle, DifferentialDriveSimulation } from '../lib/main';
 
 function updateRotation( phi: number ) {
 
@@ -27,5 +27,13 @@ const obstaclesElement = document.getElementById( 'obstacles' );
 if ( obstaclesElement ) {
 
 	new WMRGraphObstacle( 'obstacles', updateRotation, updateTranslation );
+
+}
+
+const feedbackElement = document.getElementById( 'feedback' );
+
+if ( feedbackElement ) {
+
+	new DifferentialDriveSimulation( 'feedback', updateRotation, updateTranslation );
 
 }
