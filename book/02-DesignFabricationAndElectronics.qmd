@@ -215,3 +215,14 @@ arduino
 - solar-powered battery charging
 - 1-2 minute flights
 - https://github.com/nasa/fprime
+
+
+
+## Resources
+
+- Circuit simulators
+  - [Falstad CircuitJS](https://www.falstad.com/circuit/circuitjs.html)
+  - [EveryCircuit](https://everycircuit.com/)
+  - [CircuitLab](https://www.circuitlab.com/)
+- Learning
+  - [Intro to Electronics | Physical Computing](https://makeabilitylab.github.io/physcomp/electronics/)

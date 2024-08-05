@@ -53,7 +53,7 @@ echo "DESCRIPTION        : $DESCRIPTION"
 echo "PACKAGE_NAME_KEBAB : $PACKAGE_NAME_KEBAB"
 
 
-if [[ ! -f "$PACKAGE_NAME" ]]; then
+if [[ -f "$PACKAGE_NAME" ]]; then
   echo "Directory $PACKAGE_NAME already exists. Exiting."
   exit 1
 fi

@@ -54,33 +54,33 @@ Modules
 
 |      | Chapter Topic                                | Interactive          | Exercise            |
 | ---: | -------------------------------------------- | -------------------- | ------------------- |
-|    1 | Introduction and Safety                      |                      | Prototyping         |
-|    2 | Design, Assembly, and Electronics            | CAD with Onshape     | Circuits and Wiring |
-|    3 | Arduino and Embedded Systems                 | Bluetooth LE         | Remote Control      |
-|    4 | Open-Loop Go to Goal                         | Go to Goal           | Motor Control 1     |
-|    5 | Culture, Automation, and Jobs                |                      | Discussions         |
-|    6 | Kinematic Modeling                           | Kinematics           | Motor Control 2     |
-|    7 | Sensors: Wheel Encoders, IMU, and LIDAR      | IMU Plotting         | Sensor Plotting     |
-|    8 | Feedback Control                             | Proportional Control | Motor Control 3     |
-|    9 | Sense-Plan-Act                               | Go to Goal           | Go to Goal          |
-|   10 | Kinematic Trajectory Tracking                | Tracking             | Tracking            |
-|   11 | Bug Algorithms and State Machines            | Bug0                 | Bug0/1/2            |
-|   12 | Maps and Representations                     | Occupancy Grid       | Occupancy Grid      |
-|   13 | Sampling and Graph Search                    | Graph Search         | D* Lite             |
-|   14 | Global and Local Path Planning               | Dynamic              | Reactive Control    |
-|   15 | Uncertainty and Error Propagation            | Uncertainty          | Senor Modeling      |
-|   16 | State Estimation and Filters                 | Circle Drive         | Pose Estimation     |
-|   17 | Localization                                 | Sensor Fusion        | Sensor Fusion       |
-|   18 | Iterative Closest Point (ICP)                | ICP                  | ICP                 |
-|   19 | Simultaneous Localization and Mapping (SLAM) | SLAM                 | SLAM                |
-|   20 | Embedded Vision                              |                      | SenseCraft          |
-|   21 | Feature Extraction and Optical Flow          | Optical Flow         | Optical Flow        |
-|   22 | Object Detection and Segmentation            | Segmentation         | Segmentation        |
-|   23 | ?Visual SLAM?                                |                      |                     |
-|   24 | Imitation and Reinforcement Learning         |                      |                     |
-|   25 | Moral Decision Making                        |                      |                     |
-|   26 | Project Workday                              |                      |                     |
-|   27 | Project Workday                              |                      |                     |
+| 1    | Introduction and Safety                      | CAD with Onshape     | Prototyping         |
+| 2    | Design, Assembly, and Electronics            | Wokwi Simulator?     | Circuits and Wiring |
+| 3    | Arduino and Embedded Systems                 | Bluetooth LE         | Remote Control      |
+| 4    | Open-Loop Go to Goal                         | Go to Goal           | Motor Control 1     |
+| 5    | Culture, Automation, and Jobs                |                      | Discussions         |
+| 6    | Kinematic Modeling                           | Kinematics           | Motor Control 2     |
+| 7    | Sensors: Wheel Encoders, IMU, and LIDAR      | IMU Plotting         | Sensor Plotting     |
+| 8    | Feedback Control                             | Proportional Control | Motor Control 3     |
+| 9    | Sense-Plan-Act                               | Go to Goal           | Go to Goal          |
+| 10   | Kinematic Trajectory Tracking                | Tracking             | Tracking            |
+| 11   | Bug Algorithms and State Machines            | Bug0                 | Bug0/1/2            |
+| 12   | Maps and Representations                     | Occupancy Grid       | Occupancy Grid      |
+| 13   | Sampling and Graph Search                    | Graph Search         | D* Lite             |
+| 14   | Global and Local Path Planning               | Dynamic              | Reactive Control    |
+| 15   | Uncertainty and Error Propagation            | Uncertainty          | Senor Modeling      |
+| 16   | State Estimation and Filters                 | Circle Drive         | Pose Estimation     |
+| 17   | Localization                                 | Sensor Fusion        | Sensor Fusion       |
+| 18   | Iterative Closest Point (ICP)                | ICP                  | ICP                 |
+| 19   | Simultaneous Localization and Mapping (SLAM) | SLAM                 | SLAM                |
+| 20   | Embedded Vision                              |                      | SenseCraft          |
+| 21   | Feature Extraction and Optical Flow          | Optical Flow         | Optical Flow        |
+| 22   | Object Detection and Segmentation            | Segmentation         | Segmentation        |
+| 23   | ?Visual SLAM?                                |                      |                     |
+| 24   | Imitation and Reinforcement Learning         |                      |                     |
+| 25   | Moral Decision Making                        |                      |                     |
+| 26   | Project Workday                              |                      |                     |
+| 27   | Project Workday                              |                      |                     |
 
 : {.striped .sm}
 
@@ -198,6 +198,20 @@ Here is the inventory of topics I considered when developing this course.
 | 7 | Vision        | Conventional, Learning, Optical Flow                                                 |
 | 8 | Uncertainty   | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM               |
 | 9 | Society       | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
+
+Missing:
+- Calculus
+- Physics
+- Electrical, mechanical, and industrial, software engineering
+- Drawing, CAD
+- Digital signal processing
+- materials
+- security
+- ethics
+- cyber security
+- hri
+- soft robotics
+- iot
 
 ## Mind Map of Mobile Robotics
 

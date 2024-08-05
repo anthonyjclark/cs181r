@@ -6,16 +6,19 @@ import { JSXGraph, Board, Point } from 'jsxgraph';
 type RotationCB = ( phi: number ) => void;
 type TranslationCB = ( x: number, y: number ) => void;
 
+// TODO:
+// - allow user to set the position and rotation
+
 export class WMRGraph {
 
 	private board: Board;
-	private center: Point;
-	private forward: Point;
 
 	constructor( elementID: string, rotationCB: RotationCB, translationCB: TranslationCB ) {
 
+		const bsize = 20;
+
 		this.board = JSXGraph.initBoard( elementID, {
-			boundingbox: [ - 10, 10, 10, - 10 ],
+			boundingbox: [ - bsize, bsize, bsize, - bsize ],
 			axis: true,
 			keepaspectratio: true,
 			showCopyright: false,
@@ -26,38 +29,25 @@ export class WMRGraph {
 		const half_size = size / 2;
 
 		// Center at origin facing right
-		this.center = this.board.create( 'point', [ 0, 0 ], { name: 'COM' } );
-		this.forward = this.board.create( 'point', [ half_size, 0 ], { name: 'R' } );
+		const center = this.board.create( 'point', [ 0, 0 ], { name: 'C' } );
 
-		// The image should be square
+		// Forward point used to adjust the rotation angle
+		const circle = this.board.create( 'circle', [ center, half_size ], { visible: false } );
+		const rotation = this.board.create( 'glider', [ circle ], { name: 'r', showInfoBox: false } );
+
+		// NOTE: The image must be square
 		// Attach image to the center point
-		const image = this.board.create( 'image', [ imageURL, [ () => this.center.X() - size / 2, () => this.center.Y() - size / 2 ], [ size, size ]] );
+		// TODO: allow dragging the image
+		const image = this.board.create( 'image', [ imageURL, [ () => center.X() - half_size, () => center.Y() - half_size ], [ size, size ]] );
 
-		// Move forward point with center point
-		const wmrTranslator = this.board.create( 'transform', [ () => this.center.X(), () => this.center.Y() ], { type: 'translate' } );
-		wmrTranslator.bindTo( this.forward );
-
-		// Update wmr angle based on the forward point
-		const wmrForwardAngle = () => Math.atan2( this.forward.Y() - this.center.Y(), this.forward.X() - this.center.X() );
-		const rotator = this.board.create( 'transform', [ wmrForwardAngle, this.center ], { type: 'rotate' } );
+		// Rotate the image based on the rotation point
+		const rotator = this.board.create( 'transform', [ 'atan2(Y(r) - Y(C), X(r) - X(C))', center ], { type: 'rotate' } );
 		rotator.bindTo( image );
 
-		// Constrain forward point to circle around the center point
-		this.board.on( 'move', () => {
+		center.on( 'drag', () => translationCB( center.X(), center.Y() ) );
 
-			this.board.suspendUpdate();
-
-			const angle = wmrForwardAngle();
-			const x = half_size * Math.cos( angle ) + this.center.X();
-			const y = half_size * Math.sin( angle ) + this.center.Y();
-			this.forward.moveTo( [ x, y ] );
-
-			this.board.unsuspendUpdate();
-
-		} );
-
-		this.center.on( 'drag', () => translationCB( this.center.X(), this.center.Y() ) );
-		this.forward.on( 'drag', () => rotationCB( wmrForwardAngle() ) );
+		// @ts-ignore
+		rotation.on( 'drag', () => rotationCB( Math.atan2( rotation.Y() - center.Y(), rotation.X() - center.X() ) ) );
 
 	}
 

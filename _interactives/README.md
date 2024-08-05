@@ -86,4 +86,6 @@ Let's try to stick to the following example for interactives:
 
 ESLint version 9 is the latest version (as of this writing). However, eslint@^8 is the latest version compatible with @stylistic/eslint. We will move to eslint@latest later (using `npm init @eslint/config@latest`).
 
+TODO: looks like we can use the beta version of @stylistic/eslint: https://github.com/eslint-stylistic/eslint-stylistic/pull/452.
+
 Might also take a look at [unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn).
