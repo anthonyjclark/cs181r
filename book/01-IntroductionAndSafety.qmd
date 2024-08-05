@@ -54,7 +54,20 @@ We have two exercises for this class period:
 
 ### Parts List
 
-TODO: table
+TODO: table - DONE
+
+| **Part**             | **Image** | **Quantity** | **Link**                        |
+|----------------------|-----------|--------------|---------------------------------|
+| Microcontroller Base |     (Are Images Necessary?)      | 1            | [XIAO Expansion Board](https://www.seeedstudio.com/Seeeduino-XIAO-Expansion-board-p-4746.html)            |
+| Microcontroller      |           | 1            | [Grove Vision AI v2 Kit](https://www.seeedstudio.com/Grove-Vision-AI-V2-Kit-p-5852.html)          |
+| LiDAR Sensor         |           | 1            | [VL53L5CX TOF 8X8-ZONE 400CM](https://www.digikey.com/en/products/detail/pololu-corporation/3417/19199889?WT.z_header=search_go&s=N4IgjCBcoLQBxVAYygMwIYBsDOBTANCAPZQDaIATGHAMwgC6Avo4RWSAGoAyArDbwGEAGg0ZA)     |
+| Compass Sensor       |           | 1            | [QMC5883L Triple Axis Compass](https://www.amazon.com/AITRIP-QMC5883L-Compass-Magnetometer-Raspberry/dp/B08ZHKDJHD/ref=sr_1_5?crid=2H1LTABHL7KNL&dib=eyJ2IjoiMSJ9.b09b8TFVuBCxSrHq50nMGUkaz1YGHufhnvhBlmgs5M3H_C62EGgAMHAH2Mn-3UNlMiPPAfqbuq6pFasuiGFaJLOzlhRqwu9bVc5Ajrs1lS4XKBh2DeKkxwCTaNXDjAPf9zB09fPVLMXuUxs2QqNOt9FaNnslljynwoQ8GbCWGwjukvo3Ka_YH6LxIjZ23Be3KaTLfS5RGPCL6Cg2OFOxfBBklEnqKeOMmwvHaBn55Ok.acIZ02xS_c5cR6NzqnkBKq31AslL4bxssrPpY1NCu1Q&dib_tag=se&keywords=arduino%2Bcompass&qid=1709790616&sprefix=%2Caps%2C156&sr=8-5&th=1)    |
+| Inertial Sensor      |           | 1            | [MPU6050 6DOF IMU](https://www.amazon.com/Stemedu-Accelerometer-Module%E4%B8%A8GY-521-Gyroscope-Acceleration%E4%B8%A816/dp/B07PY38BCB/ref=sr_1_6?crid=SX4838PJ9DHV&dib=eyJ2IjoiMSJ9.zut0si1EgNuAunnwh53jR0Ag71ssMqozZ42ua9KP4JQ8tw24g_mmxddtbCIt0IJlIi4BQkzQX4JgnhuO6l3tOXHcW3NUJ30ZF1b83fIkzu4lf-SRIIU77iX4sCPfGcXxxhVti6FVXrPrzb3KZ8E-wlNENIQyvAnlnYsHIGQ9nPUFWJGgmFLbS13-OvprKF7RuTFF8Ord8J2DbfPBmuHrXtMdmTsMcyQjlvoNJAAvxrE.uNZiy9CrCbtE2Do5B4bljL3WoabrzHPUKAtvi7ceFQ8&dib_tag=se&keywords=arduino+imu&qid=1709790632&sprefix=arduino+im%2Caps%2C166&sr=8-6)                |
+| Caster Wheel         |           | 1            | [BALL CASTER WITH 3/4" PLASTIC](https://www.digikey.com/en/products/detail/pololu-corporation/954/10449799)   |
+| Motor + Encoder      |           | 2            | [Gearmotor with Encoder Pair](https://www.digikey.com/en/products/detail/dfrobot/FIT0482/7087159)     |
+| Motor Driver         |           | 1            | [DRV8835 DUAL MTR DRIVER CARRIER](https://www.digikey.com/en/products/detail/pololu-corporation/2135/10450429) |
+| (etc...)             |           |              |                                 |
+|                      |           |              |                                 |
 
 Alternative parts:
 

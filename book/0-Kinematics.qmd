@@ -113,6 +113,27 @@ function updateTranslation(newX, newY) {
 new WMRGraph(div_id, updateRotation, updateTranslation);
 ```
 
+```{ojs}
+div_id_obstacle = "jsxdiv-obstacle"
+
+viewof graph_obstacle = html`<div id="${div_id_obstacle}" style="${graph_style}"></div>`
+```
+
+```{ojs}
+import { WMRGraphObstacle } from '../_interactives/WMRGraph/dist/wmr-graph.js';
+
+// function updateRotation(newPhi) {
+//     mutable phi = newPhi.toFixed(2);
+// }
+
+// function updateTranslation(newX, newY) {
+//     mutable x = newX.toFixed(2);
+//     mutable y = newY.toFixed(2);
+// }
+
+new WMRGraphObstacle(div_id_obstacle, updateRotation, updateTranslation);
+```
+
 ## Exercise
 
 Each "chapter" will include the assignment/exercise. These will be completed in class.

@@ -45,5 +45,13 @@
     "Xiao"
   ],
   "liveServer.settings.port": 5501,
-  "eslint.workingDirectories": [ {"pattern": "./_interactives/*/"} ]
+  "eslint.workingDirectories": [ {"pattern": "./_interactives/*/"} ],
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" }
+  },
+  "files.associations": {
+    "complex": "cpp"
+  }
 }
