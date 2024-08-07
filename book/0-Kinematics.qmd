@@ -1,5 +1,5 @@
 ---
-title: "Typical Chapter Layout"
+title: "Kinematics"
 execute:
   echo: false
 ---
@@ -111,6 +111,17 @@ function updateTranslation(newX, newY) {
 }
 
 new WMRGraph(div_id, updateRotation, updateTranslation);
+```
+
+```{ojs}
+import { Player } from '../_interactives/Player/dist/player.js';
+
+function testUpdate( time ) { console.log( time ); }
+
+function testReset() { console.log( 'reset' ); }
+
+player = new Player( 10, 0.1, testUpdate, testReset );
+player.initialize();
 ```
 
 ## Exercise

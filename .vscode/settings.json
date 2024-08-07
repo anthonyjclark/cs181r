@@ -19,6 +19,7 @@
     "Linearization",
     "linewidth",
     "markmap",
+    "maxboundingbox",
     "mecanum",
     "Mechatronics",
     "Messner",
@@ -43,6 +44,7 @@
     "Simulink",
     "startswith",
     "Voronoi",
+    "wmrgraphapp",
     "Xiao"
   ],
   "liveServer.settings.port": 5501,

@@ -59,7 +59,7 @@ interesting embedded idea:
 	+ espruino
 	+ quickjs
 	+ Tasmota/Berry
-	+ AtomVM
+	+ [AtomVM](https://www.atomvm.net/)
 - alternatives
 	+ nim
 	+ rust-embedded
