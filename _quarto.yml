@@ -13,6 +13,7 @@ website:
   page-navigation: true
   repo-url: https://github.com/anthonyjclark/cs181r
   repo-actions: [edit, issue]
+  reader-mode: true
   site-url: "https://cs.pomona.edu/classes/cs181r"
 
   navbar:
@@ -31,7 +32,7 @@ website:
         - book/book.qmd
         - section: "Unit 1: Design and Electronics"
           contents:
-            - book/01-IntroductionAndSafety.qmd
+            - book/01-IntroductionAndDesign.qmd
             - book/02-DesignFabricationAndElectronics.qmd
             - book/03-ArduinoAndEmbeddedSystems.qmd
         - text: "---"

@@ -27,7 +27,7 @@ The course book (this website) is built using [Quarto](https://quarto.org/). Her
 
 Create and edit files in the `book` directory. Take a look at the `book/_template.qmd` file to see how to structure a chapter.
 
-Use `quarto preview CHAPTER` to preview a chapter. For examples, `quarto preview book/01-IntroductionAndSafety.qmd`.
+Use `quarto preview CHAPTER` to preview a chapter. For examples, `quarto preview book/01-IntroductionAndDesign.qmd`.
 
 ### Interactives
 

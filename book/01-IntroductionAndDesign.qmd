@@ -1,31 +1,37 @@
 ---
-title: "Introduction"
+title: "Introduction and Design"
 ---
 
+We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
+
 ```{=html}
-<button style="margin-bottom: 1rem;" type="button" class="btn btn-info" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
+<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
 ```
 
 ![CAD model for my simple prototype.](/images/CADPrototype.png){width=80% #fig-CADPrototype}
 
 This course is a bit of an experiment. We have a lot of ground I would like to cover, but I also want to give you all the opportunity to "discover" solutions to the problems we face (instead of me lecturing "at" you).
 
-One shortcut I've taken is to choose our task and platform (see @fig-CADPrototype). Specifically, we will focus on wheeled mobile robots (WMRs) and the topics most relevant to computer science students. Even still, we will only cover a small fraction of the material available. My hope is that you will learn concepts that you can apply outside of robotics. For example, control theory and linear systems are used in many fields, including chemistry, economics, and biology.
+One shortcut I've taken is to choose our task and platform (see @fig-CADPrototype). Specifically, we will focus on wheeled mobile robots (WMRs) and the topics most relevant to computer science students. Even still, we will only cover a small fraction of the possible material. My hope is that you will also learn concepts you can apply outside of robotics. For example, control theory and linear systems are used in many fields, including chemistry, economics, and biology.
 
-Robotics is a large field comprising material from electrical, mechanical, and computer engineering, as well as computer science, sociology, ethics, biology, law, and more.
+Robotics is a large field comprising material from electrical, mechanical, and computer engineering, as well as computer science, sociology, ethics, biology, law, and more. We'll focus on the computer engineering view of robotics: a bit of electronics and a good amount of programming.
 
 Each chapter in this book will roughly follow the outline below (learning goals, terminology, lecture, interactive, exercise, and a list of resources). The exercises will be completed in class, but you are can continue working on them outside of class when needed.
 
-flatland racer/explorer
+In this first chapter, we will discuss safety concerns and you'll start designing and building your course robot.
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- Basic robot design using computer aided design (CAD) software
+- Simple electronic safety
 
 ## Terminology
 
 robot
-: TBD!
+: a machine capable of performing actions in response to its sensed environment
+
+CAD (computer aided design)
+: using software to design mechanical parts
 
 ## Lecture
 

@@ -6,7 +6,7 @@ title: "Schedule"
 
 | Week | Date                 | Chapter                                      |
 | ---: | -------------------- | -------------------------------------------- |
-| 1    | Tue Aug 27           | Introduction and Safety                      |
+| 1    | Tue Aug 27           | Introduction and Design                      |
 |      | Thu Aug 29           | Design, Assembly, and Electronics            |
 | 2    | Tue Sep 3            | Arduino and Embedded Systems                 |
 |      | Thu Sep 5            | Open-Loop Go to Goal                         |
@@ -54,7 +54,7 @@ Modules
 
 |      | Chapter Topic                                | Interactive          | Exercise            |
 | ---: | -------------------------------------------- | -------------------- | ------------------- |
-| 1    | Introduction and Safety                      | CAD with Onshape     | Prototyping         |
+| 1    | Introduction and Design                      | CAD with Onshape     | Prototyping         |
 | 2    | Design, Assembly, and Electronics            | Wokwi Simulator?     | Circuits and Wiring |
 | 3    | Arduino and Embedded Systems                 | Bluetooth LE         | Remote Control      |
 | 4    | Open-Loop Go to Goal                         | Go to Goal           | Motor Control 1     |
