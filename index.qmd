@@ -6,7 +6,7 @@ title: "Course Information"
 | Fall 2024
 | Tuesday and Thursday
 | 9:35 to 10:50 AM Pacific Time
-| ROOM TBD
+| Edumnds Room 105
 
 ## Instructors
 
@@ -48,9 +48,17 @@ Here are a few habits that will help you:
 
 See my [advising page](https://anthonyjclark.github.io/advising/) for additional information on CS and being a student at Pomona College.
 
-### Teaching Assistants
+### Teaching Assistants And Office Hours
 
-- TBD
+- Monday
+- Tuesday
+- Wednesday
+  - Prof Clark from 9:30 to 11:30 AM in Edmunds 127
+- Thursday
+- Friday
+  - Prof Clark from 9:30 to 11:30 AM in Edmunds 127
+
+You can also schedule an appointment with me by email.
 
 ## Course Description
 
@@ -109,30 +117,38 @@ The general flow of the class will include follow the following routine:
 3. We will then have a brief discussion of the material.
 4. Students will then work on a hands-on exercise related to the material. We will use a Google Sheet to facilitate questions and help, and the exercise will be due on gradescope by the start of the next class period.
 
+::: {style="width: 100%;"}
+
+```{=html}
+<iframe src="./_static/CourseFlow.htm" style="height:220px;width:100%;border:none;overflow:hidden;"></iframe>
+```
+
+:::
+
 ## Grading
 
-This course will have only two assessment categories: quizzes and exercises. Both will be graded using a "nailed it" or "not yet" system. "Nailed it" means that you have mastered the material---you can assume this means you would have received an "A" on the assessment. You can retake quizzes and exercises as many times as you like **up to one week after the original due date.** Final grades will be calculated as:
+This course will have only two assessment categories: quizzes and exercises. Both will be graded using a "nailed it" or "not yet" system. "Nailed it" means that you have mastered the material---you can assume this means you would have received an "A" on the assessment. You can redo quizzes and exercises as many times as you like **up to one week after the original due date.** Redos will occur by appointment or during office hours (or during lecture under special circumstances). Final grades will be calculated as:
 
 ::: {style="width: 50%;"}
 
 | Grade   | Quizzes   | Exercises   |
 | :-----: | --------: | ----------: |
-| A       | 25/25     | 25/25       |
-| A-      | 24/25     | 24/25       |
-| B+      | 23/25     | 23/25       |
-| B       | 22/25     | 22/25       |
-| B-      | 21/25     | 21/25       |
-| C+      | 20/25     | 20/25       |
-| C       | 19/25     | 19/25       |
-| C-      | 18/25     | 18/25       |
-| D+      | 17/25     | 17/25       |
-| D       | 16/25     | 16/25       |
-| D-      | 15/25     | 15/25       |
-| F       | < 15      | < 15        |
+| A       | 25/25     | 12/12       |
+| A-      | 24/25     | 11/12       |
+| B+      | 23/25     | 10/12       |
+| B       | 22/25     |  9/12       |
+| B-      | 21/25     |  8/12       |
+| C+      | 20/25     |  8/12       |
+| C       | 19/25     |  7/12       |
+| C-      | 18/25     |  6/12       |
+| D+      | 17/25     |  6/12       |
+| D       | 16/25     |  6/12       |
+| D-      | 15/25     |  6/12       |
+| F       | < 15      | < 6         |
 
 :::
 
-Many exercises will be completed with a partner. I reserver the right to adjust your grades if you do not contribute at an appropriate level.
+Many exercises will be completed with a partner. I reserver the right to adjust your grades if you do not contribute at an appropriate level (i.e., if your partner does all of the work).
 
 ## Policies
 
@@ -152,7 +168,7 @@ I take violations of academic honesty seriously. I believe it is important to re
 
 ### Academic Advisory Notice
 
-I will do my best to update you if I think you are not performing at your best or if you are not on pace to pass the class. I will first reach out to you and then use the system built-in to [my.pomona.edu](my.pomona.edu) that will notify your advisor so you are encouraged to work with a mentor or advisor on a plan.
+I will do my best to update you if I think you are not performing at your best or if you are not on pace to pass the class. I will first reach out to you and then use the system built-in to [my.pomona.edu](https://my.pomona.edu/ics) that will notify your advisor so you are encouraged to work with a mentor or advisor on a plan.
 
 ### Attendance
 

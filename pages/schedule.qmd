@@ -200,6 +200,7 @@ Here is the inventory of topics I considered when developing this course.
 | 9 | Society       | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
 
 Missing:
+
 - Calculus
 - Physics
 - Electrical, mechanical, and industrial, software engineering

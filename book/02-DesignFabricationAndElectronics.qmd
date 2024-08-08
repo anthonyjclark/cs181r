@@ -2,6 +2,8 @@
 title: "Robot Design"
 ---
 
+We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
+
 ```{=html}
 <button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
 ```
@@ -58,78 +60,14 @@ Some comments about the take-home message.
 
 
 
-
-
-
-
-
-
 https://makeabilitylab.github.io/physcomp/electronics/
 
-What additional information would you need?
-
-- functional requirements
-  - speed
-  - how rugged
-  - terrain (type of movement)
-- design constraints
-  - size
-  - safety
-
-- robot characteristics
-  - mechanisms
-  - electronics
-  - programming
-  - fabrication
-- design considerations
-  - environment
-  - power
-  - materials
-  - senses
-  - style
-
-SBC vs microcontroller
-
-[Systems Engineering Your Robotics Project | PickNik](https://picknik.ai/robotics/systems%20engineering/software%20system/moveit/trigger%20objective/network%20messages/json/rosbridge/roswebtools/python/rust/java/ports/factory%20controller/custom%20ui/ros/multi-robot/interoperability/fleet%20management/end-user/ui/python%20hardware/microserves/dds/tcpros/webapp/docker/ros2/2024/01/30/Systems-Engineering-Your-Robotics-Project.html)
-
-strength
-agility
-stability
-
-Keep a log on the condition of parts
-
-Robots are a collection of subsystems that enable an application
-Robot subsystems (not limited to)
-- Mechatronics: sensors, batteries, computer
-- Motion: motors, transimission, drives systems
-- Structures: chassis, wheels, etc.
-- Control: algorithms, software
 
 
-oled
-- battery info
-- wifi info
-- general status
-
-deadman's switch
-
-battery
-- capacity (how much energy it holds)
-- c-rating (how fast can it discharge---supply power---or charge)
-- cell count
-
-transmission
-- belt, chain, direct
-
-[Part Design Basics - YouTube](https://www.youtube.com/playlist?list=PL4FdDkwWXT9q0bWfy7sxuKQeughT9Fg_Q)
 
 
-1. Define goals
-2. Brainstorm designs
-3. Sketch your layout
-4. Prototype with simple materials
-5. Model with CAD and fabricate
-6. Refine
+
+
 
 tools
 - soldering iron
@@ -144,61 +82,10 @@ tools
 
 PCB design
 
-How to prioritize the requirements?
-
-What components do you need?
 
 
-- general concerns
-  - cost
-  - size
-- motors (DC)
-  - power
-  - voltage
-  - current
-- wheel encoders sensors
-  - logic level
-  - communication
-- motor control
-  - peak and steady current
-  - voltage input
-  - voltage output
-  - logic level
-- power management
-  - power levels
-  - charging
-- microcontroller
-  - processor speed
-  - processor word size
-  - voltage
-  - memory
-  - power consumption
-  - communication with peripherals (I2C, DIO, A2D etc.)
-  - communication with host (USB, WiFi, etc.)
-- battery
-  - capacity
-  - voltage
-  - current
-- sensors
-  - communication
-  - logic level
-  - power level
-  - current
-  - accuracy
-  - speed
-  - resolution
-- miscellaneous
-  - switch
-  - fuse
-  - LEDs
-  - buttons
-  - screen
-  - breadboard/protoboard
 
-more general introduction
-https://builtin.com/robotics
 
-[How to check the battery voltage](https://wiki.seeedstudio.com/check_battery_voltage/)
 
 breakout boards
 arduino
@@ -220,9 +107,47 @@ arduino
 
 ## Resources
 
+
+
+
+
+
+
+
+
+
 - Circuit simulators
   - [Falstad CircuitJS](https://www.falstad.com/circuit/circuitjs.html)
   - [EveryCircuit](https://everycircuit.com/)
   - [CircuitLab](https://www.circuitlab.com/)
 - Learning
   - [Intro to Electronics | Physical Computing](https://makeabilitylab.github.io/physcomp/electronics/)
+
+
+
+
+
+
+- Getting Started in Electronics
+  - [Getting started in electronics, Mims]
+  - [Ultimate Electronics Book](https://ultimateelectronicsbook.com/)
+  - [Home | Physical Computing](https://makeabilitylab.github.io/physcomp/)
+  - [ITP Physical Computing](https://itp.nyu.edu/physcomp/)
+
+- Lab Safety
+  - [The Importance of Electrical Safety](https://www.allaboutcircuits.com/textbook/direct-current/chpt-3/importance-electrical-safety/)
+  - [Hands-on Electronics 7.1 Safety](https://www.oreilly.com/library/view/practical-electronics-for/9781259587559/xhtml/18_Chapter_07.xhtml)
+
+
+
+
+	title = {Getting started in electronics},
+	author = {Mims, Forrest M.},
+	title = {Practical electronics for inventors},
+	author = {Scherz, Paul and Monk, Simon},
+	title = {The art of electronics},
+	author = {Horowitz, Paul},
+
+
+build-up concept map over semester
+print parts daily checklists

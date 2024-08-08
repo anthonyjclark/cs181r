@@ -18,80 +18,107 @@ Robotics is a large field comprising material from electrical, mechanical, and c
 
 Each chapter in this book will roughly follow the outline below (learning goals, terminology, lecture, interactive, exercise, and a list of resources). The exercises will be completed in class, but you are can continue working on them outside of class when needed.
 
-In this first chapter, we will discuss safety concerns and you'll start designing and building your course robot.
+In this first chapter, we will discuss design and you'll start designing and building your course robot.
 
 ## What you will learn
 
+- How to define requirements for a robot
+- How to select mechanical and electrical parts for a robot
 - Basic robot design using computer aided design (CAD) software
-- Simple electronic safety
 
 ## Terminology
 
 robot
 : a machine capable of performing actions in response to its sensed environment
 
+requirements
+: a set of expected characteristics and abilities for a system
+
 CAD (computer aided design)
 : using software to design mechanical parts
 
 ## Lecture
 
-A video of slides, coding, hands-on electronics, etc.
+This first chapter is lighter than subsequent ones. The first class period will be fairly traditional: I'll present the lecture during class.
 
-What is a robot?
 
-What role do you think AI plays in this course?
 
-Levels (AJC: we'll do it all; maybe bad idea)
-- Low level: motor control, sensor interfacing
-- Mid level: motion profile, coordination
-- High level: AI, navigation, mapping
-
+TODO: add link to slides
+TODO: maybe use https://github.com/jmgirard/embedpdf
 
 ## Interactive
 
+Here is a 3D model of our robot:
 
+```{=html}
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+<model-viewer style="height: 50vh; width: 100%;" alt="3D CAD model of my wheeled mobile robot." src="../_static/models/WMR.glb" ar camera-controls touch-action="pan-y"></model-viewer>
+```
+
+I created this model using [Onshape for Education](https://www.onshape.com/en/education/) (free). You will **not** be required to design and fabricate your own chassis for this course, but I highly recommend doing so. Learning CAD, 3D printing, and laser cutting will open up many possibilities for you in the future.
+
+TODO: video on 3d printing a wheel
+
+TODO: video on laser cutting a chassis
 
 ## Exercise
 
 We have two exercises for this class period:
 
-1. An introduction to robotics via a quiz on gradescope.
-2. Building our simple robot.
+1. A short introduction quiz on [gradescope](https://www.gradescope.com/).
+2. Building our simple robot. We'll discuss this in class.
 
 ### Parts List
 
-TODO: table
+Parts supplied in each kit:
+
+| Category        | Part                                                                                                                                                                        | Quantity   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| Mechanical      | [Ball Caster](https://www.pololu.com/product/954)                                                                                                                           | 1          |
+| Mechanical      | [Motor Mount](https://www.amazon.com/simhoa-100pcs-Micro-Mounting-Bracket/dp/B092SPHYM2)                                                                                    | 2          |
+| Prototyping     | [Breadboard](https://www.digikey.com/en/products/detail/bud-industries/BB-32650-W/10518730)                                                                                 | 1          |
+| Locomotion      | [Gearmotor with encoder](https://www.digikey.com/en/products/detail/dfrobot/FIT0482/7087159)                                                                                | 2          |
+| Microcontroller | [XIAO ESP32S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html)                                                                                                        | 1          |
+| Peripheral      | [Expansion Board Base for XIAO](https://www.seeedstudio.com/Seeeduino-XIAO-Expansion-board-p-4746.html)                                                                     | 1          |
+| Sensor          | [MPU-6050 Inertial Measurement Unit](https://www.amazon.com/Stemedu-Accelerometer-Module%E4%B8%A8GY-521-Gyroscope-Acceleration%E4%B8%A816/dp/B07PY38BCB)                    | 1          |
+| Sensor          | [QMC5883L Triple Axis Compass](https://www.amazon.com/AITRIP-QMC5883L-Compass-Magnetometer-Raspberry/dp/B08ZHKDJHD)                                                         | 1          |
+| Sensor          | [VL53L7CX Time-of-Flight ranging sensor](https://www.st.com/en/ecosystems/satel-vl53l7cx.html)                                                                              | 1          |
+| Driver          | [DRV8835 Dual Motor Driver](https://www.pololu.com/product/2135)                                                                                                            | 1          |
+| Wiring          | [Jumper Cables](https://www.digikey.com/en/products/detail/bud-industries/BC-32625/4156446)                                                                                 | x          |
+| Wiring          | [Grover Connector](https://www.seeedstudio.com/Grove-4-pin-Female-Jumper-to-Grove-4-pin-Conversion-Cable-5-PCs-per-PAck.html)                                               | 1          |
+| Storage         | [Plastic Container](https://www.amazon.com/gp/product/B07DFBSTFR)                                                                                                           | 1          |
+| Power           | [2600mAh 18650 battery](https://liionwholesale.com/collections/batteries/products/protected-2600mah-10a-18650-button-top-battery-wholesale-discount?variant=28408793923678) | 1          |
+| Power           | [Battery Contact](https://www.digikey.com/en/products/detail/keystone-electronics/254/9646025)                                                                              | 2          |
+| Power           | [Voltage Tester](https://www.amazon.com/gp/product/B07Q2RQYPJ?psc=1)                                                                                                        | 1          |
+| Power           | 3D Printed Battery Holder                                                                                                                                                   | 1          |
+
+- add: switch, headers
+- custom battery wiring
+- number of jumpers
+- second grove connector
+- camera
+- parts list with column for condition (new, used, broken, etc.)
+
+Materials shared by the class:
+
+| Part                                                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------- |
+| Cardboard                                                                                                                  |
+| [M2 Fasteners](https://www.amazon.com/gp/product/B0BXT4FG1T?psc=1)                                                         |
+| [M3 Fasteners](https://www.amazon.com/gp/product/B0BXT71WJK?psc=1)                                                         |
+| [Velcro](https://www.amazon.com/gp/product/B0CH8K8VWC)                                                                     |
+| [Rubber Bands](https://www.amazon.com/gp/product/B008X09WWG)                                                               |
+| [Sticky Dots](https://www.amazon.com/Stickers-Removable-Waterproof-Festival-Decoration/dp/B08NYDBXFX)                      |
+| [Battery Charger](https://liionwholesale.com/products/xtar-vc8s-battery-charger-wholesale-discount?variant=40969345892421) |
+| [Hot Glue](https://www.amazon.com/Assark-Sticks-School-Repairs-20W/dp/B09FYWQ44L)                                          |
+
+[The Hive](https://colleges.claremont.edu/thehive/) and the [Makerspace](https://make.hmc.edu/) have additional materials, parts, and tools available for your use.
 
 Alternative parts:
 
 - [T-Display-S3](https://www.lilygo.cc/products/t-display-s3)
 
-### Assembly Instructions
-
 ## Resources
 
-
-
-- Getting Started in Electronics
-  - [Getting started in electronics, Mims]
-  - [Ultimate Electronics Book](https://ultimateelectronicsbook.com/)
-  - [Home | Physical Computing](https://makeabilitylab.github.io/physcomp/)
-  - [ITP Physical Computing](https://itp.nyu.edu/physcomp/)
-
-- Lab Safety
-  - [The Importance of Electrical Safety](https://www.allaboutcircuits.com/textbook/direct-current/chpt-3/importance-electrical-safety/)
-  - [Hands-on Electronics 7.1 Safety](https://www.oreilly.com/library/view/practical-electronics-for/9781259587559/xhtml/18_Chapter_07.xhtml)
-
-
-
-
-	title = {Getting started in electronics},
-	author = {Mims, Forrest M.},
-	title = {Practical electronics for inventors},
-	author = {Scherz, Paul and Monk, Simon},
-	title = {The art of electronics},
-	author = {Horowitz, Paul},
-
-
-build-up concept map over semester
-print parts daily checklists
+- [Onshape Part Design Basics Youtube Playlist](https://www.youtube.com/playlist?list=PL4FdDkwWXT9q0bWfy7sxuKQeughT9Fg_Q)
