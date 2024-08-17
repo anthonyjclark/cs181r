@@ -1,6 +1,8 @@
-/.quarto/
 /_site/
+/.quarto/
 /book/drafts/
+_hidden
+.packages
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode
