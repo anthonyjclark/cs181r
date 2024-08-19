@@ -1,13 +1,7 @@
 import gpio
 
-main:
+LED-PIN := gpio.Pin.out 21
+// led-pin := gpio.Pin 21 --output
 
-  led-pin := gpio.Pin 21 --output
-
-  while true:
-
-    led-pin.set 0
-    sleep --ms=1000
-
-    led-pin.set 1
-    sleep --ms=250
+led-on: LED-PIN.set 0
+led-off: LED-PIN.set 1
