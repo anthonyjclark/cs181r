@@ -1,5 +1,9 @@
 # Toit-Based Robot
 
+TODO:
+
+- Motors turn-on when programming the robot. Look into: [suggested reset code](https://github.com/toitlang/toit/blob/f9dc258d690782be551a8ff35fe8f8ae37ad85bc/src/resources/gpio_esp32.cc#L192)
+
 ## Development Path
 
 1. Start with the [blink](./blink) example.
@@ -46,9 +50,10 @@ Resources:
 
 - [Toit Communicating with C code](https://docs.toit.io/tutorials/misc/c-service)
 - [Ultra lite driver (ULD) API for the VL53L7CX](https://www.st.com/en/embedded-software/stsw-img036.html)
+- [Official guide](https://www.st.com/resource/en/user_manual/um3038-a-guide-to-using-the-vl53l7cx-timeofflight-multizone-ranging-sensor-with-90-fov-stmicroelectronics.pdf)
 - [Arduino library to support the VL53L7CX](https://github.com/stm32duino/VL53L7CX)
 - [SparkFun VL53L5CX Arduino Library](https://github.com/sparkfun/SparkFun_VL53L5CX_Arduino_Library)
-- [Official guide](https://www.st.com/resource/en/user_manual/um3038-a-guide-to-using-the-vl53l7cx-timeofflight-multizone-ranging-sensor-with-90-fov-stmicroelectronics.pdf)
+- [VL53L7CX MultiZone TOF Sensor - Simple Demo - YouTube](https://www.youtube.com/watch?v=_qOaqZwT73s)
 
 ## Development Tips
 

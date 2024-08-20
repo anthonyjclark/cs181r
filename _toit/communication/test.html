@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Create WebSocket connection.
+        const socket = new WebSocket("ws://192.168.68.58:58178/");
+
+        // Start heartbeat
+        socket.onopen = (event) => socket.send("Hello Server!");
+
+        // Attempt to reconnect?
+        // socket.onclose = () => { };
+
+        // socket.onreconnect = () => { };
+        socket.onmessage = (event) => console.log("Message from server ", event.data);
+        // socket.onerror = () => { };
+
+    </script>
+</body>
+
+</html>
