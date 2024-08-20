@@ -24,6 +24,32 @@
 - [ ] IMU
 - [ ] camera
 
+## Compass and IMU Drivers
+
+We should write these in `Toit`. They shouldn't be too hard. Both the IMU (MPU6050) and compass (QMC5883L) use the I2C bus.
+
+Here are some resources:
+
+- [How to write an I2C Toit driver](https://docs.toit.io/peripherals/drivers/sparkfun_joystick)
+- [MPU6886 toit driver](https://github.com/imliubo/mpu6886-toit)
+- [Basic MPU-6050 Arduino sketch](https://github.com/kriswiner/MPU6050/tree/master)
+- [QMC5883L Compass Arduino Library](https://github.com/mprograms/QMC5883LCompass)
+
+## VL54L7CX Ranger Driver
+
+This is significantly more complicated. Some options:
+
+- Write the driver in `Toit`.
+- Write the driver in `C` and compiling into the native firmware.
+
+Resources:
+
+- [Toit Communicating with C code](https://docs.toit.io/tutorials/misc/c-service)
+- [Ultra lite driver (ULD) API for the VL53L7CX](https://www.st.com/en/embedded-software/stsw-img036.html)
+- [Arduino library to support the VL53L7CX](https://github.com/stm32duino/VL53L7CX)
+- [SparkFun VL53L5CX Arduino Library](https://github.com/sparkfun/SparkFun_VL53L5CX_Arduino_Library)
+- [Official guide](https://www.st.com/resource/en/user_manual/um3038-a-guide-to-using-the-vl53l7cx-timeofflight-multizone-ranging-sensor-with-90-fov-stmicroelectronics.pdf)
+
 ## Development Tips
 
 Workflow
