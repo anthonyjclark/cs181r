@@ -1,0 +1,81 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Front Matter\"\n",
+        "---\n",
+        "\n",
+        "\n",
+        "## Table of Contents\n",
+        "\n",
+        "<!-- TODO: fields: [image, title, reading-time] -->\n"
+      ],
+      "id": "c6b94221"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: tbl-table-of-contents\n",
+        "#| echo: false\n",
+        "\n",
+        "# TODO: better to parse _quarto.yml file since it includes glossary, order, etc.\n",
+        "\n",
+        "from pathlib import Path\n",
+        "from re import match\n",
+        "\n",
+        "from IPython.display import Markdown\n",
+        "from tabulate import tabulate\n",
+        "\n",
+        "def is_chapter(file):\n",
+        "    # Chapters start with \\d\\d or A\\d\n",
+        "    return match(r\"\\d\\d-.+\\.qmd\", file.name)\n",
+        "\n",
+        "files = sorted([file for file in Path(\".\").glob(\"*.qmd\") if is_chapter(file)])\n",
+        "\n",
+        "table = []\n",
+        "for i, filename in enumerate(files):\n",
+        "    with open(filename, \"r\") as file:\n",
+        "        head = [next(file) for _ in range(10)]\n",
+        "    title = [line.split('\"') for line in head if line.startswith('title')][0][1]\n",
+        "    table.append([i + 1, f\"[{title}]({filename})\"])\n",
+        "\n",
+        "Markdown(tabulate(table, headers=[\"Chapter\", \"Title\"]))"
+      ],
+      "id": "tbl-table-of-contents",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Copyright\n",
+        "\n",
+        "## Acknowledgements\n",
+        "\n",
+        "## Resources\n",
+        "\n",
+        "### Similar Courses\n",
+        "\n",
+        "### Books\n",
+        "\n",
+        "### Software"
+      ],
+      "id": "98b85854"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/usr/local/Caskroom/mambaforge/base/envs/web/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

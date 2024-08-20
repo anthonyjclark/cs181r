@@ -8,7 +8,7 @@ We are using [hypothesis](https://hypothes.is) for this book. So please add ques
 <button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
 ```
 
-Some introductory text.
+Now that you have the basic form of your robot, it is time to design the electronics that will make it sense and move.
 
 ## What you will learn
 
@@ -16,15 +16,14 @@ Some introductory text.
 
 ## Terminology
 
-- A list of new terms
+breakout board
+: a printed circuit board (PCB) board that makes a chip easier to use when prototyping
 
 ## Lecture
 
 A video of slides, coding, hands-on electronics, etc.
 
 Consider the following scenario:
-
-> You must design a robot to race on a track with direction signs.
 
 TODO: add image here? camera view and top-down
 TODO: start with track? (easier for wall following) (maybe not needed if doing point A to B task instead of race track)

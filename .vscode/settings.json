@@ -23,6 +23,7 @@
     "linewidth",
     "markmap",
     "maxboundingbox",
+    "MCU's",
     "mecanum",
     "Mechatronics",
     "Messner",
@@ -32,6 +33,7 @@
     "newcommand",
     "OLED",
     "onclick",
+    "onreconnect",
     "Onshape",
     "Pandoc",
     "pathlib",
@@ -46,6 +48,7 @@
     "Roadmaps",
     "Simulink",
     "startswith",
+    "Toit",
     "Voronoi",
     "wmrgraphapp",
     "Xiao"

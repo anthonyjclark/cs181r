@@ -41,10 +41,30 @@ CAD (computer aided design)
 
 This first chapter is lighter than subsequent ones. The first class period will be fairly traditional: I'll present the lecture during class.
 
-
-
 TODO: add link to slides
 TODO: maybe use https://github.com/jmgirard/embedpdf
+TODO: add link to layout slides
+
+
+```{=html}
+<script>
+let questions = {
+	"questions": [
+		{
+			"time": "8:34",
+			"type": "multi-select",
+			"choices": [
+				{ "marked": "yes", "value": "answer 1" },
+				{ "marked": "yes", "value": "answer 1" },
+				{ "marked": "yes", "value": "answer 1" },
+			]
+		}
+	]
+}
+
+// do the fancy stuff
+</script>
+```
 
 ## Interactive
 
@@ -62,6 +82,16 @@ TODO: video on 3d printing a wheel
 
 TODO: video on laser cutting a chassis
 
+[Battery Holder](https://cad.onshape.com/documents/5b90f38d028559cb3c97719b/w/1a10ad2e6d55142f5309305a/e/c3586516fe7ae214a5bcf1a1)
+
+Script:
+
+- show gathering dimensions from datasheets
+- create new onshape document
+- import (copy and paste) dimensions
+- create wheel
+- create chassis
+
 ## Exercise
 
 We have two exercises for this class period:
@@ -73,32 +103,39 @@ We have two exercises for this class period:
 
 Parts supplied in each kit:
 
-| Category        | Part                                                                                                                                                                        | Quantity   |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| Mechanical      | [Ball Caster](https://www.pololu.com/product/954)                                                                                                                           | 1          |
-| Mechanical      | [Motor Mount](https://www.amazon.com/simhoa-100pcs-Micro-Mounting-Bracket/dp/B092SPHYM2)                                                                                    | 2          |
-| Prototyping     | [Breadboard](https://www.digikey.com/en/products/detail/bud-industries/BB-32650-W/10518730)                                                                                 | 1          |
-| Locomotion      | [Gearmotor with encoder](https://www.digikey.com/en/products/detail/dfrobot/FIT0482/7087159)                                                                                | 2          |
-| Microcontroller | [XIAO ESP32S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html)                                                                                                        | 1          |
-| Peripheral      | [Expansion Board Base for XIAO](https://www.seeedstudio.com/Seeeduino-XIAO-Expansion-board-p-4746.html)                                                                     | 1          |
-| Sensor          | [MPU-6050 Inertial Measurement Unit](https://www.amazon.com/Stemedu-Accelerometer-Module%E4%B8%A8GY-521-Gyroscope-Acceleration%E4%B8%A816/dp/B07PY38BCB)                    | 1          |
-| Sensor          | [QMC5883L Triple Axis Compass](https://www.amazon.com/AITRIP-QMC5883L-Compass-Magnetometer-Raspberry/dp/B08ZHKDJHD)                                                         | 1          |
-| Sensor          | [VL53L7CX Time-of-Flight ranging sensor](https://www.st.com/en/ecosystems/satel-vl53l7cx.html)                                                                              | 1          |
-| Driver          | [DRV8835 Dual Motor Driver](https://www.pololu.com/product/2135)                                                                                                            | 1          |
-| Wiring          | [Jumper Cables](https://www.digikey.com/en/products/detail/bud-industries/BC-32625/4156446)                                                                                 | x          |
-| Wiring          | [Grover Connector](https://www.seeedstudio.com/Grove-4-pin-Female-Jumper-to-Grove-4-pin-Conversion-Cable-5-PCs-per-PAck.html)                                               | 1          |
-| Storage         | [Plastic Container](https://www.amazon.com/gp/product/B07DFBSTFR)                                                                                                           | 1          |
-| Power           | [2600mAh 18650 battery](https://liionwholesale.com/collections/batteries/products/protected-2600mah-10a-18650-button-top-battery-wholesale-discount?variant=28408793923678) | 1          |
-| Power           | [Battery Contact](https://www.digikey.com/en/products/detail/keystone-electronics/254/9646025)                                                                              | 2          |
-| Power           | [Voltage Tester](https://www.amazon.com/gp/product/B07Q2RQYPJ?psc=1)                                                                                                        | 1          |
-| Power           | 3D Printed Battery Holder                                                                                                                                                   | 1          |
+| Category        | Part                                                                                                                                                     | Quantity   |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| Microcontroller | [XIAO ESP32S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html)                                                                                     | 1          |
+| Peripheral      | [Expansion Board Base for XIAO](https://www.seeedstudio.com/Seeeduino-XIAO-Expansion-board-p-4746.html)                                                  | 1          |
+| Peripheral      | [Vision AI](https://www.seeedstudio.com/Grove-Vision-AI-V2-Kit-p-5852.html)                                                                              | 1          |
+| Sensor          | [MPU-6050 Inertial Measurement Unit](https://www.amazon.com/Stemedu-Accelerometer-Module%E4%B8%A8GY-521-Gyroscope-Acceleration%E4%B8%A816/dp/B07PY38BCB) | 1          |
+| Sensor          | [QMC5883L Triple Axis Compass](https://www.amazon.com/AITRIP-QMC5883L-Compass-Magnetometer-Raspberry/dp/B08ZHKDJHD)                                      | 1          |
+| Sensor          | [VL53L7CX Time-of-Flight ranging sensor](https://www.st.com/en/ecosystems/satel-vl53l7cx.html)                                                           | 1          |
+| Sensor          | [Camera](https://www.seeedstudio.com/OV5647-69-1-FOV-Camera-module-for-Raspberry-Pi-3B-4B-p-5484.html#)                                                  | 1          |
+| Mechanical      | [Ball Caster](https://www.pololu.com/product/954)                                                                                                        | 1          |
+| Mechanical      | [Motor Mount](https://www.amazon.com/simhoa-100pcs-Micro-Mounting-Bracket/dp/B092SPHYM2)                                                                 | 2          |
+| Driver          | [DRV8835 Dual Motor Driver](https://www.pololu.com/product/2135)                                                                                         | 1          |
+| Locomotion      | [Gearmotor with encoder](https://www.digikey.com/en/products/detail/dfrobot/FIT0482/7087159)                                                             | 2          |
+| Power           | [Voltage Tester](https://www.amazon.com/gp/product/B07Q2RQYPJ?psc=1)                                                                                     | 1          |
+| Power           | [Switch](https://www.amazon.com/dp/B0799LBFNY?psc=1)                                                                                                     | 1          |
+| Power           | [2600mAh 18650 battery](https://liionwholesale.com/collections/batteries/products/protected-2600mah-10a-18650-button-top-battery-wholesale-discount)     | 1          |
+| Power           | 3D Printed Battery Holder (with two [Battery Contacts](https://www.digikey.com/en/products/detail/keystone-electronics/254/9646025) and wires)           | 1          |
+| Wiring          | [Breadboard](https://www.digikey.com/en/products/detail/bud-industries/BB-32650-W/10518730)                                                              | 1          |
+| Wiring          | [Grover Conversion Cable](https://www.seeedstudio.com/Grove-4-pin-Female-Jumper-to-Grove-4-pin-Conversion-Cable-5-PCs-per-PAck.html)                     | 1          |
+| Wiring          | [Grove Cable](https://www.seeedstudio.com/Grove-Universal-4-Pin-Buckled-20cm-Cable-5-PCs-pack.html)                                                      | 1          |
+| Wiring          | [Jumper Cables](https://www.digikey.com/en/products/detail/bud-industries/BC-32625/4156446)                                                              | x          |
+| Storage         | [Plastic Container](https://www.amazon.com/gp/product/B07DFBSTFR)                                                                                        | 1          |
 
-- add: switch, headers
-- custom battery wiring
 - number of jumpers
-- second grove connector
-- camera
-- parts list with column for condition (new, used, broken, etc.)
+- parts list with columns for condition (new, used, broken, etc.), count, checked each week
+
+TOOD:
+
+- add headers to esp32 (need to buy)
+- add headers to motor driver
+- add headers to IMU
+- add headers to compass
+- add headers to ranger
 
 Materials shared by the class:
 

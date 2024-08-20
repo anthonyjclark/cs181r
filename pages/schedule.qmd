@@ -160,7 +160,7 @@ Some inspirations:
 - [Robotics and Autonomous Systems — Examples](https://www.mathworks.com/help/overview/examples.html?category=robotics-and-autonomous-systems&s_tid=hc_panel)
 - [Grid based search](https://atsushisakai.github.io/PythonRobotics/modules/path_planning/grid_base_search/grid_base_search.html)
 - [Lidar to grid map](https://atsushisakai.github.io/PythonRobotics/modules/mapping/lidar_to_grid_map_tutorial/lidar_to_grid_map_tutorial.html)
-- [terrybrash/dragon-space: Spatial partitioning concepts and implementions.](https://github.com/terrybrash/dragon-space)
+- [terrybrash/dragon-space: Spatial partitioning concepts and implementations.](https://github.com/terrybrash/dragon-space)
 - Control Architecture Scales (Correll 13.4)
 - graph search like A* or D* Lite (https://www.cs.cmu.edu/~motionplanning/lecture/AppH-astar-dstar_howie.pdf)
 - map/environment representation (https://www.mathworks.com/help/robotics/ug/perform-path-planning-simulation-with-mobile-robot.html)
@@ -187,32 +187,17 @@ Other thoughts
 
 Here is the inventory of topics I considered when developing this course.
 
-|   | Category      | Concepts                                                                             |
-| - | -----------   | ------------------------------------------------------------------------------------ |
-| 1 | Design        | Requirements, CAD, Fabrication, Mechatronics, Electronics, Safety                    |
-| 2 | Programming   | Embedded Systems, Communication, Real-Time, Debugging                                |
-| 3 | Math/Numerics | Linear Algebra, Probability, Statistics, Discretization, Optimization, Linearization |
-| 4 | Modeling      | Diagramming, Mechanics, Kinematics, Dynamics, Simulation, Motion Capture             |
-| 5 | Control       | Feedback, Motion, Robustness, Adaptivity, Reactive, Behavioral                       |
-| 6 | Planning      | Search, Mapping, Motion, Trajectory                                                  |
-| 7 | Vision        | Conventional, Learning, Optical Flow                                                 |
-| 8 | Uncertainty   | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM               |
-| 9 | Society       | History, Laws, Ethics, Morals, Jobs, Pop-Culture                                     |
-
-Missing:
-
-- Calculus
-- Physics
-- Electrical, mechanical, and industrial, software engineering
-- Drawing, CAD
-- Digital signal processing
-- materials
-- security
-- ethics
-- cyber security
-- hri
-- soft robotics
-- iot
+|   | Category    | Concepts                                                                                |
+| - | ----------- | --------------------------------------------------------------------------------------- |
+| 1 | Design      | Requirements, Materials, CAD, Fabrication, Mechatronics, Electronics, Safety            |
+| 2 | Programming | Embedded Systems, Communication, Real-Time, Debugging, Security, IoT, DSP,              |
+| 3 | Math        | Linear Algebra, Calculus, Probability, Statistics, Discretization, Optimization         |
+| 4 | Modeling    | Diagramming, Numerics, Linearization, Kinematics, Dynamics, Simulation, Motion Capture  |
+| 5 | Control     | Feedback, Motion, Robustness, Adaptivity, Reactive, Behavioral                          |
+| 6 | Planning    | Search, Mapping, Motion, Trajectory                                                     |
+| 7 | Vision      | Conventional, Learning, Optical Flow                                                    |
+| 8 | Uncertainty | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM                  |
+| 9 | Society     | History, Laws, Ethics, Morals, Jobs, Pop-Culture, HRI                                   |
 
 ## Mind Map of Mobile Robotics
 

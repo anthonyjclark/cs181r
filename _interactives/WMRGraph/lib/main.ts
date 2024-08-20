@@ -93,12 +93,13 @@ export class WMRGraph {
 			vl = r ul
 		*/
 
+		// TODO: use correct values
 		const r = 0.1;
-		const d = 0.08;
+		const d = 0.07;
 		const s = 1.5;
 
-		const ur = 4;
-		const ul = 3.9;
+		const ur = 20;
+		const ul = 19.9;
 
 		const timeStep = 0.1;
 
