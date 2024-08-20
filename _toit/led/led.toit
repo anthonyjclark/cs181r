@@ -1,7 +1,9 @@
-import gpio
+import gpio show Pin
 
-LED-PIN := gpio.Pin.out 21
-// led-pin := gpio.Pin 21 --output
+import ..pinout
 
-led-on: LED-PIN.set 0
-led-off: LED-PIN.set 1
+class Led:
+  pin/Pin
+  constructor: pin = Pin.out BUILTIN-LED-PIN
+  on: pin.set 0
+  off: pin.set 1

@@ -1,8 +1,9 @@
 import .communication
-import ..blink
+import ..led
 
-class LedTester implements Communicator:
+class LedBlinker implements Communicator:
 
+  led := Led
   state := Communicator.DISABLED
 
   on-open: enable
@@ -17,13 +18,13 @@ class LedTester implements Communicator:
   enable:
     print "Enabling"
     state = Communicator.ENABLED
-    led-on
+    led.on
 
   disable:
     print "Disabling"
     state = Communicator.DISABLED
-    led-off
+    led.off
 
 main:
-  led-tester := LedTester
-  comm := WsCommunication led-tester
+  led-blinker := LedBlinker
+  comm := WsCommunication led-blinker --heartbeat-ms=1000

@@ -5,12 +5,14 @@ import pixel-display show Label PixelDisplay Style
 import pixel-display.two-color show BLACK WHITE
 import ssd1306 show Ssd1306
 
+import ..pinout
+
 SANS ::= Font.get "sans10"
 STYLE ::= Style --color=WHITE --font=SANS
 
 class Display:
-  static SDA ::= Pin 5
-  static SCL ::= Pin 6
+  static SDA ::= Pin SDA-PIN
+  static SCL ::= Pin SCL-PIN
   static FREQUENCY ::= 400_000
 
   display/PixelDisplay

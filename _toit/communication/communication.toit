@@ -1,13 +1,8 @@
-import http
+import http show ResponseWriter RequestIncoming Server
 import net
 
-class CommunicationState:
-  static CLOSED ::= 1
-  static OPENING ::= 2
-  static OPEN ::= 3
-  static CLOSING ::= 4
-
 interface Communicator:
+
   // Object enable/disable interface
   static ENABLED ::= 1
   static DISABLED ::= 2
@@ -23,12 +18,17 @@ interface Communicator:
   // onerror
 
 class WsCommunication:
-  connection-state := CommunicationState.CLOSED
+  static CLOSED ::= 1
+  static OPENING ::= 2
+  static OPEN ::= 3
+  static CLOSING ::= 4
+
+  connection-state := CLOSED
   heart-did-beat := false
 
-  constructor communicator/Communicator:
+  constructor communicator/Communicator --heartbeat-ms/int:
     task:: start-server communicator
-    task:: check-heartbeat communicator
+    task:: check-heartbeat communicator --heartbeat-ms=heartbeat-ms
 
   start-server communicator/Communicator:
     network := net.open
@@ -37,13 +37,13 @@ class WsCommunication:
 
     print "Listening on ws://$network.address:$port/"
 
-    server := http.Server
+    server := Server
 
-    server.listen server-socket :: | request/http.RequestIncoming writer/http.ResponseWriter |
+    server.listen server-socket :: | request/RequestIncoming writer/ResponseWriter |
       print "Connection initiated."
-      connection-state = CommunicationState.OPENING
+      connection-state = OPENING
 
-      // Patch for Firefox
+      // NOTE: Patch for Firefox
       if (request.headers.single "Connection") == "keep-alive, Upgrade":
         request.headers.set "Connection" "Upgrade"
 
@@ -52,7 +52,7 @@ class WsCommunication:
 
         if web-socket:
           print "  Websocket created."
-          connection-state = CommunicationState.OPEN
+          connection-state = OPEN
           heart-did-beat = true
           communicator.on-open
 
@@ -61,23 +61,26 @@ class WsCommunication:
             communicator.on-message data
 
         print "  Websocket connection closed."
-        connection-state = CommunicationState.CLOSING
+        connection-state = CLOSING
         communicator.on-close
 
-  check-heartbeat communicator/Communicator:
+  check-heartbeat communicator/Communicator --heartbeat-ms/int:
 
     while true:
 
-      if connection-state == CommunicationState.CLOSING:
-        connection-state = CommunicationState.CLOSED
+      // Client disconnected
+      if connection-state == CLOSING:
+        connection-state = CLOSED
         communicator.disable
 
+      // Client did not send heartbeat
       else if communicator.is-enabled and (not heart-did-beat):
         communicator.disable
 
+      // Client sent heartbeat but communicator is disabled
       else if (not communicator.is-enabled) and heart-did-beat:
         communicator.enable
 
       heart-did-beat = false
 
-      sleep --ms=1000
+      sleep --ms=heartbeat-ms

@@ -1,36 +1,55 @@
-// jag run motors.toit --device 172.28.85.219
-import gpio
-import gpio.pwm
+import gpio show Pin
+import gpio.pwm show Pwm PwmChannel
 
-main:
-  time-to-run := 3_000
-  half-speed := 0.5
-  dir-forward := 1
-  dir-reverse := 0
+import ..pinout
 
-  left-dir := gpio.Pin 8 --output
+class Motor:
+  static FORWARD ::= 0
+  static REVERSE ::= 1
 
-  left-pwm := gpio.Pin 9
-  left-gen := pwm.Pwm --frequency=10_000 // Minimum around 3K?
-  left-chn := left-gen.start left-pwm
+  static FREQUENCY ::= 10_000
 
-  print "Running forward..."
-  left-dir.set dir-forward
-  left-chn.set-duty-factor half-speed
-  sleep --ms=time-to-run
+  dir-pin/Pin
+  pwm-pin/Pin
+  pwm-generator := Pwm --frequency=FREQUENCY
+  pwm-channel/PwmChannel
 
-  left-chn.set-duty-factor 0.0
-  sleep --ms=1_000
-  print "Running reverse..."
+  constructor dir/int pwm/int:
+    dir-pin = Pin.out dir
+    pwm-pin = Pin pwm
+    pwm-channel = pwm-generator.start pwm-pin
 
-  left-dir.set dir-reverse
-  left-chn.set-duty-factor half-speed
-  sleep --ms=time-to-run
+  set-speed speed/float:
+    // Slamp speed to [-1.0, 1.0]
+    speed = speed > 1.0 ? 1.0 : (speed < -1.0 ? -1.0 : speed)
+    direction := speed > 0.0 ? FORWARD : REVERSE
+    dir-pin.set direction
+    pwm-channel.set-duty-factor speed.abs
 
-  left-chn.set-duty-factor 0.0
-  while true:
-    sleep --ms=1_000
+  stop:
+    set-speed 0.0
 
-  left-chn.close
-  left-gen.close
-  left-pwm.close
+  close:
+    pwm-channel.close
+    pwm-generator.close
+    dir-pin.close
+    pwm-pin.close
+
+class Encoder:
+
+
+class Motors:
+  left := Motor LEFT-MOTOR-DIR-PIN LEFT-MOTOR-PWM-PIN
+  right := Motor RIGHT-MOTOR-DIR-PIN RIGHT-MOTOR-PWM-PIN
+
+  set-speed speed/float:
+    left.set-speed speed
+    right.set-speed speed
+
+  stop:
+    left.stop
+    right.stop
+
+  close:
+    left.close
+    right.close

@@ -1,13 +1,13 @@
-import gpio
-
-import .blink
+import .led
 
 main:
 
+  led := Led
+
   while true:
 
-    led-on
+    led.on
     sleep --ms=1000
 
-    led-off
+    led.off
     sleep --ms=250

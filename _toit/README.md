@@ -1,31 +1,37 @@
-Software
-
-Tips when following the instructions below
+# Toit-Based Robot
 
 TODO:
+- flip right motor direction
+- compute speed from encoder values
+- list of all pins
 
-- change getting mac just using jag
-- do we need to get the port number first? looks automatic
+## Development Path
 
-- Discovering your device's serial port
-  - Run `jag port` before connecting your device.
-  - Plug in your device.
-  - Rerun `jag port` and look for the new device.
-  - Something like `/dev/cu.usbmodem12345678` should appear.
-- Find your device's MAC address
-  - Plug in your device.
-  - Go to [ESP Tool](https://espressif.github.io/esptool-js/).
-  - Press "Connect" and select the serial port.
-  - Copy the "MAC" address.
-- Flash the device with `jag flash --chip esp32s3-spiram-octo`
-- Flash the device with `jag flash --chip esp32s3`
-- Find the device with `jag scan IP:PORT`
+1. Start with the [blink](./blink) example.
+2. Setup wireless communication. Shutdown on disconnect and missed heartbeats.
+3. Setup display so that it can show the MCU's address.
+4. Move motors with open-loop control.
 
+- [✓] blink
+- [✓] communication
+- [✓] display
+- [ ] speaker
+- [✓] motors
+- [ ] encoders
+- [ ] compass
+- [ ] ranger
+- [ ] IMU
+- [ ] camera
 
-```bash
-jag container list --device 172.28.81.122
-jag run hello.toit --device 172.28.81.122
-```
+## Development Tips
+
+- Plug board into USB port.
+- On first connection only:
+  - Run `jag flash --chip esp32s3` (or `jag flash --chip esp32s3-spiram-octo`)
+  - Note the MAC address
+- Run `jag port` to get the serial port.
+- Run `jag monitor` to see serial output. Note the IP address and port.
+- Develop Toit code and run with: `jag run FILE --device IP:PORT`
 
 Follow the [Toit documentation to get started](https://docs.toit.io/getstarted/device).
 Then follow [Setting up Visual Studio Code](https://docs.toit.io/tutorials/setup/ide).
