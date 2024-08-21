@@ -78,9 +78,37 @@ Here is a 3D model of our robot:
 
 I created this model using [Onshape for Education](https://www.onshape.com/en/education/) (free). You will **not** be required to design and fabricate your own chassis for this course, but I highly recommend doing so. Learning CAD, 3D printing, and laser cutting will open up many possibilities for you in the future.
 
+TODO: video on laser cutting a chassis
+
+1. Create new document
+2. Import (copy and paste) dimensions
+3. Layout chassis
+    - base dimensions
+    - holes for various parts
+    - extrude for holes
+    - fillets
+    - auto layout
+    - kerf compensation
+    - use/project then create drawing
+    - view scale 1:1
+    - show/hide -> hide sketch points
+    - right-click and save
+
 TODO: video on 3d printing a wheel
 
-TODO: video on laser cutting a chassis
+1. Create new part studio
+2. Create wheel
+    - wheel rim then extrude
+    - wheel cross then extrude
+    - wheel hub then extrude
+    - motor shaft then extrude/remove
+    - (top view) hole for set pin
+    - plane at top of hub
+    - hole for head of set pin
+    - nut trap (0.45 by 0.2)
+    - circular pattern
+    - fillets
+    - sketch for rubber band and revolve
 
 [Battery Holder](https://cad.onshape.com/documents/5b90f38d028559cb3c97719b/w/1a10ad2e6d55142f5309305a/e/c3586516fe7ae214a5bcf1a1)
 
