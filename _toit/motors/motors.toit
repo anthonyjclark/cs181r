@@ -66,7 +66,9 @@ class Encoder:
     unit.clear
     rotation := count.to-float / COUNTS-PER-ROTATION
     distance := rotation * WHEEL-CIRCUMFERENCE
-    speed := distance / .5
+    // TODO: pass in time-delta?
+    time-delta := 0.5
+    speed := distance / time-delta
     return speed
 
   close:
