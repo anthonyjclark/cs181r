@@ -78,47 +78,48 @@ Here is a 3D model of our robot:
 
 I created this model using [Onshape for Education](https://www.onshape.com/en/education/) (free). You will **not** be required to design and fabricate your own chassis for this course, but I highly recommend doing so. Learning CAD, 3D printing, and laser cutting will open up many possibilities for you in the future.
 
-TODO: video on laser cutting a chassis
+### Creating Parts for the Laser Cutter
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/inhVPL-Ittk?si=ZKNJV3LB6DN3c4b1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Here are the steps taken in the video:
 
 1. Create new document
-2. Import (copy and paste) dimensions
+2. Import (copy and paste) dimensions from a spreadsheet
 3. Layout chassis
-    - base dimensions
-    - holes for various parts
-    - extrude for holes
-    - fillets
-    - auto layout
-    - kerf compensation
-    - use/project then create drawing
-    - view scale 1:1
-    - show/hide -> hide sketch points
-    - right-click and save
+  1. base dimensions then extrude
+  2. holes for various parts
+  3. extrude for holes
+  4. fillets
+  5. auto layout
+  6. kerf compensation
+  7. use/project then create drawing
+  8. view scale 1:1
+  9. show/hide -> hide sketch points
+  10. right-click and save
 
-TODO: video on 3d printing a wheel
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4auP78yJH0E?si=Pe4lD0epFRHsbZWk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Here are the steps taken in the video:
 
 1. Create new part studio
 2. Create wheel
-    - wheel rim then extrude
-    - wheel cross then extrude
-    - wheel hub then extrude
-    - motor shaft then extrude/remove
-    - (top view) hole for set pin
-    - plane at top of hub
-    - hole for head of set pin
-    - nut trap (0.45 by 0.2)
-    - circular pattern
-    - fillets
-    - sketch for rubber band and revolve
+  1. wheel rim then extrude
+  2. wheel cross then extrude
+  3. wheel hub then extrude
+  4. motor shaft then extrude/remove
+  5. (top view) hole for set pin
+  6. plane at top of hub
+  7. hole for head of set pin
+  8. nut trap
+  9. circular pattern
+  10. fillets
+  11. sketch for rubber band and revolve
 
-[Battery Holder](https://cad.onshape.com/documents/5b90f38d028559cb3c97719b/w/1a10ad2e6d55142f5309305a/e/c3586516fe7ae214a5bcf1a1)
+Here are links to the demo parts and the battery holder we use in class:
 
-Script:
-
-- show gathering dimensions from datasheets
-- create new onshape document
-- import (copy and paste) dimensions
-- create wheel
-- create chassis
+- [Battery Holder](https://cad.onshape.com/documents/5b90f38d028559cb3c97719b/w/1a10ad2e6d55142f5309305a/e/c3586516fe7ae214a5bcf1a1)
+- [Demo Chassis and Wheel](https://cad.onshape.com/documents/258ed7f29b777045d6dcabfd/w/1eb6b9ec4af3fbd174f91a9b/e/4273abc53156ffd21df0fe57)
 
 ## Exercise
 
