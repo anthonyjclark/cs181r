@@ -1,28 +1,57 @@
 # Toit-Based Robot
 
-TODO:
+## Getting Started
+
+```bash
+git clone https://github.com/anthonyjclark/MobileRoboticsCode.git
+
+cd MobileRoboticsCode/communication
+jag pkg install
+
+cd ../display
+jag pkg install
+```
+
+## Tips
+
+Workflow
+
+- Plug board into computer/laptop USB.
+- On first connection only:
+  - Run `jag flash --chip esp32s3` (or `jag flash --chip esp32s3-spiram-octo`)
+  - Note the MAC address
+- Run `jag port` to get the serial port.
+- Run `jag monitor` to see serial output. Note the IP address and port.
+- Develop Toit code and run with: `jag run FILE --device IP:PORT`
+
+Tutorials
+
+- Follow the [Toit documentation to get started](https://docs.toit.io/getstarted/device).
+- Then follow [Setting up Visual Studio Code](https://docs.toit.io/tutorials/setup/ide).
+
+Pins
+
+- [Xiao ESP32S3 Pin Labels](https://github.com/espressif/arduino-esp32/blob/master/variants/XIAO_ESP32S3/pins_arduino.h)
+- [Xiao ESP32S3 Schematic (PDF)](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/XIAO_ESP32S3_SCH_v1.2.pdf)
+- [Xiao ESP32S3 Wiki](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
+- [Xiao Expansion Board Wiki](https://wiki.seeedstudio.com/Seeeduino-XIAO-Expansion-Board/)
+
+## Development
+
+### TODO
 
 - Motors turn-on when programming the robot. Look into: [suggested reset code](https://github.com/toitlang/toit/blob/f9dc258d690782be551a8ff35fe8f8ae37ad85bc/src/resources/gpio_esp32.cc#L192)
 
-## Development Path
+## Examples
 
-1. Start with the [blink](./blink) example.
-2. Setup wireless communication. Shutdown on disconnect and missed heartbeats.
-3. Setup display so that it can show the MCU's address.
-4. Incorporate speaker.
-5. Move motors with open-loop control.
-6. Move motors with closed-loop control.
-7. Incorporate compass.
-8. Incorporate ranger.
-9. Incorporate IMU.
-10. Incorporate camera.
-
-- [x] blink
-- [x] communication
-- [x] display
+- [x] hello world
+- [x] led blink
+- [x] communication and heartbeat
+- [ ] display IP address
 - [ ] speaker
-- [x] motors
+- [x] motors (open-loop)
 - [x] encoders
+- [ ] motors (closed-loop)
 - [ ] compass
 - [ ] ranger
 - [ ] IMU
@@ -54,27 +83,3 @@ Resources:
 - [Arduino library to support the VL53L7CX](https://github.com/stm32duino/VL53L7CX)
 - [SparkFun VL53L5CX Arduino Library](https://github.com/sparkfun/SparkFun_VL53L5CX_Arduino_Library)
 - [VL53L7CX MultiZone TOF Sensor - Simple Demo - YouTube](https://www.youtube.com/watch?v=_qOaqZwT73s)
-
-## Development Tips
-
-Workflow
-
-- Plug board into USB port.
-- On first connection only:
-  - Run `jag flash --chip esp32s3` (or `jag flash --chip esp32s3-spiram-octo`)
-  - Note the MAC address
-- Run `jag port` to get the serial port.
-- Run `jag monitor` to see serial output. Note the IP address and port.
-- Develop Toit code and run with: `jag run FILE --device IP:PORT`
-
-Tutorials
-
-- Follow the [Toit documentation to get started](https://docs.toit.io/getstarted/device).
-- Then follow [Setting up Visual Studio Code](https://docs.toit.io/tutorials/setup/ide).
-
-Pins
-
-- [Xiao ESP32S3 Pin Labels](https://github.com/espressif/arduino-esp32/blob/master/variants/XIAO_ESP32S3/pins_arduino.h)
-- [Xiao ESP32S3 Schematic (PDF)](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/XIAO_ESP32S3_SCH_v1.2.pdf)
-- [Xiao ESP32S3 Wiki](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
-- [Xiao Expansion Board Wiki](https://wiki.seeedstudio.com/Seeeduino-XIAO-Expansion-Board/)
