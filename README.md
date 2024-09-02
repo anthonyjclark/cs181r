@@ -37,6 +37,8 @@ Read the `_interactives/README.md` file for more information on creating interac
 
 ### Toit Code
 
+For easier use by students, I am splitting the `_toit` code into its own directory.
+
 ```bash
 # Split _toit into a subtree
 git subtree split --prefix _toit --branch toit
@@ -48,16 +50,25 @@ cd MobileRoboticsCode
 git init
 git pull ../website toit
 gh repo create --public
+gh repo create MobileRoboticsCode --public --source=.
 git push origin main
 
 # Add the subtree remote in the original repository
-git remote add code URL-OF-MOBILE-ROBOTICS-CODE
+cd ../website
+git rm -r _toit
+git commit -m "Remove subtree directory, _toit"
+git remote add code https://github.com/anthonyjclark/MobileRoboticsCode.git
+git subtree add --prefix _toit code main
+```
 
+To update the subtree:
+
+```bash
 # Later: pull changes made to MobileRoboticsCode
-git subtree pull --prefix=_toit code main
+git subtree pull --prefix _toit code main
 
 # Push changes to subtree
-git subtree push --prefix=_toit code main
+git subtree push --prefix _toit code main
 ```
 
 ## TODO
