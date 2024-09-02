@@ -1,5 +1,5 @@
 ---
-title: "Robot Design"
+title: "Layout and Prototyping"
 ---
 
 We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
@@ -8,145 +8,43 @@ We are using [hypothesis](https://hypothes.is) for this book. So please add ques
 <button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
 ```
 
-Now that you have the basic form of your robot, it is time to design the electronics that will make it sense and move.
+Now that you have the basic layout of your robot, it is time to start assembling and adding parts.
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- How to build a prototype out of cheap materials
 
 ## Terminology
 
-breakout board
-: a printed circuit board (PCB) board that makes a chip easier to use when prototyping
+prototype:
+: A first or preliminary version of a device or vehicle from which other forms are developed.
 
 ## Lecture
 
-A video of slides, coding, hands-on electronics, etc.
+The videos for this lecture will focus on getting you comfortable with your electronic components.
 
-Consider the following scenario:
+### Component Layout
 
-TODO: add image here? camera view and top-down
-TODO: start with track? (easier for wall following) (maybe not needed if doing point A to B task instead of race track)
+Your first prototype will use:
 
-give task /environment and ask them to design on first day
-diagnose others teams' issues
-peer-review before batteries connected
+- cardboard
+- sticky dots
+- hot glue
+- velcro
+- nylon fasteners
 
-Side request: new non-AI generated logo for the course
+This video covers the layout of your components and shows assembly of a bit more robust prototype.
 
-TODO: CAD design of wheel in Onshape (for 3d printing and laser cutting)
-[Education Plan | Onshape Product Development Platform](https://www.onshape.com/en/education/)
-
-
-## Interactive
-
-An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
+{{< video https://www.youtube.com/watch?v=TqSfEL34uos >}}
 
 ## Exercise
 
-assignment: pick a new sensor and design system around it
-
-add something to robot -> what changes need be made? (power, comm., etc.)
-
-- pololu, digikey, adafruit, dfrobot, robotshop, sparkfun
-  unmanned vs uninhabited
+We will continue from [the previous lecture](./01-IntroductionAndDesign.qmd#exercise) and add electronics and other hardware to the prototype.
 
 ## Wrap-Up
 
-Some comments about the take-home message.
-
-
-
-
-
-https://makeabilitylab.github.io/physcomp/electronics/
-
-
-
-
-
-
-
-
-tools
-- soldering iron
-- helping hands
-- wire cutters
-- wire strippers
-- flush cutters
-- power supply
-- driver and bits
-- hot glue
-- cardboard
-
-PCB design
-
-
-
-
-
-
-breakout boards
-arduino
-
-
-## Example
-
-[Thursday Day 4 - Mars Helicopter Presentation - YouTube](https://www.youtube.com/watch?app=desktop&v=mQu9m4MG5Gc)
-- 500Hz guidance
-- 30Hz vision-based navigation
-- cell-phone grade ARM processor
-- Cell-phone grade cameras
-- Linux OS
-- solar-powered battery charging
-- 1-2 minute flights
-- https://github.com/nasa/fprime
-
-
+This week you learned how to prototype a robot physical design using cheap materials.
 
 ## Resources
 
-
-
-
-
-
-
-
-
-
-- Circuit simulators
-  - [Falstad CircuitJS](https://www.falstad.com/circuit/circuitjs.html)
-  - [EveryCircuit](https://everycircuit.com/)
-  - [CircuitLab](https://www.circuitlab.com/)
-- Learning
-  - [Intro to Electronics | Physical Computing](https://makeabilitylab.github.io/physcomp/electronics/)
-
-
-
-
-
-
-- Getting Started in Electronics
-  - [Getting started in electronics, Mims]
-  - [Ultimate Electronics Book](https://ultimateelectronicsbook.com/)
-  - [Home | Physical Computing](https://makeabilitylab.github.io/physcomp/)
-  - [ITP Physical Computing](https://itp.nyu.edu/physcomp/)
-
-- Lab Safety
-  - [The Importance of Electrical Safety](https://www.allaboutcircuits.com/textbook/direct-current/chpt-3/importance-electrical-safety/)
-  - [Hands-on Electronics 7.1 Safety](https://www.oreilly.com/library/view/practical-electronics-for/9781259587559/xhtml/18_Chapter_07.xhtml)
-
-
-
-
-	title = {Getting started in electronics},
-	author = {Mims, Forrest M.},
-	title = {Practical electronics for inventors},
-	author = {Scherz, Paul and Monk, Simon},
-	title = {The art of electronics},
-	author = {Horowitz, Paul},
-
-
-build-up concept map over semester
-print parts daily checklists
+- [Cardboard Fundamentals](https://learn.adafruit.com/cardboard-fundamentals?view=all)

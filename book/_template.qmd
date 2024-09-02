@@ -8,7 +8,7 @@ TODO: [Hypothesis Client](https://h.readthedocs.io/projects/client/en/latest/ind
 
 > NOTE: This is a template for a typical chapter layout. Each chapter will have a similar structure. Students will read the chapter before class, and then we will work through the exercises in class (in a flipped-classroom style).
 
-Remember, we are using [hypothesis](https://hypothes.is) for this book. So feel free to add questions and comments. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
+We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
 
 ```{=html}
 <button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
@@ -24,9 +24,16 @@ Some introductory text.
 
 ## Terminology
 
-- A list of new terms
+a list
+: of new terms
 
 ## Lecture
+
+Links
+
+- [Slides (PPTX)](../_static/lectures/)
+- [Slides (PDF)](../_static/lectures/)
+- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
 
 A video of slides, coding, hands-on electronics, etc.
 
@@ -36,6 +43,24 @@ An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/t
 
 ## Exercise
 
-Each "chapter" will include the assignment/exercise. These will be completed in class.
+Intro...
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+### Tasks
 
 ## Resources

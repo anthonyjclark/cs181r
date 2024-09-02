@@ -37,34 +37,21 @@ requirements
 CAD (computer aided design)
 : using software to design mechanical parts
 
+prototype
+: a preliminary model of something from which other forms are developed
+
 ## Lecture
+
+Links
+
+- [Slides (PPTX)](../_static/lectures/01-IntroductionAndDesign.pptx)
+- [Slides (PDF)](../_static/lectures/01-IntroductionAndDesign.pdf)
+- [Printable parts (PDF)](../_static/design/Layout.pdf)
+- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
 
 This first chapter is lighter than subsequent ones. The first class period will be fairly traditional: I'll present the lecture during class.
 
-TODO: add link to slides
-TODO: maybe use https://github.com/jmgirard/embedpdf
-TODO: add link to layout slides
-
-
-```{=html}
-<script>
-let questions = {
-	"questions": [
-		{
-			"time": "8:34",
-			"type": "multi-select",
-			"choices": [
-				{ "marked": "yes", "value": "answer 1" },
-				{ "marked": "yes", "value": "answer 1" },
-				{ "marked": "yes", "value": "answer 1" },
-			]
-		}
-	]
-}
-
-// do the fancy stuff
-</script>
-```
+<!-- TODO: add video on requirements engineering. No time in class. -->
 
 ## Interactive
 
@@ -80,57 +67,129 @@ I created this model using [Onshape for Education](https://www.onshape.com/en/ed
 
 ### Creating Parts for the Laser Cutter
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/inhVPL-Ittk?si=ZKNJV3LB6DN3c4b1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{{< video https://www.youtube.com/embed/inhVPL-Ittk?si=ZKNJV3LB6DN3c4b1 >}}
 
-Here are the steps taken in the video:
+Steps taken in the video:
 
 1. Create new document
-2. Import (copy and paste) dimensions from a spreadsheet
-3. Layout chassis
-  1. base dimensions then extrude
-  2. holes for various parts
-  3. extrude for holes
-  4. fillets
-  5. auto layout
-  6. kerf compensation
-  7. use/project then create drawing
-  8. view scale 1:1
-  9. show/hide -> hide sketch points
-  10. right-click and save
+1. Import (copy and paste) dimensions from a spreadsheet
+1. Layout chassis
+    1. base dimensions then extrude
+    1. holes for various parts
+    1. extrude for holes
+    1. fillets
+1. Prepare sketch for output
+    1. auto layout
+    1. kerf compensation
+    1. use/project then create drawing
+1. Export drawing
+    1. right-click sketch and export to drawing
+    1. view scale 1:1
+    1. click to insert (outside the frame)
+    1. delete all entities inside the frame
+    1. show/hide -> hide sketch points
+    1. right-click and save
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4auP78yJH0E?si=Pe4lD0epFRHsbZWk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+### Creating Parts for the 3D printing
+
+{{< video https://www.youtube.com/embed/4auP78yJH0E?si=Pe4lD0epFRHsbZWk >}}
 
 Here are the steps taken in the video:
 
 1. Create new part studio
-2. Create wheel
-  1. wheel rim then extrude
-  2. wheel cross then extrude
-  3. wheel hub then extrude
-  4. motor shaft then extrude/remove
-  5. (top view) hole for set pin
-  6. plane at top of hub
-  7. hole for head of set pin
-  8. nut trap
-  9. circular pattern
-  10. fillets
-  11. sketch for rubber band and revolve
+1. Create wheel
+    1. wheel rim then extrude
+    1. wheel cross then extrude
+    1. wheel hub then extrude
+    1. motor shaft then extrude/remove
+    1. (top view) hole for set pin
+    1. plane at top of hub
+    1. hole for head of set pin
+    1. nut trap
+    1. circular pattern
+    1. fillets
+    1. sketch for rubber band and revolve
+1. Right-click the part and export as STL
 
 Here are links to the demo parts and the battery holder we use in class:
 
 - [Battery Holder](https://cad.onshape.com/documents/5b90f38d028559cb3c97719b/w/1a10ad2e6d55142f5309305a/e/c3586516fe7ae214a5bcf1a1)
 - [Demo Chassis and Wheel](https://cad.onshape.com/documents/258ed7f29b777045d6dcabfd/w/1eb6b9ec4af3fbd174f91a9b/e/4273abc53156ffd21df0fe57)
+- [My Instructor Prototype](https://cad.onshape.com/documents/850b5a68442a7026c02aa2d8/w/f8a478e9c491df59e094e058/e/9937258ba1daa909dcd30f5e)
+- [Expansion Board Cover](https://cad.onshape.com/documents/f02e77bb2f882b24926359d3/w/89a50e51d556a42733a676c6/e/9ebeda80af2e47c0006aa724)
+
+### Accessing the HMC Makerspace
+
+1. Pass the HMC Makerspace [quizzes](https://make.hmc.edu/?p=quiz-info)
+    1. Pass the General Safety Quiz to use any of the tools and spaces
+    2. Pass the 3D Printer Quiz to use the 3D printers
+    3. Pass the Laser Cutter Quiz to use the laser cutters
+2. Request keycard access
+    1. to the building and
+    2. to the 3D printer / laser cutter room
+
+To request keycard access you must go in-person to the Mudd Facilities and Maintenance (F&M) office, which is in the basement of the [Platt Campus Center](https://map.concept3d.com/?id=656#!ce/7095?ct/7095?m/75247?s/) (you can find an entrance to the basement on the west side of the building).
 
 ## Exercise
 
 We have two exercises for this class period:
 
-1. A short introduction quiz on [gradescope](https://www.gradescope.com/).
+1. A short introduction quiz on [gradescope](https://www.gradescope.com/) (due by the end of the day).
 2. Building our simple robot. We'll discuss this in class.
 
-### Parts List
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
-Parts supplied in each kit:
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+All exercises are (annoyingly) split up across two book chapters (web pages). I've made this decision to keep each web page short and focused at the expense of making the exercises split into two parts.
+
+This exercise entails:
+
+1. (today) designing simple prototype robot (some chassis/platform to mount parts on and some wheels), and
+2. (Thursday) adding your initial electronics.
+
+**The main goal is to get the wheels moving by the end of the exercise.**
+
+You'll be given only part of your kit this week, and you'll receive additional parts throughout the semester.
+
+### Design Exercise
+
+Before you receive your parts (likely not until Thursday) I want each group to design a cardboard robot prototype.
+<!-- given sheet with parts -->
+
+For this first week, you only need to design a platform for the following components:
+
+- XIAO ESP32S3 microcontroller
+- XIAO expansion board
+- Breadboard
+- DRV8835 motor driver
+- Two gearmotors with encoders
+- Caster ball and accessories
+- Battery holder
+- Switch
+- Voltage tester
+
+You will need to create a platform/chassis from cardboard. To do so, you should:
+
+- Layout all of your parts on a piece of cardboard
+- Make certain that holes do not overlap
+- Make certain that you can access all needed ports
+
+### Full Parts List
+
+For reference, here is the full parts list for the course:
 
 | Category        | Part                                                                                                                                                     | Quantity   |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
@@ -152,19 +211,8 @@ Parts supplied in each kit:
 | Wiring          | [Breadboard](https://www.digikey.com/en/products/detail/bud-industries/BB-32650-W/10518730)                                                              | 1          |
 | Wiring          | [Grover Conversion Cable](https://www.seeedstudio.com/Grove-4-pin-Female-Jumper-to-Grove-4-pin-Conversion-Cable-5-PCs-per-PAck.html)                     | 1          |
 | Wiring          | [Grove Cable](https://www.seeedstudio.com/Grove-Universal-4-Pin-Buckled-20cm-Cable-5-PCs-pack.html)                                                      | 1          |
-| Wiring          | [Jumper Cables](https://www.digikey.com/en/products/detail/bud-industries/BC-32625/4156446)                                                              | x          |
+| Wiring          | [Jumper Cables](https://www.digikey.com/en/products/detail/bud-industries/BC-32625/4156446)                                                              | 15         |
 | Storage         | [Plastic Container](https://www.amazon.com/gp/product/B07DFBSTFR)                                                                                        | 1          |
-
-- number of jumpers
-- parts list with columns for condition (new, used, broken, etc.), count, checked each week
-
-TOOD:
-
-- add headers to esp32 (need to buy)
-- add headers to motor driver
-- add headers to IMU
-- add headers to compass
-- add headers to ranger
 
 Materials shared by the class:
 
@@ -179,11 +227,14 @@ Materials shared by the class:
 | [Battery Charger](https://liionwholesale.com/products/xtar-vc8s-battery-charger-wholesale-discount?variant=40969345892421) |
 | [Hot Glue](https://www.amazon.com/Assark-Sticks-School-Repairs-20W/dp/B09FYWQ44L)                                          |
 
-[The Hive](https://colleges.claremont.edu/thehive/) and the [Makerspace](https://make.hmc.edu/) have additional materials, parts, and tools available for your use.
+You can source additional parts at (and tools):
 
-Alternative parts:
+- [The Hive](https://colleges.claremont.edu/thehive/) and
+- [The Makerspace](https://make.hmc.edu/).
 
-- [T-Display-S3](https://www.lilygo.cc/products/t-display-s3)
+## Wrap-Up
+
+Welcome to Mobile Robotics! This first semester will have some rough edges, but I hope we all find it rewarding.
 
 ## Resources
 

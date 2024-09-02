@@ -7,7 +7,7 @@ title: "Schedule"
 | Week | Date                 | Chapter                                      |
 | ---: | -------------------- | -------------------------------------------- |
 | 1    | Tue Aug 27           | Introduction and Design                      |
-|      | Thu Aug 29           | Design, Assembly, and Electronics            |
+|      | Thu Aug 29           | Safety and Programming                       |
 | 2    | Tue Sep 3            | Arduino and Embedded Systems                 |
 |      | Thu Sep 5            | Open-Loop Go to Goal                         |
 | 3    | Tue Sep 10           | Culture, Automation, and Jobs                |

@@ -1,0 +1,179 @@
+---
+title: "Safety and Electronics"
+lightbox: true
+---
+
+We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
+
+```{=html}
+<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
+```
+
+Now that you have the basic layout of your robot, it is time to start assembling and adding parts. In this chapter we'll focus on safety and wiring.
+
+## What you will learn
+
+- How to safely work with electronics and Li-Ion batteries
+- How to read and understand component specifications
+- How to wire and review wiring diagrams
+
+## Terminology
+
+breakout board
+: a printed circuit board (PCB) board that makes a chip easier to use when prototyping
+
+microcontroller
+: a small computer on a single integrated circuit that contains a processor, memory, and programmable input/output peripherals
+
+specifications
+: a detailed description of the design and properties of a component
+
+li-ion battery
+: a type of rechargeable battery that is commonly used in consumer electronics
+
+## Lecture
+
+Links
+
+- [Slides (PPTX)](../_static/lectures/03-SafetyAndElectronics.pptx)
+- [Slides (PDF)](../_static/lectures/03-SafetyAndElectronics.pdf)
+
+### Safety
+
+{{< video https://www.youtube.com/watch?v=dPVVu6CkPjI >}}
+
+### Component Specifications
+
+{{< video https://www.youtube.com/watch?v=rzEm5B9-tuI >}}
+
+### Wiring
+
+{{< video https://www.youtube.com/watch?v=dhOYj4YZzKs >}}
+
+## Exercise
+
+In this week's exercise, you will add components to your cardboard prototype, wire them up, and then write your first programs.
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+This exercise entails:
+
+1. (today) wiring up your robot, and
+2. (Thursday) programming your robot to move.
+
+You'll first need to review the safety tips below.
+
+### Some Safety Tips to Review
+
+#### Battery Safety
+
+- Charging and discharging
+  - Never completely discharge batteries (3.2V for this class)
+  - Charge batteries fully before first use (4.2V)
+  - Never charge batteries to more than their full charge voltage (4.2V)
+  - Do not charge unattended or leave in the charger unattended
+  - Only charge li-ion batteries with a li-ion charger
+  - Only charge protected batteries with a charger rated with that ability
+  - Always charge batteries on and within fireproof materials
+  - Do not use any rechargeable battery or charger with visible damage
+
+- Storing and transporting
+  - Do not store li-ion batteries fully charged for an extended period (i.e., weeks)
+  - Store batteries at 60-70% rated capacity (around 3.5 to 3.8V)
+  - Store and transport batteries in a packed, non-conductive, and safe container
+  - Store batteries in a case or individual box in a cool and dry place
+
+- General
+  - Never short-circuit a battery
+  - Never insert a battery in reverse direction
+  - Do not expose batteries to heat
+  - Do not connect the positive contact to the negative contact without an appropriate load
+  - Never exceed the battery's specifications
+  - Properly dispose of all battery cells and chargers in accordance with local laws and mandates
+  - If a rechargeable battery overheats, hisses, or bulges, immediately quarantine the battery from any combustible materials - ideally, take the battery outside
+  - If a rechargeable battery catches fire, the FAA recommends pouring water or soda on the battery and surrounding areas - ideally, use a foam extinguisher to quell the fire
+  - Use an ABC fire extinguisher
+
+#### Electronics Safety
+
+- General
+  - Always check for loose wires and debris before powering your circuit
+  - Be careful with static electricity (you can accidentally fry a component)
+  - Keep consistent wiring colors (eg, red for power, black for ground, white for SDA)
+  - Connect and test each component in isolation before combining everything
+  - Always put moving parts on “blocks”
+  - Always connect ground before power
+  - Keep a clean workspace (throw away small bits of wire, insulation, etc.)
+  - Always keep an eye on other classmates when your robot is driving autonomously
+  - Always use appropriate gauge wires for power requirements
+  - Hand calculate current through all components and check against datasheets (same for heat)
+  - Know where to find the fire extinguisher
+
+- Power
+  - Never touch the circuit board when it is connected to power
+  - Always disconnect power before changing connections
+  - Keep an eye on your battery's voltage level
+  - Never touch a capacitor (even after power is disconnected)
+
+- Heat
+  - Keep an eye on the heat being generated by your components
+  - The motor driver can get HOT; use caution when positioning and touching
+
+- Ratings
+  - Always check a specifications spreadsheet before connecting two components
+  - Check for matching voltages, currents, etc. before buying components
+  - Make sure you have the correct polarity for all connections
+  - Know current limits of I/O ports
+
+- Software
+  - Use a heartbeat (deadperson's switch)
+  - Always have a way to stop the robot (eg, a kill switch)
+  - Include a `halt` function in your code to reset all state
+  - Kill power to actuators when programming
+
+### Wiring Diagram
+
+Here are the stages of the wiring diagram (click to enlarge):
+
+::: {#fig-wiring layout-ncol="2"}
+
+![No Wires](../_static/images/03-SafetyAndElectronics/1-NoWires.png){group="wiring-gallery"}
+
+![Battery Connections](../_static/images/03-SafetyAndElectronics/2-BatteryConnections.png){group="wiring-gallery"}
+
+![Motor Driver](../_static/images/03-SafetyAndElectronics/3-MotorDriver.png){group="wiring-gallery"}
+
+![Motors](../_static/images/03-SafetyAndElectronics/4-Motors.png){group="wiring-gallery"}
+
+Wiring Stages
+:::
+
+## Wrap-Up
+
+Before class on Thursday please make sure that you have all of your wiring complete.
+
+## Resources
+
+- Circuit simulators
+  - [Falstad CircuitJS](https://www.falstad.com/circuit/circuitjs.html)
+  - [EveryCircuit](https://everycircuit.com/)
+  - [CircuitLab](https://www.circuitlab.com/)
+- Learning electronics
+  - [Makeability Lab](https://makeabilitylab.github.io/physcomp/)
+  - [Ultimate Electronics Book](https://ultimateelectronicsbook.com/)
+  - [Physical Computing](https://itp.nyu.edu/physcomp/)
+  - [Getting Started in Electronics](https://www.amazon.com/Getting-Started-Electronics-Forrest-Mims/dp/0945053282?refinements=p_27%3AForrest+Mims)

@@ -3,15 +3,17 @@ title: "Notation"
 format: html
 ---
 
-Mathematical notation
+
+This page will fill-in as the semester progresses.
+
+<!-- Mathematical notation
 - linear algebra
 - calculus
-- probability
+- probability -->
 
-dimensional analysis
+<!-- dimensional analysis
 syntax checking (possible to multiple?)
-semantic checking (make sense to perform inverse?)
-
+semantic checking (make sense to perform inverse?) -->
 
 - WMR (wheeled mobile robot)
 - AMR (autonomous mobile robot)
@@ -33,11 +35,11 @@ semantic checking (make sense to perform inverse?)
 - path planning (finding a path)
 - motion planning (specifying the motion needed to follow a path)
 
-[Notation](https://dynref.engr.illinois.edu/rvn.html)
+<!-- [Notation](https://dynref.engr.illinois.edu/rvn.html)
 [Tips for mathematical handwriting](https://johnkerl.org/doc/ortho/ortho.html)
-[Householder notation](https://www.cs.utexas.edu/users/flame/laff/alaff/a1appendix-householder-notation.html)
+[Householder notation](https://www.cs.utexas.edu/users/flame/laff/alaff/a1appendix-householder-notation.html) -->
 
-- values
+<!-- - values
 	+ scalar
 	+ vector
 	+ matrix
@@ -47,9 +49,9 @@ semantic checking (make sense to perform inverse?)
 - frames
 - basis
 - transformations
-- time derivative, other derivatives
+- time derivative, other derivatives -->
 
-options
+<!-- options
 - dot
 - bar
 - hat
@@ -59,4 +61,4 @@ options
 - upper/lower case
 - underline
 - script/mathcal/blackboard
-- Greek
+- Greek -->

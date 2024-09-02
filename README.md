@@ -40,6 +40,9 @@ Read the `_interactives/README.md` file for more information on creating interac
 - [Microfeatures I Love in Blogs and Personal Websites](https://danilafe.com/blog/blog_microfeatures/)
 - add goat counter to base template (probably no)
 - add hover/link for definitions and acronyms (glossary: see below)
+- https://github.com/mloubout/critic-markup
+- https://github.com/coatless-quarto/assign
+
 
 ### File
 
