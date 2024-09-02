@@ -35,6 +35,31 @@ I like Bret Victor's take on interactive diagrams. Read is article [Up and Down 
 
 Read the `_interactives/README.md` file for more information on creating interactives.
 
+### Toit Code
+
+```bash
+# Split _toit into a subtree
+git subtree split --prefix _toit --branch toit
+
+# Create new home for the toit code
+cd ..
+mkdir MobileRoboticsCode
+cd MobileRoboticsCode
+git init
+git pull ../website toit
+gh repo create --public
+git push origin main
+
+# Add the subtree remote in the original repository
+git remote add code URL-OF-MOBILE-ROBOTICS-CODE
+
+# Later: pull changes made to MobileRoboticsCode
+git subtree pull --prefix=_toit code main
+
+# Push changes to subtree
+git subtree push --prefix=_toit code main
+```
+
 ## TODO
 
 - Mirror for code directory
