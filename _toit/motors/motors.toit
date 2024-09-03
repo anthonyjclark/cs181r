@@ -22,7 +22,7 @@ class Motor:
     pwm-channel = pwm-generator.start pwm-pin
 
   set-speed speed/float:
-    // Slamp speed to [-1.0, 1.0]
+    // Clamp speed to [-1.0, 1.0]
     speed = speed > 1.0 ? 1.0 : (speed < -1.0 ? -1.0 : speed)
     direction := speed > 0.0 ? FORWARD : REVERSE
     dir-pin.set direction

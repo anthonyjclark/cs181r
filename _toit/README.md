@@ -49,7 +49,7 @@ Pins
 
 - Motors turn-on when programming the robot. Look into: [suggested reset code](https://github.com/toitlang/toit/blob/f9dc258d690782be551a8ff35fe8f8ae37ad85bc/src/resources/gpio_esp32.cc#L192)
 
-## Examples
+## Demo
 
 - [x] hello world
 - [x] led blink
