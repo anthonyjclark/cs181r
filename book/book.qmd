@@ -36,7 +36,13 @@ Markdown(tabulate(table, headers=["Chapter", "Title"]))
 
 ## Copyright
 
+Copyright © 2024 Anthony J. Clark.
+
+All rights reserved. Neither this book, nor any parts within it may be sold or reproduced in any form without permission.
+
 ## Acknowledgements
+
+I would like to thank Ella Zhu and Jack Chin for their contributions to this book.
 
 ## Resources
 

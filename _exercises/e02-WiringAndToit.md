@@ -20,6 +20,8 @@ Upload an image of your wiring.
 
 ## Thursday: Programming
 
+### Flashing the ESP32S3
+
 What is your ESP32's MAC address?
 
 |____|
@@ -27,6 +29,20 @@ What is your ESP32's MAC address?
 What is your ESP32's IP address and port?
 
 |____|
+
+### Running The Blink Demo
+
+What would you change in the led demo to make the LED blink faster?
+
+|____|
+
+### Running the Motors Demo
+
+Find the code for `Motor.set-speed`. What is the range of values that should be passed to this function?
+
+|____|
+
+### Writing Your Own Code
 
 What two other groups reviewed your code?
 
@@ -36,7 +52,7 @@ For which group did you review code?
 
 |____|
 
-Paste your code for making the motors move.
+Paste your code for making the robot rotate in.
 
 |____|
 
@@ -51,7 +67,7 @@ If any of your parts are broken or missing, please indicate so below and send me
 [X] Breadboard
 [X] Motor (x2)
 [X] Motor Driver
-[X] Jumper Wires (x6)
+[X] Jumper Wires (x7)
 [X] Battery Holder
 [X] Batteries
 [X] Switch

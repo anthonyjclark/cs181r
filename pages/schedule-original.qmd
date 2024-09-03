@@ -4,39 +4,39 @@ title: "Schedule"
 
 <!-- 27 total in-class days -->
 
-| Week | Date                 | Chapter                                                         |
-| ---: | -------------------- | --------------------------------------------------------------- |
-| 1    | Tue Aug 27           | [Introduction and Design](../book/01-IntroductionAndDesign.qmd) |
-|      | Thu Aug 29           | [Layout and Prototyping](../book/02-LayoutAndPrototyping.qmd)   |
-| 2    | Tue Sep 3            | [Safety and Electronics](../book/03-SafetyAndElectronics.qmd)   |
-|      | Thu Sep 5            | [Programming with Toit](../book/04-ProgrammingWithToit.qmd)     |
-| 3    | Tue Sep 10           | Open-Loop Go to Goal                                            |
-|      | Thu Sep 12           | Culture, Automation, and Jobs                                   |
-| 4    | Tue Sep 17           | Wheel Encoders and Inertial Sensors                             |
-|      | Thu Sep 19           | Closed-Loop Go to Goal                                          |
-| 5    | Tue Sep 24           | Kinematic Modeling                                              |
-|      | Thu Sep 26           |                                                                 |
-| 6    | Tue Oct 1            |                                                                 |
-|      | Thu Oct 3            |                                                                 |
-| 7    | Tue Oct 8            |                                                                 |
-|      | Thu Oct 10           |                                                                 |
-| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                            |
-|      | Thu Oct 17           |                                                                 |
-| 9    | Tue Oct 22           |                                                                 |
-|      | Thu Oct 24           |                                                                 |
-| 10   | Tue Oct 29           |                                                                 |
-|      | Thu Oct 31           |                                                                 |
-| 11   | Tue Nov 5            |                                                                 |
-|      | Thu Nov 7            |                                                                 |
-| 12   | Tue Nov 12           |                                                                 |
-|      | Thu Nov 14           |                                                                 |
-| 13   | Tue Nov 19           |                                                                 |
-|      | Thu Nov 21           |                                                                 |
-| 14   | Tue Nov 26           | Project Workday                                                 |
-|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                                          |
-| 15   | Tue Dec 3            | Project Workday                                                 |
-|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                                           |
-| 16   | TBD                  | Final exam                                                      |
+| Week | Date                 | Chapter                                      |
+| ---: | -------------------- | -------------------------------------------- |
+| 1    | Tue Aug 27           | Introduction and Design                      |
+|      | Thu Aug 29           | Safety and Programming                       |
+| 2    | Tue Sep 3            | Arduino and Embedded Systems                 |
+|      | Thu Sep 5            | Open-Loop Go to Goal                         |
+| 3    | Tue Sep 10           | Culture, Automation, and Jobs                |
+|      | Thu Sep 12           | Kinematic Modeling                           |
+| 4    | Tue Sep 17           | Sensors: Wheel Encoders, IMU, and LIDAR      |
+|      | Thu Sep 19           | Feedback Control                             |
+| 5    | Tue Sep 24           | Sense-Plan-Act                               |
+|      | Thu Sep 26           | Kinematic Trajectory Tracking                |
+| 6    | Tue Oct 1            | Bug Algorithms and State Machines            |
+|      | Thu Oct 3            | Maps and Representations                     |
+| 7    | Tue Oct 8            | Sampling and Graph Search                    |
+|      | Thu Oct 10           | Global and Local Path Planning               |
+| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                         |
+|      | Thu Oct 17           | Uncertainty and Error Propagation            |
+| 9    | Tue Oct 22           | State Estimation and Filters                 |
+|      | Thu Oct 24           | Localization                                 |
+| 10   | Tue Oct 29           | Iterative Closest Point (ICP)                |
+|      | Thu Oct 31           | Simultaneous Localization and Mapping (SLAM) |
+| 11   | Tue Nov 5            | Embedded Vision                              |
+|      | Thu Nov 7            | Feature Extraction and Optical Flow          |
+| 12   | Tue Nov 12           | Object Detection and Segmentation            |
+|      | Thu Nov 14           | ?Visual SLAM?                                |
+| 13   | Tue Nov 19           | Imitation and Reinforcement Learning         |
+|      | Thu Nov 21           | Moral Decision Making                        |
+| 14   | Tue Nov 26           | Project Workday                              |
+|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                       |
+| 15   | Tue Dec 3            | Project Workday                              |
+|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                        |
+| 16   | TBD                  | Final exam                                   |
 
 : {.striped .sm}
 

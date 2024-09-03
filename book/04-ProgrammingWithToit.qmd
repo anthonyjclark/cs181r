@@ -2,51 +2,112 @@
 title: "Programming with Toit"
 ---
 
-> NOTE: This is a template for a typical chapter layout. Each chapter will have a similar structure. Students will read the chapter before class, and then we will work through the exercises in class (in a flipped-classroom style).
-
 We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
 
 ```{=html}
 <button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
 ```
 
-Some introductory text.
-
-“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+Your prototype should now be ready to program.
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- Programming with Toit
+- Controlling a differential drive robot
 
 ## Terminology
 
-a list
-: of new terms
+over-the-air (OTA) updates
+: a wireless method for updating software on a device
+
+differential drive
+: a drive system in which a robot separately controls the left and right motor speeds
 
 ## Lecture
 
-Links
+Before you watch the videos below, you should skim [the Toit Programming Language description](https://docs.toit.io/language).
 
-- [Slides (PPTX)](../_static/lectures/)
-- [Slides (PDF)](../_static/lectures/)
-- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+### Programming with Toit
 
-A video of slides, coding, hands-on electronics, etc.
+{{< video https://www.youtube.com/watch?v=CApMY93Nw9g >}}
 
-## Interactive
+Key steps from the video:
 
-An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
+1. [Install Toit and Jaguar](https://docs.toit.io/getstarted/device/#2-install-jaguar)
+2. Initialize Jaguar: `jag setup`
+3. Plug your XIAO ESP32-S3 board into your computer
+4. Flash the board: `jag flash --chip esp32s3` (SSID: `Claremont-ETC`; password on Slack)
+5. Clone the course code: `git clone https://github.com/anthonyjclark/MobileRoboticsCode`
+6. In two separate terminals:
+    - Monitor the serial output with: `jag monitor`
+    - Run a program with: `jag run FILE --device IP`
+
+::: {.callout-tip}
+## Save the Wi-Fi credentials
+
+Use the following command to save the Wi-Fi credentials so that you only need to type them once:
+
+~~~bash
+jag config wifi set --wifi-ssid SSID --wifi-password PASSWORD
+~~~
+:::
+
+###  Making your wheels move
+
+{{< video https://www.youtube.com/watch?v=4TQ0ZZQhBag >}}
+
+Key steps from the video:
+
+1. Disconnect the USB cable
+2. Insert the battery
+3. Place the robot on "blocks"
+4. Keep an eye on the voltage tester
+5. Turn on the switch found on the expansion board
+6. Run the blink demo
+7. Turn on the switch to the motor power
+8. Run the motor demo
+
+::: {.callout-tip}
+## Viewing the serial output
+
+Try running the motor script once while connected and once while disconnected from USB. When disconnected you will not be able to view the output of the program.
+:::
+
+### Toit Library Code
+
+The code found in the [`MobileRoboticsCode`](https://github.com/anthonyjclark/MobileRoboticsCode) repository is setup so that you can use it as a set of libraries. Here is an example of creating a new program using the libraries:
+
+~~~bash
+cd MobileRoboticsCode
+mkdir rotate
+cd rotate
+touch demo.toit
+~~~
+
+And here are the contents of `demo.toit`:
+
+~~~toit
+import ..motors
+
+main:
+  motors := Motors
+
+  while true:
+    motors.left-motor.set-speed 0.5
+    sleep --ms=5_000
+~~~
+
+Which can be run with:
+
+~~~bash
+jag run demo.toit --device IP
+~~~
+
+See [Toit package creation tutorial](https://docs.toit.io/tutorials/setup/packages) for more information.
 
 ## Exercise
 
-### Coding
-
-We are using the [Toit programming language](https://toitlang.org/). Please read through [their instructions for getting started](https://docs.toit.io/language). You will need to have another group review your code before you are allowed to upload it.
-
-You should start with a "Hello Toit" program that blinks an LED, and then move onto controlling your motors.
-
-
-Intro...
+This exercise is a continuation from our [previous chapter](./03-SafetyAndElectronics.qmd#exercise).
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -64,6 +125,80 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### Tasks
+Today's portion of the exercise will focus on programming your microcontroller. Please first review [the safety tips from the previous chapter](./03-SafetyAndElectronics.qmd#some-safety-tips-to-review).
+
+After you review the safety tips, your tasks are to:
+
+1. Setup your programming environment
+2. Run the blink demo
+3. Run the motor demo
+4. Create a new program to make your robot turn in-place
+
+### Setup your programming environment
+
+We are using the [Toit programming language](https://toitlang.org/). Please read through [their instructions for getting started](https://docs.toit.io/getstarted/device) and [setting up Visual Studio Code](https://docs.toit.io/tutorials/setup/ide).
+
+You have two questions to answer on gradescope after flashing Toit on your device.
+
+### Running the Demos
+
+Once your development environment is ready, you will run the `hello` and `led` demos.
+
+I recommend first creating an appropriate folder on your computer. For example:
+
+~~~bash
+mkdir -p ~/Classes/MobileRobotics/
+cd ~/Classes/MobileRobotics/
+~~~
+
+And then cloning the course code:
+
+~~~bash
+git clone https://github.com/anthonyjclark/MobileRoboticsCode
+~~~
+
+Now you can monitor your device in one terminal and run the led demo in another:
+
+~~~bash
+# In terminal 1
+jag monitor
+
+# In terminal 2
+cd ~/Classes/MobileRobotics/MobileRoboticsCode/led
+jag run demo.toit --device IP
+~~~
+
+Once you are comfortable with the `led` demo, you can move on to the `motors` demo. **But first make sure that your wheels are not touching the ground (or table).**
+
+~~~bash
+# In terminal 2
+cd ~/Classes/MobileRobotics/MobileRoboticsCode/motors
+jag run demo.toit --device IP
+~~~
+
+Before moving on to the next step, make sure you answer the questions on gradescope.
+
+### Creating a new program
+
+The final part of this exercise is to create a new program that makes your robot turn "in-place" (a zero-degree turning radius) using the `motors` library.
+
+You should:
+
+1. Write your code.
+2. Have your code reviewed by another group.
+3. Show your code to the instructor.
+4. Get a battery from the instructor.
+5. Run your code on your robot.
+
+Don't forget to finish up your answers on gradescope.
+
+## Wrap-Up
+
+You should now have a mobile robot capable of moving around the room!
 
 ## Resources
+
+- [Xiao ESP32S3 Wiki](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
+- [Xiao Expansion Board Wiki](https://wiki.seeedstudio.com/Seeeduino-XIAO-Expansion-Board/)
+- [Toit package registry](https://pkg.toit.io/)
+- [Toit documentation on peripherals](https://docs.toit.io/peripherals)
