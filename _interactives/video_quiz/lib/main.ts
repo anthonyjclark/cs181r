@@ -179,7 +179,6 @@ export class video_quiz {
     if (currentQuiz && currentTime >= currentQuiz.time) {
       this.player.pauseVideo();
       this.showPopup(currentQuiz);
-      this.currentQuizIndex++;
     }
   }
 
@@ -209,20 +208,28 @@ export class video_quiz {
             this.toggleBackdrop(true);
         } else if (quiz.type === 'written-response') {
             // Handle written response
-            const input = document.createElement('textarea');
-            input.placeholder = 'Write your response here...';
-            answersDiv.appendChild(input);
+            const writtenResponsePopup = document.getElementById('writtenResponsePopup') as HTMLDivElement;
+            const writtenResponseText = document.getElementById('writtenResponseText') as HTMLParagraphElement;
+            const writtenResponseInput = document.getElementById('writtenResponseInput') as HTMLTextAreaElement;
+            
+            if (writtenResponsePopup && writtenResponseText && writtenResponseInput) {
+                writtenResponseText.textContent = quiz.question; // Set the question text here
+                writtenResponseInput.value = ''; // Clear previous input
+                
+                writtenResponsePopup.style.display = 'block';
+                this.toggleBackdrop(true);
 
-            const submitButton = document.createElement('button');
-            submitButton.textContent = 'Submit';
-            submitButton.onclick = () => {
-                console.log('Written response:', input.value);
-                this.submitWrittenResponse();
-            };
-            answersDiv.appendChild(submitButton);
-
-            document.getElementById('writtenResponsePopup')!.style.display = 'block';
-            this.toggleBackdrop(true);
+                // Attach event listener to submit button
+                const submitButton = writtenResponsePopup.querySelector('button') as HTMLButtonElement;
+                if (submitButton) {
+                    submitButton.onclick = () => {
+                        console.log('Written response:', writtenResponseInput.value);
+                        this.submitWrittenResponse();
+                    };
+                }
+            } else {
+                console.error('Written response popup elements not found');
+            }
         } else if (quiz.type === 'info') {
             // Handle info popups
             const infoPopup = document.getElementById('infoPopup') as HTMLDivElement;
@@ -232,6 +239,7 @@ export class video_quiz {
                 infoText.textContent = quiz.question; // Set info text here
                 infoPopup.style.display = 'block';
                 this.toggleBackdrop(true);
+                this.currentQuizIndex++;
             } else {
                 console.error('Info popup or infoText element not found');
             }
@@ -240,13 +248,13 @@ export class video_quiz {
         console.error('Popup or questionText element not found');
     }
     
-    // Move the index increment here, after showing the quiz
-    this.currentQuizIndex++;
 }
 
 
 
 private selectAnswer(selectedIndex: number, button: HTMLButtonElement): void {
+  const currentQuiz = this.quizTimes[this.currentQuizIndex]; // -1 because index was incremented after displaying the quiz
+  console.log("selecting answer for quiz:", currentQuiz);
   if (this.currentQuestionType === 'multi-select') {
       // Multi-select logic: toggle selection
       const isSelected = this.selectedAnswerIndices.includes(selectedIndex);
@@ -284,7 +292,7 @@ private selectAnswer(selectedIndex: number, button: HTMLButtonElement): void {
     const popup = document.getElementById('questionPopup') as HTMLDivElement;
 
     // Use the correct index for the current quiz
-    const currentQuiz = this.quizTimes[this.currentQuizIndex-1]; // -1 because index was incremented after displaying the quiz
+    const currentQuiz = this.quizTimes[this.currentQuizIndex]; // -1 because index was incremented after displaying the quiz
 
     console.log("Submitting answer for quiz:", currentQuiz);
 
@@ -316,6 +324,7 @@ private selectAnswer(selectedIndex: number, button: HTMLButtonElement): void {
 
     // Hide the popup and resume the video
     popup.style.display = 'none';
+    this.currentQuizIndex++;
     // this.toggleBackdrop(false);
     // this.player.playVideo();
 }
@@ -380,6 +389,7 @@ public submitMultiSelect(): void {
 
   // Hide the popup and resume the video
   popup.style.display = 'none';
+  this.currentQuizIndex++;
   // this.toggleBackdrop(false);
   // this.player.playVideo();
 }
@@ -397,6 +407,7 @@ public continueFromFeedback(): void {
     writtenResponsePopup.style.display = 'none'; // Hide the pop-up
     this.toggleBackdrop(false);
     this.player.playVideo(); 
+    this.currentQuizIndex++;
   }
 
   public continueVideo(): void {
