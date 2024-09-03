@@ -3,6 +3,13 @@
 ## Getting Started
 
 ```bash
+# Install the Toit CLI
+brew install toitlang/toit/jag
+
+# Flash the Jag firmware on your microcontroller
+jag flash --chip esp32s3
+
+# Clone course code and install dependencies
 git clone https://github.com/anthonyjclark/MobileRoboticsCode.git
 
 cd MobileRoboticsCode/communication
