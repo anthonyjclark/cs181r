@@ -37,6 +37,10 @@ BUILTIN-SPEAKER-PIN ::= 4
 
 // Constants for the motor driver
 
+// For the DRV8835
+//   ENBL is the PWM input
+//   PHASE is the GPIO direction input
+
 LEFT-MOTOR-DIR-PIN ::= 8
 LEFT-MOTOR-PWM-PIN ::= 9
 
@@ -48,5 +52,5 @@ RIGHT-MOTOR-PWM-PIN ::= 7
 LEFT-ENCODER-PIN ::= 3
 LEFT-ENCODER-CONTROL-PIN ::= 43
 
-RIGHT-ENCODER-PIN ::= 1
-RIGHT-ENCODER-CONTROL-PIN ::= 2
+RIGHT-ENCODER-PIN ::= 2
+RIGHT-ENCODER-CONTROL-PIN ::= 1
