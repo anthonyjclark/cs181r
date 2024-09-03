@@ -49,7 +49,6 @@ mkdir MobileRoboticsCode
 cd MobileRoboticsCode
 git init
 git pull ../website toit
-gh repo create --public
 gh repo create MobileRoboticsCode --public --source=.
 git push origin main
 
@@ -64,16 +63,12 @@ git subtree add --prefix _toit code main
 To update the subtree:
 
 ```bash
-# Later: pull changes made to MobileRoboticsCode
 git subtree pull --prefix _toit code main
-
-# Push changes to subtree
 git subtree push --prefix _toit code main
 ```
 
 ## TODO
 
-- Mirror for code directory
 - [Microfeatures I Love in Blogs and Personal Websites](https://danilafe.com/blog/blog_microfeatures/)
 - add goat counter to base template (probably no)
 - add hover/link for definitions and acronyms (glossary: see below)

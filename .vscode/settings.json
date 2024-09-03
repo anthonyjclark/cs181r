@@ -37,6 +37,7 @@
     "Multibody",
     "ncol",
     "newcommand",
+    "octo",
     "OLED",
     "onclick",
     "onreconnect",
@@ -53,8 +54,10 @@
     "revealjs",
     "Roadmaps",
     "Simulink",
+    "spiram",
     "startswith",
     "Toit",
+    "toitlang",
     "Voronoi",
     "wmrgraphapp",
     "Xiao"

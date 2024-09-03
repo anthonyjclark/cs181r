@@ -10,7 +10,7 @@ What two other groups reviewed your wiring?
 
 |____|
 
-For which group did you revie wiring?
+For which group did you review wiring?
 
 |____|
 
@@ -19,6 +19,14 @@ Upload an image of your wiring.
 |files|
 
 ## Thursday: Programming
+
+What is your ESP32's MAC address?
+
+|____|
+
+What is your ESP32's IP address and port?
+
+|____|
 
 What two other groups reviewed your code?
 
