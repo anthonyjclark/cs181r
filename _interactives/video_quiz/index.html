@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>video quiz demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="/src/index.ts"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- the numbers at the end determines when the color scrolls, so we will need to feed in timestamps or something like that -->
+
+  <style>
+    /* Styles for the backdrop and pop-ups */
+    .caption-container {
+  height: 200px; /* Adjust height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+    .backdrop,
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      /* Ensure it's above other elements */
+    }
+
+    /* Common pop-up styles */
+    .popup {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      /* Fixed width for consistency */
+      max-width: 90%;
+      /* Responsive max width */
+      height: auto;
+      /* Adjust height based on content */
+      text-align: center;
+      /* Center text */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Center pop-up */
+      z-index: 1000;
+      /* Ensure it's above the backdrop */
+      box-sizing: border-box;
+      /* Include padding and border in width */
+    }
+
+    /* Button styles in pop-ups */
+    .popup button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      /* Readable font size */
+    }
+
+    /* Disabled button styles */
+    .popup button:disabled {
+      cursor: not-allowed;
+      background-color: #6c757d;
+    }
+
+    /* Styles for answer buttons */
+    #answers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      /* Space between buttons */
+    }
+
+    /* Answer button styles */
+    #answers button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      width: 100%;
+      /* Full width of container */
+      text-align: left;
+      /* Align text to the left */
+      border-radius: 5px;
+      /* Rounded corners */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      /* Light shadow for depth */
+      font-size: 16px;
+      /* Readable font size */
+      color: black;
+      /* Text color */
+    }
+
+    #multiSelectAnswers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      /* Space between buttons */
+    }
+
+    /* Answer button styles */
+    #multiSelectAnswers button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      width: 100%;
+      /* Full width of container */
+      text-align: left;
+      /* Align text to the left */
+      border-radius: 5px;
+      /* Rounded corners */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      /* Light shadow for depth */
+      font-size: 16px;
+      /* Readable font size */
+      color: black;
+      /* Text color */
+    }
+
+    /* Selected answer button styles */
+    #multiSelectAnswers button.selected {
+      background-color: #cce5ff;
+      color: #004085;
+    }
+
+    /* Disabled answer button styles */
+    #multiSelectAnswers button:disabled {
+      cursor: not-allowed;
+    }
+
+
+    /* Selected answer button styles */
+    #answers button.selected {
+      background-color: #cce5ff;
+      color: #004085;
+    }
+
+    /* Disabled answer button styles */
+    #answers button:disabled {
+      cursor: not-allowed;
+    }
+
+    #feedbackPopup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001; /* Ensure it's on top of other elements */
+        }
+
+        #continueButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    
+   .highlight {
+    color: blue; /* Example text color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+  </style>
+</head>
+
+<body>
+  <section>
+    <div id="video">
+      <div id="player"></div>
+    </div>
+    <h2 id="shadama-in-Action">video captions</h2>
+    <!-- <div id="caption" class="caption"></div> -->
+    <hr>
+  </section>
+
+  <div id="player"></div>
+  <div id="caption" class="caption-container"></div>
+  <div id="questionPopup" class="popup">
+    <p id="questionText"></p>
+    <div id="answers"></div>
+    <button onclick="submitAnswer()">Submit</button>
+  </div>
+
+  <!-- Backdrop for all pop-ups -->
+  <div id="backdrop" class="backdrop"></div>
+
+  <!-- Pop-up for multiple choice questions -->
+<div id="questionPopup" class="popup">
+  <p id="questionText">Your question here?</p>
+  <div id="answers">
+    <!-- Answer buttons will be added dynamically here -->
+  </div>
+  <button id="submitButton" onclick="submitAnswer()">Submit</button>
+</div>
+
+<!-- Pop-up for explanation -->
+<div id="explanationPopup" class="popup">
+  <p id="explanationText">Explanation text here.</p>
+  <button onclick="continueVideo()">Okay</button>
+</div>
+
+<!-- Pop-up for written response -->
+<div id="writtenResponsePopup" class="popup">
+  <p id="writtenResponseText">Your question here:</p>
+  <textarea id="writtenResponseInput" rows="4" cols="30"></textarea>
+  <button onclick="submitWrittenResponse()">Submit</button>
+</div>
+
+<!-- Pop-up for info -->
+<div id="infoPopup" class="popup">
+  <p id="infoText">Information text here.</p>
+  <button onclick="continueVideo()">Continue</button>
+</div>
+
+<!-- Pop-up for multi-select -->
+<div id="multiSelectPopup" class="popup">
+  <p id="multiSelectQuestionText">Your question here?</p>
+  <div id="multiSelectAnswers">
+    <!-- Answer buttons will be added dynamically here -->
+  </div>
+  <button id="submitMultiSelect" onclick="submitMultiSelect()">Submit</button>
+</div>
+
+<div id="correctAnswerPopup" style="display:none;">
+  <p>Good job!</p>
+  <button onclick="continueVideo()">Continue</button>
+</div>
+
+<div id="feedbackPopup">
+  <h2 id="feedbackTitle">Feedback Title</h2>
+  <p id="feedbackMessage">This is the feedback message.</p>
+  <button id="continueButton" onclick="continueVideo()">Continue</button>
+</div>
+
+<!-- Pop-up for incorrect answers 
+<div id="incorrectAnswerPopup" style="display:none;">
+  <p id="correctAnswerText">The correct answer is...</p>
+  <button id="incorrectAnswerOkayButton">Okay</button>
+ </div> -->
+ 
+
+</article>
+</body>
+</html>
