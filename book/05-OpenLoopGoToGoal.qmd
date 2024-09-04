@@ -1,5 +1,5 @@
 ---
-title: "Chapter Layout Template"
+title: "Open-Loop Go-To-Goal"
 ---
 
 Some introductory text.
@@ -25,6 +25,13 @@ Links
 
 A video of slides, coding, hands-on electronics, etc.
 
+- heart beat
+  - web sockets
+  - Toit
+- go to goal
+  - open loop
+  - vs. closed loop
+
 ## Interactive
 
 An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
@@ -32,6 +39,8 @@ An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/t
 ## Exercise
 
 Intro...
+
+- spreadsheet
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -50,6 +59,7 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 ### Overview
 
 ### Tasks
+
 ## Wrap-Up
 
 ## Resources
