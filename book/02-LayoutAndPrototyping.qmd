@@ -2,12 +2,6 @@
 title: "Layout and Prototyping"
 ---
 
-We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
-
-```{=html}
-<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
-```
-
 Now that you have the basic layout of your robot, it is time to start assembling and adding parts.
 
 ## What you will learn
@@ -40,6 +34,10 @@ This video covers the layout of your components and shows assembly of a bit more
 ## Exercise
 
 We will continue from [the previous lecture](./01-IntroductionAndDesign.qmd#exercise) and add electronics and other hardware to the prototype.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
 
 ## Wrap-Up
 

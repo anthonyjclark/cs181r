@@ -3,12 +3,6 @@ title: "Safety and Electronics"
 lightbox: true
 ---
 
-We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
-
-```{=html}
-<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
-```
-
 Now that you have the basic layout of your robot, it is time to start assembling and adding parts. In this chapter we'll focus on safety and wiring.
 
 ## What you will learn

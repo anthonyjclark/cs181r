@@ -4,16 +4,6 @@ title: "Chapter Layout Template"
 
 TODO: start with an image?
 
-TODO: [Hypothesis Client](https://h.readthedocs.io/projects/client/en/latest/index.html)
-
-> NOTE: This is a template for a typical chapter layout. Each chapter will have a similar structure. Students will read the chapter before class, and then we will work through the exercises in class (in a flipped-classroom style).
-
-We are using [hypothesis](https://hypothes.is) for this book. So please add questions and comments by clicking the button, logging in, and adding your annotations. See [Annotation Tips for Students](https://web.hypothes.is/annotation-tips-for-students/) for more information.
-
-```{=html}
-<button style="margin-bottom: 1rem;" type="button" class="btn btn-primary" data-toggle="tooltip" title="Launch Hypothesis for this chapter" onclick="(function(){window.hypothesisConfig=function(){return{showHighlights:true,appType:'bookmarklet'};};var d=document,s=d.createElement('script');s.setAttribute('src','https://hypothes.is/embed.js');d.body.appendChild(s)})();">Launch Hypothesis</button>
-```
-
 Some introductory text.
 
 “Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
@@ -62,5 +52,6 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 ### Overview
 
 ### Tasks
+## Wrap-Up
 
 ## Resources
