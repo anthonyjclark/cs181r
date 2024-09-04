@@ -29,6 +29,9 @@ Links
 
 A video of slides, coding, hands-on electronics, etc.
 
+pid.qmd
+pwm
+
 ## Interactive
 
 An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
@@ -36,6 +39,8 @@ An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/t
 ## Exercise
 
 Intro...
+
+- slides and compare with open-loop
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 

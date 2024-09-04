@@ -29,6 +29,13 @@ Links
 
 A video of slides, coding, hands-on electronics, etc.
 
+2. History
+    - Klančar chapter 1
+
+more general introduction
+https://builtin.com/robotics
+
+
 ## Interactive
 
 An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
