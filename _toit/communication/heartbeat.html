@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Heartbeat Test</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+        }
+
+        label,
+        input {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>WebSocket Heartbeat Test</h1>
+
+    <form id="connectionForm">
+
+        <label for="ip-address">IP Address
+            <input type="text" id="ip-address" name="ip-address" placeholder="xxx.xxx.xxx.xxx:xxx" minlength="9"
+                maxlength="21" size="15" pattern="^(172|192)(\.\d{1,3}){3}:\d{1,5}$" required>
+        </label>
+
+        <label for="heartbeat">Heartbeat Interval
+            <input type="range" id="heartbeat" name="heartbeat" min="0.1" max="2" step="0.1" value="0.8"
+                oninput="this.nextElementSibling.value = `${this.value}s`">
+            <output>0.8s</output>
+        </label>
+
+        <button id="submit-button" type="submit">Connect</button>
+
+        <label> </label>
+        <div id="output-log">Output log</div>
+    </form>
+
+    <script>
+
+        // The form element
+        const form = document.getElementById('connectionForm')
+
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const ipAddress = document.getElementById('ip-address').value;
+            const heartbeatInterval = document.getElementById('heartbeat').value * 1000;
+
+            const submitButton = document.getElementById('submit-button');
+            const statusDiv = document.getElementById('output-log');
+
+            const address = `ws://${ipAddress}/`;
+
+            statusDiv.innerHTML = 'Connecting...';
+            submitButton.innerHTML = 'Connecting...';
+            submitButton.disabled = true;
+
+            const socket = new WebSocket(address);
+            // socket.onreconnect = () => { };
+
+            socket.onopen = () => {
+                statusDiv.innerHTML = '<span style="color:green;">Connection opened</span>';
+                statusDiv.innerHTML += '<br>Sending heartbeats';
+                socket.send('Hello Server!');
+
+                submitButton.innerHTML = 'Disconnect';
+                submitButton.disabled = false;
+
+                setInterval(() => {
+                    socket.send('Hello Server!');
+                }, heartbeatInterval);
+            };
+
+            socket.onmessage = (event) => {
+                statusDiv.innerHTML += `<br>Message from server: ${event.data}`;
+            };
+
+            socket.onclose = () => {
+                statusDiv.innerHTML += '<br>Connection closed';
+                submitButton.innerHTML = 'Connect';
+                submitButton.disabled = false;
+            };
+
+            socket.onerror = (error) => {
+                statusDiv.innerHTML = '<span style="color:red;">An unknown error occurred</span>';
+            };
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -23,6 +23,9 @@ class WsCommunication:
   static OPEN ::= 3
   static CLOSING ::= 4
 
+  ip-address := ""
+  port := 0
+
   connection-state := CLOSED
   heart-did-beat := false
 
@@ -33,9 +36,11 @@ class WsCommunication:
   start-server communicator/Communicator:
     network := net.open
     server-socket := network.tcp-listen 0
-    port := server-socket.local-address.port
 
-    print "Listening on ws://$network.address:$port/"
+    ip-address = network.address
+    port = server-socket.local-address.port
+
+    print "Listening on ws://$ip-address:$port/"
 
     server := Server
 

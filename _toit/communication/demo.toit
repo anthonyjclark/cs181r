@@ -6,6 +6,9 @@ class LedBlinker implements Communicator:
   led := Led
   state := Communicator.DISABLED
 
+  constructor:
+    led.off
+
   on-open: enable
   on-close: disable
   on-message message:
@@ -16,11 +19,13 @@ class LedBlinker implements Communicator:
     return state == Communicator.ENABLED
 
   enable:
+    if state == Communicator.ENABLED: return
     print "Enabling"
     state = Communicator.ENABLED
     led.on
 
   disable:
+    if state == Communicator.DISABLED: return
     print "Disabling"
     state = Communicator.DISABLED
     led.off

@@ -27,9 +27,10 @@ Workflow
 - On first connection only:
   - Run `jag flash --chip esp32s3` (or `jag flash --chip esp32s3-spiram-octo`)
   - Note the MAC address
-- Run `jag port` to get the serial port.
+- Run `jag port` to get the serial port name.
 - Run `jag monitor` to see serial output. Note the IP address and port.
-- Develop Toit code and run with: `jag run FILE --device IP:PORT`
+- Export the IP address and port: `export IP=IP PORT=PORT`.
+- Develop Toit code and run with: `jag run FILE --device IP`.
 
 Tutorials
 
