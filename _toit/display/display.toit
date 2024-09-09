@@ -30,7 +30,7 @@ class Display:
     display = PixelDisplay.two-color driver
     display.background = BLACK
 
-  add-text text --x=5 --y=10:
+  add-text text --x=8 --y=16:
     display.add (Label --x=x --y=y --style=STYLE --text=text)
 
   draw:

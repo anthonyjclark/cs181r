@@ -9,6 +9,7 @@ class LedBlinker implements Communicator:
   constructor:
     led.off
 
+  on-start address port: print "$address:$port"
   on-open: enable
   on-close: disable
   on-message message:

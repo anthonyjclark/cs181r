@@ -11,6 +11,7 @@ interface Communicator:
   enable -> none
 
   // Communication interface
+  on-start address/string port/string -> none
   on-open -> none
   on-close -> none
   on-message message/ByteArray -> none
@@ -41,6 +42,8 @@ class WsCommunication:
     port = server-socket.local-address.port
 
     print "Listening on ws://$ip-address:$port/"
+
+    communicator.on-start ip-address port
 
     server := Server
 
