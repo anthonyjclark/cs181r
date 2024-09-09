@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     // "rootDir": ".",
-    // "types": ["@types"],
     // "typeRoots": ["node_modules/"],
 
+    // "types": ["@types"],
     "types": ["vite/client"],
 
     "outDir": "./dist",

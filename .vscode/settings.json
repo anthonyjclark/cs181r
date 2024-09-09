@@ -8,6 +8,7 @@
     "Chrono",
     "Datasheets",
     "deadperson's",
+    "deinit",
     "distrib",
     "Edmunds",
     "espressif",
@@ -45,6 +46,8 @@
     "Onshape",
     "Pandoc",
     "pathlib",
+    "phidot",
+    "pinout",
     "Pinouts",
     "Pololu",
     "pydy",
@@ -61,7 +64,10 @@
     "toitlang",
     "Voronoi",
     "wmrgraphapp",
-    "Xiao"
+    "wscat",
+    "xdot",
+    "Xiao",
+    "ydot"
   ],
   "liveServer.settings.port": 5501,
   "eslint.workingDirectories": [ {"pattern": "./_interactives/*/"} ]

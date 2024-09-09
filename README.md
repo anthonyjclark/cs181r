@@ -69,6 +69,7 @@ git subtree push --prefix _toit code main
 
 ## TODO
 
+- Add polarity symbols on the battery holder
 - [Microfeatures I Love in Blogs and Personal Websites](https://danilafe.com/blog/blog_microfeatures/)
 - add goat counter to base template (probably no)
 - add hover/link for definitions and acronyms (glossary: see below)

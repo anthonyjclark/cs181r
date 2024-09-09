@@ -57,59 +57,84 @@
 
         <button id="submit-button" type="submit">Connect</button>
 
-        <label> </label>
-        <div id="output-log">Output log</div>
     </form>
+
+    <div id="output-log">Ready to connect</div>
 
     <script>
 
-        // The form element
-        const form = document.getElementById('connectionForm')
+        let socket = null;
+        let heartbeatIntervalId = null;
+
+        const formElement = document.getElementById('connectionForm');
+        const ipAddressInput = document.getElementById('ip-address');
+        const heartbeatIntervalRange = document.getElementById('heartbeat');
+        const submitButton = document.getElementById('submit-button');
+        const outputLogDiv = document.getElementById('output-log');
+
+        function deinit() {
+
+            if (socket !== null) {
+                socket.close();
+                socket = null;
+            }
+
+            if (heartbeatIntervalId !== null) {
+                clearInterval(heartbeatIntervalId);
+                heartbeatIntervalId = null;
+            }
+
+            outputLogDiv.innerHTML = 'Ready to connect';
+
+            submitButton.innerHTML = 'Connect';
+            submitButton.disabled = false;
+        }
 
 
-        form.addEventListener('submit', function (event) {
+        formElement.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const ipAddress = document.getElementById('ip-address').value;
-            const heartbeatInterval = document.getElementById('heartbeat').value * 1000;
+            if (socket !== null) {
+                deinit();
+                return;
+            }
 
-            const submitButton = document.getElementById('submit-button');
-            const statusDiv = document.getElementById('output-log');
+            const ipAddress = ipAddressInput.value;
+            const heartbeatInterval = ipAddressInput.value * 1000;
 
             const address = `ws://${ipAddress}/`;
 
-            statusDiv.innerHTML = 'Connecting...';
+            outputLogDiv.innerHTML = 'Connecting...';
             submitButton.innerHTML = 'Connecting...';
             submitButton.disabled = true;
 
-            const socket = new WebSocket(address);
+            socket = new WebSocket(address);
             // socket.onreconnect = () => { };
 
             socket.onopen = () => {
-                statusDiv.innerHTML = '<span style="color:green;">Connection opened</span>';
-                statusDiv.innerHTML += '<br>Sending heartbeats';
-                socket.send('Hello Server!');
+                outputLogDiv.innerHTML = '<span style="color:green;">Connection opened</span>';
+                outputLogDiv.innerHTML += '<br>Sending heartbeats';
 
                 submitButton.innerHTML = 'Disconnect';
                 submitButton.disabled = false;
 
-                setInterval(() => {
+                socket.send('Hello Server!');
+
+                heartbeatIntervalId = setInterval(() => {
                     socket.send('Hello Server!');
                 }, heartbeatInterval);
             };
 
             socket.onmessage = (event) => {
-                statusDiv.innerHTML += `<br>Message from server: ${event.data}`;
+                outputLogDiv.innerHTML += `<br>Message from server: ${event.data}`;
             };
 
             socket.onclose = () => {
-                statusDiv.innerHTML += '<br>Connection closed';
-                submitButton.innerHTML = 'Connect';
-                submitButton.disabled = false;
+                deinit();
             };
 
             socket.onerror = (error) => {
-                statusDiv.innerHTML = '<span style="color:red;">An unknown error occurred</span>';
+                outputLogDiv.innerHTML = '<span style="color:red;">An unknown error occurred</span>';
             };
 
         });

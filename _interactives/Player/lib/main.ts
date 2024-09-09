@@ -1,7 +1,7 @@
 import { html } from 'htl';
 
-type UpdateCB = ( time: number ) => void;
-type RestartCB = () => void;
+export type UpdateCB = ( time: number ) => void;
+export type RestartCB = () => void;
 
 export class Player {
 

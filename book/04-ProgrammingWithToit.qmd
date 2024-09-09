@@ -21,6 +21,16 @@ differential drive
 
 Before you watch the videos below, you should skim [the Toit Programming Language description](https://docs.toit.io/language).
 
+### Troubleshooting
+
+You may need to try the following:
+
+- Make certain that your antenna is connected securely to the board
+- Try the PomonaIoT network
+- Make sure that your computer is on the same network as the microcontroller
+- Try the local network (no access to Internet)
+- Try the `jag run ...` command several times
+
 ### Programming with Toit
 
 {{< video https://www.youtube.com/watch?v=CApMY93Nw9g >}}
@@ -69,7 +79,33 @@ Try running the motor script once while connected and once while disconnected fr
 
 ### Toit Library Code
 
-The code found in the [`MobileRoboticsCode`](https://github.com/anthonyjclark/MobileRoboticsCode) repository is setup so that you can use it as a set of libraries. Here is an example of creating a new program using the libraries:
+The code found in the [`MobileRoboticsCode`](https://github.com/anthonyjclark/MobileRoboticsCode) repository is setup so that you can use it as a set of libraries.
+
+Here is a listing of the `MobileRoboticsCode` directory (as of this chapter and with some files removed for clarity):
+
+```text
+📂 ./
+├── 📂 communication/
+│  ├── communication.toit
+│  └── demo.toit
+├── 📂 display/
+│  ├── demo.toit
+│  └── display.toit
+├── 📂 hello/
+│  └── hello.toit
+├── 📂 led/
+│  ├── demo.toit
+│  └── led.toit
+├── 📂 motors/
+│  ├── demo.toit
+│  └── motors.toit
+└── 📂 pinout/
+   └── pinout.toit
+```
+
+The Toit convention is to name your library file the same as its parent directory (eg, the `motors` directory contains a `motors.toit` file). You can then import the library using a relative path. For example, I import the `pinout` library in `motors.toit` with `import ..pinout`.
+
+Here is an example of creating a new program using the libraries:
 
 ~~~bash
 cd MobileRoboticsCode

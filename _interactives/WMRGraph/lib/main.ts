@@ -3,10 +3,11 @@ import imageURL from '../images/wmr.svg';
 
 import { JSXGraph, Board, Point } from 'jsxgraph';
 
-import { Player } from '../../Player/lib/main';
+import { Player, RestartCB } from 'player';
 
 type RotationCB = ( phi: number ) => void;
 type TranslationCB = ( x: number, y: number ) => void;
+type SimulationCB = ( time: number ) => [ number, number, number ];
 
 // TODO:
 // - allow user to set the position and rotation
@@ -63,84 +64,21 @@ export class WMRGraph {
 
 	}
 
-	addControls(): HTMLFormElement {
+	addPlayerControls( duration: number, timeStep: number, simulate: SimulationCB, restart: RestartCB ): HTMLFormElement {
 
-		/*
-		From Modern Robotics, page 546
-			ϕ dot = r (ur - ul) / (2d)
-			x dot = r (ur + ul) cos(𝜙) / 2
-			y dot = r (ur + ul) sin(𝜙) / 2
-
-			- r is the wheel radius (m)
-			- ur is the right wheel angular velocity (rad/s)
-			- ul is the left wheel angular velocity (rad/s)
-			- 2d is the distance between the wheels (m)
-
-		From Wheeled Mobile Robotics, page 21
-			v = (vr + vl) / 2
-
-			ϕ dot = ω = (vr - vl) / L
-			x dot = v cos(𝜙) = (vr + vl) cos(ϕ) / 2
-			y dot = v sin(𝜙) = (vr + vl) sin(ϕ) / 2
-
-			- v is the linear velocity (m/s)
-			- vr is the right wheel linear velocity (m/s)
-			- vl is the left wheel linear velocity (m/s)
-			- L is the distance between the wheels (m)
-
-		Conversion
-			vr = r ur
-			vl = r ul
-		*/
-
-		// TODO: use correct values
-		const r = 0.1;
-		const d = 0.07;
+		// TODO: scale?
 		const s = 1.5;
-
-		const ur = 20;
-		const ul = 19.9;
-
-		const timeStep = 0.1;
-
-		// TODO: simulate from t=0 to t=time on each call to update
-		// TODO: add caching
 
 		const update = ( time: number ) => {
 
-			let t = 0;
-
-			let phi = 0;
-			let x = 0;
-			let y = 0;
-
-			let xdot = r * ( ur + ul ) * Math.cos( 0 ) / 2;
-			let ydot = r * ( ur + ul ) * Math.sin( 0 ) / 2;
-			const phidot = r * ( ur - ul ) / ( 2 * d );
-
-			while ( t < time ) {
-
-				t += timeStep;
-
-				x = x + xdot * timeStep;
-				y = y + ydot * timeStep;
-				phi = phi + phidot * timeStep;
-
-				xdot = r * ( ur + ul ) * Math.cos( phi ) / 2;
-				ydot = r * ( ur + ul ) * Math.sin( phi ) / 2;
-
-			}
-
-			console.log( '🚀 ~ WMRGraph ~ update ~', y, x );
+			const [ x, y, phi ] = simulate( time );
 
 			this.center.moveTo( [ x, y ] );
 			this.rotation.moveTo( [ x + s * Math.cos( phi ), y + s * Math.sin( phi ) ] );
 
 		};
 
-		const restart = () => {};
-
-		const player = new Player( 10, 0.1, update, restart );
+		const player = new Player( duration, timeStep, update, restart );
 		const controls = player.initialize();
 
 		return controls;

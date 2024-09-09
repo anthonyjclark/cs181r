@@ -10,7 +10,7 @@ title: "Schedule"
 |      | Thu Aug 29           | [Layout and Prototyping](../book/02-LayoutAndPrototyping.qmd)   |
 | 2    | Tue Sep 3            | [Safety and Electronics](../book/03-SafetyAndElectronics.qmd)   |
 |      | Thu Sep 5            | [Programming with Toit](../book/04-ProgrammingWithToit.qmd)     |
-| 3    | Tue Sep 10           | [Open-Loop Go to Goal](../book/05-OpenLoopGoToGoal.qmd)         |
+| 3    | Tue Sep 10           | [Open-Loop Go to Goal](../book/05-MicrocontrollerUtilities.qmd)         |
 |      | Thu Sep 12           | Culture, Automation, and Jobs                                   |
 | 4    | Tue Sep 17           | Wheel Encoders and Inertial Sensors                             |
 |      | Thu Sep 19           | Closed-Loop Go to Goal                                          |

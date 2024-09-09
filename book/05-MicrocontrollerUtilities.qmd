@@ -1,0 +1,93 @@
+---
+title: "Microcontroller Utilities"
+---
+
+In this chapter we'll learn how to use the expansion board's OLED display and communicate with the microcontroller using a WebSocket. Our goal is to make our robot as easy to use, debug, and program as possible.
+
+## What you will learn
+
+- How to use Toit packages
+- How to use the OLED display
+- How to communicate with the microcontroller using a WebSocket
+
+## Terminology
+
+OLED (organic light-emitting diode) display:
+a type of display that uses organic compounds that emit light when an electric current is applied
+
+WebSocket:
+a communication protocol providing two-way communication over TCP
+
+heartbeat:
+a signal sent by a device to indicate that it is still connected
+
+fiber (aka task):
+a lightweight thread of execution (you can have many fibers running concurrently)
+
+## Lecture
+
+This lecture will focus on our microcontroller's "utilities" - the OLED display and WebSocket communication. In the next lecture, we'll put these to use to make our robot move.
+
+### OLED Display
+
+You should first clone the Code repository to your local machine. See [the instructions from the previous chapter](./04-ProgrammingWithToit.qmd#running-the-demos) for more information.
+
+If you already have a clone of the repository, then you will need to pull recent changes.
+
+{{< video https://www.youtube.com/watch?v=jpgXXK8lFJ8 >}}
+
+In the video I spend some time discussing Toit packages. You can find more information about packages in the [Toit documentation](https://docs.toit.io/language/package).
+
+### Communicating with a WebSocket
+
+This next video demonstrates how to communicate with the microcontroller using a WebSocket. The [wscat](https://github.com/websockets/wscat) is useful for debugging. You can install it using Node.js and npm. You can ignore this tool if you'd like.
+
+Here is an overview of what we're trying to achieve with WebSockets.
+
+![WebSocket diagram](../_static/images/05-MicrocontrollerUtilities/WebSocket.svg)
+
+On the microcontroller (server) we'll use the heartbeats to keep the system running. If the heartbeats stop (either due to an unexpected crash on the client side or due to a closed connection) then will shut the system down. Here is a diagram of the server side system.
+
+
+
+
+
+Diagram
+
+wscat
+
+{{< video https://www.youtube.com/watch?v=Z4D_1SzYxOY >}}
+
+### Displaying the microcontroller IP address
+
+{{< video https://www.youtube.com/watch?v=4qCGac9kgvY >}}
+
+[fibers/tasks](https://docs.toit.io/language/tasks)
+
+## Exercise
+
+Intro...
+
+- spreadsheet
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+### Tasks
+
+## Wrap-Up
+
+## Resources

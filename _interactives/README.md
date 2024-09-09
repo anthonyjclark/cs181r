@@ -89,3 +89,26 @@ ESLint version 9 is the latest version (as of this writing). However, eslint@^8 
 TODO: looks like we can use the beta version of @stylistic/eslint: https://github.com/eslint-stylistic/eslint-stylistic/pull/452.
 
 Might also take a look at [unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn).
+
+website@ /Users/ajcd2020/Library/CloudStorage/OneDrive-PomonaCollege/Teaching/181R/website
+├── @eslint/js@9.9.1
+├── eslint@9.9.1
+├── globals@15.9.0
+└── typescript-eslint@8.4.0
+
+{
+    "author": "Anthony J. Clark",
+    "devDependencies": {
+        "@eslint/js"       : "^9.9.1" ,
+        "eslint"           : "^9.9.1" ,
+        "globals"          : "^15.9.0",
+        "typescript-eslint": "^8.4.0"
+    }
+}
+
+Contents of `node_modules/htl/src/index.d.ts`
+
+```typescript
+export declare const html: { <T extends HTMLElement | Text>(...args: any[]): T, fragment(...args: any[]): DocumentFragment };
+export declare const svg: { <T extends SVGElement | Text>(...args: any[]): T, fragment(...args: any[]): DocumentFragment };
+```

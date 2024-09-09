@@ -1,9 +1,3 @@
-# OLED Display Code with Error
+# Display Package
 
-~~~bash
-mkdir Display
-cd Display
-jag pkg init
-jag pkg install github.com/toitware/toit-ssd1306@v2
-jag pkg install toitware/toit-pixel-display@v2
-~~~
+This package initializes the display and provides a simple way to draw on it.

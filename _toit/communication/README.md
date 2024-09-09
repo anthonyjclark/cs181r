@@ -1,4 +1,6 @@
-jag pkg install github.com/toitlang/pkg-http@v2
+# Communication Package
+
+This package provides a simple way to communicate with a microcontroller over a WebSocket connection. It includes heartbeat functionality.
 
 ## Setup
 
@@ -20,7 +22,7 @@ Then, to test the WebSocket connection, run:
 
 ```bash
 wscat --connect ws://IP:PORT
-# You can not interactively send messages to the microcontroller
+# You can now interactively send messages to the microcontroller
 ```
 
 Here is how you might send repeated messages to the microcontroller:

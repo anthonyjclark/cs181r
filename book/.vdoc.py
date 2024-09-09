@@ -1,12 +1,5 @@
----
-title: "Front Matter"
----
-
-## Table of Contents
-
-<!-- TODO: fields: [image, title, reading-time] -->
-
-```{python}
+# type: ignore
+# flake8: noqa
 # | label: tbl-table-of-contents
 # | echo: false
 
@@ -36,22 +29,5 @@ for i, filename in enumerate(files):
     table.append([i + 1, f"[{title}]({filename})"])
 
 Markdown(tabulate(table, headers=["Chapter", "Title"]))
-```
 
-## Copyright
 
-Copyright © 2024 Anthony J. Clark.
-
-All rights reserved. Neither this book, nor any parts within it may be sold or reproduced in any form without permission.
-
-## Acknowledgements
-
-I would like to thank Ella Zhu and Jack Chin for their contributions to this book.
-
-## Resources
-
-### Similar Courses
-
-### Books
-
-### Software
