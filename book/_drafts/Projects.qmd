@@ -1,0 +1,9 @@
+Teams go build on what we've done. Ideas:
+
+- CAD
+- PCB
+- implement new algorithms
+- society essay
+- I have stereo cameras
+- one group create new cad design? another work on vision?
+- write a new chapter

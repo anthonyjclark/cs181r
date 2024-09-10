@@ -1,0 +1,11 @@
+https://github.com/maruta/toy4edu
+https://github.com/boisgera/control-engineering-with-python
+
+- klancar
+  - slides?
+  - control to reference pose
+  - trajectory tracking control
+  - ?optimal velocity profile estimation for known path
+- modern robotics
+  - slides on website
+  - section 13.3

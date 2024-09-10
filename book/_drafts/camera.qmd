@@ -1,0 +1,4 @@
+https://ciechanow.ski/color-spaces/
+https://ciechanow.ski/cameras-and-lenses/
+speed of orb vs cnn
+create map from forward camera using projections

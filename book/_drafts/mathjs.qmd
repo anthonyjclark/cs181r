@@ -1,0 +1,74 @@
+---
+title: "MathJS Expression Evaluation"
+format: html
+execute:
+  echo: false
+---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+<!--
+https://observablehq.com/@cmudig/editor
+Can use with localstorage
+-->
+
+```{ojs}
+import {Editor, highlightjs} from "@cmudig/editor"
+```
+
+```{ojs}
+mathjs = require("mathjs")
+```
+
+```{ojs}
+_ = highlightjs.registerLanguage("mathjs", function(hljs) {
+	return {
+		name: "mathjs",
+		keywords: {
+			keyword: "abs log norm sign sin cos tan asin acos atan atan2",
+			literal: "false true null pi",
+		},
+		contains: [hljs.HASH_COMMENT_MODE, hljs.C_NUMBER_MODE, hljs.QUOTE_STRING_MODE],
+	};
+})
+
+function mathjsHighlighter(editor) {
+	const code = editor.textContent;
+	editor.innerHTML = highlightjs.highlight(code, { language: "mathjs" }).value;
+}
+```
+
+```{ojs}
+viewof expressions = Editor({
+	language: "mathjs",
+	highlight: mathjsHighlighter,
+	label: "Code",
+	lineNumbers: true,
+	debounced: 1000,
+	value: `A = [[1, 2], [-2, 7]]
+B = [9, 8]
+`
+})
+```
+
+```{ojs}
+values = {
+	const mathParser = mathjs.parser()
+	mathParser.evaluate(expressions)
+
+	return {
+		A: mathParser.get("A") ? mathParser.get("A") : 0,
+		B: mathParser.get("B") ? mathParser.get("B") : 0,
+		C: mathParser.get("C") ? mathParser.get("C") : 0,
+	}
+}
+```
+
+```{ojs}
+tex.block`
+\begin{aligned}
+A &= ${mathjs.parse(values.A.toString()).toTex()} \\
+B &= ${mathjs.parse(values.B.toString()).toTex()} \\
+C &= ${mathjs.parse(values.C.toString()).toTex()}
+\end{aligned}
+`
+```

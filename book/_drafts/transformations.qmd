@@ -1,0 +1,7 @@
+Uses of transformation matrices
+
+1. represent a configuration (position and orientation)
+2. change the reference frame in which a vector or frame is represented
+3. displace a vector or frame
+
+Modern Robotics 3.3.1.2 (and many other places)

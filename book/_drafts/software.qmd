@@ -1,0 +1,6 @@
+play buzzer on startup (star wars mouse droid)
+
+display:
+- battery voltage
+- IP address
+- update frequencies

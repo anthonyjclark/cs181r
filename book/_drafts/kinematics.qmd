@@ -1,0 +1,113 @@
+---
+title: "Differential Drive Kinematics"
+format: html
+execute:
+  echo: false
+---
+
+
+[Coordinate Transformations - How robots move through space - YouTube](https://www.youtube.com/watch?app=desktop&v=NGPn9nvLPmg)
+
+3. Motion modeling
+    - Kinematics (direct and inverse)
+    - Differential drive
+    - Ackerman steering
+    - Bicycle model
+    - Rear-wheel bicycle drive
+    - Unicycle model
+    - Tricycle drive
+    - Tricycle with a trailer
+    - Synchronous drive
+    - Omnidirectional drive
+    - Track drive
+    - Motion constraints
+    - Holonomic and non-holonomic constraints
+
+http://msl.cs.uiuc.edu/planning/node657.html
+
+differential kinematics from Correll 3.3
+
+- [Mobile Robot Kinematics Equations - MATLAB & Simulink](https://www.mathworks.com/help/robotics/ug/mobile-robot-kinematics-equations.html)
+
+
+Try dragging the robot around. You can also rotate the robot by dragging from the tip of the forward arrow.
+
+
+
+```{ojs}
+mutable x = 0
+mutable y = 0
+mutable phi = 0
+```
+
+
+```{ojs}
+//| panel: fill
+html`
+${tex.block`
+\vec{q}(t) = \begin{bmatrix}
+    x(t) \\
+    y(t) \\
+    \phi(t)
+\end{bmatrix}
+= \begin{bmatrix}
+    ${x} \; \text{m} \\
+    ${y} \; \text{m} \\
+    ${phi} \degree
+\end{bmatrix}
+\\[10pt]
+R = \begin{bmatrix}
+    \cos(\phi) & -\sin(\phi) \\
+    \sin(\phi) & \cos(\phi)
+\end{bmatrix}
+= \begin{bmatrix}
+    ${Math.cos(phi).toFixed(2)} & ${-Math.sin(phi).toFixed(2)} \\
+    ${Math.sin(phi).toFixed(2)} & ${Math.cos(phi).toFixed(2)}
+\end{bmatrix}
+`}
+`
+```
+
+```{ojs}
+div_id = "jsxdiv"
+
+graph_style = `
+    width: ${width}px;
+    height: ${width}px;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+    background-color: #f5f5f5;
+    border: solid #DDD 1px;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 0;
+`
+viewof graph = html`<div id="${div_id}" style="${graph_style}"></div>`
+```
+
+```{ojs}
+import { kinematics } from "./js/kinematics.js"
+
+function callback(new_x, new_y, new_phi) {
+  mutable x = new_x.toFixed(2)
+  mutable y = new_y.toFixed(2)
+  mutable phi = new_phi.toFixed(2)
+}
+
+jsx_board = kinematics(div_id, callback)
+```
+
+
+TODO:
+
+- cursor style of grab and grabbing
+- https://observablehq.com/@camargo/lamberts-cosine-law
+  - `label: { fontSize: 16 }`
+- https://ipesek.github.io/jsxgraphbook/4_3_animation_sliders.html
+- https://jsxgraph.org/wiki/index.php/Animations
+- missing
+  - wheels
+  - global frame
+  - https://jsxgraph.org/docs/symbols/Image.html

@@ -1,0 +1,19 @@
+---
+title: "CortexJS Test"
+---
+
+CortexJS Looks interesting but harder to use with Observable. Probably use MathJS for now.
+
+```{ojs}
+cortex = require("@cortex-js/compute-engine");
+
+value =
+{
+    const ce = new cortex.ComputeEngine();
+    const val = ce.parse("2 * 3 + 5").evaluate().latex;
+    console.log(ce.parse("\frac{a}{1+x}").evaluate());
+    console.log(ce.parse("e^{i}").evaluate());
+    return val
+}
+html`${value}`
+```

@@ -1,0 +1,15 @@
+i2c
+poll sensors
+
+c function to vm
+
+1. add api to index.ts
+2. add reference to warduino.ts (@external is assemblyscript)
+3. add implementation to arduino.cpp (look at docs at top)
+4. build warduino (look at docs in readme)
+
+https://github.com/TOPLLab/WARDuino-libs/blob/main/glue/assemblyscript/assembly/index.ts
+https://github.com/TOPLLab/WARDuino-libs/blob/main/glue/assemblyscript/assembly/warduino.ts
+https://github.com/TOPLLab/WARDuino/blob/main/src/Primitives/arduino.cpp
+
+3rd party library

@@ -1,0 +1,4 @@
+[espressif/esp-dl: Espressif deep-learning library for AIoT applications](https://github.com/espressif/esp-dl)
+[edgeimpulse/courseware-embedded-machine-learning](https://github.com/edgeimpulse/courseware-embedded-machine-learning)
+[espressif/esp-nn: Optimised Neural Network functions for Espressif chipsets](https://github.com/espressif/esp-nn)
+https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices

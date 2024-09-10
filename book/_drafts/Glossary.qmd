@@ -1,0 +1,8 @@
+---
+title: "Glossary"
+format: html
+---
+
+- Automate with filter?
+- Manually add here and then automatically link using filter?
+- Link back to main text from here? Similar to index?

@@ -1,0 +1,6 @@
+[Uncertainty Calculator](https://uncertaintycalculator.com/)
+mathjs uncertainty extension
+[Visually Explained: Kalman Filters - YouTube](https://www.youtube.com/watch?app=desktop&v=IFeCIbljreY)
+[Error propagation law: Odometry example - YouTube](https://www.youtube.com/watch?app=desktop&v=ubg_AAM7Zd8)
+mpc is everywhere
+https://github.com/arcs-p-robs/arcs-p-robs.github.io/tree/main/tutorials/01-BayesFilter-CorridorDiscrete

@@ -1,0 +1,33 @@
+
+online calculator?
+- numbat (no vectors or matrices; i want to add)
+  - Point vs Vector physical dimensions
+  - https://github.com/sharkdp/numbat/issues/19
+  - add vectors and matrices? (and points?) (built into nalgebra)
+  - add uncertainty?
+  1. come up with example use case (klancar?)
+  2. look at matlab/pydy/etc.? for functions
+  3. show what would need to be added
+  - types: vectors, matrices, etc.
+  - dimensions: power? inertia? etc.
+  * complex? rational?
+  * c<1 + 2i>, r<1 // 2>, e<1 ± 2>
+  * (1 + 2i), (1 // 2), (1 ± 2); (1 + 0i); (a + bi?)
+  * ii -> 𝑖
+  * anchored negative lookahead: `^(?!$)(?:(\d+)d)?(?:(\d+)h)?(?:(\d+)m)?$`
+  * how to embed in website and get output?
+- qalculate?
+- kalker?
+- numi
+- gnu units
+- soulver (not free)
+- cruncher
+- https://worrydream.com/ScrubbingCalculator/
+- https://github.com/printfn/fend
+- https://bellard.org/quickjs/
+  - http://numcalc.com/
+
+
+- display images
+- convert \latex to symbols (eg, \div to ÷)
+- no need to be reactive (not a notebook)

@@ -1,0 +1,118 @@
+---
+title: "Differential Drive Kinematics"
+format: html
+execute:
+  echo: false
+---
+
+TODO:
+
+- add frames
+- animation?
+
+```{ojs}
+mutable x = 0
+mutable y = 0
+mutable phi = 0
+```
+
+```{ojs}
+//| panel: fill
+html`
+${tex.block`
+\vec{q}(t) = \begin{bmatrix}
+    x(t) \\
+    y(t) \\
+    \phi(t)
+\end{bmatrix}
+= \begin{bmatrix}
+    ${x} \; \text{m} \\
+    ${y} \; \text{m} \\
+    ${phi} \degree
+\end{bmatrix}`}
+`
+```
+
+```{ojs}
+robot = {
+
+    const height = 400
+    const width_minus_pad = width - 20
+
+    const body_width = 64
+    const body_length = 32
+
+    const half_body_width = body_width / 2
+    const half_body_length = body_length / 2
+
+    const heading_length = body_length
+    const heading_thickness = 4
+
+    const initial_x = 20
+    const initial_y = 20
+
+    mutable x = initial_x
+    mutable y = initial_y
+
+    function drag_for_translation(event) {
+
+        // Update the generalized coordinates for the matrix display
+        mutable x = Math.round(event.x)
+        mutable y = Math.round(event.y)
+
+        // Account for the top-left placement of the rect
+        const x_body = event.x - half_body_width
+        const y_body = event.y - half_body_length
+
+        body
+            .attr("x", x_body)
+            .attr("y", y_body)
+
+        heading
+            .attr("x1", x_body + half_body_width)
+            .attr("y1", y_body)
+            .attr("x2", x_body + half_body_width)
+            .attr("y2", y_body - heading_length)
+
+    }
+
+    function drag_for_rotation(event) {
+
+        // Calculate phi from cursor location
+
+
+    }
+
+    const drag_body = d3.drag()
+        .on("drag", drag_for_translation)
+        .on("start", () => {
+            d3.select(this).raise()
+            body.attr("cursor", "grabbing")
+        })
+        .on("end", () => body.attr("cursor", "grab"))
+
+    const svg = d3.select(DOM.svg(width_minus_pad, height))
+        .attr("style", "border: 1px solid salmon")
+
+    const body = svg.append("rect")
+        .attr("cursor", "grab")
+        .attr("fill", "salmon")
+        .attr("width", body_width)
+        .attr("height", body_length)
+        .attr("x", initial_x)
+        .attr("y", initial_y)
+        .call(drag_body)
+
+    const heading = svg.append("line")
+        .attr("cursor", "crosshair")
+        .attr("stroke", "black")
+        .attr("stroke-width", heading_thickness)
+        .attr("x1", initial_x + half_body_width)
+        .attr("y1", initial_y)
+        .attr("x2", initial_x + half_body_width)
+        .attr("y2", initial_y - heading_length)
+        .call(d3.drag().on("drag", drag_for_rotation))
+
+    return svg.node()
+}
+```

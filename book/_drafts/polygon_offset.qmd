@@ -1,0 +1,37 @@
+
+
+```csharp
+// https://stackoverflow.com/a/73061541
+
+public static NativeArray<float2> ExpandPoly(NativeArray<float2> oldPoints, float offset, int outer_ccw = 1)
+{
+    int num_points = oldPoints.Length;
+    NativeArray<float2> newPoints = new NativeArray<float2>(num_points, Allocator.Temp);
+
+    for (int curr = 0; curr < num_points; curr++)
+    {
+        int prev = (curr + num_points - 1) % num_points;
+        int next = (curr + 1) % num_points;
+
+        float2 vn = oldPoints[next] - oldPoints[curr];
+        float2 vnn = math.normalize(vn);
+        float nnnX = vnn.y;
+        float nnnY = -vnn.x;
+
+        float2 vp = oldPoints[curr] - oldPoints[prev];
+        float2 vpn = math.normalize(vp);
+        float npnX = vpn.y * outer_ccw;
+        float npnY = -vpn.x * outer_ccw;
+
+        float bisX = (nnnX + npnX) * outer_ccw;
+        float bisY = (nnnY + npnY) * outer_ccw;
+
+        float2 bisn = math.normalize(new float2(bisX, bisY));
+        float bislen = offset / math.sqrt((1 + nnnX * npnX + nnnY * npnY) / 2);
+
+        newPoints[curr] = new float2(oldPoints[curr].x + bislen * bisn.x, oldPoints[curr].y + bislen * bisn.y);
+    }
+
+    return newPoints;
+}
+```

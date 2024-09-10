@@ -1,0 +1,67 @@
+https://www.youtube.com/watch?v=-Xb3Kk3HhIw&t=58s
+
+[SwarmJS: Interactive Swarm Robotics Simulation](https://github.com/m-abdulhak/SwarmJS)
+
+[PathFinding.js A comprehensive path-finding library in javascript.](https://github.com/qiao/PathFinding.js)
+
+[prettymuchbryce/easystarjs: An asynchronous A* pathfinding API written in Javascript.](https://github.com/prettymuchbryce/easystarjs)
+
+[RRT, RRT* & Random Trees - YouTube](https://www.youtube.com/watch?app=desktop&v=Ob3BIJkQJEw)
+https://demonstrations.wolfram.com/RapidlyExploringRandomTreeRRTAndRRT/
+[Path planning techniques for mobile robots: Review and prospect - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S095741742300756X)
+[Robotic Path Planning - Path Planning](https://fab.cba.mit.edu/classes/865.21/topics/path_planning/robotic.html)
+https://www.mathworks.com/help/robotics/ug/plan-path-for-a-differential-drive-robot-in-simulink.html
+
+https://lavalle.pl/tutorials.html
+
+[qiao/PathFinding.js: A comprehensive path-finding library for grid based games](https://github.com/qiao/PathFinding.js)
+
+https://underactuated.mit.edu/trajopt.html
+
+Correll take home lessions section 13.6
+
+
+# The motion planning problem
+
+https://docs.google.com/presentation/d/1W9_nQ-mgeIkZSo40hkxwzSX2LjKGl3JTg72nzjMfnkg/edit#slide=id.g2c1af6e9fd1_0_18
+- slide 31 for interactive
+
+Given:
+1. A robot with a configuration space C
+2. The set of obstacles Cobs
+3. An initial configuration qinit
+4. A goal configuration qgoal
+5. (Possibly a cost function)
+
+Goal: find a path x (continuous function): [0, 1] -> C such that
+1. Starts at qinit: x(0) = qinit
+2. Reaches the goal configuration: x(1) = qgoal
+3. Avoids collision with obstacles
+4. (Possibly minimizes the cost function)
+
+Possibilities:
+- Probabilistic Roadmaps (PRM)
+- Moving Object Planning (MOP)
+- Rapidly-exploring Random Trees (RRT)
+- Parameterize the path as a spline or clothoids
+- Lattice-based planning
+
+RRT and other probabilistic methods are for higher dimensional space, not SE2
+
+ROS navigation (https://navigation.ros.org/concepts/index.html)
+- gmapping (particle filter based SLAM)
+- behavior trees for decision making
+- global planners (planners)
+  - navfn (Dijkstra's algorithm)
+  - smac (hybrid state A*)  (includes motion model)
+- local planners (controllers)
+  - trajectory rollout (dynamic window approach)
+  - dwb (upgraded DWA)
+- https://github.com/ros-planning/navigation2/issues/1710
+
+- probably use Hybrid-A* with dynamic window on course robot (or mpc/mppi or pure pursuit)
+
+configuration space vs workspace when planning (see lecture 12 f110)
+
+flood fill algorithm for path planning
+[The Fastest Maze-Solving Competition On Earth - YouTube](https://www.youtube.com/watch?v=ZMQbHMgK2rw)

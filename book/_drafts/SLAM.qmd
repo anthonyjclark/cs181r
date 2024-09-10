@@ -1,0 +1,10 @@
+---
+title: "Untitled"
+format: html
+---
+
+https://docs.google.com/presentation/d/165G1zMMUtOqU7GOnKvmEjpn0K1Bqw0ZlDAA2VFHgLmo/edit#slide=id.g11481c1f062_0_11607
+
+epuck slam:
+- https://www.youtube.com/watch?v=L-NkvSQY5tU
+- https://wiki.ros.org/gmapping

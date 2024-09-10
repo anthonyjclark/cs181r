@@ -1,0 +1,21 @@
+---
+title: "Math REPL Demo"
+---
+
+Ideas
+- warp-style input
+- output plots and equations next to text
+- up-arrow to navigate cells
+- "e" to edit cell
+- "enter" to rerun cell
+- later: dependency graph among cells? (make reactive)
+- (promising) https://github.com/gzuidhof/starboard-notebook
+- (interesting ideas) https://scribbler.live/samples.html
+- https://github.com/rameshvarun/blog-cells
+
+Try typing math equations and hitting enter.
+
+```{=html}
+<iframe style="border: 1px solid gray" width="100%" height="800" src="../_static/mathjs-repl/index.html" title="Mathjs REPL Demo"></iframe>
+```
+

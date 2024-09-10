@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+format: html
+---
+
+pid without a phd
+velocity pid?
+
+probabilistic-robotics (free book)
+
+D. Bagnell “Particle Filters: The Good, The Bad, The Ugly”
+http://www.cs.cmu.edu/~16831-f12/notes/F14/16831_lecture05_gseyfarth_zbatts.pdf
+
+C. Walsh, S. Karaman. “CDDT: Fast Approximate 2D Ray Casting for Accelerated Localization.” Arxiv, 2017.
+http://arxiv.org/abs/1705.01167
+
+[Pidlab | The first advanced tool for analysis and Hinf design of PID controllers](https://www.pidlab.com/)
+
+
+[Improving the Beginner’s PID – Introduction « Project Blog](http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/)
+[Proportional Integral Derivative (PID)](https://apmonitor.com/pdc/index.php/Main/ProportionalIntegralDerivative)
+[The velocity of PID | Control Engineering](https://www.controleng.com/articles/the-velocity-of-pid/)
+[Fixing PID, Part 1 | Control Engineering](https://www.controleng.com/articles/fixing-pid-part-1/)
+[Fixing PID, Part 2 | Control Engineering](https://www.controleng.com/articles/fixing-pid-part-2/)
+[Fixing PID, Part 3 | Control Engineering](https://www.controleng.com/articles/fixing-pid-part-3/)
+[Feed forwards augment PID control | Control Engineering](https://www.controleng.com/articles/feed-forwards-augment-pid-control/)
+[PID for velocity control - Technical / Programming - Chief Delphi](https://www.chiefdelphi.com/t/pid-for-velocity-control/85640)

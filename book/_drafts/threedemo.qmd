@@ -1,0 +1,9 @@
+---
+title: "Testing 3D iFrame"
+---
+
+Try clicking and dragging with your mouse.
+
+```{=html}
+<iframe style="border: 1px solid gray" width="100%" height="800" src="../_static/three/index.html" title="Thee.js Demo"></iframe>
+```

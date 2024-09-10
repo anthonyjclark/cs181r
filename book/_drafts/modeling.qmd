@@ -1,0 +1,18 @@
+"flatland" for 2d-plane dynamics
+
+catch paper airplane with ground robot
+- non linear dynamics
+
+
+what is simulation for?
+- optimization
+- what else?
+
+[Coordinate Transformations - How robots move through space](https://www.youtube.com/watch?app=desktop&v=NGPn9nvLPmg)
+
+Start with:
+- point
+- position + rotation -> pose
+- coordinate systems and reference frames
+- column vector
+- scalar functions

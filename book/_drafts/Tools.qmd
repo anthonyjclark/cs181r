@@ -1,0 +1,18 @@
+---
+title: "Untitled"
+format: html
+---
+
+https://makeabilitylab.github.io/physcomp/electronics/
+
+
+tools
+- soldering iron
+- helping hands
+- wire cutters
+- wire strippers
+- flush cutters
+- power supply
+- driver and bits
+- hot glue
+- cardboard

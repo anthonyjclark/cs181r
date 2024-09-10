@@ -1,0 +1,3 @@
+
+using circle room example from Klancar
+[Monte Carlo Localization](https://github.com/Ekumen-OS/beluga?utm_source=weekly_robotics&utm_medium=newsletter&utm_campaign=weekly-robotics-285)

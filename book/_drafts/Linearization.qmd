@@ -1,0 +1,6 @@
+---
+title: "Untitled"
+format: html
+---
+
+[Local Linearization | Carmen's Graphics Blog](https://carmencincotti.com/2022-07-25/local-linearization/)

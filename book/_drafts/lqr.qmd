@@ -1,0 +1,7 @@
+- lqr / linear state feedback control (Boyd linear book)
+- lqr and Kalman filtering (linear squares state estimation) are just constrained least squares (how do the Riccati equations come into play?) using kkt
+
+- lqr.pdf in downloads
+- out.pdf in downloads
+- https://underactuated.mit.edu/lqr.html
+- [Walid-khaled/autonomous_mobile_robots: This repository contains different aspects of autonomous mobile robots including motion, control, and estimation. PID, LQR, and MPC controllers for differential drive robot are developed with ROS2. In addition, some filters are covered such as particle filter and ekf for localization.](https://github.com/Walid-khaled/autonomous_mobile_robots)

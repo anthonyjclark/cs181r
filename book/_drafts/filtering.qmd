@@ -1,0 +1,15 @@
+- treat different sensor rates as missing measurements (see boyd vlms)
+
+[Window: devicemotion event](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicemotion_event)
+[Window: deviceorientation event](https://developer.mozilla.org/en-US/docs/Web/API/Window/deviceorientation_event)
+
+go to goal and use distance to wall as sensed data?
+
+https://www.bitcraze.io/2024/01/explaining-kalman-filters-with-the-crazyflie/
+
+[Kalman Filter Explained Simply](https://thekalmanfilter.com/kalman-filter-explained-simply/)
+
+
+[KF Basics - Part I — PythonRobotics documentation](https://atsushisakai.github.io/PythonRobotics/modules/appendix/Kalmanfilter_basics.html)
+
+[KF Basics - Part 2 — PythonRobotics documentation](https://atsushisakai.github.io/PythonRobotics/modules/appendix/Kalmanfilter_basics_2.html)
