@@ -37,6 +37,7 @@ website:
             - book/03-SafetyAndElectronics.qmd
             - book/04-ProgrammingWithToit.qmd
             - book/05-MicrocontrollerUtilities.qmd
+            - book/06-OpenLoopGoToGoal.qmd
         - text: "---"
         - section: "Unit 2: Modeling and Feedback Control"
           contents:

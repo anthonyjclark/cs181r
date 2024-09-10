@@ -4,39 +4,39 @@ title: "Schedule"
 
 <!-- 27 total in-class days -->
 
-| Week | Date                 | Chapter                                                         |
-| ---: | -------------------- | --------------------------------------------------------------- |
-| 1    | Tue Aug 27           | [Introduction and Design](../book/01-IntroductionAndDesign.qmd) |
-|      | Thu Aug 29           | [Layout and Prototyping](../book/02-LayoutAndPrototyping.qmd)   |
-| 2    | Tue Sep 3            | [Safety and Electronics](../book/03-SafetyAndElectronics.qmd)   |
-|      | Thu Sep 5            | [Programming with Toit](../book/04-ProgrammingWithToit.qmd)     |
-| 3    | Tue Sep 10           | [Open-Loop Go to Goal](../book/05-MicrocontrollerUtilities.qmd)         |
-|      | Thu Sep 12           | Culture, Automation, and Jobs                                   |
-| 4    | Tue Sep 17           | Wheel Encoders and Inertial Sensors                             |
-|      | Thu Sep 19           | Closed-Loop Go to Goal                                          |
-| 5    | Tue Sep 24           | Kinematic Modeling                                              |
-|      | Thu Sep 26           |                                                                 |
-| 6    | Tue Oct 1            |                                                                 |
-|      | Thu Oct 3            |                                                                 |
-| 7    | Tue Oct 8            |                                                                 |
-|      | Thu Oct 10           |                                                                 |
-| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                            |
-|      | Thu Oct 17           |                                                                 |
-| 9    | Tue Oct 22           |                                                                 |
-|      | Thu Oct 24           |                                                                 |
-| 10   | Tue Oct 29           |                                                                 |
-|      | Thu Oct 31           |                                                                 |
-| 11   | Tue Nov 5            |                                                                 |
-|      | Thu Nov 7            |                                                                 |
-| 12   | Tue Nov 12           |                                                                 |
-|      | Thu Nov 14           |                                                                 |
-| 13   | Tue Nov 19           |                                                                 |
-|      | Thu Nov 21           |                                                                 |
-| 14   | Tue Nov 26           | Project Workday                                                 |
-|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                                          |
-| 15   | Tue Dec 3            | Project Workday                                                 |
-|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                                           |
-| 16   | TBD                  | Final exam                                                      |
+| Week | Date                 | Chapter                                                              |
+| ---: | -------------------- | -------------------------------------------------------------------- |
+| 1    | Tue Aug 27           | [Introduction and Design](../book/01-IntroductionAndDesign.qmd)      |
+|      | Thu Aug 29           | [Layout and Prototyping](../book/02-LayoutAndPrototyping.qmd)        |
+| 2    | Tue Sep 3            | [Safety and Electronics](../book/03-SafetyAndElectronics.qmd)        |
+|      | Thu Sep 5            | [Programming with Toit](../book/04-ProgrammingWithToit.qmd)          |
+| 3    | Tue Sep 10           | [Microcontroller Utilities](../book/05-MicrocontrollerUtilities.qmd) |
+|      | Thu Sep 12           | [Open-Loop Go to Goal](../book/06-OpenLoopGoToGoal.qmd)              |
+| 4    | Tue Sep 17           | Culture, Automation, and Jobs                                        |
+|      | Thu Sep 19           | Wheel Encoders and Inertial Sensors                                  |
+| 5    | Tue Sep 24           | Closed-Loop Go to Goal                                               |
+|      | Thu Sep 26           | Kinematic Modeling                                                   |
+| 6    | Tue Oct 1            |                                                                      |
+|      | Thu Oct 3            |                                                                      |
+| 7    | Tue Oct 8            |                                                                      |
+|      | Thu Oct 10           |                                                                      |
+| 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                                 |
+|      | Thu Oct 17           |                                                                      |
+| 9    | Tue Oct 22           |                                                                      |
+|      | Thu Oct 24           |                                                                      |
+| 10   | Tue Oct 29           |                                                                      |
+|      | Thu Oct 31           |                                                                      |
+| 11   | Tue Nov 5            |                                                                      |
+|      | Thu Nov 7            |                                                                      |
+| 12   | Tue Nov 12           |                                                                      |
+|      | Thu Nov 14           |                                                                      |
+| 13   | Tue Nov 19           |                                                                      |
+|      | Thu Nov 21           |                                                                      |
+| 14   | Tue Nov 26           | Project Workday                                                      |
+|      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                                               |
+| 15   | Tue Dec 3            | Project Workday                                                      |
+|      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                                                |
+| 16   | TBD                  | Final exam                                                           |
 
 : {.striped .sm}
 

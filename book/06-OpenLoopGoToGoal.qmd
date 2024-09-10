@@ -4,51 +4,34 @@ execute:
   echo: false
 ---
 
-Some introductory text.
-
-“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+Exciting times! This chapter should leave you you thinking: "Yea, I made a robot!"
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- How to program a robot to move using open-loop control
+- The drawbacks of open-loop control
 
 ## Terminology
 
-a list
-: of new terms
+open-loop control
+: a control system that does not use feedback to change its actions
 
 ## Lecture
 
-Links
-
-- [Slides (PPTX)](../_static/lectures/)
-- [Slides (PDF)](../_static/lectures/)
-- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
-
-A video of slides, coding, hands-on electronics, etc.
-
-- heart beat
-  - delete communications/.packages
-  - introduce communications demo
-  - try to run without install
-  - `jag pkg install`
-  - then run demo
-  - web sockets
-  - Toit
 - go to goal
   - open loop
   - vs. closed loop
 
 ## Interactive
 
-Add a interactive with a bit of randomness.
+Try running the following simulation several times.
 
 ```{ojs}
 div_id = "interactive-container"
 
 graph_style = `
     width: ${width}px;
-    height: ${width}px;
+    height: ${width/2}px;
     user-select: none;
     overflow: hidden;
     position: relative;
@@ -73,8 +56,8 @@ function updateTranslation( x, y ) { }
 r = 0.1;
 d = 0.07;
 
-mutable ur = 20;
-mutable ul = 19.9;
+mutable ur = 30;
+mutable ul = 29.9;
 
 // TODO: simulate from t=0 to t=time on each call to update
 // TODO: add caching
@@ -110,8 +93,8 @@ simulate = ( time ) => {
 
 restart = () => {
 
-  mutable ur = 20 + ( Math.random() - 0.5 ) * 0.2;
-  mutable ul = 20 + ( Math.random() - 0.5 ) * 0.2;
+  mutable ur = 30 + ( Math.random() - 0.5 ) * 0.2;
+  mutable ul = 30 + ( Math.random() - 0.5 ) * 0.2;
 
 };
 
@@ -122,11 +105,23 @@ wmr = new WMRGraph( 'interactive-container', updateRotation, updateTranslation )
 wmr.addPlayerControls( duration, timeStep, simulate, restart);
 ```
 
+::: {.callout-tip collapse="true"}
+## What do you notice about the final position of the robot? (And what might justify this behavior?)
+
+Your robot is pretty unlikely to go straight forward. It will likely veer off-course for a variety of reasons, including:
+
+- wheel slippage (cardboard wheels don't have much traction)
+- differences in the motors (one motor might rotate faster than the other at the same voltage)
+- differences in the wheels (one wheel might have a larger diameter than the other)
+- sloppy construction (the wheels might not be perfectly aligned)
+- uneven ground and/or debris
+
+Many of these issues can be fixed with better control algorithms.
+:::
+
 ## Exercise
 
-Intro...
-
-- spreadsheet
+It is time to make your robot move!
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -144,8 +139,12 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### Tasks
+Every team will write a program for the following task:
+
+> Make your robot move forward 3 meters using open-loop control.
+
+We will mark starting and target locations on the floor in the the lab (on tile) and in the hallway (on carpet). Everyone will record 5 trials for each surface and record their results in [this spreadsheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=598295253#gid=598295253).
 
 ## Wrap-Up
 
-## Resources
+Now that we've seen the issues with open-loop control, next week we'll look into using data from sensors to improve our robot's performance.

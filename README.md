@@ -69,6 +69,7 @@ git subtree push --prefix _toit code main
 
 ## TODO
 
+- Switch to https://quarto.org/docs/output-formats/html-basics.html#commenting
 - Add polarity symbols on the battery holder
 - [Microfeatures I Love in Blogs and Personal Websites](https://danilafe.com/blog/blog_microfeatures/)
 - add goat counter to base template (probably no)
