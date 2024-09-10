@@ -12,21 +12,21 @@ In this chapter we'll learn how to use the expansion board's OLED display and co
 
 ## Terminology
 
-OLED (organic light-emitting diode) display:
-a type of display that uses organic compounds that emit light when an electric current is applied
+OLED (organic light-emitting diode) display
+: a type of display that uses organic compounds that emit light when an electric current is applied
 
-WebSocket:
-a communication protocol providing two-way communication over TCP
+WebSocket
+: a communication protocol providing two-way communication over TCP
 
-heartbeat:
-a signal sent by a device to indicate that it is still connected
+heartbeat
+: a signal sent by a device to indicate that it is still connected
 
-fiber (aka task):
-a lightweight thread of execution (you can have many fibers running concurrently)
+fiber (aka task)
+: a lightweight thread of execution (you can have many fibers running concurrently)
 
 ## Lecture
 
-This lecture will focus on our microcontroller's "utilities" - the OLED display and WebSocket communication. In the next lecture, we'll put these to use to make our robot move.
+This chapter will focus on our microcontroller's "utilities" - the OLED display and WebSocket communication. In the next chapter, we'll put these to use to make our robot move.
 
 ### OLED Display
 
@@ -40,35 +40,35 @@ In the video I spend some time discussing Toit packages. You can find more infor
 
 ### Communicating with a WebSocket
 
-This next video demonstrates how to communicate with the microcontroller using a WebSocket. The [wscat](https://github.com/websockets/wscat) is useful for debugging. You can install it using Node.js and npm. You can ignore this tool if you'd like.
+This next video demonstrates how to communicate with the microcontroller using a WebSocket. The [`wscat`](https://github.com/websockets/wscat) is useful for debugging. You can install it using Node.js and npm. You will not need to install this tool, but it might be helpful for debugging.
 
 Here is an overview of what we're trying to achieve with WebSockets.
 
 ![WebSocket diagram](../_static/images/05-MicrocontrollerUtilities/WebSocket.svg)
 
-On the microcontroller (server) we'll use the heartbeats to keep the system running. If the heartbeats stop (either due to an unexpected crash on the client side or due to a closed connection) then will shut the system down. Here is a diagram of the server side system.
+The WebSocket is being used to ensure we always have control over the robot (we don't want them running away).
+On the microcontroller (server) we'll use the heartbeats to keep the system running. If the heartbeats stop (either due to an unexpected crash on the client side or due to a closed connection) then will shut the system down.
 
+The following diagram is focused on the server (robot) side of the connection.
 
+![Server system operation](../_static/images/05-MicrocontrollerUtilities/Heartbeat.svg)
 
-
-
-Diagram
-
-wscat
+The WebSocket interface (implemented in the `communication` package) should make it easy to safely control your robot.
 
 {{< video https://www.youtube.com/watch?v=Z4D_1SzYxOY >}}
 
 ### Displaying the microcontroller IP address
 
-{{< video https://www.youtube.com/watch?v=4qCGac9kgvY >}}
+The concurrency system used in Toit is based on [fibers/tasks](https://docs.toit.io/language/tasks). This allows us to run multiple tasks concurrently, which greatly simplifies our code. (Note: this is not parallelism or true multi-threading.) This will make an even bigger impact later in the semester when we have more interconnected components to our robot software.
 
-[fibers/tasks](https://docs.toit.io/language/tasks)
+{{< video https://www.youtube.com/watch?v=4qCGac9kgvY >}}
 
 ## Exercise
 
-Intro...
+The goal for this week is to make your robot move to a target location straight ahead of it (often called the "go to goal" task).
 
-- spreadsheet
+During this first part of the exercise you will need to get the OLED display on the expansion board to show your microcontroller's IP address.
+In the next class period you will use the same `Communicator` object to control the motors.
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -86,8 +86,42 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### Tasks
+We'll focus today on the display and communication packages.
+
+### OLED Display
+
+First start by running the demo found in [the `display` package](https://github.com/anthonyjclark/MobileRoboticsCode/tree/main/display).
+
+Your goal for this first part of the exercise is to have the OLED display show you and your partner's first names. I recommend first creating a new directory for your program. For example:
+
+```bash
+cd ~/Classes/MobileRobotics/
+mkdir -p display-exercise
+cd display-exercise
+touch display-exercise.toit
+```
+
+Now you can copy code over from the existing `display` package demo.
+
+### WebSocket Communication
+
+Next, you should run the demo found in [the `communication` package](https://github.com/anthonyjclark/MobileRoboticsCode/tree/main/communication).
+
+Again, you should copy the demo file over to a new file in a new directory.
+
+Now, add a new loop at the end of the `main` function that makes the LED blink every 250 ms, but only when the `LedBlinker` object is enabled.
+
+### Heartbeats, Displays, and Motors
+
+Finally, you should modify the `LedBlinker` class (or better yet, rename the class to something more appropriate) to display the IP address of the microcontroller on the OLED display. This is very similar to the code I show in the [video above](#displaying-the-microcontroller-ip-address).
+
+Additionally modify the class so that it turns the motors on to 0.25 whenever the object is enabled and halts the motors whenever the object is disabled.
 
 ## Wrap-Up
 
+Your robot should now display its IP address. This means that you (theoretically) will never need to plug it into your computer and run `jag monitor` again. On the other hand, plugging in your robot and running `jag monitor` is a good way to debug.
+
 ## Resources
+
+- [WebSocket - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+- [Detection of Half-Open (Dropped) Connections](https://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html)

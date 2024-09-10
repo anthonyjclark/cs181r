@@ -79,7 +79,7 @@ Try running the motor script once while connected and once while disconnected fr
 
 ### Toit Library Code
 
-The code found in the [`MobileRoboticsCode`](https://github.com/anthonyjclark/MobileRoboticsCode) repository is setup so that you can use it as a set of libraries.
+The code found in the [`MobileRoboticsCode`](https://github.com/anthonyjclark/MobileRoboticsCode) repository is setup so that you can use it as a set of Toit packages.
 
 Here is a listing of the `MobileRoboticsCode` directory (as of this chapter and with some files removed for clarity):
 
@@ -103,9 +103,9 @@ Here is a listing of the `MobileRoboticsCode` directory (as of this chapter and 
    └── pinout.toit
 ```
 
-The Toit convention is to name your library file the same as its parent directory (eg, the `motors` directory contains a `motors.toit` file). You can then import the library using a relative path. For example, I import the `pinout` library in `motors.toit` with `import ..pinout`.
+The Toit convention is to name your package file the same as its parent directory (eg, the `motors` directory contains a `motors.toit` file). You can then import the package using a relative path. For example, I import the `pinout` package in `motors.toit` with `import ..pinout`.
 
-Here is an example of creating a new program using the libraries:
+Here is an example of creating a new program using the provided packages:
 
 ~~~bash
 cd MobileRoboticsCode
@@ -210,7 +210,7 @@ Before moving on to the next step, make sure you answer the questions on gradesc
 
 ### Creating a new program
 
-The final part of this exercise is to create a new program that makes your robot turn "in-place" (a zero-degree turning radius) using the `motors` library.
+The final part of this exercise is to create a new program that makes your robot turn "in-place" (a zero-degree turning radius) using the `motors` package.
 
 You should:
 
