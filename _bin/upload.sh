@@ -4,6 +4,8 @@ set -e
 
 # TODO: turn into makefile with render target
 
+networksetup -getairportnetwork en0
+
 password="$(security find-internet-password -s wells.campus.pomona.edu -w)"
 web_host="wells.campus.pomona.edu"
 
