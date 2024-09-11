@@ -18,9 +18,40 @@ open-loop control
 
 ## Lecture
 
+<!--
 - go to goal
   - open loop
   - vs. closed loop
+  - copy previous demo
+  - add motors (import, variable)
+  - constructor: add motors.stop
+  - disable: add motors.stop
+  - invert display
+  - forward-time = 10_000 (need to figure out experimentally)
+  - if .is-enabled: then move forward for forward-time then break
+  - motors.set-speed-forward
+  - else sleep
+  - demo with wscat
+  - can add code to run multiple times, or can just run jag run multiple times
+  - show interactive
+-->
+
+{{< video https://www.youtube.com/watch?v=VRo4ocQ2CP4 >}}
+
+Before moving on to the exercise, try to answer the following questions:
+
+> How would you make your robot move forward 10m, rotate right by 90°, and then move forward another 10m?
+
+::: {.callout-tip collapse="true"}
+## Open-Loop Control (Dead Reckoning)
+
+One way to make your robot perform the task above (10m, 90°, 10m) is to measure the speed of your robot over many trials with different speed commands and distances. You could then use this table to do the following:
+
+- compute the amount of time needed to move the robot forward 10m at your preferred speed
+- compute the amount of time needed to rotate the robot 90° at your preferred speed
+- reuse the time from the first step to move the robot forward 10m
+
+:::
 
 ## Interactive
 
@@ -144,6 +175,16 @@ Every team will write a program for the following task:
 > Make your robot move forward 3 meters using open-loop control.
 
 We will mark starting and target locations on the floor in the the lab (on tile) and in the hallway (on carpet). Everyone will record 5 trials for each surface and record their results in [this spreadsheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=598295253#gid=598295253).
+
+You'll want to start each coding section by pulling any changes I've made to the course code:
+
+```bash
+# If you cloned the repository
+git pull origin main
+
+# If you forked the repository
+git pull upstream main
+```
 
 ## Wrap-Up
 

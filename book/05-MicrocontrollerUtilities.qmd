@@ -59,7 +59,7 @@ The WebSocket interface (implemented in the `communication` package) should make
 
 ### Displaying the microcontroller IP address
 
-The concurrency system used in Toit is based on [fibers/tasks](https://docs.toit.io/language/tasks). This allows us to run multiple tasks concurrently, which greatly simplifies our code. (Note: this is not parallelism or true multi-threading.) This will make an even bigger impact later in the semester when we have more interconnected components to our robot software.
+The concurrency system used in Toit is based on [fibers/tasks](https://docs.toit.io/language/tasks) (in the video I mistakenly say Toit uses a concurrency model called "threading" when I should have said "fibers"). This allows us to run multiple tasks concurrently, which greatly simplifies our code. (Note: this is not parallelism or true multi-threading.) This will make an even bigger impact later in the semester when we have more interconnected components to our robot software.
 
 {{< video https://www.youtube.com/watch?v=4qCGac9kgvY >}}
 
