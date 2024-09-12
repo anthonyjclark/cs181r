@@ -51,6 +51,8 @@ Please paste your code below.
 
 |____|
 
+<!-- Add question on moving forward, rotating, then moving forward again -->
+
 ## Parts Checklist
 
 Please make sure you have all of your parts and that they are in working order before submitting. You will need to complete this checklist every week, and in later weeks the number of items will increase.
