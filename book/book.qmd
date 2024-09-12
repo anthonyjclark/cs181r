@@ -28,8 +28,6 @@ files = sorted([file for file in Path(".").glob("*.qmd") if is_chapter(file)])
 
 table = []
 for i, filename in enumerate(files):
-    if i > 5:
-        break
     with open(filename, "r") as file:
         head = [next(file) for _ in range(10)]
     title = [line.split('"') for line in head if line.startswith("title")][0][1]

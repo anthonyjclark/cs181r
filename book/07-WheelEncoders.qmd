@@ -1,0 +1,59 @@
+---
+title: "Wheel Encoders"
+---
+
+In the previous chapter, we tried to make our robot move forward in a straight line and land on a specific target location. More than likley, however, the robot veered off course. In this chapter, we will learn how to use wheel encoders to measure the distance traveled by the robot. This information will allow us to correct the robot's trajectory and make it move more predictably.
+
+## What you will learn
+
+- How to use wheel encoders to measure the distance traveled by the robot
+
+## Terminology
+
+quadrature encoder
+: an incremental encoder that enables measuring both the speed and direction of a motor axle
+
+a list
+: of new terms
+
+<!-- TODO: fill in notation -->
+
+## Lecture
+
+Links
+
+- [Slides (PPTX)](../_static/lectures/)
+- [Slides (PDF)](../_static/lectures/)
+- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+
+A video of slides, coding, hands-on electronics, etc.
+
+## Interactive
+
+An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
+
+## Exercise
+
+Intro...
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+### Tasks
+
+## Wrap-Up
+
+## Resources

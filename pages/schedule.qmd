@@ -12,8 +12,8 @@ title: "Schedule"
 |      | Thu Sep 5            | [Programming with Toit](../book/04-ProgrammingWithToit.qmd)          |
 | 3    | Tue Sep 10           | [Microcontroller Utilities](../book/05-MicrocontrollerUtilities.qmd) |
 |      | Thu Sep 12           | [Open-Loop Go to Goal](../book/06-OpenLoopGoToGoal.qmd)              |
-| 4    | Tue Sep 17           | Culture, Automation, and Jobs                                        |
-|      | Thu Sep 19           | Wheel Encoders and Inertial Sensors                                  |
+|      | Thu Sep 17           | [Wheel Encoders](../book/07-WheelEncoders.qmd)                       |
+| 4    | Tue Sep 19           | Culture, Automation, and Jobs                                        |
 | 5    | Tue Sep 24           | Closed-Loop Go to Goal                                               |
 |      | Thu Sep 26           | Kinematic Modeling                                                   |
 | 6    | Tue Oct 1            |                                                                      |
