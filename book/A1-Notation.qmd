@@ -6,6 +6,9 @@ format: html
 
 This page will fill-in as the semester progresses.
 
+<!-- what’s in a row, column , do they sum etc
+ -->
+
 <!-- Mathematical notation
 - linear algebra
 - calculus

@@ -59,9 +59,9 @@ website:
         - text: "---"
         - section: "Back Matter"
           contents:
-            - book/Glossary.qmd
-            - book/Projects.qmd
+            # - book/Glossary.qmd
             - book/A1-Notation.qmd
+            - book/A2-Troubleshooting.qmd
 
 format:
   html:

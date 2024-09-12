@@ -1,0 +1,30 @@
+---
+title: "Troubleshooting"
+format: html
+---
+
+Please let me know when you run into issues. I will update this page with solutions as we find them.
+
+## No serial data received
+
+If you see an output like the following:
+
+```text
+Connecting......................................
+
+A fatal error occurred: Failed to connect to ESP32: No serial data received.
+For troubleshooting steps visit: https://docs.espressif.com/projects/esptool/en/latest/troubleshooting.html
+Error: exit status 1
+```
+
+It likely means `jag` is trying to use the wrong port. Try listing the available ports with the following command:
+
+```bash
+jag port --list
+```
+
+And add the correct port to whatever command you are trying to run. For example:
+
+```bash
+jag flash --chip esp32s3 --port /dev/cu.usbmodem14401
+```
