@@ -61,3 +61,35 @@ You will need to either
 
 - changes the permissions of your `/usr/local/lib/node_modules` directory, or
 - install `wscat` with `sudo`: `sudo npm install -g wscat`
+
+## `WARN: connect failed`
+
+You might often see an error message like the following:
+
+```text
+[toit] INFO: running on ESP32S3 - revision 0.2
+[wifi] DEBUG: connecting
+[wifi] WARN: connect failed {reason: timeout}
+[wifi] DEBUG: closing
+[jaguar] WARN: running Jaguar failed due to ‘DEADLINE_EXCEEDED’ (1/3)
+[wifi] DEBUG: connecting
+[wifi] WARN: connect failed {reason: unknown reason (39)}
+[wifi] DEBUG: closing
+[jaguar] WARN: running Jaguar failed due to ‘CONNECT_FAILED: unknown reason (39)’ (2/3)
+[wifi] DEBUG: connecting
+[wifi] WARN: connect failed {reason: unknown reason (39)}
+[wifi] DEBUG: closing
+[jaguar] WARN: running Jaguar failed due to ‘CONNECT_FAILED: unknown reason (39)’ (3/3)
+[jaguar] INFO: backing off for 5s
+```
+
+The first thing you should try is to move your antenna away from other wires and electrical components (e.g., the motors and battery). If that does not work, then try connecting to the TP-Link router instead of Claremont-ETC or PomonaIoT.
+
+## PSRAM Initialization Error
+
+You can ignore the following error message:
+
+```text
+E (299) quad_psram: PSRAM ID read error: 0x00ffffff, PSRAM chip not found or not supported, or wrong PSRAM line mode
+E (299) esp_psram: PSRAM enabled but initialization failed. Bailing out.
+```
