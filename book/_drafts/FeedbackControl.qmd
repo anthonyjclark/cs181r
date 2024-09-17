@@ -1,4 +1,7 @@
+https://sites.gatech.edu/acds/mppi/
+
 https://github.com/maruta/toy4edu
+
 https://github.com/boisgera/control-engineering-with-python
 
 - klancar

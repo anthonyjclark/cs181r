@@ -1,40 +1,77 @@
 ---
-title: "Wheel Encoders"
+title: "Motor Control"
 ---
 
-In the previous chapter, we tried to make our robot move forward in a straight line and land on a specific target location. More than likley, however, the robot veered off course. In this chapter, we will learn how to use wheel encoders to measure the distance traveled by the robot. This information will allow us to correct the robot's trajectory and make it move more predictably.
+<!-- TODO: homemade motor. encoder. bridge -->
+
+In the previous chapter, we tried to make our robots move forward in a straight line and land on a specific target location. More than likely, however, your robot veered off course. In this chapter, we will learn how to use wheel encoders to measure the distance traveled by the robot. This information will allow us to correct the robot's trajectory and make it move more predictably.
 
 ## What you will learn
 
+- About the fundamentals of DC motors
 - How to use wheel encoders to measure the distance traveled by the robot
+- How to implement proportional control of a DC motor
 
 ## Terminology
 
+DC (direct current) motor
+: a type of electric motor that converts direct current electrical power into rotational power
+
+H-bridge
+: an electronic circuit that enables a voltage to be applied across a load in either direction
+
+PWM (pulse-width modulation)
+: a technique for producing analog-like signals using square wave pulses of varying duty cycles
+
 quadrature encoder
 : an incremental encoder that enables measuring both the speed and direction of a motor axle
-
-a list
-: of new terms
-
-<!-- TODO: fill in notation -->
 
 ## Lecture
 
 Links
 
-- [Slides (PPTX)](../_static/lectures/)
-- [Slides (PDF)](../_static/lectures/)
-- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+- [Slides (PPTX)](../_static/lectures/07-MotorControl.pptx)
+- [Slides (PDF)](../_static/lectures/07-MotorControl.pdf)
 
-A video of slides, coding, hands-on electronics, etc.
+In this chapter, we'll
 
-## Interactive
+- first review the fundamentals of the DC motors that move our robots,
+- then explore the basic electronics enabling directional control (H-bridge), speed control (PWM), and feedback (quadrature encoder),
+- and finally we'll cover the basics of proportional control of a DC motor.
 
-An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
+### Reviewing a DC motor model
+
+{{< video https://www.youtube.com/watch?v=6mv2upJoveM >}}
+
+Keys from the video
+
+- motor torque (and therefore speed) is proportional to the current flowing through the motor
+- the direction of rotation is determined by the direction of the current
+- there is a minimum voltage level needed to overcome the motor's internal resistance
+
+### Exploring the electronics enabling motor control
+
+{{< video https://www.youtube.com/watch?v=WNTtzSEFv2Q >}}
+
+Keys from the video
+
+- an H-bridge enables the motor to rotate in either direction
+- pulse-width modulation (PWM) is used to control the speed of the motor
+- a quadrature encoder provides feedback on the motor's speed and direction
+
+### Proportional control of a DC motor
+
+{{< video https://www.youtube.com/watch?v=LbeP8n2QoAU >}}
+
+Keys from the video
+
+- proportional control adjusts the motor's speed based on the difference between the desired and actual speed
+- the proportional gain determines how quickly the motor responds to changes in speed
+- the proportional gain must be tuned to achieve the desired performance
 
 ## Exercise
 
-Intro...
+This week's goal is to complete the go-to-goal task with a greater degree of accuracy. You will use the proportional control of the DC motor to adjust the robot's speed based on the difference between the desired and actual speed. Today, you will implement a Toit class that controls the speed of both motors.
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -52,8 +89,24 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### Tasks
+The goal this class period is simple: implement a proportional control class that adjusts the speed of your robots motors.
+
+  set-direction direction/int:
+    dir-pin.set direction
+
+  set-pwm-duty-factor duty-factor/float:
+    duty-factor = constrain duty-factor 0.0 1.0
+    pwm-channel.set-duty-factor duty-factor
+
+set directly
+  pwm-min-factor/float
+
 
 ## Wrap-Up
 
+Now that you have a proportional control class, you are ready to take another attempt at the go-to-goal task.
+
 ## Resources
+
+- [Direct Current Motors](https://www.nagwa.com/en/explainers/246108560531/)
+- [How does an Electric Motor work? (DC Motor) - Jared Owen on YouTube](https://www.youtube.com/watch?app=desktop&v=CWulQ1ZSE3c)
