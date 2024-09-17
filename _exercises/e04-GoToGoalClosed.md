@@ -6,9 +6,33 @@ Do not work too far ahead. I would rather everyone wait until Thursday to start 
 
 ## Tuesday: Setting Up
 
-min pwm
+What is the minimum PWM duty factor for your left wheel?
 
-max speed
+|____|
+
+What is the minimum PWM duty factor for your right wheel?
+
+|____|
+
+What code did you write to determine the minimum PWM duty factor for your motors?
+
+|____|
+
+What is the maximum speed of your robot?
+
+|____|
+
+What is the left PWM duty factor of your robot when at max speed?
+
+|____|
+
+What is the right PWM duty factor of your robot when at max speed?
+
+|____|
+
+What code did you write to determine the maximum speed of your robot?
+
+|____|
 
 ## Thursday: Go To Goal
 
@@ -22,7 +46,6 @@ Did your group record your results in the spreadsheet?
 Please paste your code below.
 
 |____|
-
 
 How would your program change if you wanted to move forward, rotate 90 degrees, then move forward again? Do note write a new program, just explain what you would do in plain English.
 

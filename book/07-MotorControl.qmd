@@ -89,18 +89,36 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-The goal this class period is simple: implement a proportional control class that adjusts the speed of your robots motors.
+The goal this class period is simple: measure a few characteristics of your robot's motors and start working on a proportional control algorithm. Specifically, you will need to determine the minimum PWM duty factor needed to get your robot to move and the maximum speed of your robot.
 
-  set-direction direction/int:
-    dir-pin.set direction
+These values are important for the proportional control algorithm you will implement in the next class period.
 
-  set-pwm-duty-factor duty-factor/float:
-    duty-factor = constrain duty-factor 0.0 1.0
-    pwm-channel.set-duty-factor duty-factor
+### Determine Your Minimum PWM Duty Factors
 
-set directly
-  pwm-min-factor/float
+Your first task is to discover the minimum duty factor needed to get your robot to move. You will need to measure this separately for both motors, as there might be slight differences in how they respond to motor commands (i.e., PWM duty cycles).
 
+I recommend taking the following approach:
+
+1. Create a new program.
+2. Import the `motor` package.
+3. Ideally you will also use a heartbeat to keep your program running.
+4. Write a `main` function that increments the value of the PWM signal every 2 seconds using the `set-pwm-duty-factor` method. You should first read that function and try to understand the input it expects.
+
+You could also try running your motors in reverse using the `set-direction` method.
+
+### Determine Your Robot's Maximum Speed
+
+Your second task is to determine the maximum speed of your robot. This is the speed at which your robot moves as close to straight forward as possible at the highest PWM duty factor for each motor as possible. Due to differences in your left and right motors, I would expect one duty factor to be set to `1.0` and the other to be slightly less than `1.0`.
+
+I recommend taking the following approach:
+
+1. Create a new program.
+2. Import the `motor` package.
+3. Ideally you will also use a heartbeat to keep your program running.
+4. Write a `main` function that sets the PWM duty factor to `1.0` for both motors and determine which motor needs to be slowed down.
+5. Find a lower PWM duty factor that allows your robot to move straight forward.
+
+You should also try running your motors in reverse.
 
 ## Wrap-Up
 
