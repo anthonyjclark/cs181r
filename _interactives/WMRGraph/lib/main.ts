@@ -9,6 +9,9 @@ type RotationCB = ( phi: number ) => void;
 type TranslationCB = ( x: number, y: number ) => void;
 type SimulationCB = ( time: number ) => [ number, number, number ];
 
+type Pose = [number, number, number];
+type PoseCache = { [index: number]: Pose };
+
 // TODO:
 // - allow user to set the position and rotation
 // - change cursor when over C or r
@@ -18,6 +21,10 @@ export class WMRGraph {
 	private board: Board;
 	private center: Point;
 	private rotation: Point;
+
+	// TODO: reset should clear each cache
+	private kinematicsCache: PoseCache = {};
+	private dynamicsCache: PoseCache = {};
 
 	constructor( elementID: string, rotationCB: RotationCB, translationCB: TranslationCB ) {
 
@@ -40,6 +47,7 @@ export class WMRGraph {
 		this.center = this.board.create( 'point', [ 0, 0 ], { name: 'C' } );
 
 		// Forward point used to adjust the rotation angle
+		// TODO: do not show the point if simulating
 		const circle = this.board.create( 'circle', [ this.center, half_size ], { visible: false } );
 		this.rotation = this.board.create( 'glider', [ circle ], { name: 'r', showInfoBox: false } );
 
@@ -82,6 +90,92 @@ export class WMRGraph {
 		const controls = player.initialize();
 
 		return controls;
+
+	}
+
+	kinematicsUpdate( time: number, { timeStep = 0.05, ur = 10.0, ul = 10.0, wheelRadius = 0.035, trackWidth = 0.16, useCache = true } = {} ): Pose {
+
+		// Check the cache
+		const index = Math.floor( time / timeStep );
+		if ( useCache && this.kinematicsCache[index] !== undefined ) return this.kinematicsCache[index];
+
+		// Initial pose
+		let phi = 0;
+		let x = 0;
+		let y = 0;
+
+		const phidot = wheelRadius * ( ur - ul ) / trackWidth;
+		let xdot = wheelRadius * ( ur + ul ) * Math.cos( phi ) / 2;
+		let ydot = wheelRadius * ( ur + ul ) * Math.sin( phi ) / 2;
+
+		let t = 0;
+
+		while ( t < time ) {
+
+			t += timeStep;
+
+			x = x + xdot * timeStep;
+			y = y + ydot * timeStep;
+			phi = phi + phidot * timeStep;
+
+			xdot = wheelRadius * ( ur + ul ) * Math.cos( phi ) / 2;
+			ydot = wheelRadius * ( ur + ul ) * Math.sin( phi ) / 2;
+
+		}
+
+		this.kinematicsCache[index] = [ x, y, phi ];
+		return [ x, y, phi ];
+
+	}
+
+	dynamicsUpdate( time: number, { timeStep = 0.05, taur = 1.0, taul = 1.0, wheelRadius = 0.035, trackWidth = 0.16, mass = 1.2, inertia = 0.0015, useCache = true } = {} ): Pose {
+
+		// m = 0.75;
+		// J = 0.001;
+		// L = 0.075;
+		// r = 0.024;
+
+		// CHeck the cache
+		const index = Math.floor( time / timeStep );
+		if ( useCache && this.dynamicsCache[index] !== undefined ) return this.dynamicsCache[index];
+
+		// Initial pose
+		let phi = 0;
+		let x = 0;
+		let y = 0;
+
+		// Initial velocity
+		let v = 0;
+		let omega = 0;
+
+		let xdot = v * Math.cos( phi );
+		let ydot = v * Math.sin( phi );
+		let phidot = omega;
+
+		const vdot = ( taur + taul ) / ( mass * wheelRadius );
+		const omegadot = ( taur * trackWidth - taul * trackWidth ) / ( 2 * inertia * wheelRadius );
+
+		let t = 0;
+
+		while ( t < time ) {
+
+			t += timeStep;
+
+			x = x + xdot * timeStep;
+			y = y + ydot * timeStep;
+			phi = phi + phidot * timeStep;
+
+			v = v + vdot * timeStep;
+			omega = omega + omegadot * timeStep;
+
+			xdot = v * Math.cos( phi );
+			ydot = v * Math.sin( phi );
+			phidot = omega;
+
+		}
+
+		this.dynamicsCache[index] = [ x, y, phi ];
+		return [ x, y, phi ];
 
 	}
 
