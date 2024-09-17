@@ -28,3 +28,36 @@ And add the correct port to whatever command you are trying to run. For example:
 ```bash
 jag flash --chip esp32s3 --port /dev/cu.usbmodem14401
 ```
+
+## `npm` cannot install `wscat`
+
+If you see an error message like the following:
+
+```bash
+> npm install -g wscat
+
+npm ERR! code EACCES
+npm ERR! syscall mkdir
+npm ERR! path /usr/local/lib/node_modules/wscat
+npm ERR! errno -13
+npm ERR! Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/wscat’
+npm ERR! [Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/wscat’] {
+npm ERR!  errno: -13,
+npm ERR!  code: ‘EACCES’,
+npm ERR!  syscall: ‘mkdir’,
+npm ERR!  path: ‘/usr/local/lib/node_modules/wscat’
+npm ERR! }
+npm ERR!
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It is likely you do not have the permissions to access this file as the current user
+npm ERR!
+npm ERR! If you believe this might be a permissions issue, please double-check the
+npm ERR! permissions of the file and its containing directories, or try running
+npm ERR! the command again as root/Administrator.
+npm ERR! A complete log of this run can be found in: /Users/ACCOUNT/.npm/_logs/2024-09-12T17_07_20_354Z-debug-0.log
+```
+
+You will need to either
+
+- changes the permissions of your `/usr/local/lib/node_modules` directory, or
+- install `wscat` with `sudo`: `sudo npm install -g wscat`
