@@ -120,6 +120,11 @@ I recommend taking the following approach:
 
 You should also try running your motors in reverse.
 
+
+### Implement Proportional Control
+
+If you have time, you should consider starting on the proportional control algorithm. You will need to create a new class that controls the speed of both motors based on the difference between the desired and actual speed.
+
 ## Wrap-Up
 
 Now that you have a proportional control class, you are ready to take another attempt at the go-to-goal task.
