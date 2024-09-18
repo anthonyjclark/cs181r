@@ -2,7 +2,7 @@ import math show PI
 
 import .motors
 
-display-speed motors/Motors time-ms/int wheel-circumference-cm/float:
+print-speed motors/Motors time-ms/int wheel-circumference-cm/float:
   time-delta := time-ms / 1000.0
 
   left-rot-per-s := motors.left-encoder.get-rotation-rate time-delta
@@ -31,7 +31,7 @@ main:
     print "Running forward..."
     motors.set-motors-speed-factor half-speed
     updates.repeat:
-      display-speed motors time-between-updates wheel-circumference-cm
+      print-speed motors time-between-updates wheel-circumference-cm
       sleep --ms=time-between-updates
 
     print "Stopping..."
@@ -41,7 +41,7 @@ main:
     print "Running reverse..."
     motors.set-motors-speed-factor -half-speed
     updates.repeat:
-      display-speed motors time-between-updates wheel-circumference-cm
+      print-speed motors time-between-updates wheel-circumference-cm
       sleep --ms=time-between-updates
 
     print "Stopping..."

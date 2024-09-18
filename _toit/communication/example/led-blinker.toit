@@ -1,5 +1,5 @@
-import .communication
-import ..led
+import ..src.communication
+import ...led
 
 class LedBlinker implements Communicator:
 

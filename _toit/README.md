@@ -55,11 +55,11 @@ Pins
 - [x] hello world
 - [x] led blink
 - [x] communication and heartbeat
-- [ ] display IP address
+- [x] display IP address
 - [ ] speaker
 - [x] motors (open-loop)
 - [x] encoders
-- [ ] motors (closed-loop)
+- [x] motors (closed-loop)
 - [ ] compass
 - [ ] ranger
 - [ ] IMU
