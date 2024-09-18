@@ -12,12 +12,12 @@ title: "Schedule"
 |      | Thu Sep 5            | [Programming with Toit](../book/04-ProgrammingWithToit.qmd)          |
 | 3    | Tue Sep 10           | [Microcontroller Utilities](../book/05-MicrocontrollerUtilities.qmd) |
 |      | Thu Sep 12           | [Open-Loop Go to Goal](../book/06-OpenLoopGoToGoal.qmd)              |
-|      | Thu Sep 17           | [Motor Control](../book/07-MotorControl.qmd)                       |
-| 4    | Tue Sep 19           | Culture, Automation, and Jobs                                        |
-| 5    | Tue Sep 24           | Closed-Loop Go to Goal                                               |
-|      | Thu Sep 26           | Kinematic Modeling                                                   |
-| 6    | Tue Oct 1            |                                                                      |
-|      | Thu Oct 3            |                                                                      |
+| 4    | Tue Sep 17           | [Motor Control](../book/07-MotorControl.qmd)                         |
+|      | Thu Sep 19           | [Closed-loop Go To Goal](../book/08-ClosedLoopGoToGoal.qmd)          |
+| 5    | Tue Sep 24           | Embedded Systems                                                     |
+|      | Thu Sep 26           | Culture, Automation, and Jobs                                        |
+| 6    | Tue Oct 1            | Closed-Loop Go to Goal                                               |
+|      | Thu Oct 3            | Kinematic Modeling                                                   |
 | 7    | Tue Oct 8            |                                                                      |
 |      | Thu Oct 10           |                                                                      |
 | 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                                 |

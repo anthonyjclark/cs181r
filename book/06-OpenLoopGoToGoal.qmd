@@ -1,5 +1,5 @@
 ---
-title: "Open-Loop Go-To-Goal"
+title: "Open-Loop Go To Goal"
 execute:
   echo: false
 ---
@@ -175,6 +175,12 @@ Every team will write a program for the following task:
 > Make your robot move forward 3 meters using open-loop control.
 
 We will mark starting and target locations on the floor in the the lab (on tile) and in the hallway (on carpet). Everyone will record 5 trials for each surface and record their results in [this spreadsheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=598295253#gid=598295253).
+
+Some things to consider:
+
+- It is OK if your wheel diameter is the same for each trial
+- You can vary the distance traveled by adjusting the speed value and/or the duration
+- Your trials do not need to appear in sequential rows
 
 You'll want to start each coding section by pulling any changes I've made to the course code:
 

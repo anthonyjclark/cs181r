@@ -38,6 +38,8 @@ website:
             - book/04-ProgrammingWithToit.qmd
             - book/05-MicrocontrollerUtilities.qmd
             - book/06-OpenLoopGoToGoal.qmd
+            - book/07-MotorControl.qmd
+            - book/08-ClosedLoopGoToGoal.qmd
         - text: "---"
         - section: "Unit 2: Modeling and Feedback Control"
           contents:

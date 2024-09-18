@@ -1,46 +1,65 @@
 ---
-title: "Chapter Layout Template"
+title: "Closed-Loop Go To Goal"
 ---
 
-TODO: start with an image?
-
-Some introductory text.
-
-“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+Let's now add closed-loop (feedback) control to our robot. We'll start by using a proportional controller to make our robots more reliably move to a target location.
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- How to implement proportional control
+- How to convert controller output to motor commands
 
 ## Terminology
 
-a list
-: of new terms
+closed-loop (feedback) control
+: a control system that uses feedback to change its actions
 
-<!-- TODO: fill in notation -->
+proportional control
+: a simple control system that produces an output proportional to the current error between desired and measured values
 
 ## Lecture
 
-Links
+{{< video https://www.youtube.com/watch?v=MADCeSdOt7M >}}
 
-- [Slides (PPTX)](../_static/lectures/)
-- [Slides (PDF)](../_static/lectures/)
-- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+Errors in the video:
 
-A video of slides, coding, hands-on electronics, etc.
+- I never update `left-time` or `right-time`. They should be set to `now` after we compute `time-delta`
 
-pid.qmd
-pwm
+This video covers proportional control. Specifically, the following equation:
 
-## Interactive
+$$
+u = K_p e
+$$
 
-An interactive widget (see [Kinematics](0-Kinematics.qmd) and [3D Demo](drafts/threedemo.qmd) for a work-in-progress examples).
+This equation is related to a few electrical concepts (e.g., PWM) and the code implementation. Here's a table to help you understand the relationships:
+
+|Symbol         |Description                                                          |Scale    |
+|---            |---                                                                  |---      |
+|$u$            |output of proportional control algorithm                             |$[-∞, ∞]$|
+|`speed-factor` |scaled speed (sign indicates direction; magnitude indicates throttle)|$[-1, 1]$|
+|PWM Duty Factor|signal sent to motor driver                                          |$[0, 1]$ |
+
+::: {.callout-tip collapse="true"}
+## Why don't we directly use $u$ to set the PWM value?
+
+Consider using $u$ directly as the `speed-factor` for the motor. What happens when $e = 0$?
+
+| Scenario                | $e$ | $u$ | `speed-factor`                      |
+| ---                     | --- | --- | ---                                 |
+| Going the desired speed | 0   | 0   | needs to maintain speed (not 0)     |
+| Going to slow           | `+` | `+` | needs to increase to increase speed |
+| Going to fast           | `-` | `-` | needs to decrease to decrease speed |
+:::
+
+::: {.callout-tip collapse="true"}
+### Why do we constrain $u$ and `speed-factor`?
+
+If $u$ is too high we will try to change our speed to fast, which is not good for the motors. Likewise, we must constrain `speed-factor` to $[-1, 1]$ to ensure we don't make the robot go beyond its capabilities.
+:::
 
 ## Exercise
 
-Intro...
-
-- slides and compare with open-loop
+For this exercise you will repeat the go-to-goal task from [chapter 6](./06-OpenLoopGoToGoal.qmd).
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -58,8 +77,29 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### Tasks
+Every team will write a program for the following task:
+
+> Make your robot move forward 3 meters using closed-loop control.
+
+We will mark starting and target locations on the floor in the the lab (on tile) and in the hallway (on carpet). Everyone will record 5 trials for each surface and record their results in [this spreadsheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=598295253#gid=598295253).
+
+Some things to consider:
+
+- It is OK if your wheel diameter is the same for each trial
+- You can vary the distance traveled by adjusting the speed value and/or the duration
+- Your trials do not need to appear in sequential rows
+
+It is not vital for this exercise, but you will eventually want to:
+
+- tune your values for $k_p$ (separately for the left and right motors)
+- tune your value for `max-speed-step`
+- measure your value for `max-speed`
 
 ## Wrap-Up
 
+Next week we will take a step back and understand how all of these pieces (microcontroller, WiFi, motors, etc.) work together.
+
 ## Resources
+
+- [Introduction: PID Controller Design](https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID)
+- [Proportional, Integral, and Derivative Control](https://www.circuitbread.com/tutorials/proportional-integral-and-derivative-control-4-2)
