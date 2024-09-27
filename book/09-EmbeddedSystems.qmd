@@ -1,0 +1,133 @@
+---
+title: "Embedded Systems"
+---
+
+We'll now take a deeper look at embedded systems. Previously, we were using the Toit language to program our microcontroller in a "safer" managed virtual machine. Now, we'll be working with the native C code that runs on the microcontroller.
+
+## What you will learn
+
+- How to program an embedded system in C
+- The differences between managed environment and native environments
+
+## Terminology
+
+Arduino
+: An open-source electronics platform
+
+embedded system
+: A computer system directly connecting hardware and software
+
+native
+: Code that runs directly on the hardware (i.e., binary machine code)
+
+runtime
+: The supporting environment in which a program runs
+
+virtual machine
+: A software system that emulates a physical system
+
+## Lecture
+
+Links
+
+- [Slides (PPTX)](../_static/lectures/09-EmbeddedSystems.pptx)
+- [Slides (PDF)](../_static/lectures/09-EmbeddedSystems.pdf)
+
+### Introducing embedded systems
+
+{{< video https://www.youtube.com/watch?v=mhkMq-GBWb0 >}}
+
+### Exploring our hardware
+
+{{< video https://www.youtube.com/watch?v=49mUmGID8gY >}}
+
+### Comparing different methods for programming our microcontrollers
+
+{{< video https://www.youtube.com/watch?v=iao2wVNAR_I >}}
+
+### Writing programs with Arduino
+
+{{< video https://www.youtube.com/watch?v=Fbt772TOmbM >}}
+
+### Other alternatives
+
+Here are a few frameworks that you can use to program microcontrollers:
+
+- Native code
+    - [Arduino](https://www.arduino.cc/)
+    - [ESP-IDF](https://idf.espressif.com/)
+    - [PlatformIO](https://platformio.org/)
+    - [Rust on ESP](https://docs.esp-rs.org/book/introduction.html)
+    - [Nesper/Nim](https://github.com/elcritch/nesper)
+    - [Zig? (Xtensa Support #5467)](https://github.com/ziglang/zig/issues/5467)
+    - [Swift (Only RISC-V boards)](https://developer.apple.com/videos/play/wwdc2024/10197/)
+    - [Zephyr (RTOS)](https://zephyrproject.org/)
+    - [FreeRTOS (RTOS)](https://www.freertos.org/)
+    - Potentially any languages using LLVM
+- WebAssembly Virtual Machines
+    - [WARDuino](https://topllab.github.io/WARDuino/)
+    - [wasm3](https://github.com/wasm3/wasm3)
+    - [ESP-WDF](https://github.com/espressif/esp-wdf)
+    - [WAMR](https://github.com/bytecodealliance/wasm-micro-runtime)
+- Other
+    - [Toit Language](https://toitlang.org/)
+    - [NodeMCU (Lua)](https://nodemcu.readthedocs.io/en/release/)
+    - [AtomVM (Erlang)](https://www.atomvm.net/)
+    - [Berry Script Language](https://berry-lang.github.io/)
+    - [uLisp (Lisp)](http://www.ulisp.com/)
+    - [TinyGo (Go)](https://tinygo.org/)
+    - [CircuitPython (Python)](https://circuitpython.org/)
+    - [MicroPython (Python)](https://micropython.org/)
+    - [DeviceScript (TypeScript)](https://microsoft.github.io/devicescript/)
+    - [Espruino (JavaScript)](https://www.espruino.com/)
+    - [JerryScript (JavaScript)](https://jerryscript.net/)
+    - [Microvium (javaScript)](https://microvium.com/getting-started/)
+
+Here are some of the features I value in a managed virtual machine or runtime:
+
+- Over-the-air updates
+- Remote debugging
+- Package management
+- Familiarity for computer science students
+- Fast enough processing speed for robot tasks
+- A native C interface
+- Support for TinyML/EmbeddedML (e.g., [Edge Impulse](https://edgeimpulse.com/))
+
+## Exercise
+
+The objective for this exercise is to get up and running with the Arduino IDE.
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+The goal for today is to run the `BlinkWithoutDelay` example on your ESP32 board.
+
+1. [Install Arduino](https://www.arduino.cc/en/software)
+2. Add "esp32 by Espressif Systems" under the board manager
+3. Plug in your ESP32 board
+4. Click the board selector and choose "Select other board and port..."
+5. Search for "XIAO_ESP32S3" and select it
+6. Select the correct port
+7. Open the `BlinkWithoutDelay` example sketch (File→Examples→02.Digital→BlinkWithoutDelay)
+8. Upload the sketch (the right arrow button)
+
+## Wrap-Up
+
+We'll continue working with Arduino in the next chapter.
+
+## Resources
+
+- [Wokwi - World's most advanced ESP32 Simulator](https://wokwi.com/)

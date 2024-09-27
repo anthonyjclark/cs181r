@@ -1,0 +1,380 @@
+---
+title: "Starting With Arduino"
+---
+
+## What you will learn
+
+- Programming with Arduino
+- A simple, event-driven programming model
+
+## Terminology
+
+event-driven
+: A programming model where the flow of the program is determined by events such as user actions, sensor outputs, or messages from other programs
+
+state diagram
+: A diagram used to describe the behavior of systems.
+
+sequence diagram
+: An interaction diagram that shows how processes operate with one another and in what order.
+
+## Lecture
+
+### Planning out our Arduino WebSocket code
+
+{{< video https://www.youtube.com/watch?v=aZex1ZSouAM >}}
+
+### Programming our robot using Arduino
+
+Before coding, remember our high-level pseudocode:
+
+```text
+global state for module 1
+global state for module 2
+…
+
+set update period for module 1
+set update period for module 2
+…
+
+setup
+  initialize non-trivial global states
+
+loop
+  short update/poll for module 1
+  short update/poll for module 2
+  …
+```
+
+{{< video https://www.youtube.com/watch?v=trUoKqUo2o0 >}}
+
+Here's the code for just connecting to WiFi:
+
+```cpp
+#include <WiFi.h>
+
+const char* SSID = "Pomona";
+
+void setup() {
+  // Start serial connection for debugging
+  Serial.begin(115200);
+
+  // Connect to WiFi network
+  WiFi.begin(SSID);
+  Serial.printf("\n[SETUP] Connecting to '%s'...", SSID);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.print("done\n");
+
+  IPAddress ip = WiFi.localIP();
+  Serial.printf("[SETUP] IP Address: %d.%d.%d.%d\n", ip[0], ip[1], ip[2], ip[3]);
+}
+
+void loop() { /* nothing to do... */ }
+```
+
+### Creating a WebSocket server on Arduino
+
+{{< video https://www.youtube.com/watch?v=34iQKFDvRPM >}}
+
+Here's the updated version including a WebSocket server:
+
+```cpp
+#include <WiFi.h>
+#include <WebSocketsServer.h>
+
+typedef enum {
+  WS_ENABLED,
+  WS_DISABLED
+} WsState;
+
+const char* SSID = "Pomona";
+
+const int PORT = 8181;
+WebSocketsServer webSocket = WebSocketsServer(PORT);
+
+WsState wsState = WS_DISABLED;
+
+unsigned long heartbeatInterval = 1000;
+unsigned long heartbeatLastTime = 0;
+
+void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length) {
+  IPAddress ip;
+
+  switch (type) {
+    case WStype_DISCONNECTED:
+      wsState = WS_DISABLED;
+      Serial.printf("[%u] Disconnected!\n", num);
+      break;
+
+    case WStype_CONNECTED:
+      ip = webSocket.remoteIP(num);
+      Serial.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
+      webSocket.sendTXT(num, "Connected");
+      break;
+
+    case WStype_TEXT:
+      if (strcmp((char*)payload, "heartbeat") == 0) {
+        wsState = WS_ENABLED;
+        heartbeatLastTime = millis();
+      } else {
+        Serial.printf("[%u] get Text: %s\n", num, payload);
+      }
+      break;
+
+    case WStype_BIN:
+      Serial.printf("[%u] get binary length: %u\n", num, length);
+      break;
+
+    case WStype_ERROR:
+    case WStype_FRAGMENT_TEXT_START:
+    case WStype_FRAGMENT_BIN_START:
+    case WStype_FRAGMENT:
+    case WStype_FRAGMENT_FIN:
+      Serial.printf("[%u] received unhandled WS event type: %d\n", num, type);
+      break;
+  }
+}
+
+void setup() {
+  // Start serial connection for debugging
+  Serial.begin(115200);
+
+  // Connect to WiFi network
+  WiFi.begin(SSID);
+  Serial.printf("\n[SETUP] Connecting to '%s'...", SSID);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.print("done\n");
+
+  IPAddress ip = WiFi.localIP();
+  Serial.printf("[SETUP] IP Address: %d.%d.%d.%d\n", ip[0], ip[1], ip[2], ip[3]);
+
+  // Start WebSockets server
+  webSocket.begin();
+  webSocket.onEvent(webSocketEvent);
+  Serial.printf("[SETUP] WebSocketsServer started at ws://%d.%d.%d.%d:%d\n", ip[0], ip[1], ip[2], ip[3], PORT);
+}
+
+void loop() {
+  webSocket.loop();
+
+  // Update for handling heartbeat
+  unsigned long now = millis();
+  if (now - heartbeatLastTime > heartbeatInterval) {
+    if (wsState == WS_ENABLED) {
+      wsState = WS_DISABLED;
+      Serial.println("[HEARTBEAT] Heartbeat timeout");
+    }
+  }
+}
+```
+
+### Blinking an LED when heartbeats are received
+
+{{< video https://www.youtube.com/watch?v=gax--JIz0Mo >}}
+
+And here's the final version with an LED blinking when heartbeats are received:
+
+```cpp
+#include <WiFi.h>
+#include <WebSocketsServer.h>
+
+typedef enum {
+  WS_ENABLED,
+  WS_DISABLED
+} WsState;
+
+typedef enum {
+  LED_ON = LOW,
+  LED_OFF = HIGH
+} LedState;
+
+//    ▄▄▄  ▀▀█           █             ▀▀█            ▄▄▄▄    ▄             ▄
+//  ▄▀   ▀   █     ▄▄▄   █▄▄▄    ▄▄▄     █           █▀   ▀ ▄▄█▄▄   ▄▄▄   ▄▄█▄▄   ▄▄▄
+//  █   ▄▄   █    █▀ ▀█  █▀ ▀█  ▀   █    █           ▀█▄▄▄    █    ▀   █    █    █▀  █
+//  █    █   █    █   █  █   █  ▄▀▀▀█    █               ▀█   █    ▄▀▀▀█    █    █▀▀▀▀
+//   ▀▄▄▄▀   ▀▄▄  ▀█▄█▀  ██▄█▀  ▀▄▄▀█    ▀▄▄         ▀▄▄▄█▀   ▀▄▄  ▀▄▄▀█    ▀▄▄  ▀█▄▄▀
+
+// This is an open network that our microcontrollers can connect to
+const char* SSID = "Pomona";
+
+const int PORT = 8181;
+WebSocketsServer webSocket = WebSocketsServer(PORT);
+
+// Heartbeat state
+WsState wsState = WS_DISABLED;
+
+// LED state
+LedState ledState = LED_OFF;
+
+//  ▄    ▄            █           ▄                  ▄▄▄▄▄                  ▀               █
+//  █    █ ▄▄▄▄    ▄▄▄█   ▄▄▄   ▄▄█▄▄   ▄▄▄          █   ▀█  ▄▄▄    ▄ ▄▄  ▄▄▄     ▄▄▄    ▄▄▄█
+//  █    █ █▀ ▀█  █▀ ▀█  ▀   █    █    █▀  █         █▄▄▄█▀ █▀  █   █▀  ▀   █    █▀ ▀█  █▀ ▀█
+//  █    █ █   █  █   █  ▄▀▀▀█    █    █▀▀▀▀         █      █▀▀▀▀   █       █    █   █  █   █
+//  ▀▄▄▄▄▀ ██▄█▀  ▀█▄██  ▀▄▄▀█    ▀▄▄  ▀█▄▄▀         █      ▀█▄▄▀   █     ▄▄█▄▄  ▀█▄█▀  ▀█▄██
+//         █
+//         ▀
+
+unsigned long heartbeatInterval = 1000;
+unsigned long heartbeatLastTime = 0;
+
+unsigned long blinkInterval = 250;
+unsigned long blinkLastTime = 0;
+
+// ▄     ▄  ▄▄▄▄         ▄    ▄                   █  ▀▀█
+// █  █  █ █▀   ▀        █    █  ▄▄▄   ▄ ▄▄    ▄▄▄█    █     ▄▄▄    ▄ ▄▄
+// ▀ █▀█ █ ▀█▄▄▄         █▄▄▄▄█ ▀   █  █▀  █  █▀ ▀█    █    █▀  █   █▀  ▀
+//  ██ ██▀     ▀█        █    █ ▄▀▀▀█  █   █  █   █    █    █▀▀▀▀   █
+//  █   █  ▀▄▄▄█▀        █    █ ▀▄▄▀█  █   █  ▀█▄██    ▀▄▄  ▀█▄▄▀   █
+
+void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length) {
+  IPAddress ip;
+
+  switch (type) {
+    case WStype_DISCONNECTED:
+      wsState = WS_DISABLED;
+      Serial.printf("[%u] Disconnected!\n", num);
+      break;
+
+    case WStype_CONNECTED:
+      ip = webSocket.remoteIP(num);
+      Serial.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
+      webSocket.sendTXT(num, "Connected");
+      break;
+
+    case WStype_TEXT:
+      if (strcmp((char*)payload, "heartbeat") == 0) {
+        wsState = WS_ENABLED;
+        heartbeatLastTime = millis();
+      } else {
+        Serial.printf("[%u] get Text: %s\n", num, payload);
+      }
+      break;
+
+    case WStype_BIN:
+      Serial.printf("[%u] get binary length: %u\n", num, length);
+      //   hexdump(payload, length);
+      // webSocket.sendBIN(num, payload, length);
+      break;
+
+    case WStype_ERROR:
+    case WStype_FRAGMENT_TEXT_START:
+    case WStype_FRAGMENT_BIN_START:
+    case WStype_FRAGMENT:
+    case WStype_FRAGMENT_FIN:
+      Serial.printf("[%u] received unhandled WS event type: %d\n", num, type);
+      break;
+  }
+}
+
+//   ▄▄▄▄           ▄
+//  █▀   ▀  ▄▄▄   ▄▄█▄▄  ▄   ▄  ▄▄▄▄
+//  ▀█▄▄▄  █▀  █    █    █   █  █▀ ▀█
+//      ▀█ █▀▀▀▀    █    █   █  █   █
+//  ▀▄▄▄█▀ ▀█▄▄▀    ▀▄▄  ▀▄▄▀█  ██▄█▀
+//                              █
+//                              ▀
+
+void setup() {
+  // Start serial connection for debugging
+  Serial.begin(115200);
+
+  // Connect to WiFi network
+  WiFi.begin(SSID);
+  Serial.printf("\n[SETUP] Connecting to '%s'...", SSID);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.print("done\n");
+
+  IPAddress ip = WiFi.localIP();
+  Serial.printf("[SETUP] IP Address: %d.%d.%d.%d\n", ip[0], ip[1], ip[2], ip[3]);
+
+  // Start WebSockets server
+  webSocket.begin();
+  webSocket.onEvent(webSocketEvent);
+  Serial.printf("[SETUP] WebSocketsServer started at ws://%d.%d.%d.%d:%d\n", ip[0], ip[1], ip[2], ip[3], PORT);
+
+  // Set the builtin LED pin as output
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, ledState);
+
+}
+//  ▄
+//  █       ▄▄▄    ▄▄▄   ▄▄▄▄
+//  █      █▀ ▀█  █▀ ▀█  █▀ ▀█
+//  █      █   █  █   █  █   █
+//  █▄▄▄▄▄ ▀█▄█▀  ▀█▄█▀  ██▄█▀
+//                       █
+//                       ▀
+
+void loop() {
+  webSocket.loop();
+
+  // Update for handling heartbeat
+  unsigned long now = millis();
+  if (now - heartbeatLastTime > heartbeatInterval) {
+    if (wsState == WS_ENABLED) {
+      wsState = WS_DISABLED;
+      Serial.println("[HEARTBEAT] Heartbeat timeout");
+    }
+  }
+
+  // Update for blinking the builtin LED
+  if (wsState == WS_ENABLED) {
+    now = millis();
+    if (now - blinkLastTime > blinkInterval) {
+      blinkLastTime = now;
+
+      ledState = (ledState == LED_ON) ? LED_OFF : LED_ON;
+      digitalWrite(LED_BUILTIN, ledState);
+    }
+  } else {
+    digitalWrite(LED_BUILTIN, LED_OFF);
+  }
+
+}
+```
+
+## Exercise
+
+Today, you will will write and run your first Arduino programs. Specifically, the goal is to write a program that blinks an LED when a heartbeat is received over a WebSocket connection.
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+First, make certain that your Arduino IDE is setup properly. Specifically, you need to add the ESP32 board manager from Espressif Systems and the [WebSocket Server and Client for Arduino](https://github.com/Links2004/arduinoWebSockets) library.
+
+Once you're IDE is setup, you can grab the code from the lecture and run it on your microcontroller.
+
+## Wrap-Up
+
+As it stands now, our Arduino code is a bit of a mess. We have a lot of global variables and the code is not very modular. In the next chapter, we'll look at how to structure our code using a simple, event-driven programming model.
+
+## Resources
+
+- [TaskManagerIO scheduling and event based library for Arduino](https://github.com/TcMenu/TaskManagerIO)
+- [Automaton - Reactive State Machine Framework for Arduino](https://github.com/tinkerspy/Automaton)
+- [Eventually An Arduino Event-based Programming Library](https://github.com/johnnyb/Eventually)
+- [State diagrams | Mermaid](http://mermaid.js.org/syntax/stateDiagram.html)
+- [Sequence diagrams | Mermaid](http://mermaid.js.org/syntax/sequenceDiagram.html)
+- [WebSocket Server and Client for Arduino](https://github.com/Links2004/arduinoWebSockets)
