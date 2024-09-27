@@ -38,11 +38,14 @@ website:
             - book/04-ProgrammingWithToit.qmd
             - book/05-MicrocontrollerUtilities.qmd
             - book/06-OpenLoopGoToGoal.qmd
-            - book/07-MotorControl.qmd
-            - book/08-ClosedLoopGoToGoal.qmd
         - text: "---"
         - section: "Unit 2: Modeling and Feedback Control"
           contents:
+            - book/07-MotorControl.qmd
+            - book/08-ClosedLoopGoToGoal.qmd
+            - book/09-EmbeddedSystems.qmd
+            - book/10-Arduino.qmd
+            - book/11-ArduinoCodeRefactoring.qmd
         - text: "---"
         - section: "Unit 3: Maps and Motion Planning"
           contents:
