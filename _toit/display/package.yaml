@@ -1,9 +1,0 @@
-name: display
-description: Simple utilities for using the expansion board's OLED display
-dependencies:
-  pixel_display:
-    url: github.com/toitware/toit-pixel-display
-    version: ^2.8.0
-  ssd1306:
-    url: github.com/toitware/toit-ssd1306
-    version: ^2.0.1

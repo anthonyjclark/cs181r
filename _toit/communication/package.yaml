@@ -1,6 +1,0 @@
-name: communication
-description: Handle heartbeat and data communication over a WebSocket
-dependencies:
-  http:
-    url: github.com/toitlang/pkg-http
-    version: ^2.7.2
