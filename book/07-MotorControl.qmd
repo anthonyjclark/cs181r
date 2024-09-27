@@ -2,7 +2,10 @@
 title: "Motor Control"
 ---
 
-<!-- TODO: homemade motor. encoder. bridge -->
+<!--
+TODO: homemade motor. encoder. bridge
+interactive with PWM signal
+-->
 
 In the previous chapter, we tried to make our robots move forward in a straight line and land on a specific target location. More than likely, however, your robot veered off course. In this chapter, we will learn how to use wheel encoders to measure the distance traveled by the robot. This information will allow us to correct the robot's trajectory and make it move more predictably.
 

@@ -5,6 +5,7 @@ set -e
 # TODO: turn into makefile with render target
 
 networksetup -getairportnetwork en0
+# ❯ /opt/cisco/secureclient/bin/vpn state
 
 password="$(security find-internet-password -s wells.campus.pomona.edu -w)"
 web_host="wells.campus.pomona.edu"
