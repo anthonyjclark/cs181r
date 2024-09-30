@@ -16,10 +16,10 @@ title: "Schedule"
 |      | Thu Sep 19           | [Closed-loop Go To Goal](../book/08-ClosedLoopGoToGoal.qmd)          |
 | 5    | Tue Sep 24           | [Embedded Systems](../book/09-EmbeddedSystems.qmd)                   |
 |      | Thu Sep 26           | [Arduino](../book/10-Arduino.qmd)                                    |
-| 6    | Tue Oct 1            | Culture, Automation, and Jobs                                        |
-|      | Thu Oct 3            | Closed-Loop Go to Goal                                               |
-| 7    | Tue Oct 8            | Kinematic Modeling                                                   |
-|      | Thu Oct 10           |                                                                      |
+| 6    | Tue Oct 1            | [Arduino Code Refactoring](../book/11-ArduinoCodeRefactoring.qmd)    |
+|      | Thu Oct 3            |                                                                      |
+| 7    | Tue Oct 8            | Culture, Automation, and Jobs                                        |
+|      | Thu Oct 10           | Kinematic Modeling                                                   |
 | 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                                 |
 |      | Thu Oct 17           |                                                                      |
 | 9    | Tue Oct 22           |                                                                      |
