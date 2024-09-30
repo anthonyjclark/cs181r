@@ -1,39 +1,57 @@
 ---
-title: "Chapter Layout Template"
+title: "Arduino Code Refactoring"
 ---
 
-TODO: start with an image?
-
-Some introductory text.
-
-“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+The code we ended with in the previous chapter is functional, but it is not the easiest to read or maintain. In this chapter, we will refactor the code to make it more readable and maintainable.
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- How to refactor code to make it more readable and maintainable
+- How to write code in C++
 
 ## Terminology
 
-a list
-: of new terms
-
-<!-- TODO: fill in notation -->
+member initializer list
+: A list of initializations for member variables in a C++ class
 
 ## Lecture
 
-Links
+The main goal of this chapter is to show a better version of the code we wrote in the previous chapter. We will refactor the code to make it more readable and maintainable.
 
-- [Slides (PPTX)](../_static/lectures/)
-- [Slides (PDF)](../_static/lectures/)
-- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+### Refactoring our WebSocket Arduino code
 
-A video of slides, coding, hands-on electronics, etc.
+{{< video https://www.youtube.com/watch?v=lAXfbxz_SRg >}}
 
-/Users/ajcd2020/Library/Arduino15/packages/esp32/hardware/esp32/3.0.4/cores/esp32/Arduino.h
+In this video, you will see steps to refactor our led blinking code from the previous chapter. Specifically, we will:
+
+1. Create a new file for our main program
+2. Create a new class to encapsulate our WebSocket code
+3. Implement a `constructor`, `setup`, and `loopStep` functions
+4. Create an instance of our new WebSocket class in the global scope
+5. Call the `setup` method inside the Arduino setup function
+6. Call the `loopStep` method inside the Arduino loop function
+
+### Refactoring our LED blinking code
+
+{{< video https://www.youtube.com/watch?v=aKuOZ20ziI4 >}}
+
+### Testing our refactored code
+
+{{< video https://www.youtube.com/watch?v=U-g82SRqNzQ >}}
+
+### After-video cleanup
+
+After recording the videos above, I spent some timing cleaning up the code. Here is a listing of the changes from the video.
+
+::: {.column-screen-inset}
+
+<iframe src="../_static/CodeUpdates.html" frameborder="0" style="height:66vh;width:100%;border:none;"></iframe>
+
+:::
 
 ## Exercise
 
-Intro...
+The goal of this exercise is to pull changes to the [MobileRoboticsCode](https://github.com/anthonyjclark/MobileRoboticsCode) repository and make sure that you can get it to compile and run on your Arduino.
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -51,8 +69,17 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### [Task 1]
+You will do the following:
+
+1. Pull changes from (or clone) the [MobileRoboticsCode](https://github.com/anthonyjclark/MobileRoboticsCode) repository.
+2. Open the `WSHeartbeatRefactored.ino` file in the Arduino IDE.
+3. Upload the code to your Arduino.
 
 ## Wrap-Up
 
+In the next chapter, we will take what we've learned and add motor control to our robot.
+
 ## Resources
+
+- [C++ Member Initializer List](https://en.cppreference.com/w/cpp/language/constructor#Member_initializer_list)
+- [How to Avoid Using the Delay() Function in Arduino Sketches](https://www.digikey.com/en/maker/tutorials/2022/how-to-avoid-using-the-delay-function-in-arduino-sketches)
