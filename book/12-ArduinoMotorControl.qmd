@@ -1,0 +1,151 @@
+---
+title: "Arduino Motor Control and Display"
+---
+
+In this chapter, I will give an example of writing motor control code in Arduino. Your exercise will involve taking what you've learned so far (i.g., the WebSocket, LED, and motor control examples) and apply it to create a new header for interacting with the display.
+
+## What you will learn
+
+- How to write motor control code in Arduino
+- How to write basic C++ code
+- How to use an Arduino library
+
+## Terminology
+
+Arduino library
+: A collection of code and examples that can be used to interact with a specific piece of hardware or software.
+
+C++ Header
+: A file that contains declarations of functions, classes, and variables.
+
+Header guard
+: A preprocessor directive that prevents a header file from being included more than once.
+
+## Lecture
+
+### Restructuring our code repository
+
+{{< video https://www.youtube.com/watch?v=VsBh4U9k-UM >}}
+
+Keys from this video:
+
+- We organized our C++ (Arduino) source code files
+- I introduce the concept of ["header guards"](https://en.wikipedia.org/wiki/Include_guard)
+- I iterate on organizing our library API
+
+### Implementing basic motor control
+
+{{< video https://www.youtube.com/watch?v=G2XY8FTaKBg >}}
+
+Keys from this video:
+
+- We explore the API of our motor control library
+- I touch on the differences among speed factors, PWM duty cycles, motor speed, and robot velocity
+- We use the [`map`](https://www.arduino.cc/reference/en/language/functions/math/map/) function with integers
+- We use the [`analogWrite`](https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/) and [`digitalWrite`](https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/) functions
+
+### Testing our motor control code
+
+{{< video https://www.youtube.com/watch?v=TiByBhmw0OQ >}}
+
+Keys from this video:
+
+- We run our code and learn that the motor direction code is backwards!
+- I demonstrated a few rounds of small refactorings
+
+## Exercise
+
+In this exercise you will gain experience adding a new header file and working with 3rd-party Arduino libraries.
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+For this exercise, you will need to complete the following tasks:
+
+1. Run the motor control code from the videos.
+2. Write and test a new header file for the display.
+
+### Run The Motor Control Code
+
+First, make sure that you pull changes to the repository:
+
+```bash
+# If you already have the repository cloned
+git pull
+
+# If you don't have the repository cloned
+git clone https://github.com/anthonyjclark/MobileRoboticsCode
+```
+
+Now, open the motor control example in Arduino. Here is how I do it on my Mac:
+
+```bash
+open -a "Arduino IDE" Examples/MotorControl/MotorControl.ino
+```
+
+You can also use the Arduino IDE user interface (File→Open→MotorControl.ino).
+
+Now upload the sketch:
+
+1. Connect your microcontroller to your computer
+2. Select the board (XIAO_ESP32S3) and port
+3. Press the upload button
+
+Once the sketch is uploaded, you should sent heartbeats to the WebSocket server so that it enables motor control.
+Here is one method for sending heartbeats (assuming you are at a Bash prompt):
+
+```bash
+# At a bash prompt
+for i in $(seq 1 10); do echo "heartbeat" && sleep 0.9; done | wscat --connect ws://IP:PORT
+
+# At a fish prompt
+for i in (seq 1 10); echo "heartbeat"; and sleep 0.9; end | wscat --connect ws://172.28.125.50:55270
+
+# At a PowerShell prompt (untested)
+1..10 | ForEach-Object { Write-Output "heartbeat" Start-Sleep -Seconds 0.9 } | wscat --connect ws://IP:PORT
+```
+
+Make sure that you replace `IP` and `PORT` with the appropriate values.
+
+### Write a Display Header
+
+The final part of this exercise is to use the excellent [`U8g2`](https://github.com/olikraus/u8g2) library written by GitHub user [olikraus](https://github.com/olikraus). Please start by reading through the [examples found in the Seeed Studio Documentation](https://wiki.seeedstudio.com/Seeeduino-XIAO-Expansion-Board/#oled-display).
+
+1. Install the [`U8g2`](https://github.com/olikraus/u8g2) library using the Arduino IDE (search for "u8g2")
+2. Create a new directory called "Exercises" inside the "MobileRoboticsCode" repository
+3. Create a new directory called "Display" inside the "Exercises" directory
+4. Create a new file called "Display.ino" inside the "Display" directory
+5. Create a new file called "Display.h" inside the "Display" directory
+
+Your task is to now create a class inside the "display.h" file that will encapsulate our usage of the `U8g2` library. Your file should include the following:
+
+- header guards
+- a new `Display` class
+- a `constructor`
+- a `setup` method
+- a `loopStep` method
+
+Base your `Display.ino` example on the given the `MotorControl.ino` file.
+
+Finally, your `Display.ino` file should display the WebSocket IP address and port on the display.
+
+## Wrap-Up
+
+In the next chapter, we will build on our existing code and add the ability to update our programs over-the-air (OTA).
+
+## Resources
+
+- [Arduino Language Reference](https://www.arduino.cc/reference/en/)

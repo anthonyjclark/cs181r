@@ -1,0 +1,73 @@
+---
+title: "Pose Estimation"
+---
+
+In this chapter we will explore the concept of pose estimation. We'll answer the question: "where is my robot in reference to the origin?" This is a fundamental question in robotics, and we'll explore the math and algorithms that help us answer it.
+
+## What you will learn
+
+- About the concept of pose estimation
+- How to use odometry to estimate the pose of a robot
+- How to use kinematic and dynamic models to estimate the pose of a robot
+
+## Terminology
+
+odometry
+: The use of data from sensors to estimate the position and orientation of a robot
+
+pose estimation
+: The process of determining the position and orientation of a robot
+
+locomotion
+: The process of moving from one place to another
+
+kinematic model
+: A model that describes the motion of a robot based on its geometry and constraints
+
+dynamic model
+: A model that describes the motion of a robot based on its geometry, constraints, and forces
+
+motion constraint
+: A constraint that limits the motion of a robot
+
+
+<!-- TODO: fill in notation -->
+
+## Lecture
+
+- [Slides (PPTX)](../_static/lectures/13-PoseEstimation.pptx)
+- [Slides (PDF)](../_static/lectures/13-PoseEstimation.pdf)
+
+### Introduction to pose estimation
+
+{{< video https://www.youtube.com/watch?v=VM2M6tG0Ur4 >}}
+
+### Reference frames and configurations
+
+{{< video https://www.youtube.com/watch?v=gpAoRvWeK9o >}}
+
+## Exercise
+
+Intro...
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+### [Task 1]
+
+## Wrap-Up
+
+## Resources
