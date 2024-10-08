@@ -15,13 +15,13 @@ title: "Schedule"
 | 4    | Tue Sep 17           | [Motor Control](../book/07-MotorControl.qmd)                         |
 |      | Thu Sep 19           | [Closed-loop Go To Goal](../book/08-ClosedLoopGoToGoal.qmd)          |
 | 5    | Tue Sep 24           | [Embedded Systems](../book/09-EmbeddedSystems.qmd)                   |
-|      | Thu Sep 26           | [Arduino](../book/10-Arduino.qmd)                                    |
-| 6    | Tue Oct 1            | [Arduino Code Refactoring](../book/11-ArduinoCodeRefactoring.qmd)    |
-|      | Thu Oct 3            |                                                                      |
-| 7    | Tue Oct 8            | Culture, Automation, and Jobs                                        |
-|      | Thu Oct 10           | Kinematic Modeling                                                   |
+|      | Thu Sep 26           | [Starting with Arduino](../book/10-Arduino.qmd)                      |
+| 6    | Tue Oct 1            | [Refactoring Arduino Code](../book/11-ArduinoCodeRefactoring.qmd)    |
+|      | Thu Oct 3            | [Arduino Motor Control](../book/12-ArduinoMotorControl.qmd)          |
+| 7    | Tue Oct 8            | [Pose Estimation](../book/13-PoseEstimation.qmd)                     |
+|      | Thu Oct 10           |                                                                      |
 | 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                                 |
-|      | Thu Oct 17           |                                                                      |
+|      | Thu Oct 17           | Culture, Automation, and Jobs                                        |
 | 9    | Tue Oct 22           |                                                                      |
 |      | Thu Oct 24           |                                                                      |
 | 10   | Tue Oct 29           |                                                                      |

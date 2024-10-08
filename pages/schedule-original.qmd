@@ -118,6 +118,7 @@ Assignments
      - [Profiling Arduino Code](https://www.dudley.nu/arduino_profiling/)
      - Sampling [Profiling Arduino Code](https://www.dudley.nu/arduino_profiling/)
      - [Profiling Arduino Code](https://forum.arduino.cc/t/profiling-arduino-code/977090/27)
+   4. https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp
    5. Does not work with delays
    6. [How to Avoid Using the Delay() Function in Arduino Sketches](https://www.digikey.com/en/maker/tutorials/2022/how-to-avoid-using-the-delay-function-in-arduino-sketches)
    7. robot might run away
