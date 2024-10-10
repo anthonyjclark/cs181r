@@ -29,8 +29,8 @@ li-ion battery
 
 Links
 
-- [Slides (PPTX)](../_static/lectures/03-SafetyAndElectronics.pptx)
-- [Slides (PDF)](../_static/lectures/03-SafetyAndElectronics.pdf)
+- [Slides](../_static/lectures/03-SafetyAndElectronics.pptx)
+- [Slides](../_static/lectures/03-SafetyAndElectronics.pdf)
 
 ### Safety
 

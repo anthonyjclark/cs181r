@@ -9,6 +9,10 @@ a[href$=".pdf"]:after {
   content: " (PDF)";
 }
 
+a[href$=".pptx"]:after {
+  content: " (PPTX)";
+}
+
 .faded {
   color: #ccc;
 }

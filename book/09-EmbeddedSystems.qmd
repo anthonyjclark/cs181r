@@ -30,8 +30,8 @@ virtual machine
 
 Links
 
-- [Slides (PPTX)](../_static/lectures/09-EmbeddedSystems.pptx)
-- [Slides (PDF)](../_static/lectures/09-EmbeddedSystems.pdf)
+- [Slides](../_static/lectures/09-EmbeddedSystems.pptx)
+- [Slides](../_static/lectures/09-EmbeddedSystems.pdf)
 
 ### Introducing embedded systems
 

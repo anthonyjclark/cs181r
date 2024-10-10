@@ -38,9 +38,9 @@ prototype
 
 Links
 
-- [Slides (PPTX)](../_static/lectures/01-IntroductionAndDesign.pptx)
-- [Slides (PDF)](../_static/lectures/01-IntroductionAndDesign.pdf)
-- [Printable parts (PDF)](../_static/design/Layout.pdf)
+- [Slides](../_static/lectures/01-IntroductionAndDesign.pptx)
+- [Slides](../_static/lectures/01-IntroductionAndDesign.pdf)
+- [Printable parts](../_static/design/Layout.pdf)
 - [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
 
 This first chapter is lighter than subsequent ones. The first class period will be fairly traditional: I'll present the lecture during class.
