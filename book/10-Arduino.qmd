@@ -2,6 +2,8 @@
 title: "Starting With Arduino"
 ---
 
+In this chapter we will start programming our microcontrollers using the Arduino framework.
+
 ## What you will learn
 
 - Programming with Arduino

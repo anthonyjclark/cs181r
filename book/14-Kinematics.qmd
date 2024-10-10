@@ -1,0 +1,195 @@
+---
+title: "Kinematics"
+execute:
+  echo: false
+---
+
+Now that we have our equations of motion, we can develop a full kinematics model so that we can predict the robot's motion. This chapter will cover the kinematics model and forward kinematics.
+
+## What you will learn
+
+- How to specify a kinematics model
+- How to implement forward kinematics
+
+## Terminology
+
+forward kinematics
+: The process of determining the position and orientation of a robot based on (a history of) its inputs
+
+## Lecture
+
+Links
+
+- [Slides](../_static/lectures/14-Kinematics.pptx)
+- [Slides](../_static/lectures/14-Kinematics.pdf)
+
+### Notation for kinematics
+
+{{< video https://www.youtube.com/watch?v=VOrHC9E36j8 >}}
+
+| Symbol | Description |
+| --- | --- |
+| $\{A\}$, $\{G\}$, $\{R\}$ | Reference frames |
+| $\{B\} \rightarrow \{{}^A_B R, {}^A P\}$ | Relative frame (frame $\{B\}$ defined relative to $\{A\}$) |
+| ${}^A P = [P_x, P_y]^T$ | Point in a frame (upper case letters) |
+| ${}^A v = [v_x, v_y]^T$ | Vector in a frame (lower case letters) |
+| ${}^A_B R = \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}$ | Rotation matrix |
+| ${}^A Q = {}^A_B R {}^A Q + {}^A P$ | Transformation/change in reference |
+
+### Equations for robot motion - YouTube
+
+{{< video https://www.youtube.com/watch?v=EKJ-QZ24Daw >}}
+
+Equations for robot motion in the global frame:
+
+$$
+\begin{align}
+{}^G \dot x &= {}^R \dot x \cos(\theta) - {}^R \dot y \sin(\theta) \\
+{}^G \dot y &= {}^R \dot x \sin(\theta) + {}^R \dot y \cos(\theta) \\
+{}^G \dot \theta &= {}^R \dot \theta \\
+\end{align}
+$$
+
+Equations for robot motion in the robot frame:
+
+$$
+\begin{align}
+{}^R \dot x &= \frac{\dot \phi_R r + \phi_L r}{2}\\
+{}^R \dot y &= 0\\
+{}^R \dot \theta &= \frac{\dot \phi_R r - \dot \phi_L r}{d}
+\end{align}
+$$
+
+### Kinematics model and forward kinematics - YouTube
+
+{{< video https://www.youtube.com/watch?v=snPgUEcrAD0 >}}
+
+Our final kinematics model:
+
+$$
+{}^G \dot q =
+\begin{bmatrix}
+{}^G \dot x \\
+{}^G \dot y \\
+{}^G \dot \theta
+\end{bmatrix} =
+\begin{bmatrix}
+\cos(\theta) & -\sin(\theta) & 0 \\
+\sin(\theta) & \cos(\theta) & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\frac{r}{2} & \frac{r}{2} \\
+0 & 0 \\
+\frac{r}{d} & -\frac{r}{d}
+\end{bmatrix}
+\begin{bmatrix}
+\dot \phi_R \\
+\dot \phi_L
+\end{bmatrix}
+$$
+
+And our final forward kinematics model:
+
+$$
+{}^G q(k + 1) = {}^G q(k) + \Delta {}^G q(k) \Delta t
+$$
+
+## Interactive
+
+
+Try dragging the robot around. You can also rotate the robot by dragging from the tip of the forward arrow.
+
+
+```{ojs}
+mutable x = 0
+mutable y = 0
+mutable phi = 0
+```
+
+```{ojs}
+//| panel: fill
+html`
+${tex.block`
+{}^G q = \begin{bmatrix}
+    {}^G x \\
+    {}^G y \\
+    {}^G \theta
+\end{bmatrix}
+= \begin{bmatrix}
+    ${x} \; \text{m} \\
+    ${y} \; \text{m} \\
+    ${(phi * 180 / Math.PI).toFixed(2)} \degree
+\end{bmatrix}
+\\[10pt]
+{}^G_R R = \begin{bmatrix}
+    \cos(\theta) & -\sin(\theta) \\
+    \sin(\theta) & \cos(\theta)
+\end{bmatrix}
+= \begin{bmatrix}
+    ${Math.cos(phi).toFixed(2)} & ${-Math.sin(phi).toFixed(2)} \\
+    ${Math.sin(phi).toFixed(2)} & ${Math.cos(phi).toFixed(2)}
+\end{bmatrix}
+`}
+`
+```
+
+```{ojs}
+div_id = "jsxdiv"
+
+graph_style = `
+    width: ${width}px;
+    height: ${width/1.5}px;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+    background-color: #f5f5f5;
+    border: solid #DDD 1px;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 0;
+`
+viewof graph = html`<div id="${div_id}" style="${graph_style}"></div>`
+```
+
+```{ojs}
+import { WMRGraph } from '../_interactives/WMRGraph/dist/wmr-graph.js';
+
+function updateRotation(newPhi) {
+    mutable phi = newPhi.toFixed(2);
+}
+
+function updateTranslation(newX, newY) {
+    mutable x = newX.toFixed(2);
+    mutable y = newY.toFixed(2);
+}
+
+new WMRGraph(div_id, updateRotation, updateTranslation);
+```
+
+## Exercise
+
+In this exercise, you will take the equations above, and use them to write code for "pose estimation."
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+### [Task 1]
+
+## Wrap-Up
+
+## Resources

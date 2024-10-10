@@ -30,13 +30,10 @@ dynamic model
 motion constraint
 : A constraint that limits the motion of a robot
 
-
-<!-- TODO: fill in notation -->
-
 ## Lecture
 
-- [Slides (PPTX)](../_static/lectures/13-PoseEstimation.pptx)
-- [Slides (PDF)](../_static/lectures/13-PoseEstimation.pdf)
+- [Slides](../_static/lectures/13-PoseEstimation.pptx)
+- [Slides](../_static/lectures/13-PoseEstimation.pdf)
 
 ### Introduction to pose estimation
 
@@ -48,7 +45,7 @@ motion constraint
 
 ## Exercise
 
-Intro...
+Check gradescope.
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -66,8 +63,18 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### [Task 1]
+For this exercise, I want you to derive the robot's motion equations. Consider the following diagram for our WMR.
+
+![WMR pose](../_static/images/13-PoseEstimation/WMRPose.svg)
+
+It depicts the global frame $\{G\}$ and the robot frame $\{R\}$. The robot has two wheels, each with a radius $r$, separated by a distance $d$. The robot's pose is defined by its position $({}^Gx, {}^Gy)$ and orientation $\theta$.
+
+Your task is to develop equations that describe the robot's motion. That is, given the robot's wheel velocities $\dot{\phi}_R$ and $\dot{\phi}_L$, determine the robot's linear and angular velocities ${}^G\dot{x}$, ${}^G\dot{y}$, and $\dot{\theta}$.
 
 ## Wrap-Up
 
+In the next chapter, we will use these equations to develop a forward kinematics model for our robot.
+
 ## Resources
+
+- [Modern Robotics - Northwestern Mechatronics Wiki](https://hades.mech.northwestern.edu/index.php/Modern_Robotics) (specifically, chapter 13)

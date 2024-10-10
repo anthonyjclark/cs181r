@@ -23,8 +23,8 @@ a list
 
 Links
 
-- [Slides (PPTX)](../_static/lectures/)
-- [Slides (PDF)](../_static/lectures/)
+- [Slides](../_static/lectures/)
+- [Slides](../_static/lectures/)
 - [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
 
 A video of slides, coding, hands-on electronics, etc.
