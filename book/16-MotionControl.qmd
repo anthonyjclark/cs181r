@@ -1,0 +1,138 @@
+---
+title: "Motion Control"
+---
+
+This chapter, and the next, are about motion control. We'll start with a simple "go to position" motion control algorithm.
+
+## What you will learn
+
+- About the basics of motion control
+- How to implement a "go to pose" motion control algorithm
+- How to simulate a robot moving to a specific pose
+
+## Terminology
+
+pose
+: A position and orientation
+
+motion control
+: The process of controlling the movement of a robot (sometimes to a specific pose)
+
+## Lecture
+
+Links
+
+- [Slides](../_static/lectures/16-MotionControl.pptx)
+- [Slides](../_static/lectures/16-MotionControl.pdf)
+
+### Introduction to motion control
+
+{{< video https://www.youtube.com/watch?v=cDKUIBCnFLw >}}
+
+### Review of forward kinematics
+
+{{< video https://www.youtube.com/watch?v=5xsR07iEsEA >}}
+
+### Go to pose motion control
+
+{{< video https://www.youtube.com/watch?v=18jO4KYv5bE >}}
+
+### Go to position motion control
+
+{{< video https://www.youtube.com/watch?v=zsH_GIrMVTs >}}
+
+### Advanced motion control and simulation
+
+{{< video https://www.youtube.com/watch?v=2mlo0AnhqhU >}}
+
+## Exercise
+
+This exercise has two main components:
+
+1. (Tuesday) Simulating forward kinematics and motion control
+2. (Thursday) Implementing motion control on your robot
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+For this exercise you will simulate a robot moving to a specific pose. The robot's motion is simulated using "forward kinematics" (the same equations you used on the robot in the previous exercise). You will also implement a simple "go to pose" motion control algorithm.
+
+You can use any language you'd like. One simple method would be to write your code in Python and then plot the results using a spreadsheet program (like Excel or Google Sheets).
+
+I am not picky about your code, but I found it helpful to write a `Pose` class to encapsulate the position and orientation of the robot; a `ForwardKinematics` class to compute the new pose given the current pose and wheel velocities (nearly identical to the Arduino code from the previous exercise); and a `PositionControl` class to compute the new wheel velocities given the current pose and the goal pose.
+
+The following pseudocode does not show the classes or initial variable values but instead is simplified to focus on the most important parts of the code.
+
+#### Forward Kinematics
+
+~~~text
+function forward_kinematics(pose, v_left, v_right, dt):
+  v = (v_left + v_right) / 2
+  θdot = (v_right - v_left) / TRACK_WIDTH
+
+  pose.x += v * cos(pose.θ) * dt
+  pose.y += v * sin(pose.θ) * dt
+  pose.θ += θdot * dt
+
+  return pose
+~~~
+
+#### Go to Pose Motion Control
+
+~~~text
+function position_control(pose, GOAL):
+  d = distance(pose, GOAL)
+
+  if d is small then return 0, 0
+
+  v = K_POSITION * d
+  v = min(v, MAX_LINEAR_VELOCITY)
+
+  angle_to_goal = angle(pose, GOAL)
+  θerror = angle_to_goal - pose.θ
+  θdot = K_ORIENTATION * theta_error
+  θdot = min(θdot, MAX_ANGULAR_VELOCITY)
+
+  v_left = v - θdot * TRACK_WIDTH / 2
+  v_right = v + θdot * TRACK_WIDTH / 2
+
+  return v_left, v_right
+~~~
+
+#### Putting it together
+
+Your main loop will look something like this:
+
+~~~text
+while t < TIME_END:
+  pose = forward_kinematics(v_left, v_right, dt)
+  v_left, v_right = position_control(pose, GOAL)
+  t = t + dt
+~~~
+
+I would like you to generate x-y scatter plots for at least 10 different combinations of
+
+- `GOAL`
+- `K_POSITION`
+- `K_ORIENTATION`
+- `MAX_LINEAR_VELOCITY`
+- `MAX_ANGULAR_VELOCITY`
+
+I would prefer these to be on the same figure and with an appropriate legend.
+
+## Wrap-Up
+
+In the next chapter you will implement this same motion control algorithm on your robot.

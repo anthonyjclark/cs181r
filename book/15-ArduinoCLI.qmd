@@ -1,0 +1,172 @@
+---
+title: "The Arduino CLI"
+---
+
+In this chapter's lectures, we'll take a brief detour from our robots and focus on learning a bit more about C++ and the Arduino command line interface (CLI). The exercise, however, will pick up where we left off with the kinematics of our robot. Specifically, you'll implement the forward kinematics equations that we derived in the last chapter.
+
+## What you will learn
+
+- How Arduino compiles your sketches into machine code
+- About C++ syntax and the order of execution for constructors and default constructors
+- How to use the Arduino CLI to compile and upload sketches
+- How to use Makefiles to automate the compilation and build processes
+- How to implement forward kinematics for pose estimation
+
+## Terminology
+
+command line interface (CLI)
+: A text-based interface for interacting with a program
+
+constructor
+: A special member function that is called when an object is created
+
+Makefile
+: A file that specifies how to compile and link a program
+
+## Lecture
+
+### Coding in C++ for Arduino
+
+You can think of your Arduino sketch as a single file in a larger C++ program. Arduino provides the `main` function, and you are in charge of writing two functions: `setup` and `loop`.
+
+You can additional create and include custom libraries, include Arduino libraries, and/or include libraries from 3rd party authors.
+
+This video shows how these different pieces of functionality are combined to create an executable that you can upload to your microcontroller.
+
+{{< video https://www.youtube.com/watch?v=HZgewvHSX6U >}}
+
+A sketch is built into a binary from the following files:
+
+- Code you control
+  - Your sketch file (`.ino`).
+  - Custom libraries that you create.
+- Code you don't control
+  - A `main.cpp` file created for your microcontroller. The `main` function calls your `setup` and `loop` functions.
+  - An `Arduino.h` file that includes the Arduino core library for your microcontroller (it implements functions like `analogWrite` and `map`).
+
+### C++ code execution order
+
+In the following video, I create two header files: one that is a stand-in for a custom library that you might create to encapsulate robot functionality, and a second one that is a stand-in for a library that you might include from a 3rd party author.
+
+I show how the order of execution works for constructors and default constructors.
+
+{{< video https://www.youtube.com/watch?v=xEaEMs5yTao >}}
+
+### The Arduino command line interface
+
+The main CLI interface we'll use includes:
+
+1. Creating sketches: `arduino-cli sketch new MySketch`
+2. Compiling sketches: `arduino-cli compile --fqbn esp32:esp32:XIAO_ESP32S3 --export-binaries MySketch`
+3. Uploading sketches: `arduino-cli upload --fqbn esp32:esp32:XIAO_ESP32S3 --port Port --input-file MySketch/build/esp32.esp32.XIAO_ESP32S3/MySketch.ino.bin`
+
+{{< video https://www.youtube.com/watch?v=ceIhOLGaaho >}}
+
+### Using Makefiles with Arduino-CLI
+
+{{< video https://www.youtube.com/watch?v=RGQ38eLHIzI >}}
+
+In the end, we're left with the following workflow:
+
+1. Create a new sketch: `arduino-cli sketch new MySketch`
+2. Copy the `Makefile` and `sketch.yaml` files from `Extras\`
+3. Upload your sketch: `make upload`
+
+### Committing the new files to version control
+
+This final video shows a bit of cleanup and my process for committing the new files to version control.
+
+{{< video https://www.youtube.com/watch?v=PQqK2fkErpE >}}
+
+## Exercise
+
+Your goal for this exercise is to implement the forward kinematics equations that we derived in the [previous chapter](./14-Kinematics.qmd).
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+Here are the steps for this exercise:
+
+1. Create a new sketch (or extend your example `.ino` from the previous exercise).
+2. (Optionally) Add the Arduino-CLI based Makefile and sketch.yaml files to your project.
+3. Implement the forward kinematics equations that we derived in the previous chapter.
+
+### Creating a new sketch
+
+Here is how I recommend creating a new sketch going forward:
+
+```bash
+cd into/MobileRoboticsCode/Exercises
+arduino-cli sketch new ForwardKinematics
+```
+
+### Adding the Makefile and sketch.yaml files
+
+```bash
+# From inside the "MobileRoboticsCode/Exercises/" directory
+cp ../Extras/Makefile ForwardKinematics/
+cp ../Extras/sketch.yaml ForwardKinematics/
+
+# Test that it compiles
+make compile
+```
+
+### Implementing forward kinematics
+
+Here is pseudocode of my `ForwardKinematics.ino` sketch:
+
+```text
+Initialize a WsCommunicator object
+Initialize a MotorControl object
+Initialize a Display object
+Initialize a Kinematics object
+
+Setup:
+    Start serial
+    Start the wsCommunicator
+    Start the motorControl
+    Set the motor target velocity
+    Start the display
+    Display the IP address
+    Start the kinematics
+
+Loop:
+    Update the wsCommunicator
+    Update the motorControl
+    Update the kinematics
+    Output the current pose
+```
+
+For the exercise, I want you to
+
+1. set your left wheel to `0.2` m/s and your right wheel to `0.25` m/s
+2. have your robot move for `10` s
+3. output the $x$, $y$, and $\theta$ values to the serial monitor every `250` ms
+4. plot the $x$ and $y$ values on a 2D scatter plot
+5. plot the $\theta$ values on a line plot
+
+Both plots will be uploaded to gradescope (I recommend using Excel for expediency).
+
+## Wrap-Up
+
+In this chapter, we learned about the Arduino CLI and how to use Makefiles to automate the compilation and build processes. We also learned about C++ syntax and the order of execution for constructors and default constructors. You then applied this knowledge to implement forward kinematics for pose estimation.
+
+In the next chapter, we'll add a new sensor to our robot: a magnetometer.
+
+## Resources
+
+- [Makefile Tutorial By Example](https://makefiletutorial.com/#getting-started)
+- [C++ Reference](https://en.cppreference.com/w/)

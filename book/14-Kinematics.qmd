@@ -31,8 +31,8 @@ Links
 | --- | --- |
 | $\{A\}$, $\{G\}$, $\{R\}$ | Reference frames |
 | $\{B\} \rightarrow \{{}^A_B R, {}^A P\}$ | Relative frame (frame $\{B\}$ defined relative to $\{A\}$) |
-| ${}^A P = [P_x, P_y]^T$ | Point in a frame (upper case letters) |
-| ${}^A v = [v_x, v_y]^T$ | Vector in a frame (lower case letters) |
+| ${}^A P = [{}^A P_x, {}^A P_y]^T$ | Point in a frame (upper case letters) |
+| ${}^A v = [{}^A v_x, {}^A v_y]^T$ | Vector in a frame (lower case letters) |
 | ${}^A_B R = \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}$ | Rotation matrix |
 | ${}^A Q = {}^A_B R {}^A Q + {}^A P$ | Transformation/change in reference |
 

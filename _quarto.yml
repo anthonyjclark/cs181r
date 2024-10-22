@@ -47,10 +47,13 @@ website:
             - book/10-Arduino.qmd
             - book/11-ArduinoCodeRefactoring.qmd
             - book/12-ArduinoMotorControl.qmd
+            - book/15-ArduinoCLI.qmd
         - text: "---"
         - section: "Unit 3: Modeling and Feedback Control"
           contents:
             - book/13-PoseEstimation.qmd
+            - book/14-Kinematics.qmd
+            - book/16-MotionControl.qmd
         - text: "---"
         - section: "Unit 4: Maps and Motion Planning"
           contents:
