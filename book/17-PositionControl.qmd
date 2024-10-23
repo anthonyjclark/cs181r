@@ -1,5 +1,5 @@
 ---
-title: "Chapter Layout Template"
+title: "Position Control"
 execute:
   echo: false
 ---
@@ -33,25 +33,84 @@ A video of slides, coding, hands-on electronics, etc.
 
 ## Interactive
 
+```{ojs}
+TRACK_WIDTH = 0.17;
+TIME_STEP = 0.1;
+TIME_END = 20;
+```
+
+```{ojs}
+
+function forward_kinematics(vl, vr, x, y, θ) {
+  const v = (vr + vl) / 2.0;
+  const θdot = (vr - vl) / TRACK_WIDTH;
+
+  x += v * Math.cos(θ) * TIME_STEP;
+  y += v * Math.sin(θ) * TIME_STEP;
+  θ += θdot * TIME_STEP;
+
+  return [x, y, θ];
+}
+
+function position_control(x, y, θ, gx, gy, gt) {
+  const d = Math.sqrt((gx - x) ** 2 + (gy - y) ** 2);
+
+  if (d < gt) { return [0, 0]; }
+
+  let v = Math.min(K_position * d, max_linear);
+
+  const angle_to_goal = Math.atan2(gy - y, gx - x);
+  const θerror = angle_to_goal - θ;
+  let θdot = Math.min(K_orientation * θerror, max_angular);
+
+  const vl = v - θdot * TRACK_WIDTH / 2;
+  const vr = v + θdot * TRACK_WIDTH / 2;
+
+  return [vl, vr];
+}
+
+function simulate(gx, gy, gt) {
+  let x = 0;
+  let y = 0;
+  let θ = 0;
+  let vl = 0;
+  let vr = 0;
+
+  const data = [];
+  for (let t = 0; t < 10; t += TIME_STEP) {
+    [x, y, θ] = forward_kinematics(vl, vr, x, y, θ);
+    [vl, vr] = position_control(x, y, θ, gx, gy, gt);
+    data.push({x, y, θ});
+  }
+
+  return data;
+}
+```
+
 
 ```{ojs}
 viewof goal_x = Inputs.range([-2, 2], {value: 1, step: 0.1, label: "Goal x"})
-viewof goal_y = Inputs.range([-2, 2], {value: 1, step: 0.1, label: "Goal y"})
-viewof K_position = Inputs.range([0, 4], {value: 1, step: 0.1, label: "K_position"})
+viewof goal_y = Inputs.range([-2, 2], {value: -1, step: 0.1, label: "Goal y"})
+viewof goal_threshold = Inputs.range([0, 0.4], {value: 0.1, step: 0.1, label: "Goal threshold"})
+viewof K_position = Inputs.range([0, 4], {value: 0.2, step: 0.1, label: "K_position"})
 viewof K_orientation = Inputs.range([0, 4], {value: 1, step: 0.1, label: "K_orientation"})
-viewof max_linear = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Max linear velocity"})
+viewof max_linear = Inputs.range([0, 2], {value: 0.3, step: 0.1, label: "Max linear velocity"})
 viewof max_angular = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Max angular velocity"})
+```
+
+```{ojs}
+trajectory = simulate(goal_x, goal_y, goal_threshold);
 ```
 
 ```{ojs}
 Plot.plot({
   grid: true,
-  inset: 10,
   aspectRatio: 1,
-  color: {legend: true},
+  x: {domain: [-2, 2]},
+  y: {domain: [-2, 2]},
   marks: [
-    Plot.frame(),
-    Plot.dot(penguins, {x: "culmen_length_mm", y: "culmen_depth_mm", stroke: "species"})
+    Plot.dot(trajectory, {x: "x", y: "y"}),
+    Plot.dot([{x: goal_x, y: goal_y}], {x: "x", y: "y", fill: "red", r: goal_threshold*200}),
   ]
 })
 ```
@@ -81,3 +140,5 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 ## Wrap-Up
 
 ## Resources
+
+- [How to format strings without the String class | C++ for Arduino](https://cpp4arduino.com/2020/02/07/how-to-format-strings-without-the-string-class.html)

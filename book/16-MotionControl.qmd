@@ -103,7 +103,7 @@ function position_control(pose, GOAL):
 
   angle_to_goal = angle(pose, GOAL)
   θerror = angle_to_goal - pose.θ
-  θdot = K_ORIENTATION * theta_error
+  θdot = K_ORIENTATION * θerror
   θdot = min(θdot, MAX_ANGULAR_VELOCITY)
 
   v_left = v - θdot * TRACK_WIDTH / 2
