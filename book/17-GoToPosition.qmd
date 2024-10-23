@@ -1,0 +1,83 @@
+---
+title: "Chapter Layout Template"
+execute:
+  echo: false
+---
+
+TODO: start with an image?
+
+Some introductory text.
+
+“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+
+## What you will learn
+
+- A list of 2 to 5 learning goals
+
+## Terminology
+
+a list
+: of new terms
+
+<!-- TODO: fill in notation -->
+
+## Lecture
+
+Links
+
+- [Slides](../_static/lectures/)
+- [Slides](../_static/lectures/)
+- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+
+A video of slides, coding, hands-on electronics, etc.
+
+## Interactive
+
+
+```{ojs}
+viewof goal_x = Inputs.range([-2, 2], {value: 1, step: 0.1, label: "Goal x"})
+viewof goal_y = Inputs.range([-2, 2], {value: 1, step: 0.1, label: "Goal y"})
+viewof K_position = Inputs.range([0, 4], {value: 1, step: 0.1, label: "K_position"})
+viewof K_orientation = Inputs.range([0, 4], {value: 1, step: 0.1, label: "K_orientation"})
+viewof max_linear = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Max linear velocity"})
+viewof max_angular = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Max angular velocity"})
+```
+
+```{ojs}
+Plot.plot({
+  grid: true,
+  inset: 10,
+  aspectRatio: 1,
+  color: {legend: true},
+  marks: [
+    Plot.frame(),
+    Plot.dot(penguins, {x: "culmen_length_mm", y: "culmen_depth_mm", stroke: "species"})
+  ]
+})
+```
+
+## Exercise
+
+Intro...
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+### [Task 1]
+
+## Wrap-Up
+
+## Resources
