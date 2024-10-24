@@ -23,7 +23,7 @@ title: "Schedule"
 | 8    | [Tue Oct 15]{.faded} | [Fall break]{.faded}                                                 |
 |      | Thu Oct 17           | [The Arduino CLI](../book/15-ArduinoCLI.qmd)                         |
 | 9    | Tue Oct 22           | [Motion Control](../book/16-MotionControl.qmd)                       |
-|      | Thu Oct 24           |                                                                      |
+|      | Thu Oct 24           | [Position Control](../book/17-PositionControl.qmd)                   |
 | 10   | Tue Oct 29           | Culture, Automation, and Jobs                                        |
 |      | Thu Oct 31           |                                                                      |
 | 11   | Tue Nov 5            |                                                                      |

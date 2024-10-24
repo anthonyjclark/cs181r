@@ -4,32 +4,34 @@ execute:
   echo: false
 ---
 
-TODO: start with an image?
-
-Some introductory text.
-
-“Ask engaging questions that spark people’s curiosity and fascination that people find intriguing…”
+It is time to implement position control on the robot. We've had previous "go to goal" exercises, but this will be the first time we implement a control loop to achieve that goal!
 
 ## What you will learn
 
-- A list of 2 to 5 learning goals
+- How to implement position control on the robot
+- How to structure Arduino code to handle multiple tasks
 
-## Terminology
-
-a list
-: of new terms
-
-<!-- TODO: fill in notation -->
+<!-- ## Terminology -->
 
 ## Lecture
 
-Links
+### Position control sketch setup
 
-- [Slides](../_static/lectures/)
-- [Slides](../_static/lectures/)
-- [Google sheet](https://docs.google.com/spreadsheets/d/1HJmlehaYhGWclDo1t0k6i1VHxN15zr8ZmJj7Rf_VEaI/edit?gid=1242365109#gid=1242365109)
+{{< video https://www.youtube.com/watch?v=MDP5IjuUrRE >}}
 
-A video of slides, coding, hands-on electronics, etc.
+{{< video https://www.youtube.com/watch?v=QIB7OHNpsb4 >}}
+
+### Setting up motor control
+
+{{< video https://www.youtube.com/watch?v=h5HTdLytfmM >}}
+
+### Setting up forward kinematics and plotting the position
+
+{{< video https://www.youtube.com/watch?v=38n-VMh5kpc >}}
+
+### Implementing position control
+
+{{< video https://www.youtube.com/watch?v=WGggD9mdZus >}}
 
 ## Interactive
 
@@ -117,7 +119,7 @@ Plot.plot({
 
 ## Exercise
 
-Intro...
+Your task is to follow the lecture videos and implement position control on your robot.
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
@@ -135,9 +137,11 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 ### Overview
 
-### [Task 1]
+You should use the pseudocode from [the previous chapter](16-MotionControl.qmd#overview) and your simulation implementation to guide your Arduino code. See gradescope for submission details.
 
 ## Wrap-Up
+
+You can now command your robot to any specific position. We'll later look at how noise affects this process, and how we can plot "proper" positions and paths.
 
 ## Resources
 

@@ -54,6 +54,7 @@ website:
             - book/13-PoseEstimation.qmd
             - book/14-Kinematics.qmd
             - book/16-MotionControl.qmd
+            - book/17-PositionControl.qmd
         - text: "---"
         - section: "Unit 4: Maps and Motion Planning"
           contents:
