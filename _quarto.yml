@@ -55,6 +55,8 @@ website:
             - book/14-Kinematics.qmd
             - book/16-MotionControl.qmd
             - book/17-PositionControl.qmd
+            - book/18-AddingACompass.qmd
+            - book/19-SensorFusion.qmd
         - text: "---"
         - section: "Unit 4: Maps and Motion Planning"
           contents:

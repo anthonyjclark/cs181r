@@ -7,9 +7,38 @@ Please let me know when you run into issues. I will update this page with soluti
 
 <!-- esptool.py --chip esp32s3 --port /dev/cu.usbmodem2101 erase_flash -->
 
+# Arduino Troubleshooting
 
+## Port doesn't exist
 
+```text
+❯ make upload                                                                                                                                                  (base)
+arduino-cli upload . --input-dir build/esp32.esp32.XIAO_ESP32S3
+esptool.py v4.6
+Serial port /dev/cu.usbmodem2101
+
+A fatal error occurred: Could not open /dev/cu.usbmodem2101, the port doesn't exist
+Failed uploading: uploading error: exit status 2
+make: *** [upload] Error 1
 ```
+
+**Solutions**: unplug your board and then plug it back in.
+
+## Port not found
+
+```text
+arduino-cli compile . --config-file ../../arduino.yaml
+Error getting port metadata: port not found: /dev/cu.usbmodem2101 serial
+make: *** [build/esp32.esp32.XIAO_ESP32S3/PositionControl.ino.bin] Error 1
+```
+
+**Solutions**: plug your board into the computer.
+
+## No serial data received
+
+Here are a few error messages that you might receive relating to "No serial data received":
+
+```text
 A fatal error occurred: No serial data received.
 Failed uploading: uploading error: exit status 2
 make: *** [upload] Error 1
@@ -32,9 +61,6 @@ Changing baud rate to 921600
 A fatal error occurred: No serial data received.
 ```
 
-Unplug the microcontroller from the computer and plug it back in. Then try again.
-
-
 ```
 Sketch uses 886641 bytes (26%) of program storage space. Maximum is 3342336 bytes.
 Global variables use 42932 bytes (13%) of dynamic memory, leaving 284748 bytes for local variables. Maximum is 327680 bytes.
@@ -45,26 +71,21 @@ A fatal error occurred: Failed to connect to ESP32-S3: No serial data received.
 For troubleshooting steps visit: https://docs.espressif.com/projects/esptool/en/latest/troubleshooting.html
 ```
 
-```
-Sketch uses 883353 bytes (26%) of program storage space. Maximum is 3342336 bytes.
-Global variables use 42776 bytes (13%) of dynamic memory, leaving 284904 bytes for local variables. Maximum is 327680 bytes.
-esptool.py v4.6
-Serial port /dev/cu.usbmodem14101
-Connecting...
-Chip is ESP32-S3 (revision v0.2)
-Features: WiFi, BLE
-Crystal is 40MHz
-MAC: 64:e8:33:51:42:80
-Uploading stub...
-Running stub...
-Stub running...
-Changing baud rate to 921600
-A fatal error occurred: No serial data received.
-```
+In each of these cases, you should try the following steps:
+
+1. Unplug the microcontroller from the computer and plug it back in. Then try again.
+2. Press the "Reset" (R) button on the microcontroller. Then try again.
+3. Perform a full boot-reset:
+   1. Connect the microcontroller to power (either through USB or the battery)
+   2. Press and hold the "Boot" (B) button
+   3. Press and release the "Reset" (R) button
+   4. Release the "Boot" (B) button
+   5. Attempt to upload the code again
+
+
+# Toit/Jaguar Troubleshooting
 
 ## No serial data received (Possibility 1)
-
-TODO: get output message
 
 Try the following steps:
 
@@ -98,38 +119,6 @@ And add the correct port to whatever command you are trying to run. For example:
 jag flash --chip esp32s3 --port /dev/cu.usbmodem14401
 ```
 
-## `npm` cannot install `wscat`
-
-If you see an error message like the following:
-
-```bash
-> npm install -g wscat
-
-npm ERR! code EACCES
-npm ERR! syscall mkdir
-npm ERR! path /usr/local/lib/node_modules/wscat
-npm ERR! errno -13
-npm ERR! Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/wscat’
-npm ERR! [Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/wscat’] {
-npm ERR!  errno: -13,
-npm ERR!  code: ‘EACCES’,
-npm ERR!  syscall: ‘mkdir’,
-npm ERR!  path: ‘/usr/local/lib/node_modules/wscat’
-npm ERR! }
-npm ERR!
-npm ERR! The operation was rejected by your operating system.
-npm ERR! It is likely you do not have the permissions to access this file as the current user
-npm ERR!
-npm ERR! If you believe this might be a permissions issue, please double-check the
-npm ERR! permissions of the file and its containing directories, or try running
-npm ERR! the command again as root/Administrator.
-npm ERR! A complete log of this run can be found in: /Users/ACCOUNT/.npm/_logs/2024-09-12T17_07_20_354Z-debug-0.log
-```
-
-You will need to either
-
-- changes the permissions of your `/usr/local/lib/node_modules` directory, or
-- install `wscat` with `sudo`: `sudo npm install -g wscat`
 
 ## `WARN: connect failed`
 
@@ -162,3 +151,38 @@ You can ignore the following error message:
 E (299) quad_psram: PSRAM ID read error: 0x00ffffff, PSRAM chip not found or not supported, or wrong PSRAM line mode
 E (299) esp_psram: PSRAM enabled but initialization failed. Bailing out.
 ```
+
+# Miscellaneous Troubleshooting
+
+## `npm` cannot install `wscat`
+
+If you see an error message like the following:
+
+```bash
+> npm install -g wscat
+
+npm ERR! code EACCES
+npm ERR! syscall mkdir
+npm ERR! path /usr/local/lib/node_modules/wscat
+npm ERR! errno -13
+npm ERR! Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/wscat’
+npm ERR! [Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/wscat’] {
+npm ERR!  errno: -13,
+npm ERR!  code: ‘EACCES’,
+npm ERR!  syscall: ‘mkdir’,
+npm ERR!  path: ‘/usr/local/lib/node_modules/wscat’
+npm ERR! }
+npm ERR!
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It is likely you do not have the permissions to access this file as the current user
+npm ERR!
+npm ERR! If you believe this might be a permissions issue, please double-check the
+npm ERR! permissions of the file and its containing directories, or try running
+npm ERR! the command again as root/Administrator.
+npm ERR! A complete log of this run can be found in: /Users/ACCOUNT/.npm/_logs/2024-09-12T17_07_20_354Z-debug-0.log
+```
+
+You will need to either
+
+- changes the permissions of your `/usr/local/lib/node_modules` directory, or
+- install `wscat` with `sudo`: `sudo npm install -g wscat`

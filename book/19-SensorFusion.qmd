@@ -1,0 +1,272 @@
+---
+title: "Sensor Fusion"
+execute:
+  echo: false
+---
+
+## What you will learn
+
+- How to "fuse" data from multiple sources
+
+## Terminology
+
+sensor fusion
+: The process of combining data from multiple sources to improve an estimation
+
+## Lecture
+
+Links
+
+- [Slides](../_static/lectures/19-SensorFusion.pptx)
+- [Slides](../_static/lectures/19-SensorFusion.pdf)
+
+### Sensor fusion
+
+{{< video https://www.youtube.com/watch?v=Z93ljADgmv4 >}}
+
+## Interactive
+
+### Exponential Moving Average (EMA)
+
+```{ojs}
+viewof amplitude = Inputs.range([0, 3], {value: 1, step: 0.1, label: "Amplitude"})
+viewof frequency = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Frequency"})
+viewof phase = Inputs.range([0, 4], {value: 0, step: 0.1, label: "Phase"})
+viewof offset = Inputs.range([-1, 1], {value: 0, step: 0.1, label: "Offset"})
+
+viewof noise = Inputs.range([0, 1], {value: 0, step: 0.1, label: "Noise"})
+viewof alpha = Inputs.range([0, 1], {value: 0.5, step: 0.01, label: "alpha"})
+
+function sineWave(t, amp, freq, phase, offset, noise) {
+  return amp * Math.sin(2 * Math.PI * freq * t + phase) + offset + gaussianRandom(0, noise);
+}
+
+function generateNoisySineWave(amp, freq, phase, offset, noise) {
+  const signal = [];
+  for (let t = 0; t < 4; t += 0.01) {
+    signal.push({t, value: sineWave(t, amp, freq, phase, offset, noise)});
+  }
+  return signal;
+}
+
+function ema(signal, alpha) {
+  let ema = signal[0].value;
+  return signal.map((d, i) => {
+    ema = alpha * d.value + (1 - alpha) * ema;
+    return {t: d.t, value: ema};
+  });
+}
+
+trueSignal = generateNoisySineWave(amplitude, frequency, phase, offset, noise);
+smoothSignal = ema(trueSignal, alpha);
+
+Plot.plot({
+  x: {domain: [0, 4]},
+  y: {domain: [-5, 5]},
+  marks: [
+    Plot.lineY(trueSignal, {x: "t", y: "value", strokeWidth: 8}),
+    Plot.lineY(smoothSignal, {x: "t", y: "value", stroke: "orange"})
+  ]
+})
+
+```
+
+
+### Sensor Fusion
+
+```{ojs}
+TRACK_WIDTH = 0.17;
+TIME_STEP = 0.1;
+TIME_END = 100;
+```
+
+```{ojs}
+
+// Standard Normal variate using Box-Muller transform.
+// From: https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+function gaussianRandom(mean=0, stdev=1) {
+  const u = 1 - Math.random(); // Converting [0,1) to (0,1]
+  const v = Math.random();
+  const z = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+  // Transform to the desired mean and standard deviation:
+  return z * stdev + mean;
+}
+
+function forward_kinematics(vl, vr, x, y, θ) {
+  const v = (vr + vl) / 2.0;
+  const θdot = (vr - vl) / TRACK_WIDTH;
+
+  x += v * Math.cos(θ) * TIME_STEP;
+  y += v * Math.sin(θ) * TIME_STEP;
+  θ += θdot * TIME_STEP;
+
+  return [x, y, θ];
+}
+
+function position_control(x, y, θ, gx, gy, gt, Kp, Ko, max_lin, max_ang) {
+  const d = Math.sqrt((gx - x) ** 2 + (gy - y) ** 2);
+
+  if (d < gt) { return [0, 0, 0]; }
+
+  let v = Math.min(Kp * d, max_lin);
+
+  const angle_to_goal = Math.atan2(gy - y, gx - x);
+  const θerror = angle_to_goal - θ;
+  let θdot = Math.min(Ko * θerror, max_ang);
+
+  const vl = v - θdot * TRACK_WIDTH / 2;
+  const vr = v + θdot * TRACK_WIDTH / 2;
+
+  return [vl, vr, d];
+}
+
+function simulate(gs, gt, Kp, Ko, max_lin, max_ang, leftB, leftMag, rightB, rightMag, compassWeight, compassMag, compassSmooth) {
+  let x = 0;
+  let y = 0;
+  let θ = 0;
+  const data = [{x, y, θ}];
+
+  let xNoisy = 0;
+  let yNoisy = 0;
+  let θNoisy = 0;
+  const dataNoisy = [{x: xNoisy, y: yNoisy, θ: θNoisy}];
+
+  let compassHeading = 0;
+
+  let gIndex = 0;
+  let {x: gx, y: gy} = gs[gIndex];
+
+  let [vl, vr, d] = position_control(x, y, θ, gx, gy, gt, Kp, Ko, max_lin, max_ang);
+
+  for (let t = 0; t < TIME_END; t += TIME_STEP) {
+    // No noise
+    [x, y, θ] = forward_kinematics(vl, vr, x, y, θ);
+    data.push({x, y, θ});
+
+    // With noise and correction
+    const leftNoise = gaussianRandom(leftB, leftMag);
+    const rightNoise = gaussianRandom(rightB, rightMag);
+
+    const compassMeasurement = θ + gaussianRandom(0, compassMag);
+
+    compassHeading = compassSmooth * compassMeasurement + (1 - compassSmooth) * compassHeading;
+
+    let correctedHeading = (1 - compassWeight) * θNoisy + compassWeight * compassHeading;
+
+    [xNoisy, yNoisy, θNoisy] = forward_kinematics(vl + leftNoise, vr + rightNoise, xNoisy, yNoisy, correctedHeading);
+    dataNoisy.push({x: xNoisy, y: yNoisy, θ: θNoisy});
+
+    [vl, vr, d] = position_control(x, y, θ, gx, gy, gt, Kp, Ko, max_lin, max_ang);
+
+    if (d <= gt) {
+      if (gIndex < gs.length - 1) {
+        ({x: gx, y: gy} = gs[++gIndex]);
+      } else {
+        break;
+      }
+    }
+  }
+
+  return [data, dataNoisy];
+}
+```
+
+
+```{ojs}
+
+// viewof goalX = Inputs.range([-2, 2], {value: 1, step: 0.1, label: "Goal x"})
+// viewof goalY = Inputs.range([-2, 2], {value: -1, step: 0.1, label: "Goal y"})
+// viewof goalThreshold = Inputs.range([0, 0.4], {value: 0.1, step: 0.1, label: "Goal threshold"})
+// viewof K_position = Inputs.range([0, 4], {value: 0.2, step: 0.1, label: "K_position"})
+// viewof K_orientation = Inputs.range([0, 4], {value: 1, step: 0.1, label: "K_orientation"})
+// viewof maxLinearVelocity = Inputs.range([0, 2], {value: 0.3, step: 0.1, label: "Max linear velocity"})
+// viewof maxAngularVelocity = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Max angular velocity"})
+
+goal = [{x: 1, y: -1}, {x: 1, y: 1}]
+goalThreshold =  0.1
+K_position =  0.3
+K_orientation =  1
+maxLinearVelocity =  0.5
+maxAngularVelocity =  1
+
+leftBias = 0.0
+rightBias = 0.0
+
+viewof leftMagnitude = Inputs.range([0, 5], {value: 3, step: 0.5, label: "Left Wheel Noise (cm/s)"})
+viewof rightMagnitude = Inputs.range([0, 5], {value: 3, step: 0.5, label: "Right Wheel Noise (cm/s)"})
+
+viewof compassMagnitude = Inputs.range([0, 20], {value: 3, step: 1, label: "Compass Noise (°)"})
+viewof compassWeight = Inputs.range([0, 1], {value: 1, step: 0.1, label: "Compass Weight"})
+viewof compassSmoothing = Inputs.range([0, 1], {value: 0.5, step: 0.1, label: "Compass Smoothing (EMA)"})
+
+```
+
+```{ojs}
+
+initial = simulate(goal, goalThreshold, K_position, K_orientation, maxLinearVelocity, maxAngularVelocity,
+  leftBias, leftMagnitude/100, rightBias, rightMagnitude/100, compassWeight, compassMagnitude*Math.PI/180, compassSmoothing);
+
+viewof trajectories = Inputs.button("Restart Simulation", { value: initial, reduce: () => simulate(goal, goalThreshold, K_position, K_orientation, maxLinearVelocity, maxAngularVelocity, leftBias, leftMagnitude/100, rightBias, rightMagnitude/100, compassWeight, compassMagnitude*Math.PI/180, compassSmoothing) });
+```
+
+```{ojs}
+Plot.plot({
+  grid: true,
+  aspectRatio: 1,
+  x: {domain: [-1, 3]},
+  y: {domain: [-2, 2]},
+  marks: [
+    Plot.dot(trajectories[0], {x: "x", y: "y", stroke: "black"}),
+    Plot.dot(trajectories[1], {x: "x", y: "y", stroke: "blue"}),
+    Plot.dot(goal, {x: "x", y: "y", stroke: "orange", fill: "red", r: goalThreshold*100}),
+  ]
+})
+```
+
+## Exercise
+
+Today you will implement sensor fusion.
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+This part ot the exercise has two components:
+
+1. Use the [interactive widget](#sensor-fusion-2) to gain a better understanding of sensor fusion.
+2. Implement sensor fusion on your robot.
+
+#### Using the Widget
+
+For each scenario below, please make sure you click the "Restart Simulation" button several times.
+
+1. Set the compass weight to `0` and set the left and right wheel noise levels to non-zero values. Report on the effect of the noise on the robot's trajectory.
+2. Set the compass weight to `1`, set the wheel noise values to `0`, and set the compass noise to `20`. Report on the effect of the compass noise on the robot's trajectory.
+3. Set the compass noise to `8`, set the wheel noise values to `5`, and adjust the compass weight values up and down. Report on the effect of the compass weight on the robot's trajectory.
+4. Set the compass noise to `8`, set the wheel noise values to `5`, and adjust the compass smoothing values up and down. Report on the effect of the compass smoothing on the robot's trajectory.
+
+#### Implementing Sensor Fusion
+
+Finally, you will use your simulation from the previous chapter (and the widget above) to implement sensor fusion on your robot. Specifically, you should use the simulation to guess at good values for the compass weight and the compass smoothing factor (`alpha`).
+
+## Wrap-Up
+
+Moving forward, we'll add vision to our robot to improve its ability to react to its environment.
+
+## Resources
+
+- [Integrating an electronic compass for position tracking on a wheeled tricycle mobile robot](https://cdnsciencepub.com/doi/10.1139/dsa-2021-0049)
+- [Accelerometer Calibration I: Introduction](https://chionophilous.wordpress.com/2011/06/22/accelerometer-calibration-i-introduction/)
+- [Understanding Sensor Fusion and Tracking - YouTube](https://www.youtube.com/playlist?list=PLn8PRpmsu08ryYoBpEKzoMOveSTyS-h4a)

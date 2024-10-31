@@ -1,0 +1,235 @@
+---
+title: "Adding a Magnetic Compass"
+execute:
+  echo: false
+---
+
+Our current pose estimation (forward kinematics) process is based solely on wheel encoders. This method is prone to drift and will become less accurate over time. To improve our process we will add a magnetic compass.
+
+## What you will learn
+
+- Simulate a noisy actuator/sensor
+- How to add a compass to our pose estimation (localization) system
+
+## Terminology
+
+localization
+: The process of determining the pose of a robot in a given environment
+
+## Lecture
+
+### Introduction to using a magnetic compass
+
+{{< video https://www.youtube.com/watch?v=rkj6vJTPbTI >}}
+
+### Using the magnetic compass Arduino library
+
+{{< video https://www.youtube.com/watch?v=-EotXQTVnG4 >}}
+
+
+## Interactive
+
+```{ojs}
+TRACK_WIDTH = 0.17;
+TIME_STEP = 0.1;
+TIME_END = 100;
+```
+
+```{ojs}
+
+// Standard Normal variate using Box-Muller transform.
+// From: https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+function gaussianRandom(mean=0, stdev=1) {
+  const u = 1 - Math.random(); // Converting [0,1) to (0,1]
+  const v = Math.random();
+  const z = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+  // Transform to the desired mean and standard deviation:
+  return z * stdev + mean;
+}
+
+function forward_kinematics(vl, vr, x, y, θ) {
+  const v = (vr + vl) / 2.0;
+  const θdot = (vr - vl) / TRACK_WIDTH;
+
+  x += v * Math.cos(θ) * TIME_STEP;
+  y += v * Math.sin(θ) * TIME_STEP;
+  θ += θdot * TIME_STEP;
+
+  return [x, y, θ];
+}
+
+function position_control(x, y, θ, gx, gy, gt, Kp, Ko, max_lin, max_ang) {
+  const d = Math.sqrt((gx - x) ** 2 + (gy - y) ** 2);
+
+  if (d < gt) { return [0, 0, 0]; }
+
+  let v = Math.min(Kp * d, max_lin);
+
+  const angle_to_goal = Math.atan2(gy - y, gx - x);
+  const θerror = angle_to_goal - θ;
+  let θdot = Math.min(Ko * θerror, max_ang);
+
+  const vl = v - θdot * TRACK_WIDTH / 2;
+  const vr = v + θdot * TRACK_WIDTH / 2;
+
+  return [vl, vr, d];
+}
+
+function simulate(gs, gt, Kp, Ko, max_lin, max_ang, leftB, leftMag, rightB, rightMag) {
+  let x = 0;
+  let y = 0;
+  let θ = 0;
+  const data = [{x, y, θ}];
+
+  let xNoisy = 0;
+  let yNoisy = 0;
+  let θNoisy = 0;
+  const dataNoisy = [{x: xNoisy, y: yNoisy, θ: θNoisy}];
+
+  let gIndex = 0;
+  let {x: gx, y: gy} = gs[gIndex];
+
+  let [vl, vr, d] = position_control(x, y, θ, gx, gy, gt, Kp, Ko, max_lin, max_ang);
+
+  for (let t = 0; t < TIME_END; t += TIME_STEP) {
+    // No noise
+    [x, y, θ] = forward_kinematics(vl, vr, x, y, θ);
+    data.push({x, y, θ});
+
+    // With noise
+    let leftNoise = gaussianRandom(leftB, leftMag);
+    let rightNoise = gaussianRandom(rightB, rightMag);
+    [xNoisy, yNoisy, θNoisy] = forward_kinematics(vl + leftNoise, vr + rightNoise, xNoisy, yNoisy, θNoisy);
+    dataNoisy.push({x: xNoisy, y: yNoisy, θ: θNoisy});
+
+    [vl, vr, d] = position_control(x, y, θ, gx, gy, gt, Kp, Ko, max_lin, max_ang);
+
+    if (d <= gt) {
+      if (gIndex < gs.length - 1) {
+        ({x: gx, y: gy} = gs[++gIndex]);
+      } else {
+        break;
+      }
+    }
+  }
+
+  return [data, dataNoisy];
+}
+```
+
+
+```{ojs}
+
+// viewof goalX = Inputs.range([-2, 2], {value: 1, step: 0.1, label: "Goal x"})
+// viewof goalY = Inputs.range([-2, 2], {value: -1, step: 0.1, label: "Goal y"})
+// viewof goalThreshold = Inputs.range([0, 0.4], {value: 0.1, step: 0.1, label: "Goal threshold"})
+// viewof K_position = Inputs.range([0, 4], {value: 0.2, step: 0.1, label: "K_position"})
+// viewof K_orientation = Inputs.range([0, 4], {value: 1, step: 0.1, label: "K_orientation"})
+// viewof maxLinearVelocity = Inputs.range([0, 2], {value: 0.3, step: 0.1, label: "Max linear velocity"})
+// viewof maxAngularVelocity = Inputs.range([0, 2], {value: 1, step: 0.1, label: "Max angular velocity"})
+
+goal = [{x: 1, y: -1}, {x: 1, y: 1}]
+goalThreshold =  0.1
+K_position =  0.3
+K_orientation =  1
+maxLinearVelocity =  0.5
+maxAngularVelocity =  1
+
+viewof leftBias = Inputs.range([-0.1, 0.1], {value: 0, step: 0.01, label: "Left Noise Bias"})
+viewof leftMagnitude = Inputs.range([0, 0.05], {value: 0, step: 0.01, label: "Left Noise Magnitude"})
+
+viewof rightBias = Inputs.range([-0.1, 0.1], {value: 0, step: 0.01, label: "Right Noise Bias"})
+viewof rightMagnitude = Inputs.range([0, 0.05], {value: 0, step: 0.01, label: "Right Noise Magnitude"})
+
+```
+
+```{ojs}
+
+initial = simulate(goal, goalThreshold, K_position, K_orientation, maxLinearVelocity, maxAngularVelocity,
+  leftBias, leftMagnitude, rightBias, rightMagnitude);
+
+viewof trajectories = Inputs.button("Restart Simulation", { value: initial, reduce: () => simulate(goal, goalThreshold, K_position, K_orientation,
+  maxLinearVelocity, maxAngularVelocity, leftBias, leftMagnitude, rightBias, rightMagnitude) });
+```
+
+```{ojs}
+Plot.plot({
+  grid: true,
+  aspectRatio: 1,
+  x: {domain: [-1, 3]},
+  y: {domain: [-2, 2]},
+  marks: [
+    Plot.dot(trajectories[0], {x: "x", y: "y", stroke: "black"}),
+    Plot.dot(trajectories[1], {x: "x", y: "y", stroke: "blue"}),
+    Plot.dot(goal, {x: "x", y: "y", stroke: "orange", fill: "red", r: goalThreshold*100}),
+  ]
+})
+```
+
+## Exercise
+
+You will now implement an improved pose estimator by incorporating both odometry from the wheel encoders and a heading from the magnetic compass.
+
+1. (Tuesday) Update your simulation and run a compass example.
+2. (Thursday) Implement sensor fusion on your robot.
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+In this exercise you will start by updating your simulation from [chapter 16](./16-MotionControl.qmd#overview), and then you'll run an example sketch provided by the compass library.
+
+#### Simulation
+
+Your main loop should look something like this:
+
+~~~text
+while t < TIME_END:
+  pose = forward_kinematics(v_left, v_right, dt)
+  v_left, v_right = position_control(pose, GOAL)
+  t = t + dt
+~~~
+
+In the current version of your simulation, you assume that the values for `v_left` and `v_right` are true. You should now update your code to include noise in these values. This will simulate that the sensors are readings are imperfect (or alternatively that the robot's actuators are not perfect). You should use a Normal distribution to "perturb" the values of `v_left` and `v_right`.
+
+You will will then simulate the following scenarios and generate plots to upload to gradescope.
+
+1. No noise
+2. Noise in the left wheel only
+3. Noise in the right wheel only
+4. Noise in both wheels
+
+Try different values for the standard deviation of the noise and report on your findings.
+
+#### Magnetic Compass Library
+
+To get started with the magnetic compass, you will do the following:
+
+1. Install the [library](https://github.com/mprograms/QMC5883LCompass).
+2. Attach the compass to your robot.
+3. Run both the `azimuth` and `xyz` sketches and record the outputs for four known orientations.
+4. Run the `calibrate` sketch and record the outputs.
+5. Rerun both the `azimuth` and `xyz` sketches at the same orientations as before but this time with the calibration method call.
+
+Report on your findings on gradescope.
+
+## Wrap-Up
+
+In the second part of this exercise, you will implement "sensor fusion" to combine the wheel encoders and compass data to improve your robot's pose estimation.
+
+## Resources
+
+- [QMC5883L Compass Arduino Library](https://github.com/mprograms/QMC5883LCompass)
+- [QMC5883L Datasheet](../_static/docs/QMC5883L-Datasheet.pdf)

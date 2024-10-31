@@ -139,6 +139,12 @@ I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the cou
 
 You should use the pseudocode from [the previous chapter](16-MotionControl.qmd#overview) and your simulation implementation to guide your Arduino code. See gradescope for submission details.
 
+To use the plot on the website, you should output your values in the following format:
+
+```cpp
+"x=%f y=%f theta=%f vl=%f vr=%f"
+```
+
 ## Wrap-Up
 
 You can now command your robot to any specific position. We'll later look at how noise affects this process, and how we can plot "proper" positions and paths.

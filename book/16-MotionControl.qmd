@@ -49,8 +49,8 @@ Links
 
 This exercise has two main components:
 
-1. (Tuesday) Simulating forward kinematics and motion control
-2. (Thursday) Implementing motion control on your robot
+1. (Tuesday) Simulating forward kinematics and motion control.
+2. (Thursday) Implementing motion control on your robot.
 
 You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
 
