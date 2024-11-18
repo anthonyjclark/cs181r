@@ -72,6 +72,7 @@ website:
         - text: "---"
         - section: "Unit 8: Societal Impacts"
           contents:
+            - book/20-Society.qmd
         - text: "---"
         - section: "Back Matter"
           contents:

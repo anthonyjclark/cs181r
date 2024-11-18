@@ -26,15 +26,15 @@ title: "Schedule"
 |      | Thu Oct 24           | [Position Control](../book/17-PositionControl.qmd)                   |
 | 10   | Tue Oct 29           | [Adding a Compass](../book/18-AddingACompass.qmd)                    |
 |      | Thu Oct 31           | [Sensor Fusion](../book/19-SensorFusion.qmd)                         |
-| 11   | Tue Nov 5            | Culture, Automation, and Jobs                                        |
-|      | Thu Nov 7            |                                                                      |
-| 12   | Tue Nov 12           |                                                                      |
-|      | Thu Nov 14           |                                                                      |
-| 13   | Tue Nov 19           |                                                                      |
-|      | Thu Nov 21           |                                                                      |
-| 14   | Tue Nov 26           | Project Workday                                                      |
+| 11   | Tue Nov 5            | Work Day                                                             |
+|      | Thu Nov 7            | Work Day                                                             |
+| 12   | Tue Nov 12           | [Robots in our Society](../book/20-Society.qmd)                      |
+|      | Thu Nov 14           | Motion Planning                                                      |
+| 13   | Tue Nov 19           | A-Star                                                               |
+|      | Thu Nov 21           | Robot Vision                                                         |
+| 14   | Tue Nov 26           | Embedded Machine Learning                                            |
 |      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                                               |
-| 15   | Tue Dec 3            | Project Workday                                                      |
+| 15   | Tue Dec 3            | Work Day                                                             |
 |      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                                                |
 | 16   | TBD                  | Final exam                                                           |
 

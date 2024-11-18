@@ -215,6 +215,8 @@ Try different values for the standard deviation of the noise and report on your 
 
 #### Magnetic Compass Library
 
+<!-- TODO: add i2s scan to steps -->
+
 To get started with the magnetic compass, you will do the following:
 
 1. Install the [library](https://github.com/mprograms/QMC5883LCompass).
