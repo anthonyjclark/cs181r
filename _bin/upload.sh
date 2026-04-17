@@ -11,10 +11,12 @@ password="$(security find-internet-password -s wells.campus.pomona.edu -w)"
 web_host="wells.campus.pomona.edu"
 
 # Mount
+echo "Mounting..."
 mkdir -p _mount
 mount -t smbfs "//ajcd2020:$password@$web_host/Computer%20Science/www/classes/cs181r" _mount
 
 # Upload
+echo "Uploading..."
 cpsync _site/ _mount/
 
 # Unmount

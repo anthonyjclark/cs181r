@@ -76,6 +76,7 @@ git subtree push --prefix _toit code main
 - add hover/link for definitions and acronyms (glossary: see below)
 - https://github.com/mloubout/critic-markup
 - https://github.com/coatless-quarto/assign
+- https://github.com/quarto-dev/quarto-cli/issues/12341
 
 
 ### File
