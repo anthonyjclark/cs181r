@@ -1,3 +1,0 @@
-Map/Environment Representation (and Configuration Space)
-
-Klancar chapter 4

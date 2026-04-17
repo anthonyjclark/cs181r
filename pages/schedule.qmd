@@ -29,12 +29,12 @@ title: "Schedule"
 | 11   | Tue Nov 5            | Work Day                                                             |
 |      | Thu Nov 7            | Work Day                                                             |
 | 12   | Tue Nov 12           | [Robots in our Society](../book/20-Society.qmd)                      |
-|      | Thu Nov 14           | Motion Planning                                                      |
-| 13   | Tue Nov 19           | A-Star                                                               |
-|      | Thu Nov 21           | Robot Vision                                                         |
-| 14   | Tue Nov 26           | Embedded Machine Learning                                            |
+|      | Thu Nov 14           | Case Study Discussions                                               |
+| 13   | Tue Nov 19           | [Simulation](../book/21-Simulation.qmd)                              |
+|      | Thu Nov 21           | [Path Planning](../book/22-PathPlanning.qmd)                         |
+| 14   | Tue Nov 26           | Work Day                                                             |
 |      | [Thu Nov 28]{.faded} | [Thanksgiving]{.faded}                                               |
-| 15   | Tue Dec 3            | Work Day                                                             |
+| 15   | Tue Dec 3            | Vision                                                               |
 |      | [Thu Dec 5]{.faded}  | [Reading day]{.faded}                                                |
 | 16   | TBD                  | Final exam                                                           |
 
@@ -84,6 +84,7 @@ Modules
 
 : {.striped .sm}
 
+<!--
 ## Exercise Notes
 
 Exercises (probably want 14?):
@@ -182,6 +183,7 @@ Other thoughts
 - reactive, FSMs, hierarchical FSMs, behavior trees, mission planning
 - qaudrature encoders
 
+ -->
 
 ## Concept Inventory
 
@@ -198,6 +200,18 @@ Here is the inventory of topics I considered when developing this course.
 | 7 | Vision      | Conventional, Learning, Optical Flow                                                    |
 | 8 | Uncertainty | Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM                  |
 | 9 | Society     | History, Laws, Ethics, Morals, Jobs, Pop-Culture, HRI                                   |
+
+<!-- Design (Requirements, PCBs, Materials, CAD, Fabrication, Mechatronics, Electronics, Safety)
+Programming (Embedded Systems, Communication, Real-Time, Debugging, Security, IoT, DSP)
+Math (Linear Algebra, Calculus, Probability, Statistics, Discretization, Optimization)
+Modeling (Diagramming, Numerics, Linearization, Kinematics, Dynamics, Simulation, Motion Capture)
+Control (Feedback, Motion, Robustness, Adaptivity, Reactive, Behavioral)
+Planning (Search, Mapping, Motion, Trajectory, Navigation)
+Vision (Conventional, Optical Flow, LiDAR)
+Machine Learning (Navigation, Reinforcement Learning)
+Uncertainty (Estimation, Localization, Fuzzy Logic, Filtering, Identification, SLAM)
+Society (History, Laws, Ethics, Morals, Jobs, Pop-Culture, HRI)
+ -->
 
 ## Mind Map of Mobile Robotics
 

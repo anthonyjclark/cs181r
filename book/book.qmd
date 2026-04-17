@@ -46,6 +46,8 @@ All rights reserved. Neither this book, nor any parts within it may be sold or r
 
 I would like to thank Ella Zhu and Jack Chin for their contributions to this book.
 
+
+<!--
 ## Resources
 
 ### Similar Courses
@@ -53,3 +55,4 @@ I would like to thank Ella Zhu and Jack Chin for their contributions to this boo
 ### Books
 
 ### Software
+ -->

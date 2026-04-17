@@ -1,3 +1,9 @@
+Map/Environment Representation (and Configuration Space)
+
+Klancar chapter 4
+
+https://www.redblobgames.com/pathfinding/a-star/introduction.html
+
 https://www.youtube.com/watch?v=-Xb3Kk3HhIw&t=58s
 
 [SwarmJS: Interactive Swarm Robotics Simulation](https://github.com/m-abdulhak/SwarmJS)
@@ -13,8 +19,6 @@ https://demonstrations.wolfram.com/RapidlyExploringRandomTreeRRTAndRRT/
 https://www.mathworks.com/help/robotics/ug/plan-path-for-a-differential-drive-robot-in-simulink.html
 
 https://lavalle.pl/tutorials.html
-
-[qiao/PathFinding.js: A comprehensive path-finding library for grid based games](https://github.com/qiao/PathFinding.js)
 
 https://underactuated.mit.edu/trajopt.html
 
@@ -65,3 +69,71 @@ configuration space vs workspace when planning (see lecture 12 f110)
 
 flood fill algorithm for path planning
 [The Fastest Maze-Solving Competition On Earth - YouTube](https://www.youtube.com/watch?v=ZMQbHMgK2rw)
+
+
+Path planning
+- configuration space
+- kinematic constraints
+- algorithms (graph-based, sampling-based, etc.)
+  - A*
+  - RRT
+  - PRM
+- other considerations
+  - obstacles
+  - real-time updates
+  - localization and mapping
+
+destructor based timer/profiler
+
+
+
+### Introduction to Path Planning
+Path planning is a crucial aspect of robotics, enabling robots to navigate from one point to another efficiently and safely. For wheeled mobile robots, this involves determining a feasible path that avoids obstacles and adheres to the robot's kinematic constraints.
+
+### Key Concepts in Path Planning
+
+1. **Configuration Space (C-Space)**:
+   - Represents all possible positions and orientations of the robot.
+   - Obstacles in the environment are mapped into this space, creating a clear distinction between free space and occupied space.
+
+2. **Kinematic Constraints**:
+   - Wheeled robots have non-holonomic constraints, meaning they cannot move in all directions instantaneously.
+   - Common models include differential drive, car-like, and omnidirectional robots.
+
+3. **Path Planning Algorithms**:
+   - **Graph-Based Methods**: These include algorithms like A* and Dijkstra's, which work by discretizing the environment into a grid or graph and finding the shortest path.
+   - **Sampling-Based Methods**: Algorithms like Rapidly-exploring Random Trees (RRT) and Probabilistic Roadmaps (PRM) are used for high-dimensional spaces and complex environments.
+   - **Optimization-Based Methods**: These involve formulating the path planning problem as an optimization problem, often using techniques like gradient descent or genetic algorithms.
+
+### Detailed Look at Popular Algorithms
+
+1. **A* Algorithm**:
+   - Uses a heuristic to estimate the cost from the current node to the goal.
+   - Balances between exploring the most promising paths and ensuring the shortest path is found.
+
+2. **Rapidly-exploring Random Trees (RRT)**:
+   - Builds a tree by randomly sampling the configuration space and connecting these samples to the nearest existing node.
+   - Efficient for high-dimensional spaces and can handle complex environments.
+
+3. **Probabilistic Roadmaps (PRM)**:
+   - Constructs a roadmap by randomly sampling the configuration space and connecting these samples to form a graph.
+   - Suitable for multi-query scenarios where the same environment is used for multiple path planning tasks.
+
+### Practical Considerations
+
+1. **Obstacle Avoidance**:
+   - Essential for safe navigation.
+   - Techniques like potential fields and dynamic window approach (DWA) help in real-time obstacle avoidance.
+
+2. **Real-Time Path Planning**:
+   - For dynamic environments, real-time path planning is crucial.
+   - Algorithms need to be fast and responsive to changes in the environment.
+
+3. **Localization and Mapping**:
+   - Accurate localization (knowing the robot's position) and mapping (understanding the environment) are foundational for effective path planning.
+   - Techniques like SLAM (Simultaneous Localization and Mapping) are commonly used.
+
+### Conclusion
+Path planning for wheeled mobile robots is a dynamic and complex field, combining elements of computer science, mathematics, and engineering. By understanding and applying various algorithms and techniques, robots can navigate efficiently and safely in diverse environments.
+
+Feel free to ask if you have any specific questions or need further details on any of these topics!

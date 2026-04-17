@@ -166,6 +166,7 @@ Before class on Thursday please make sure that you have all of your wiring compl
   - [Falstad CircuitJS](https://www.falstad.com/circuit/circuitjs.html)
   - [EveryCircuit](https://everycircuit.com/)
   - [CircuitLab](https://www.circuitlab.com/)
+  - [CircuitVerse](https://circuitverse.org/simulator)
 - Learning electronics
   - [Makeability Lab](https://makeabilitylab.github.io/physcomp/)
   - [Ultimate Electronics Book](https://ultimateelectronicsbook.com/)

@@ -60,16 +60,18 @@ website:
         - text: "---"
         - section: "Unit 4: Maps and Motion Planning"
           contents:
-        - text: "---"
-        - section: "Unit 5: Uncertainty and State Estimation"
-          contents:
-        - text: "---"
-        - section: "Unit 6: Localization and Mapping"
-          contents:
-        - text: "---"
-        - section: "Unit 7: Vision and Learning"
-          contents:
-        - text: "---"
+            - book/21-Simulation.qmd
+            - book/22-PathPlanning.qmd
+        # - text: "---"
+        # - section: "Unit 5: Uncertainty and State Estimation"
+        #   contents:
+        # - text: "---"
+        # - section: "Unit 6: Localization and Mapping"
+        #   contents:
+        # - text: "---"
+        # - section: "Unit 7: Vision and Learning"
+        #   contents:
+        # - text: "---"
         - section: "Unit 8: Societal Impacts"
           contents:
             - book/20-Society.qmd

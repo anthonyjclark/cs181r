@@ -1,0 +1,83 @@
+---
+title: "Simulation"
+---
+
+In this chapter, I will give an overview of simulation and writing simulation code in Python.
+
+## What you will learn
+
+- How to determine the correct level of abstraction for simulation
+- How to write simulation code in Python
+
+## Terminology
+
+analytical model (closed-form)
+: a model that can be computed exactly
+
+numerical model
+: a model that must be computed approximately (and typically iteratively)
+
+## Lecture
+
+Links
+
+- [Slides](../_static/lectures/21-Simulation.pdf)
+- [Slides](../_static/lectures/21-Simulation.pptx)
+
+### Simulation introduction
+
+{{< video https://www.youtube.com/watch?v=6G1huf8QyNY >}}
+
+### Writing simulation code
+
+I use [Watchexec](https://watchexec.github.io/) to rerun my Python script on save. Here is [a direct link to the simulation script](https://github.com/anthonyjclark/MobileRoboticsCode/blob/main/Simulation/positionControl.py).
+
+{{< video https://www.youtube.com/watch?v=8mHzUVkA_lI >}}
+
+## Interactive
+
+You will find a reasonable introduction to simulation on my [Simulation in Evolutionary Robotics tutorial website](https://cs.pomona.edu/~ajc/tutorials/simer/demos/1-analytical.html).
+
+## Exercise
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+The goal for this exercise is to write a simulation (in a language of your choice) that simulates your robot moving through a sequence of waypoints. You can use my [example code](https://github.com/anthonyjclark/MobileRoboticsCode/blob/main/Simulation/positionControl.py) as a starting point, or you can write yours from scratch. Your simulation must include the following:
+
+- forward kinematics
+- position control
+- at least five waypoints
+- plotting
+
+You will need to upload your code and a figure to gradescope.
+
+## Wrap-Up
+
+In the next chapter, you will build on this simulation to make your robot navigate a pre-planned path.
+
+## Resources
+
+- [Gazebo](https://gazebosim.org/home)
+- [CoppeliaSim](https://coppeliarobotics.com/) (V-REP replacement)
+- [Webots](https://cyberbotics.com/)
+- [Isaac Sim](https://developer.nvidia.com/isaac-sim)
+- [Vortex Studio](https://www.cm-labs.com/en/vortex-studio/)
+- [Drake](https://drake.mit.edu/)
+- [RoboDK](https://robodk.com/)
+- [MARS](https://rock-simulation.github.io/mars/)
+- [Simscape Multibody](https://www.mathworks.com/products/simscape-multibody.html)
+- [RaiSim](https://raisim.com/)

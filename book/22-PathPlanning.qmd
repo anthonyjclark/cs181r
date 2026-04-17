@@ -1,0 +1,67 @@
+---
+title: "Path Planning"
+---
+
+For our final chapter of the semester, we will cover path planning.
+
+## What you will learn
+
+- About the path planning problem statement.
+- Path planning algorithms.
+
+## Terminology
+
+path planning
+: the problem of finding a path from a start point to a goal point that avoids obstacles
+
+## Lecture
+
+Links
+
+- [Slides](../_static/lectures/22-PathPlanning.pptx)
+- [Slides](../_static/lectures/22-PathPlanning.pdf)
+
+### Introduction to path planning
+
+{{< video https://www.youtube.com/watch?v=PeiCsOdzBrk >}}
+
+If you're curious, you can find [a floor plan for Edmunds 105 using "Floor Plan Creator"](https://floorplancreator.net/plan/shared?id=4422109&code=jRjChM-nAobwz:Dc).
+
+### Path planning algorithms
+
+{{< video https://www.youtube.com/watch?v=JK46SCYNVYo >}}
+
+The obstacle inflation widget can be found [here](https://editor.p5js.org/anthonyjclark/sketches/Tizl5PUI-). And the following video is a pretty demonstration of the A* algorithm:
+
+{{< video https://www.youtube.com/watch?v=CgW0HPHqFE8 >}}
+
+## Exercise
+
+You will submit your responses on gradescope. **Only one partner should submit.** The submitter will add the other partner through the gradescope interface.
+
+Additional details for using gradescope can be found here:
+
+- [Submitting an Assignment](https://help.gradescope.com/article/ccbpppziu9-student-submit-work)
+- [Adding Group Members](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members)
+- [gradescope Student Help Center](https://help.gradescope.com/category/cyk4ij2dwi-student-workflow)
+
+You should open the gradescope assignment now so that you know what to work complete.
+
+### Grading
+
+I will grade all exercises using a scale of "Nailed It" / "Not Yet". See the course [grading policy](../index.qmd#grading) for more information, and check gradescope for deadlines.
+
+### Overview
+
+You task is to extend your simulation so that it takes a map of Edmunds, performs a BFS to find a path any position to any other position, and then uses that path to move the robot.
+
+## Wrap-Up
+
+That's it! As I mentioned in class, I'll demo the vision module, and you are welcome to play around with it, but I will not require you to use it for an exercise.
+
+## Resources
+
+- [Motion Planning: Custom High Resolution Grid (RRT, A*)](https://vinayak-d.github.io/MotionPlanningVisualizer/customgrid)
+- [Algorithm Visualization (DFS, BFS, Dijkstra, A*)](https://algo-vz.netlify.app/#)
+- [PathFinding.js (A*, IDA*, BFS, DFS, Dijkstra)](https://qiao.github.io/PathFinding.js/visual/)
+- [Wheeled Mobile Robotics: From Fundamentals Towards Autonomous Systems](https://booksite.elsevier.com/9780128042045/)
